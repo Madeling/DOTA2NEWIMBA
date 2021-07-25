@@ -1,0 +1,24 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: 裂魂人
+	//=================================================================================================================
+	"npc_dota_hero_spirit_breaker"
+	{
+		"Ability1"		"imba_spirit_breaker_charge_of_darkness"
+		"Ability2"		"imba_spirit_breaker_bulldoze"
+		"Ability3"		"imba_spirit_breaker_greater_bash"
+		"Ability4"		"generic_hidden"
+		"Ability5"		"generic_hidden"
+		"Ability6"		"imba_spirit_breaker_nether_strike"
+		
+		"Ability10"		"special_bonus_imba_spirit_breaker_1"
+		"Ability11"		"special_bonus_imba_spirit_breaker_2"
+		"Ability12"		"special_bonus_imba_spirit_breaker_3"
+		"Ability13"		"special_bonus_imba_spirit_breaker_4"
+		"Ability14"		"special_bonus_imba_spirit_breaker_8"
+		"Ability15"		"special_bonus_imba_spirit_breaker_6"
+		"Ability16"		"special_bonus_imba_spirit_breaker_5"
+		"Ability17"		"special_bonus_imba_spirit_breaker_7"
+	}
+}			

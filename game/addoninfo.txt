@@ -1,0 +1,13 @@
+"AddonInfo"
+{
+	"TeamCount"		"2"
+	"PenaltiesEnabled"		"0"
+	"EnablePickRules"		"1"
+	"CheckAFKPlayers"		"0"
+	"maps"      			"dota"
+	"dota"
+	{
+		"MaxPlayers"        "20"
+	}
+	"IsPlayable"  			"1"
+}

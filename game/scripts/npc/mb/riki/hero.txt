@@ -1,0 +1,27 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Riki
+	//=================================================================================================================
+	"npc_dota_hero_riki"
+	{
+		"Ability1"	"imba_riki_smoke_screen"
+		"Ability2"	"imba_riki_blink_strike"
+		"Ability3"	"imba_riki_tricks_of_the_trade"
+		"Ability4"	"imba_riki_poison_dart"
+		"Ability5"	"generic_hidden"
+		"Ability6"	"imba_riki_backstab"
+		"Ability7"	"imba_riki_mode_switch"
+		"Ability10"	"special_bonus_attack_damage_35"
+		"Ability11"	"special_bonus_attack_speed_25"
+		"Ability12"	"special_bonus_imba_riki_4"
+		"Ability13"	"special_bonus_imba_riki_1"
+		"Ability14"	"special_bonus_imba_riki_2"
+		"Ability15"	"special_bonus_imba_riki_3"
+		"Ability16"	"special_bonus_imba_riki_6"
+		"Ability17"	"special_bonus_imba_riki_5"
+		"Ability8"	""
+		"Ability9"	""
+		"AbilityDraftIgnoreCount" "7"
+	}
+}			

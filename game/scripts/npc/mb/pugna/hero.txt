@@ -1,0 +1,24 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Pugna 
+	//=================================================================================================================
+	"npc_dota_hero_pugna"
+	{
+		"AbilityLayout"	"5"
+		"Ability1"	"imba_pugna_nether_blast"
+		"Ability2"	"imba_pugna_decrepify"
+		"Ability3"	"pugna_nether_ward"
+		"Ability4"	"imba_pugna_life_drain_end"
+		"Ability5"	"generic_hidden"
+		"Ability6"	"imba_pugna_life_drain"
+		"Ability10"	"special_bonus_movement_speed_15"
+		"Ability11"	"special_bonus_hp_175"
+		"Ability12"	"special_bonus_imba_pugna_1"
+		"Ability13"	"special_bonus_unique_pugna_6"
+		"Ability14"	"special_bonus_imba_pugna_3"
+		"Ability15"	"special_bonus_spell_lifesteal_20"
+		"Ability16"	"special_bonus_imba_pugna_5"
+		"Ability17"	"special_bonus_unique_pugna_3"
+	}
+}

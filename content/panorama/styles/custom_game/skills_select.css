@@ -1,0 +1,60 @@
+#HERO_M_ID {
+    width: 1200px;
+    height: 600px;
+    margin-left: 470px;
+    margin-top: 200px;
+    box-shadow: #000000 0px 0px 12px 0px;
+    background-image: url('file://{images}/custom_game/333.jpg');
+    background-size: 100% 100%;
+    flow-children: down;
+    horizontal-align: center;
+    vertical-align: center;
+    visibility: collapse;
+}
+
+#HERO_Text {
+    color: #FFFFFF;
+    text-shadow: 2px 2px #000000;
+    font-size: 40px;
+    color: #FFFFFF;
+    margin-left: 960px;
+    margin-top: 150px;
+    background-color: #0e0e0efb;
+    background-size: 100% 100%;
+    box-shadow: #000000bd 0px 0px 10px 0px;
+    visibility: collapse;
+}
+
+.HERO_SKC {
+    background-color: #0e0e0ed3;
+    background-size: 100% 100%;
+    width: 1200px;
+    height: 80px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    flow-children: right-wrap;
+}
+
+.HERO_ABC {
+    width: 50px;
+    height: 50px;
+    border: 2px solid#ffffff85;
+    //box-shadow: #ffffff7a 0px 0px 10px 0px;
+    margin-left: 20px;
+    margin-right: 20px;
+    vertical-align: center;
+}
+
+.AuthorC {
+    color: #FFFFFF;
+    text-shadow: 2px 2px #000000;
+    font-size: 25px;
+    color: #FFFFFF;
+    margin-left: 30px;
+    vertical-align: center;
+    horizontal-align: center;
+    box-shadow: #000000bd 0px 0px 10px 0px;
+    border: 2px solid#ffffff85;
+}

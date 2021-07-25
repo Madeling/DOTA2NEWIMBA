@@ -1,0 +1,26 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: 幽鬼
+	//=================================================================================================================
+	"npc_dota_hero_spectre"
+	{
+		"Ability1"		"imba_spectre_spectral_dagger"
+		"Ability2"		"imba_spectre_desolate"
+		"Ability3"		"imba_spectre_dispersion"
+		"Ability4"		"imba_spectre_splitting_dagger"
+		"Ability5"		"generic_hidden"
+		"Ability6"		"imba_spectre_haunt"
+		"Ability7"		""
+		"Ability8"		""  
+
+		"Ability10"	"special_bonus_imba_spectre_1"
+		"Ability11"	"special_bonus_imba_spectre_7"
+		"Ability12"	"special_bonus_imba_spectre_4"
+		"Ability13"	"special_bonus_imba_spectre_5"
+		"Ability14"	"special_bonus_imba_spectre_8"
+		"Ability15"	"special_bonus_imba_spectre_2"
+		"Ability16"	"special_bonus_imba_spectre_6"
+		"Ability17"	"special_bonus_imba_spectre_3"
+	}
+}			

@@ -1,0 +1,13 @@
+<root> 
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/skills_select.vjs_c" />
+	</scripts>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/skills_select.vcss_c"/>
+    </styles>
+    <Panel class="ROOT" >
+            <Label id="HERO_Text" text="#Hero_Skills_Select"/>  
+            <Panel id="HERO_M_ID"  onload="herostart();">    
+            </Panel>
+    </Panel>
+</root>

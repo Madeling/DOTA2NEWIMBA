@@ -1,0 +1,127 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf35:version{ec5bfcca-b89d-4591-9ef4-c8679487d623} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 12
+	m_flCullRadius = -1.0
+	m_bShouldSort = false
+	m_nBehaviorVersion = 5
+	m_nFirstMultipleOverride_BackwardCompat = 3
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 1.0
+			}
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_CreateWithinSphere"
+		},
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMax = 10.0
+			m_flRadiusMin = 10.0
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMax = [ 0.0, 0.0, 280.0 ]
+			m_OffsetMin = [ 0.0, 0.0, 280.0 ]
+		},
+		{
+			_class = "C_INIT_RemapCPtoVector"
+			m_nCPInput = 61
+			m_vInputMax = [ 1.0, 1.0, 1.0 ]
+			m_nFieldOutput = 6
+			m_vOutputMax = [ 1.0, 1.0, 1.0 ]
+		},
+		{
+			_class = "C_INIT_RemapCPtoScalar"
+			m_nCPInput = 2
+			m_nFieldOutput = 1
+			m_flInputMax = 999.0
+			m_flOutputMax = 999.0
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_BasicMovement"
+			m_nMaxConstraintPasses = 0
+			m_Gravity = [ 0.0, 0.0, 100.0 ]
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flEndScale = 30.0
+			m_nOpEndCapState = "PARTICLE_ENDCAP_ENDCAP_OFF"
+			m_flBias = 1.0
+		},
+		{
+			_class = "C_OP_ColorInterpolate"
+			m_ColorFade = [ 0, 0, 0 ]
+			m_flFadeStartTime = 0.75
+		},
+		{
+			_class = "C_OP_LerpEndCapScalar"
+			m_flLerpTime = 0.2
+			m_flOutput = 0.0
+		},
+		{
+			_class = "C_OP_LerpEndCapScalar"
+			m_flOutput = 0.0
+			m_nFieldOutput = 7
+			m_flLerpTime = 0.2
+		},
+		{
+			_class = "C_OP_FadeAndKill"
+			m_flEndFadeInTime = 0.0
+			m_flStartFadeOutTime = 1.0
+			m_flEndFadeOutTime = 9999.0
+		},
+		{
+			_class = "C_OP_PositionLock"
+		},
+	]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_bDisableZBuffering = true
+			m_nOrientationType = "PARTICLE_ORIENTATION_SCREEN_Z_ALIGNED"
+			m_bCannotBeRefracted = false
+			m_vecTexturesInput = 
+			[
+				{
+					m_hTexture = resource:"materials/particle/ping_world_caution.vtex"
+					m_TextureControls = 
+					{
+						m_flFinalTextureScaleU = 
+						{
+							m_nType = "PF_TYPE_LITERAL"
+							m_flLiteralValue = -1.0
+						}
+					}
+				},
+			]
+			m_OutlineColor = [ 255, 255, 255 ]
+		},
+	]
+}

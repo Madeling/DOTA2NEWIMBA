@@ -1,0 +1,26 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Ursa
+	//=================================================================================================================
+	"npc_dota_hero_ursa"
+	{
+		"Ability1"	"imba_ursa_earthshock"
+		"Ability2"	"imba_ursa_overpower"
+		"Ability3"	"imba_ursa_fury_swipes"
+		"Ability4"	"generic_hidden"
+		"Ability5"	"generic_hidden"
+		"Ability6"	"imba_ursa_enrage"
+		"Ability10"	"special_bonus_mp_regen_175"
+		"Ability11"	"special_bonus_strength_7"
+		"Ability12"	"special_bonus_imba_ursa_1"
+		"Ability13"	"special_bonus_imba_ursa_2"
+		"Ability14"	"special_bonus_imba_ursa_3"
+		"Ability15"	"special_bonus_imba_ursa_4"
+		"Ability16"	"special_bonus_imba_ursa_5"
+		"Ability17"	"special_bonus_imba_ursa_6"
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+	}
+}			

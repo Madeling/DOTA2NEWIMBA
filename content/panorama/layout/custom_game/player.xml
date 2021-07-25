@@ -1,0 +1,51 @@
+<root> 
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/player.vjs_c" />
+	</scripts>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/player.vcss_c"/>
+    </styles>
+    <Panel class="ROOT" hittest="false"> 
+         <Panel id="Veteran_ROOT" hittest="false">  
+                <Button id="Veteran_BG" class="User_Data" hittest="true"/>
+        </Panel>
+        <Panel id="player_ROOT" hittest="false">  
+                <Button id="player_BG" class="User_Data" hittest="true" onactivate="Send_MSG();" onmouseover="Get_Player_Data(true);" onmouseout="Get_Player_Data(false);"/>	
+        </Panel>
+        <Panel id="TIP_ID" hittest="false">    
+            <Button id="TIP_BG" class="User_Data" hittest="true"  onmouseactivate="Get_TIP_Data(true);"/>
+        </Panel>  
+        <!--///-->
+            <Panel id="player_data_ROOT" hittest="false" >
+                    <Label class="veteran_NAME"  text="♥ 英霸老将"/>
+                    <Image id="player_LV" />
+                    <Panel id="player_data_BG" hittest="false" >
+                        <Label class="veteran_TEXT" id="veteran1" text="加载中！等会再看"/>
+                        <Label class="veteran_TEXT" id="veteran2" text="加载中！等会再看"/>
+                        <Label class="veteran_TEXT" id="veteran3" text="加载中！等会再看"/>
+                        <Label class="veteran_TEXT" id="veteran4" text="加载中！等会再看"/>
+
+                        <Label class="veteran_TEXT veteran_TEXT1" id="veteran5" text="加载中！等会再看"/>
+                        <Label class="veteran_TEXT veteran_TEXT1" id="veteran6" text="加载中！等会再看"/>
+                        <Label class="veteran_TEXT veteran_TEXT1" id="veteran7" text="加载中！等会再看"/>
+                        <Label class="veteran_TEXT veteran_TEXT1" id="veteran8" text="加载中！等会再看"/>
+
+                        <Label class="veteran_TEXT" id="veteran9" text="等级:"/>
+                </Panel>
+            </Panel>
+        <!--///-->
+        <!--///-->
+            <Panel id="veteran_data_ROOT" hittest="false" >
+                    <!--  <Button id="close_veteran" hittest="true" onactivate="on_off_Veteran(false);"/>-->
+            </Panel>
+        <!--///-->
+        <!--///-->
+            <Panel id="tip_data_ROOT"  hittest="false"  >
+                    <Image id="tip_image" />
+                    <Label id="tip_text" html="true" text="#tip_game1"/>
+                    <Button id="back_tip" class="btip"  onmouseactivate="Set_TIP_Data(0);" />
+                    <Button id="next_tip" class="btip" onmouseactivate="Set_TIP_Data(1);" />
+                    <Button id="off_tip"  onmouseactivate="Get_TIP_Data(false);" />
+            </Panel>
+    </Panel>
+</root>

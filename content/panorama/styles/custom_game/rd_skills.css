@@ -1,0 +1,93 @@
+#SKILLS_ID {
+    margin-left: 600px;
+    margin-top: 300px;
+    visibility: collapse;
+}
+
+#SKILLS_T {
+    color: #FFFFFF;
+    text-shadow: 2px 2px #000000;
+    font-size: 35px;
+    color: #FFFFFF;
+    horizontal-align: center;
+    margin-top: 10px;
+    background-color: #000000f5;
+    background-size: 100% 100%;
+    border: 3px solid#00000098;
+}
+
+#SK_TIP {
+    width: 800px;
+    height: 170px;
+    margin-left: 600px;
+    margin-top: 510px;
+    box-shadow: #000000 0px 0px 12px 0px;
+    background-color: #000000f1;
+    background-size: 100% 100%;
+    visibility: collapse;
+}
+
+#SKILLS_TIP {
+    color: #FFFFFF;
+    text-shadow: 2px 2px #000000;
+    font-size: 34px;
+    color: #FFFFFF;
+    margin-top: -30px;
+}
+
+#SKILLS_BG {
+    width: 800px;
+    height: 200px;
+    background-image: url('file://{images}/custom_game/333.jpg');
+    background-size: 100% 100%;
+    border: 2px solid#000000;
+    box-shadow: #000000 0px 0px 10px 0px;
+    background-position: center;
+    background-size: cover;
+    overflow: clip;
+}
+
+#SKILLS1 {
+    margin-right: 450px;
+}
+
+#SKILLS3 {
+    margin-left: 450px;
+}
+
+.SKC {
+    width: 100px;
+    height: 100px;
+    vertical-align: top;
+    margin-top: 80px;
+    horizontal-align: center;
+    background-size: 100% 100%;
+    border: 3px solid#00000056;
+    box-shadow: #000000 0px 0px 15px 0px;
+}
+
+#AG_ID {
+    margin-top: 400px;
+    margin-left: 1438px;
+    visibility: collapse;
+}
+
+#AG {
+    width: 120px;
+    height: 50px;
+    horizontal-align: center;
+    background-size: 100% 100%;
+    background-image: url('file://{images}/custom_game/2021.jpg');
+    border: 3px solid#00000050;
+    box-shadow: #ff0000 0px 0px 15px 0px;
+}
+
+#AG_T {
+    color: #FFFFFF;
+    text-shadow: 2px 2px #000000;
+    font-size: 20px;
+    color: #FFFFFF;
+    horizontal-align: center;
+    vertical-align: center;
+    background-color: #1C1C1C99;
+}

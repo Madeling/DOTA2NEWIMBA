@@ -1,0 +1,40 @@
+<root> 
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/test_tools.vjs_c" />
+	</scripts>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/test_tools.vcss_c"/>
+    </styles>
+    <Panel class="ROOT">
+        <Panel id="TOOLS_ID" >
+            <Button id="T1" class="TOOLS_P" hittest="true" onactivate="toolsA(1)">
+			  <Label class="TOOLS_T" text="升满级"/>
+			</Button>
+            <Button id="T2" class="TOOLS_P" hittest="true" onactivate="toolsA(2)">
+			  <Label class="TOOLS_T" text="加1000经验"/>
+			</Button>
+            <Button id="T3" class="TOOLS_P" hittest="true" onactivate="toolsA(3)">
+			  <Label class="TOOLS_T" text="获得金钱"/>
+			</Button>
+            <Button id="T4" class="TOOLS_P" hittest="true" onactivate="toolsA(4)">
+			  <Label class="TOOLS_T" text="创建敌方斧王"/>
+			</Button>
+            <Button id="T5" class="TOOLS_P" hittest="true" onactivate="toolsA(5)">
+			  <Label class="TOOLS_T" text="创建友方斧王"/>
+			</Button>
+            <Button id="T6" class="TOOLS_P" hittest="true" onactivate="toolsA(6)">
+			  <Label class="TOOLS_T" text="创建傀儡"/>
+			</Button>
+            <Button id="T7" class="TOOLS_P" hittest="true" onactivate="toolsA(7)">
+			  <Label class="TOOLS_T" text="刷新状态"/>
+			</Button>
+			<Button id="T8" class="TOOLS_P" hittest="true" onactivate="toolsA(8)">
+			  <Label class="TOOLS_T" text="结束游戏"/>
+			</Button>
+        </Panel>
+			<Button id="SW" class="TOOLS_P" hittest="true" onactivate="tools_sw()">
+				<Label class="TOOLS_T" text="界面开关"/>
+			</Button>
+    </Panel>
+</root>
+

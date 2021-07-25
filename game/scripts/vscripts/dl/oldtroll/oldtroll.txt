@@ -1,0 +1,425 @@
+
+
+////////////////////////////////////
+
+CreateTalents("npc_dota_hero_troll_warlord")
+
+//////////////////////////////////////////
+
+                       		"npc_dota_hero_troll_warlord"
+	{
+        "special_bonus_oldtroll_10r"{}
+         "special_bonus_oldtroll_10l"{}
+          "special_bonus_oldtroll_15r"{}
+           "special_bonus_oldtroll_15l"{}
+            "special_bonus_oldtroll_20r"{}
+             "special_bonus_oldtroll_20l"{}
+              "special_bonus_oldtroll_25r"{}
+               "special_bonus_oldtroll_25l"{}
+	}
+
+/////////////////////////////////////////
+
+"npc_dota_hero_troll_warlord"
+	{
+		"Ability1"	"oldtroll_meleeaxe"
+		"Ability2"	"oldtroll_rangeaxe"
+		"Ability3"	"oldtroll_fervor"
+		"Ability4"	"generic_hidden"
+		"Ability5"	"generic_hidden"
+		"Ability6"	"oldtroll_btrance"
+		"Ability10"	"special_bonus_agility_20"	//10r
+		"Ability11"	"special_bonus_strength_20"		//10l
+		"Ability12"	"special_bonus_oldtroll_15r"		//15r攻速持续时间加1
+		"Ability13"	"special_bonus_oldtroll_15l"		//15l每层攻速加15
+		"Ability14"	"special_bonus_attack_range_150"		//20r
+		"Ability15"	"special_bonus_movement_speed_75"		//20l
+		"Ability16"	"special_bonus_oldtroll_25r"		//25r远程斧头继承特效
+		"Ability17"	"special_bonus_oldtroll_25l"		//25l近战斧头继承特效
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+	}
+
+///////////////////////////////////////////////
+
+
+//////////////////////////////
+//troll 老巨魔 ↓
+//////////////////////////
+/////////////////////近战飞斧 ↓
+	"oldtroll_meleeaxe"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"dl/oldtroll/oldtroll_meleeaxe/oldtroll_meleeaxe.lua"
+		"AbilityTextureName"			"troll_warlord_whirling_axes_melee"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"FightRecapLevel"				"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+ 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_3"
+		"AbilityCastGestureSlot"		"DEFAULT"
+		"AbilityCastPoint"				"0.0"
+
+		// Time
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"9"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"50"
+
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"meleeaxe_duration"					"3"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"meleeaxe_interval"					"0.6"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"meleeaxe_radius"					"450"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"meleeaxe_miss"					"40 50 60 80"	//丢失几率
+			}
+		}
+	}
+	"special_bonus_oldtroll_25l"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"		"1"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"oldtroll_meleeaxe"
+		}
+	}
+////////////////////////////////远程飞斧 ↓
+
+	"oldtroll_rangeaxe"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"dl/oldtroll/oldtroll_rangeaxe/oldtroll_rangeaxe.lua"
+		"AbilityTextureName"			"troll_warlord_whirling_axes_ranged"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"FightRecapLevel"				"1"
+
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastAnimation"			"ACT_DOTA_WHIRLING_AXES_RANGED"
+		"AbilityCastGestureSlot"		"DEFAULT"
+		"AbilityCastRange"				"50000"
+		"AbilityCastPoint"				"0.2 0.2 0.2 0.2"
+
+		// Time
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"9"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"50"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"rangeaxe_range"					"1000"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"rangeaxe_speed"					"3000"	//投射物速度
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"rangeaxe_angle"					"45"	//扇形的角度为此值的两倍
+			}
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"rangeaxe_duration"					"2.0 3.0 4.0 5.0"	//减速时间
+			}
+			"05"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"rangeaxe_slow"					"45"	//百分比减速
+			}
+		}
+	}
+	"special_bonus_oldtroll_25r"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"		"1"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"oldtroll_rangeaxe"
+		}
+	}
+
+/////////////////////////////////热血战魂 ↓
+
+	"oldtroll_fervor"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"AbilityTextureName"			"troll_warlord_fervor"
+		"ScriptFile"					"dl/oldtroll/oldtroll_fervor/oldtroll_fervor.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"fervor_aspeed"	"15 20 25 30"	//每层叠加攻速
+				"LinkedSpecialBonus"	"special_bonus_oldtroll_15l"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"fervor_duration"	"4.0"		//攻速Buff持续时间
+				"LinkedSpecialBonus"	"special_bonus_oldtroll_15r"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"fervor_chance"	"10"	//击晕概率百分比
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"fervor_stun"	"1.5"	//击晕时间
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"fervor_bat"	"0.01"	//每层减少攻击间隔
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_NO"
+	}
+	"special_bonus_oldtroll_15r"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"		"1.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"oldtroll_fervor"
+		}
+	}
+	"special_bonus_oldtroll_15l"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"		"15"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"oldtroll_fervor"
+		}
+	}
+
+//////////////////////////////战斗专注 ↓
+
+	"oldtroll_btrance"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"AbilityTextureName"			"troll_warlord_battle_trance"
+		"ScriptFile"					"dl/oldtroll/oldtroll_btrance/oldtroll_btrance.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ALLIES_YES"
+		"HasScepterUpgrade"				"1"
+		"HasShardUpgrade"				"1"
+		"FightRecapLevel"				"2"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"30"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"75"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"0"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts"
+			"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_cast.vpcf"
+			"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"btrance_duration"	"5.0 6.0 7.0"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"btrance_aspeed"	"60 120 180"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"btrance_bat"		"0.2"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"btrance_shard"		"2.0"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_NO"
+	}
+
+////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////
+// OLDTROLL 巨魔战将 ↓
+///////////////////////////////
+		"DOTA_Tooltip_ability_special_bonus_oldtroll_15r"	"+{s:value} 热血战魂持续时间"
+		"DOTA_Tooltip_ability_special_bonus_oldtroll_15l"	"+{s:value} 每层热血战魂攻速"
+		"DOTA_Tooltip_ability_special_bonus_oldtroll_25r"	"远程旋风飞斧继承攻击特效"
+		"DOTA_Tooltip_ability_special_bonus_oldtroll_25l"	"近战旋风飞斧继承攻击特效"
+
+		"DOTA_Tooltip_ability_oldtroll_meleeaxe"	"近战旋风飞斧"
+		"DOTA_Tooltip_ability_oldtroll_meleeaxe_Description" "巨魔战将向四周掷出飞斧，伤害并致盲敌方单位。\n<h1><font color='#63B8FF'>斧头邦邦硬</font></h1>每次掷出飞斧都造成巨魔当前攻击力的伤害。"
+		"DOTA_Tooltip_ability_oldtroll_meleeaxe_meleeaxe_duration"  "持续时间："
+		"DOTA_Tooltip_ability_oldtroll_meleeaxe_meleeaxe_interval"  "伤害间隔："
+		"DOTA_Tooltip_ability_oldtroll_meleeaxe_meleeaxe_radius"  	"作用范围："
+		"DOTA_Tooltip_ability_oldtroll_meleeaxe_meleeaxe_duration"  "致盲持续时间："
+		"DOTA_Tooltip_ability_oldtroll_meleeaxe_meleeaxe_miss"  	"致盲丢失几率："
+		"DOTA_Tooltip_ability_oldtroll_meleeaxe_Lore"			"斧头转啊转"
+		"DOTA_Tooltip_ability_oldtroll_meleeaxe_Note0"			"即便站位重合，也只会受到一把斧头的伤害"
+		"DOTA_Tooltip_ability_oldtroll_meleeaxe_Note1"			"<font color='#FFFF00'> ● 技能设计者:毒瘤无所谓输赢</font>"
+		"DOTA_Tooltip_modifier_oldtroll_meleeaxe_debuff"	"飞斧致盲"
+		"DOTA_Tooltip_modifier_oldtroll_meleeaxe_debuff_description"	"打不中了"
+
+		"DOTA_Tooltip_ability_oldtroll_rangeaxe"	"远程旋风飞斧"
+		"DOTA_Tooltip_ability_oldtroll_rangeaxe_Description" "巨魔战将向前方的敌人掷出飞斧，伤害并减速敌方单位。\n<h1><font color='#63B8FF'>斧头硬邦邦</font></h1>每把飞斧都造成巨魔当前攻击力的伤害。"
+		"DOTA_Tooltip_ability_oldtroll_rangeaxe_rangeaxe_range"  "作用范围："
+		"DOTA_Tooltip_ability_oldtroll_rangeaxe_rangeaxe_duration"  "减速持续时间："
+		"DOTA_Tooltip_ability_oldtroll_rangeaxe_rangeaxe_slow"  "%移动速度减缓："
+		"DOTA_Tooltip_ability_oldtroll_rangeaxe_Lore"			"斧头飞啊飞"
+		"DOTA_Tooltip_ability_oldtroll_rangeaxe_Note0"			"飞斧速度3000，角度为前方90度 \n 前方没有目标会随便扔几把斧子，此时如果有敌人跳到斧子上会造成伤害"
+		"DOTA_Tooltip_ability_oldtroll_rangeaxe_Note1"			"<font color='#FFFF00'> ● 技能设计者:毒瘤无所谓输赢</font>"
+		"DOTA_Tooltip_modifier_oldtroll_rangeaxe_debuff"	"飞斧减速"
+		"DOTA_Tooltip_modifier_oldtroll_rangeaxe_debuff_description"	"跑不动了"
+
+		"DOTA_Tooltip_ability_oldtroll_fervor"	"热血战魂"
+		"DOTA_Tooltip_ability_oldtroll_fervor_Description"	"当巨魔战将持续攻击时，他会攻击的越来越快。\n<h1><font color='#63B8FF'>1.越打越快</font></h1>巨魔战将每次攻击还将减少%fervor_bat%的攻击间隔。\n<h1><font color='#63B8FF'>2.重击</font></h1>巨魔战将的攻击有几率敲晕敌人"
+		"DOTA_Tooltip_ability_oldtroll_fervor_fervor_aspeed"  "每层热血战魂增加攻速："
+		"DOTA_Tooltip_ability_oldtroll_fervor_fervor_duration"  "持续时间："
+		"DOTA_Tooltip_ability_oldtroll_fervor_fervor_chance"  "%击晕概率："
+		"DOTA_Tooltip_ability_oldtroll_fervor_fervor_stun"  "击晕持续时间："
+		"DOTA_Tooltip_ability_oldtroll_fervor_Lore"			"巨魔打起来像疯子一样"
+		"DOTA_Tooltip_ability_oldtroll_fervor_Note0"			"跟老版几乎一模一样，将在100层以后迅速达到极限攻速 \n 比老版强的一点是，被破坏后层数不会清零，而是停止计数，不再击晕。\n 比老版弱的一点是，A建筑不加层数了"
+		"DOTA_Tooltip_modifier_oldtroll_fervor_stack"	"热血战魂"
+		"DOTA_Tooltip_modifier_oldtroll_fervor_stack_description"	"巨魔快得嗷嗷叫"
+
+		"DOTA_Tooltip_ability_oldtroll_btrance_shard_description"						"战斗专注持续时间增加%btrance_shard%秒"
+		"DOTA_Tooltip_ability_oldtroll_btrance_scepter_description"						"战斗专注还将减少友军%btrance_bat%攻击间隔"
+		"DOTA_Tooltip_ability_oldtroll_btrance"	"战斗专注"
+		"DOTA_Tooltip_ability_oldtroll_btrance_Description" "巨馍蘸酱一声吼，让全地图的友军英雄的攻击速度变快了。"
+		"DOTA_Tooltip_ability_oldtroll_btrance_btrance_duration" "持续时间："
+		"DOTA_Tooltip_ability_oldtroll_btrance_btrance_aspeed" "攻击速度增加："
+		"DOTA_Tooltip_ability_oldtroll_btrance_Lore"			"巨魔和他的队友们都像疯子一样"
+		"DOTA_Tooltip_ability_oldtroll_btrance_Note0"			"不再给小兵加攻速了"
+		"DOTA_Tooltip_modifier_oldtroll_btrance_ally"	"好快！太快了！"
+		"DOTA_Tooltip_modifier_oldtroll_btrance_ally_description"	"攻击速度增加了"
+		"DOTA_Tooltip_modifier_oldtroll_btrance_scepter"	"更快！更快了！"
+		"DOTA_Tooltip_modifier_oldtroll_btrance_scepter_description"	"攻击间隔减少了"

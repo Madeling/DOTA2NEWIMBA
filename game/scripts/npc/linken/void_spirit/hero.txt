@@ -1,0 +1,24 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: 虚无之灵
+	//=================================================================================================================
+	"npc_dota_hero_void_spirit"
+	{
+		"Ability1"					"imba_void_spirit_aether_remnant"
+		"Ability2"					"imba_void_spirit_dissimilate"
+		"Ability3"					"imba_void_spirit_resonant_pulse"
+		"Ability4"					"imba_void_spirit_void_cut"
+		"Ability5"					"generic_hidden"
+		"Ability6"					"imba_void_spirit_astral_step"
+
+		"Ability10"					"special_bonus_imba_void_spirit_4"
+		"Ability11"					"special_bonus_imba_void_spirit_5"
+		"Ability12"					"special_bonus_imba_void_spirit_2"
+		"Ability13"					"special_bonus_imba_void_spirit_1"
+		"Ability14"					"special_bonus_imba_void_spirit_8"
+		"Ability15"					"special_bonus_imba_void_spirit_3"
+		"Ability16"					"special_bonus_imba_void_spirit_7"
+		"Ability17"					"special_bonus_imba_void_spirit_6"
+	}
+}			
