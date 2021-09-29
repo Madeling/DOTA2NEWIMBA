@@ -302,10 +302,10 @@ function TG_Modifier_Num_ADD(tar,name,num1,num2)
     local num=0
     if tg.target:HasModifier(tg.modifier) then
       local modifier= tg.target:FindModifierByName( tg.modifier )
-      num=modifier:GetStackCount()+(tg.init or 0)
+      num=modifier:GetStackCount()+(tg.stack  or 0)
       tg.target:RemoveModifierByName( tg.modifier)
     else
-      num=tg.stack or 0
+      num=tg.init or 0
     end
       tg.target:AddNewModifier(tg.caster, tg.ability, tg.modifier, {duration=tg.duration or 0,num=num})
   end
@@ -676,19 +676,19 @@ end
 --[[
 ★猴子B 临时
 --]]
-function MK(caster)
-  if caster:HasAbility("untransform") then
-    local AB=caster:FindAbilityByName("untransform")
-      if AB~=nil and not AB:IsHidden()  then
-          if caster:HasModifier("modifier_wukongs_command_buff3") then
-              local dur=caster:FindModifierByName("modifier_wukongs_command_buff3"):GetRemainingTime()
-              if caster:HasAbility("wukongs_command") then
-                  local ab=caster:FindAbilityByName("wukongs_command")
-              end
-              caster:AddNewModifier(caster, ab or nil, "modifier_wukongs_command_buff", {duration=dur})
+function CDOTA_BaseNPC:MK()
+  if self:HasAbility("untransform") then
+        local AB=self:FindAbilityByName("untransform")
+          if AB~=nil and not AB:IsHidden()  then
+                if self:HasModifier("modifier_wukongs_command_buff3") then
+                      local dur=self:FindModifierByName("modifier_wukongs_command_buff3"):GetRemainingTime()
+                      if self:HasAbility("wukongs_command") then
+                          local ab=self:FindAbilityByName("wukongs_command")
+                      end
+                      self:AddNewModifier(self, ab or nil, "modifier_wukongs_command_buff", {duration=dur})
+                end
+                self:SwapAbilities( "mischief", "untransform", true, false )
           end
-      caster:SwapAbilities( "mischief", "untransform", true, false )
-      end
   end
 end
 

@@ -6,6 +6,8 @@ LinkLuaModifier("modifier_wukongs_command_buff3", "heros/hero_monkey_king/wukong
 LinkLuaModifier("modifier_wukongs_command_buff4", "heros/hero_monkey_king/wukongs_command.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_wukongs_command_buff5", "heros/hero_monkey_king/wukongs_command.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_wukongs_command_buff6", "heros/hero_monkey_king/wukongs_command.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_wukongs_command_buff7", "heros/hero_monkey_king/wukongs_command.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_wukongs_command_th", "heros/hero_monkey_king/wukongs_command.lua", LUA_MODIFIER_MOTION_NONE)
 function wukongs_command:IsHiddenWhenStolen()
     return false
 end
@@ -17,24 +19,38 @@ end
 function wukongs_command:IsRefreshable()
     return true
 end
+function wukongs_command:Init()
+       self.caster=self:GetCaster()
+end
 
+function wukongs_command:GetIntrinsicModifierName()
+    return "modifier_wukongs_command_buff7"
+end
+
+function wukongs_command:OnOwnerSpawned()
+    if self.caster.mkTalent~=nil and IsValidEntity(self.caster.mkTalent) and self.caster.mkTalent:IsAlive() then
+            FindClearSpaceForUnit(self.caster, self.caster.mkTalent:GetAbsOrigin(), true)
+            self.caster.mkTalent:Kill(self, self.caster.mkTalent)
+            self.caster.mkTalent=nil
+    end
+end
 
 function wukongs_command:OnSpellStart()
-    local caster=self:GetCaster()
-    MK(caster)
+    self.caster:MK()
+    self.caster:InterruptMotionControllers(true)
     local target_pos=self:GetCursorPosition()
-    local caster_pos=caster:GetAbsOrigin()
-    local dur=self:GetSpecialValueFor("dur")
+    local caster_pos=self.caster:GetAbsOrigin()
+    local dur=self:GetSpecialValueFor("dur")+self.caster:TG_GetTalentValue("special_bonus_monkey_king_5")
     local dis=TG_Distance(caster_pos,target_pos)
     local dir=TG_Direction2(target_pos,caster_pos)
     dis=dis>800 and 800 or dis
     local time=dis/1500
-    caster:EmitSound("Hero_MonkeyKing.FurArmy.Channel")
-    caster:EmitSound("monkey_king_monkey_spawn_01")
+    self.caster:EmitSound("Hero_MonkeyKing.FurArmy.Channel")
+    self.caster:EmitSound("monkey_king_monkey_spawn_01")
     EmitGlobalSound("TG.WK")
   --  caster:EmitSound("TG.WK")
-    if caster.wukongsMODEL==nil then
-        caster.wukongsMODEL={
+    if self.caster.wukongsMODEL==nil then
+        self.caster.wukongsMODEL={
             "models/items/monkey_king/monkey_king_arcana_head/mesh/monkey_king_arcana.vmdl",
             "models/items/monkey_king/mk_ti9_immortal_weapon/mk_ti9_immortal_weapon.vmdl",
             "models/items/monkey_king/the_havoc_of_dragon_palacesix_ear_armor/the_havoc_of_dragon_palacesix_ear_armor.vmdl",
@@ -42,13 +58,13 @@ function wukongs_command:OnSpellStart()
         }
 
     end
-    if caster.wukongsMOD==nil then
-        caster.wukongsMOD={}
+    if self.caster.wukongsMOD==nil then
+        self.caster.wukongsMOD={}
     end
-    caster:AddNewModifier(caster, self, "modifier_wukongs_command_motion", {duration=time,dir=dir})
-    caster:AddNewModifier(caster, self, "modifier_wukongs_command_buff2", {duration=dur})
-    caster:AddNewModifier(caster, self, "modifier_wukongs_command_buff", {duration=dur})
-    caster:AddNewModifier(caster, self, "modifier_wukongs_command_buff3", {duration=dur})
+    self.caster:AddNewModifier(self.caster, self, "modifier_wukongs_command_motion", {duration=time,dir=dir})
+    self.caster:AddNewModifier(self.caster, self, "modifier_wukongs_command_buff2", {duration=dur})
+    self.caster:AddNewModifier(self.caster, self, "modifier_wukongs_command_buff", {duration=dur})
+    self.caster:AddNewModifier(self.caster, self, "modifier_wukongs_command_buff3", {duration=dur})
 
 end
 
@@ -133,6 +149,9 @@ function modifier_wukongs_command_motion:OnDestroy()
             self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_wukongs_command_buff5", {duration=dur})
             local illusions=CreateIllusions(self:GetParent(), self:GetParent(), modifier, 1, 100, true, true)
             illusions[1]:AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_kill", {duration=dur})
+        end
+        if self:GetParent():TG_HasTalent("special_bonus_monkey_king_8") then
+                CreateModifierThinker(self:GetParent(), self:GetAbility(), "modifier_wukongs_command_th", {duration=6}, self:GetParent():GetAbsOrigin(), self:GetParent():GetTeamNumber(), false)
         end
     end
 end
@@ -247,7 +266,7 @@ function modifier_wukongs_command_buff2:GetModifierAura()
 end
 
 function modifier_wukongs_command_buff2:GetAuraRadius()
-        return 600
+        return 600+self:GetCaster():TG_GetTalentValue("special_bonus_monkey_king_6")
 end
 
 function modifier_wukongs_command_buff2:GetAuraSearchFlags()
@@ -297,10 +316,6 @@ function modifier_wukongs_command_buff3:OnRefresh()
     self:OnCreated()
  end
 
-function modifier_wukongs_command_buff3:OnDestroy()
-    self.ABS=nil
-    self.fx=nil
- end
 
 function modifier_wukongs_command_buff3:CheckState()
     if self:GetParent():HasModifier("modifier_mischief_buff") then
@@ -456,4 +471,94 @@ function modifier_wukongs_command_buff6:OnCreated()
         ParticleManager:SetParticleControl(fx2, 1, POS)
         self:AddParticle(fx2, false, false, -1, false, false)
 
+end
+
+modifier_wukongs_command_buff7=class({})
+
+function modifier_wukongs_command_buff7:IsHidden()
+    return true
+end
+
+function modifier_wukongs_command_buff7:IsPurgable()
+    return false
+end
+
+function modifier_wukongs_command_buff7:IsPurgeException()
+    return false
+end
+
+function modifier_wukongs_command_buff7:DeclareFunctions()
+    return
+    {
+		MODIFIER_EVENT_ON_DEATH,
+    }
+end
+
+
+function modifier_wukongs_command_buff7:OnCreated()
+    if IsServer() then
+        if not self:GetAbility() then
+            return
+        end
+        self.ability=self:GetAbility()
+        self.parent=self:GetParent()
+        self.team=self.parent:GetTeamNumber()
+    end
+end
+function modifier_wukongs_command_buff7:OnDeath(tg)
+	if IsServer() then
+            if tg.unit ==self.parent and not self.parent:IsIllusion() and self.parent:TG_HasTalent("special_bonus_monkey_king_7") and (self.parent.mkTalent==nil or not IsValidEntity(self.parent.mkTalent) or self.parent.mkTalent:IsAlive() ) then
+                self.parent.mkTalent=CreateUnitByName("npc_dota_mk", self.parent:GetAbsOrigin(), true, self.parent, self.parent, self.parent:GetTeamNumber())
+                self.parent.mkTalent:SetControllableByPlayer(self.parent:GetPlayerOwnerID(), false)
+                self.parent.mkTalent:AddNewModifier(self.parent.mkTalent, self.ability, "modifier_no_healthbar",  {})
+                self.parent.mkTalent:AddNewModifier(self.parent.mkTalent, self.ability, "modifier_disarmed", {})
+                self.parent.mkTalent:FindAbilityByName("tree_dance"):SetLevel(4)
+            end
+    end
+end
+
+
+
+modifier_wukongs_command_th=class({})
+function modifier_wukongs_command_th:IsHidden()
+    return true
+end
+function modifier_wukongs_command_th:IsPurgable()
+    return false
+end
+function modifier_wukongs_command_th:IsPurgeException()
+    return false
+end
+function modifier_wukongs_command_th:OnCreated()
+        if IsServer() then
+                local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_monkey_king/monkey_king_furarmy_ring.vpcf", PATTACH_CUSTOMORIGIN ,nil)
+                ParticleManager:SetParticleControl(particle, 0, self:GetParent():GetAbsOrigin())
+                ParticleManager:SetParticleControl(particle, 1, Vector(800,1,1))
+                self:AddParticle(particle, true, false, 4, false, false)
+                self:StartIntervalThink(1.5)
+        end
+end
+function modifier_wukongs_command_th:OnIntervalThink()
+        local heros =FindUnitsInRadius(
+        self:GetParent():GetTeamNumber(),
+        self:GetParent():GetAbsOrigin(),
+        nil,
+        800,
+        DOTA_UNIT_TARGET_TEAM_ENEMY,
+        DOTA_UNIT_TARGET_HERO,
+        DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
+        FIND_CLOSEST,
+        false
+    )
+    if #heros > 0 then
+        for _, hero in pairs(heros) do
+            local pos=hero:GetAbsOrigin()
+            local fx =ParticleManager:CreateParticle('particles/tgp/mk/att_m.vpcf',PATTACH_CUSTOMORIGIN, nil)
+                ParticleManager:SetParticleControl(fx, 0, pos )
+                ParticleManager:SetParticleControl(fx, 1, pos )
+                ParticleManager:SetParticleControlEnt(fx, 2,  self:GetCaster(), PATTACH_CUSTOMORIGIN, "attach_hitloc", pos, true)
+                ParticleManager:ReleaseParticleIndex(fx)
+                  self:GetCaster():PerformAttack(hero, false, false, true, false, false, false, true)
+        end
+    end
 end

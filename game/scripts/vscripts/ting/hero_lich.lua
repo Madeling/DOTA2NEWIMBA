@@ -1,33 +1,78 @@
 CreateTalents("npc_dota_hero_lich", "ting/hero_lich")
 
 imba_lich_frost_nova = class({})
-
 LinkLuaModifier("modifier_imba_frost_nova_slow", "ting/hero_lich", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_imba_frost_nova_aura", "ting/hero_lich", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_imba_frost_nova_passvie", "ting/hero_lich", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_imba_frost_nova_slow", "ting/hero_lich", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_imba_frost_nova_frozen", "ting/hero_lich", LUA_MODIFIER_MOTION_NONE)
-function imba_lich_frost_nova:GetCooldown(level)
-	local cooldown = self.BaseClass.GetCooldown(self, level)
-	local caster = self:GetCaster()
-	local Talent = caster:TG_GetTalentValue("special_bonus_imba_lich_6")
-	local  Getcd = cooldown - Talent
-	if caster:TG_HasTalent("special_bonus_imba_lich_6") then 
-		return (Getcd)
-	end
-	return cooldown
+function imba_lich_frost_nova:GetCastPoint()			
+    if self:GetCaster():TG_HasTalent("special_bonus_imba_lich_7") then
+        return self:GetCaster():TG_GetTalentValue("special_bonus_imba_lich_7")
+    else
+        return 0.35
+    end
 end
+
 function imba_lich_frost_nova:OnSpellStart()
 	local caster = self:GetCaster()
-	local target = self:GetCursorTarget()
-	if target:TriggerStandardTargetSpell(self) then
-		return
-	end
-	Lich_Frost_Nova_Blast(caster, target, self)
+	--local target = self:GetCursorTarget()
+	
+	local caster = self:GetCaster()
+	local direction = (self:GetCursorPosition()+Vector(1,1,1) - caster:GetAbsOrigin()):Normalized()
+	direction.z = 0.0
+	caster:EmitSound("Hero_Mirana.ArrowCast")
+	--local thinker = CreateModifierThinker(caster, self, "modifier_imba_mirana_arrow_thinker", {}, caster:GetAbsOrigin(), caster:GetTeamNumber(), false):entindex()
+	caster:EmitSound("Hero_Mirana.Arrow")
+	local info = 
+	{
+		Ability = self,
+		EffectName = "particles/heros/lich/imba_lich_nov.vpcf",
+		
+		--EffectName = "particles/econ/items/mirana/mirana_crescent_arrow/mirana_spell_crescent_arrow.vpcf"
+		vSpawnOrigin = caster:GetAbsOrigin(),
+		fDistance = 2000 + caster:GetCastRangeBonus(),
+		fStartRadius = 150,
+		fEndRadius = 150,
+		Source = caster,
+		bHasFrontalCone = false,
+		bReplaceExisting = false,
+		iUnitTargetTeam = DOTA_UNIT_TARGET_TEAM_ENEMY,
+		iUnitTargetFlags = DOTA_UNIT_TARGET_FLAG_NONE,
+		iUnitTargetType = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
+		bDeleteOnHit = true,
+		vVelocity = direction * 1800,
+		bProvidesVision = false,
+		--ExtraData = {thinker = thinker}
+	}
+	ProjectileManager:CreateLinearProjectile(info)
+
+	
+
+	--Lich_Frost_Nova_Blast(caster, target, self)
 end
+
+
+function imba_lich_frost_nova:OnProjectileThink_ExtraData(location, keys)
+	AddFOWViewer(self:GetCaster():GetTeam(), location, 250, 0.03, false)
+end
+
+function imba_lich_frost_nova:OnProjectileHit_ExtraData(target, location, keys)
+	local kill_creeps = self:GetCaster():HasScepter() or not GameRules:IsDaytime()
+	if not target then
+		return true
+	end
+
+	--AddFOWViewer(self:GetCaster():GetTeam(), location, self:GetSpecialValueFor("arrow_vision"), stun_duration, false)
+	--SendOverheadEventMessage(nil, OVERHEAD_ALERT_DAMAGE, target, dmg_done, nil)
+	Lich_Frost_Nova_Blast(self:GetCaster(), target, self)
+	return true
+end
+
 
 function Lich_Frost_Nova_Blast(caster, target, ability)
 	--特效
+
 	local pfx_name = "particles/units/heroes/hero_lich/lich_frost_nova.vpcf"
 	local sound_name = "Ability.FrostNova"
 	local radius = ability:GetSpecialValueFor("radius")
@@ -137,8 +182,9 @@ function imba_lich_frost_armor:OnSpellStart()
 	target:RemoveModifierByName("modifier_imba_frost_armor")
 	target:AddNewModifier(caster, self, "modifier_imba_frost_armor", {duration = self:GetSpecialValueFor("duration")})
 	target:EmitSound("Imba.Hero_Lich.Frost_Armor")
-end
 
+end
+--modifier_lich_ice_spire
 modifier_imba_frost_armor = class({})
 
 function modifier_imba_frost_armor:IsDebuff()			return false end
@@ -147,14 +193,15 @@ function modifier_imba_frost_armor:IsPurgable() 		return true end
 function modifier_imba_frost_armor:IsPurgeException() 	return true end
 function modifier_imba_frost_armor:GetStatusEffectName() return "particles/status_fx/status_effect_frost_armor.vpcf" end
 function modifier_imba_frost_armor:StatusEffectPriority() return 10 end
-function modifier_imba_frost_armor:DestroyOnExpire() return self:GetStackCount() <= 0 end
 function modifier_imba_frost_armor:GetEffectName() return "particles/hero/lich/lich_frost_armor.vpcf" end
 function modifier_imba_frost_armor:GetEffectAttachType() return PATTACH_OVERHEAD_FOLLOW end
 function modifier_imba_frost_armor:ShouldUseOverheadOffset() return true end
-function modifier_imba_frost_armor:DeclareFunctions() return {MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS, MODIFIER_EVENT_ON_TAKEDAMAGE} end
+function modifier_imba_frost_armor:DeclareFunctions() return {MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS, MODIFIER_EVENT_ON_TAKEDAMAGE,MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE} end
 function modifier_imba_frost_armor:GetModifierPhysicalArmorBonus() return self.armor end
+function modifier_imba_frost_armor:GetModifierIncomingPhysicalDamage_Percentage() return self.dmg_re end
+
 function modifier_imba_frost_armor:OnCreated()
-	if IsServer() then
+
 	self.ability = self:GetAbility()
 	self.caster = self:GetCaster()
 	self.parent = self:GetParent()
@@ -163,6 +210,13 @@ function modifier_imba_frost_armor:OnCreated()
 	self.radius = self.ability:GetSpecialValueFor("blast_radius")
 	self.duration = self.ability:GetSpecialValueFor("slow_duration")
 	self.bdamage = self.ability:GetSpecialValueFor("blast_damage")
+	self.dmg_re = self.ability:GetSpecialValueFor("damage_re")*-1
+	self.t = true
+	if IsServer() then
+	self:SetStackCount(self.stack)
+	if string.find(self.parent:GetUnitName(), "npc_dota_lich_ice_spire") then
+		self:StartIntervalThink(1)
+	end
 	self.damageTable = {
 					attacker = self.caster, 
 					damage = self.bdamage,
@@ -172,20 +226,14 @@ function modifier_imba_frost_armor:OnCreated()
 	end
 	
 end
-function modifier_imba_frost_armor:OnDestroy()
-	self.armor = nil
-	self.stack = nil
-	self.radius = nil
-	self.duration = nil
-	self.bdamage = nil
-end
+
 
 function modifier_imba_frost_armor:OnTakeDamage(keys)
 	if not IsServer() then
 		return
 	end
-	if keys.unit == self.parent and keys.attacker:IsHero() and self:GetStackCount() == 0 and (self.parent:GetAbsOrigin() - keys.attacker:GetAbsOrigin()):Length2D() < self.radius then
-		self:SetStackCount(self.stack)
+	if keys.unit == self.parent and keys.attacker:IsHero()  and self.t and (self.parent:GetAbsOrigin() - keys.attacker:GetAbsOrigin()):Length2D() < self.radius then
+		self:OnIntervalThink()
 		self:StartIntervalThink(1.0)
 		self.parent:EmitSound("Hero_Lich.IceAge")
 		local pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_lich/lich_ice_age.vpcf", PATTACH_ABSORIGIN_FOLLOW, self.parent)
@@ -196,7 +244,7 @@ function modifier_imba_frost_armor:OnTakeDamage(keys)
 end
 
 function modifier_imba_frost_armor:OnIntervalThink()
-
+	self.t = false
 	self:SetStackCount(self:GetStackCount() - 1)
 	self.parent:EmitSound("Hero_Lich.IceAge.Tick")
 	local pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_lich/lich_ice_age_dmg.vpcf", PATTACH_ABSORIGIN_FOLLOW, self.parent)
@@ -225,12 +273,10 @@ function modifier_imba_frost_armor_slow:GetStatusEffectName() return "particles/
 function modifier_imba_frost_armor_slow:StatusEffectPriority() return 15 end
 function modifier_imba_frost_armor_slow:GetEffectName() return "particles/units/heroes/hero_lich/lich_ice_age_debuff.vpcf" end
 function modifier_imba_frost_armor_slow:GetEffectAttachType() return PATTACH_ABSORIGIN_FOLLOW end
-function modifier_imba_frost_armor_slow:DeclareFunctions() return {MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE, MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,MODIFIER_PROPERTY_DISABLE_TURNING} end
+function modifier_imba_frost_armor_slow:DeclareFunctions() return {MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE, MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT} end
 function modifier_imba_frost_armor_slow:GetModifierMoveSpeedBonus_Percentage() return (0 - self.mslow) end
 function modifier_imba_frost_armor_slow:GetModifierAttackSpeedBonus_Constant() return (0 - self.aslow) end
-function modifier_imba_frost_armor_slow:GetModifierDisableTurning() 
-    return 1
-end
+
 function modifier_imba_frost_armor_slow:OnCreated()
 	self.mslow = self:GetAbility():GetSpecialValueFor("slow_movement_speed")
 	self.aslow = self:GetAbility():GetSpecialValueFor("slow_attack_speed")+self:GetCaster():TG_GetTalentValue("special_bonus_imba_lich_5")
@@ -249,19 +295,20 @@ function imba_lich_sinister_gaze:IsHiddenWhenStolen() 		return false end
 function imba_lich_sinister_gaze:IsRefreshable() 			return true end
 function imba_lich_sinister_gaze:IsStealable() 				return true end
 function imba_lich_sinister_gaze:IsNetherWardStealable()	return true end
-function imba_lich_sinister_gaze:GetCastRange() return self:GetSpecialValueFor("cast_range") end
 
 function imba_lich_sinister_gaze:OnSpellStart()
 	self.caster = self:GetCaster()
 	self.target = self:GetCursorTarget()
+	self.duration = self:GetSpecialValueFor("duration")
 	if self.target:TriggerStandardTargetSpell(self) then
 		return
 	end
-	self.caster:EmitSound("Hero_Lich.SinisterGaze.Cast")
-	self.caster:AddNewModifier(self.caster, self, "modifier_imba_sinister_gaze_caster", {})
-	self.target:EmitSound("Hero_Lich.SinisterGaze.Target")
+	self.caster:AddNewModifier(self.target, self, "modifier_imba_sinister_gaze_caster", {duration = self.duration})
 	self.target:RemoveModifierByName("modifier_imba_sinister_gaze_target")
-	self.target:AddNewModifier(self.caster, self, "modifier_imba_sinister_gaze_target", {})
+	self.target:AddNewModifier_RS(self.caster, self, "modifier_imba_sinister_gaze_target", {duration = self.duration})
+	if self.caster:TG_HasTalent("special_bonus_imba_lich_4") then
+		self.caster:Stop()
+	end
 	--[[if self:GetCaster():HasScepter() then 
 		-- find enemies
 		local enemies = FindUnitsInRadius(
@@ -294,26 +341,14 @@ function imba_lich_sinister_gaze:OnChannelThink(flInterval)
 end
 
 function imba_lich_sinister_gaze:OnChannelFinish(bInterrupted)
-	self.caster:StopSound("Hero_Lich.SinisterGaze.Cast")
-	self.caster:RemoveModifierByName("modifier_imba_sinister_gaze_caster")
+	if self.caster:TG_HasTalent("special_bonus_imba_lich_4") then
+		return
+	end
 	
-	self.target:StopSound("Hero_Lich.SinisterGaze.Target")
+	self.caster:RemoveModifierByName("modifier_imba_sinister_gaze_caster")	
 	self.target:RemoveModifierByName("modifier_imba_sinister_gaze_target")
 	if not self.target:IsAlive() then return end
-	if not bInterrupted then
-		--self.target:SetModifierStackCount("modifier_imba_frost_nova_aura", nil, self.target:GetModifierStackCount("modifier_imba_frost_nova_aura", nil) + self:GetSpecialValueFor("frost_nova_stack"))
-		if self.target:IsCreep() or self.target:IsNeutralUnitType()  then
-			if not self.target:IsAncient() then
-			self.target:Kill(self,self.caster)
-			self.caster:GiveMana(self.target:GetMaxHealth()*self:GetSpecialValueFor("mana_hp"))
-			self.caster:Heal(self.target:GetMaxHealth()*self:GetSpecialValueFor("mana_hp"), self.caster)
-			end
-		end
-	end
-	local ability = self.caster:FindAbilityByName("imba_lich_frost_armor")
-	if ability~= nil and ability:GetLevel()>0 then
-	self.target:AddNewModifier(self.caster,ability,"modifier_imba_frost_armor_slow",{duration = 1})
-	end
+
 			--self.target:AddNewModifier("")
 end
 
@@ -326,17 +361,68 @@ function modifier_imba_sinister_gaze_caster:IsPurgable() 		return false end
 function modifier_imba_sinister_gaze_caster:IsPurgeException() 	return false end
 function modifier_imba_sinister_gaze_caster:GetEffectName() return "particles/units/heroes/hero_lich/lich_gaze_eyes.vpcf" end
 function modifier_imba_sinister_gaze_caster:GetEffectAttachType() return PATTACH_ABSORIGIN_FOLLOW end
+function modifier_imba_sinister_gaze_caster:OnCreated()
+	self.caster = self:GetCaster()
+	self.parent = self:GetParent()
+	self.ability = self:GetAbility()
+	self.radius = self.ability:GetSpecialValueFor("radius")
+	if IsServer() then
+		self.parent:EmitSound("Hero_Lich.SinisterGaze.Cast")
+		self:StartIntervalThink(0.2)
+		self:OnIntervalThink()
+	end
+end
+function modifier_imba_sinister_gaze_caster:OnIntervalThink()
+	if IsServer() then
+		local mod = self.caster:FindModifierByName("modifier_imba_sinister_gaze_target")
+		if mod and self.ability:GetAutoCastState() then
+			local friend = FindUnitsInRadius(self.caster:GetTeamNumber(), self.caster:GetAbsOrigin(), nil, self.radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, FIND_CLOSEST, false)
+				for _,f in pairs(friend) do
+					if f:HasModifier("modifier_imba_chain_frost") and f~= self.caster then
+						mod.tar = f
+						return
+					end
+				end	
+				local ice = FindUnitsInRadius(self.parent:GetTeamNumber(), self.caster:GetAbsOrigin(), nil, self.radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_NONE, FIND_CLOSEST, false)
+				for _,i in pairs(ice) do
+					if string.find(i:GetUnitName(), "npc_dota_lich_ice_spire") then
+						mod.tar = i
+						return
+					end
+				end	
+			mod.tar = self.parent
+		end
+	end
+end
+function modifier_imba_sinister_gaze_caster:OnDestroy()
+	if IsServer() then
+		self.parent:StopSound("Hero_Lich.SinisterGaze.Cast")
+	end
+end
 
 modifier_imba_sinister_gaze_target = class({})
-
+LinkLuaModifier("modifier_paralyzed", "ting/hero_lich", LUA_MODIFIER_MOTION_NONE)
 function modifier_imba_sinister_gaze_target:IsDebuff()			return true end
 function modifier_imba_sinister_gaze_target:IsHidden() 			return false end
 function modifier_imba_sinister_gaze_target:IsPurgable() 		return true end
 function modifier_imba_sinister_gaze_target:IsPurgeException() 	return true end
 function modifier_imba_sinister_gaze_target:CheckState() return {[MODIFIER_STATE_STUNNED] = true, [MODIFIER_STATE_FROZEN] = true} end
+function modifier_imba_sinister_gaze_target:DeclareFunctions() return {MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE} end
+function modifier_imba_sinister_gaze_target:GetModifierMoveSpeedBonus_Percentage() return -100 end
+
+
 
 function modifier_imba_sinister_gaze_target:OnCreated()
-	if IsServer() then
+		
+		self.caster = self:GetCaster()
+		self.parent = self:GetParent()
+		self.ability = self:GetAbility()
+		self.tar = self:GetCaster()
+		self.destination = self.ability:GetSpecialValueFor("destination")
+		self.duration = self.ability:GetSpecialValueFor("finish_duration")
+		self.next_pos = nil
+		if IsServer() then
+		self.parent:EmitSound("Hero_Lich.SinisterGaze.Target")
 		local pfx_name = "particles/units/heroes/hero_lich/lich_gaze.vpcf"
 		--if HeroItems:UnitHasItem(self:GetCaster(), "lich_ti10_immortal_head") then
 		--	pfx_name = "particles/econ/items/lich/lich_ti10_immortal_head/lich_ti10_immortal_gaze.vpcf"
@@ -344,31 +430,37 @@ function modifier_imba_sinister_gaze_target:OnCreated()
 		local pfx = ParticleManager:CreateParticle(pfx_name, PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
 		ParticleManager:SetParticleControlEnt(pfx, 2, self:GetCaster(), PATTACH_POINT_FOLLOW, "attach_portrait", self:GetCaster():GetAbsOrigin(), true)
 		self:AddParticle(pfx, false, false, 15, false, false)
-		self.caster = self:GetCaster()
-		self.parent = self:GetParent()
-		self.ability = self:GetAbility()
-		self.destination = self:GetAbility():GetSpecialValueFor("destination")
-		self.next_pos = nil
 		self:StartIntervalThink(FrameTime())
 	end
 end
 
 function modifier_imba_sinister_gaze_target:OnIntervalThink()
-	local direction = GetDirection2D(self.caster:GetAbsOrigin(), self.parent:GetAbsOrigin())
-	local distance = self.destination / (1.0 / FrameTime())
+	if IsServer() then
+	if self.caster:TG_HasTalent("special_bonus_imba_lich_4") then
+		if self.caster:IsSilenced() or self.caster:IsStunned() then
+			self.parent:RemoveModifierByName("modifier_imba_sinister_gaze_target")
+		end
+	end
+	local des = self.destination
+	if self.tar ~= self.caster then
+		des = des*2
+	end
+	local direction = GetDirection2D(self.tar:GetAbsOrigin(), self.parent:GetAbsOrigin())
+	local distance = des / (1.0 / FrameTime())
 	self.next_pos = GetGroundPosition(self.parent:GetAbsOrigin() + direction * distance, self.parent)
 	self.parent:SetForwardVector(direction)
 	self.parent:SetOrigin(self.next_pos)
+	end
 end
 
 function modifier_imba_sinister_gaze_target:OnDestroy()
 	if IsServer() then
+		self.parent:StopSound("Hero_Lich.SinisterGaze.Target")
+		self.caster:RemoveModifierByName("modifier_imba_sinister_gaze_caster")
+		self.parent:AddNewModifier(self.caster,self.ability,"modifier_paralyzed",{duration = self.duration})
 		GridNav:DestroyTreesAroundPoint(self.parent:GetAbsOrigin(), 200, false)
 		FindClearSpaceForUnit(self.parent, self.parent:GetAbsOrigin(), true)
-		self.caster = nil
-		self.parent = nil
-		self.destination = nil
-		self.ability = nil
+		
 	end
 end
 
@@ -387,6 +479,8 @@ function imba_lich_chain_frost:OnSpellStart()
 	self.damage = self.caster:HasScepter() and self:GetSpecialValueFor("damage_scepter") or self:GetSpecialValueFor("damage")
 	self.speed_increase = self.caster:HasScepter() and self:GetSpecialValueFor("speed_per_bounce_scepter") or self:GetSpecialValueFor("speed_per_bounce")
 	self.radius = self.caster:HasScepter() and self:GetSpecialValueFor("jump_range_scepter") or self:GetSpecialValueFor("jump_range")
+	self.dmg_increase = self:GetSpecialValueFor("bounces_dmg")
+	self.bounces = self:GetSpecialValueFor("bounces")+self.caster:TG_GetTalentValue("special_bonus_imba_lich_6")
 	local target = self:GetCursorTarget()
 	local speed = self:GetSpecialValueFor("projectile_speed")
 	local pfx_name = "particles/units/heroes/hero_lich/lich_chain_frost.vpcf"
@@ -415,7 +509,7 @@ function imba_lich_chain_frost:OnSpellStart()
 		self.info.Source = self.caster
 		self.info.iMoveSpeed = speed
 		self.info.vSourceLoc= self.caster:GetAbsOrigin()
-		self.info.ExtraData = {speed = speed, first = 1, bounces = 0}
+		self.info.ExtraData = {speed = speed, first = 1, bounces = 0,damage = self.damage}
 
 	ProjectileManager:CreateTrackingProjectile(self.info)
 	self.caster:EmitSound(sound_name)
@@ -429,6 +523,7 @@ function imba_lich_chain_frost:OnProjectileHit_ExtraData(target, location, keys)
 	local bounces = keys.bounces + 1
 	local interval = math.max(self:GetSpecialValueFor("bounce_delay") - 0.01 * bounces, 0)
 	local speed = keys.speed + self.speed_increase
+	local dmg = keys.damage + self.dmg_increase
 	local stop = true
 	if keys.first == 1 then
 		target:TriggerSpellReflect(self)
@@ -446,12 +541,16 @@ function imba_lich_chain_frost:OnProjectileHit_ExtraData(target, location, keys)
 	end
 	
 		self.damageTable.victim = target
-		self.damageTable.damage = string.find(target:GetUnitName(), "npc_dota_lich_ice_spire") and 0 or self.damage
+		self.damageTable.damage = string.find(target:GetUnitName(), "npc_dota_lich_ice_spire") and 0 or dmg
 		ApplyDamage(self.damageTable)
 	if self.caster:TG_HasTalent("special_bonus_imba_lich_2") then
 		target:AddNewModifier_RS(self.caster, self, "modifier_paralyzed", {duration = self.caster:TG_GetTalentValue("special_bonus_imba_lich_2")})
 	end
-
+	 --结束
+	if bounces > self.bounces  then
+		return false
+	end
+	
 	local hero_got = false
 	local next_target = nil
 	local enemies = FindUnitsInRadius(self.caster:GetTeamNumber(), location, nil, self.radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE, FIND_CLOSEST, false)
@@ -520,7 +619,7 @@ function imba_lich_chain_frost:OnProjectileHit_ExtraData(target, location, keys)
 		self.info.Source = target
 		self.info.iMoveSpeed = speed
 		self.info.vSourceLoc= location
-		self.info.ExtraData = {speed = speed, first = 0, bounces = bounces}
+		self.info.ExtraData = {speed = speed, first = 0, bounces = bounces,damage = dmg}
 
 		Timers:CreateTimer(interval, function()
 			ProjectileManager:CreateTrackingProjectile(self.info)
@@ -577,3 +676,56 @@ function modifier_paralyzed:GetModifierMoveSpeed_Absolute() return 100 end
 function modifier_paralyzed:GetModifierMoveSpeed_Limit() return 100 end
 function modifier_paralyzed:GetModifierMoveSpeed_Max() return 100 end
 function modifier_paralyzed:GetModifierBaseAttackTimeConstant() return 3.5 end
+
+
+
+--冰柱
+imba_lich_ice_spire = class({})
+LinkLuaModifier("modifier_imba_frost_armor", "ting/hero_lich", LUA_MODIFIER_MOTION_NONE)
+
+function imba_lich_ice_spire:IsHiddenWhenStolen() 		return false end
+function imba_lich_ice_spire:IsRefreshable() 			return true  end
+function imba_lich_ice_spire:IsStealable() 			return true  end
+
+function imba_lich_ice_spire:OnInventoryContentsChanged()
+	if not IsServer() then return end
+    if self:GetCaster():Has_Aghanims_Shard() then 
+       self:SetHidden(false)
+	   self:SetStolen(true)
+--	   self:SetHidden(false)
+       self:SetLevel(1)
+    else
+			self:SetHidden(true)
+--			self:SetHidden(false)
+			self:SetLevel(0)
+			self:SetStolen(true)
+    end
+end
+
+function imba_lich_ice_spire:OnSpellStart()
+	local caster = self:GetCaster()
+	local pos = self:GetCursorPosition()
+	local hp = caster:GetMaxHealth()
+	local armor = caster:GetPhysicalArmorValue(false)
+	local light = CreateUnitByName("npc_dota_lich_ice_spire", pos, true, caster, caster, caster:GetTeamNumber())
+		  light:SetOwner(caster)
+		  light:SetBaseMaxHealth(hp)
+		  light:SetMaxHealth(hp)
+		  light:SetHealth(hp)
+		  light:SetPhysicalArmorBaseValue(armor)
+		  light:SetMaximumGoldBounty(300)
+		  light:SetMinimumGoldBounty(200)
+		  light:AddNewModifier(caster, self, "modifier_kill", {duration = self:GetSpecialValueFor("duration")})
+		  light:AddNewModifier(caster, self, "modifier_lich_ice_spire", {duration = self:GetSpecialValueFor("duration")})
+	local ab = caster:FindAbilityByName("imba_lich_frost_armor")
+	if ab and ab:GetLevel() > 0 and caster:TG_HasTalent("special_bonus_imba_lich_8") then
+		local mod = light:AddNewModifier(caster, ab, "modifier_imba_frost_armor", {duration = ab:GetSpecialValueFor("duration")})
+		if mod then	
+			mod:OnIntervalThink()
+			mod:StartIntervalThink(1)
+		end
+	end
+	
+end
+
+

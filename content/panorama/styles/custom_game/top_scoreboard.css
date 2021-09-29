@@ -449,7 +449,6 @@
 .TopBarHealthBar .ProgressBarLeft {
     background-color: #2caa2c;
     background-image: url('file://{images}/custom_game/hud/topbar_health_psd.png');
-    //url("s2r://panorama/images/hud/reborn/topbar_health_psd.vtex");
     background-size: cover;
     border-radius: 0;
 }
@@ -788,7 +787,6 @@
     width: 90px;
     height: 46px;
     background-image: url('file://{images}/custom_game/hud/bg_timer_psd.png');
-    //url("s2r://panorama/images/hud/reborn/bg_timer_psd.vtex");
     background-size: 100%;
     visibility: visible;
     horizontal-align: center;

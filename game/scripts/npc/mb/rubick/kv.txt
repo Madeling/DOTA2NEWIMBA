@@ -268,7 +268,7 @@
 			"02"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"status_resistance"				"16 24 32 40"
+				"status_resistance"					"10"
 			}
 			"03"
 			{

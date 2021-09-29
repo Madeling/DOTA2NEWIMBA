@@ -1,8 +1,5 @@
 <root>
 	<styles>
-		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
-		<include src="s2r://panorama/styles/hudstyles.vcss_c" />
-		<include src="s2r://panorama/styles/hud/hud_reborn.vcss_c" />
 		<include src="s2r://panorama/styles/custom_game/top_scoreboard.vcss_c" />
 	</styles>
 	<scripts>

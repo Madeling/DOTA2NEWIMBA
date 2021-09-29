@@ -29,90 +29,47 @@ end
 
 
 function modifier_frost_arrows:OnCreated()
-  self.DUR=self:GetAbility():GetSpecialValueFor("sp")
-  self.DUR2=self:GetAbility():GetSpecialValueFor("stun")
-  self.CH=self:GetAbility():GetSpecialValueFor("ch")
-  self.dam=self:GetAbility():GetSpecialValueFor("damage")
-  self.ch1=self:GetAbility():GetSpecialValueFor("ch1")
-  self.rd1=self:GetAbility():GetSpecialValueFor("rd1")
+  self.ability=self:GetAbility()
+  self.parent=self:GetParent()
+  self.team=self.parent:GetTeamNumber()
+  self.DUR=self.ability:GetSpecialValueFor("sp")
+  self.DUR2=self.ability:GetSpecialValueFor("stun")
+  self.CH=self.ability:GetSpecialValueFor("ch")
+  self.dam=self.ability:GetSpecialValueFor("damage")
+  self.rd1=self.ability:GetSpecialValueFor("rd1")
+  self.damageTable =
+       {
+            attacker = self.parent,
+            ability = self.ability,
+      }
+      self.eatt=false
 end
 function modifier_frost_arrows:OnRefresh()
     self:OnCreated()
-  end
+end
+function modifier_frost_arrows:OnAttackStart(tg)
+	if not IsServer() then
+		return
+	end
+    if tg.attacker == self.parent and  not self.parent:IsIllusion() then
+                 self.eatt=true
+    end
+end
 
 function modifier_frost_arrows:OnAttackLanded(tg)
 	if not IsServer() then
 		return
 	end
-
-    if tg.attacker == self:GetParent()  then
-        if  tg.target:IsOther() or tg.target:IsBuilding() then
-            return
-        end
-        if not tg.target:IsMagicImmune()  then
-            tg.target:AddNewModifier_RS(self:GetParent(), self:GetAbility(), "modifier_frost_arrows_debuff1", {duration=self.DUR})
-            if tg.target:HasModifier("wave_of_silence") then
-                self.CH=self.CH+self.ch1
-            end
-            if self:GetParent():HasScepter() then
-                local heros = FindUnitsInRadius(
-                    self:GetParent():GetTeamNumber(),
-                    tg.target:GetAbsOrigin(),
-                    nil,
-                    self.rd1,
-                    DOTA_UNIT_TARGET_TEAM_ENEMY,
-                    DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
-                    DOTA_UNIT_TARGET_FLAG_NONE,
-                    FIND_ANY_ORDER,false)
-                    if #heros>0 then
-                        for _, hero in pairs(heros) do
-                                if  not tg.target:IsMagicImmune() or self:GetParent():TG_HasTalent("special_bonus_drow_ranger_1") then
-                                    local damage= {
-                                        victim = hero,
-                                        attacker = self:GetParent(),
-                                        damage = self.dam+self:GetCaster():TG_GetTalentValue("special_bonus_drow_ranger_7"),
-                                        damage_type = self:GetParent():TG_HasTalent("special_bonus_drow_ranger_2") and DAMAGE_TYPE_PURE or DAMAGE_TYPE_PHYSICAL,
-                                        ability = self:GetAbility(),
-                                        }
-                                    ApplyDamage(damage)
-                                end
-                        end
-                    end
-                else
-                    if  not tg.target:IsMagicImmune() or self:GetParent():TG_HasTalent("special_bonus_drow_ranger_1") then
-                        local damage= {
-                            victim = tg.target,
-                            attacker = self:GetParent(),
-                            damage = self.dam+self:GetCaster():TG_GetTalentValue("special_bonus_drow_ranger_7"),
-                            damage_type = self:GetParent():TG_HasTalent("special_bonus_drow_ranger_2") and DAMAGE_TYPE_PURE or DAMAGE_TYPE_PHYSICAL,
-                            ability = self:GetAbility(),
-                            }
-                        ApplyDamage(damage)
-                    end
-                end
----------------------------------------------------------------------------------------------------------------------------------------
-                if PseudoRandom:RollPseudoRandom(self:GetAbility(),  self.CH) then
-                        if self:GetParent():HasModifier("modifier_marksmanship") then
-                            local heros = FindUnitsInRadius(
-                                self:GetParent():GetTeamNumber(),
-                                tg.target:GetAbsOrigin(),
-                                nil,
-                                self.rd1,
-                                DOTA_UNIT_TARGET_TEAM_ENEMY,
-                                DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
-                                DOTA_UNIT_TARGET_FLAG_NONE,
-                                FIND_ANY_ORDER,false)
-                                if #heros>0 then
-                                    for _, hero in pairs(heros) do
-                                        if  not hero:IsMagicImmune() then
-                                        hero:AddNewModifier_RS(self:GetParent(), self:GetAbility(), "modifier_frost_arrows_debuff2", {duration=self.DUR2})
-                                        end
-                                    end
-                                end
-                        else
-                            tg.target:AddNewModifier_RS(self:GetParent(), self:GetAbility(), "modifier_frost_arrows_debuff2", {duration=self.DUR2})
-                        end
-                end
+    if tg.attacker == self.parent and  not self.parent:IsIllusion()  and not tg.target:IsBuilding() and not self.parent:PassivesDisabled() then
+        if  not tg.target:IsMagicImmune() or self.parent:TG_HasTalent("special_bonus_drow_ranger_1") then
+                            self.damageTable.damage =self.dam+self.parent:TG_GetTalentValue("special_bonus_drow_ranger_7")
+                            self.damageTable.damage_type =self.parent:TG_HasTalent("special_bonus_drow_ranger_2") and DAMAGE_TYPE_PURE or DAMAGE_TYPE_PHYSICAL
+                            self.damageTable.victim=tg.target
+                            ApplyDamage(self.damageTable)
+                            tg.target:AddNewModifier_RS(self.parent, self.ability, "modifier_frost_arrows_debuff1", {duration=self.DUR})
+                            if  RollPseudoRandomPercentage(self.CH, 0, self.parent) then
+                                    tg.target:AddNewModifier_RS(self.parent, self.ability, "modifier_frost_arrows_debuff2", {duration=self.DUR})
+                            end
         end
     end
 end
@@ -121,10 +78,38 @@ function modifier_frost_arrows:OnAttack(tg)
 	if not IsServer() then
 		return
 	end
-
-    if tg.attacker == self:GetParent()  then
-        self:GetParent():EmitSound("Hero_DrowRanger.FrostArrows")
+    if tg.attacker == self.parent  and  not self.parent:IsIllusion() then
+        self.parent:EmitSound("Hero_DrowRanger.FrostArrows")
+        if self.eatt==true and self.parent:HasModifier("modifier_marksmanship")  then
+         self.eatt = false
+          local heros = FindUnitsInRadius(
+                    self.team,
+                    tg.target:GetAbsOrigin(),
+                    nil,
+                    self.rd1,
+                    DOTA_UNIT_TARGET_TEAM_ENEMY,
+                    DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
+                    DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
+                    FIND_ANY_ORDER,false)
+                    if #heros>0 then
+                        for _, hero in pairs(heros) do
+                                if  hero~=tg.target then
+                                           self.parent:PerformAttack(hero, false, true, true, false, true, false, true)
+                                           return
+                                end
+                        end
+                    end
+        end
     end
+end
+
+function modifier_frost_arrows:OnAttackFail(tg)
+        if not IsServer() then
+            return
+        end
+        if tg.attacker == self.parent and  not self.parent:IsIllusion() then
+           self.eatt= false
+        end
 end
 
 function modifier_frost_arrows:DeclareFunctions()
@@ -132,7 +117,9 @@ function modifier_frost_arrows:DeclareFunctions()
     {
         MODIFIER_EVENT_ON_ATTACK,
         MODIFIER_EVENT_ON_ATTACK_LANDED,
-        MODIFIER_PROPERTY_PROJECTILE_NAME
+        MODIFIER_PROPERTY_PROJECTILE_NAME,
+        MODIFIER_EVENT_ON_ATTACK_START,
+        MODIFIER_EVENT_ON_ATTACK_FAIL
     }
 end
 

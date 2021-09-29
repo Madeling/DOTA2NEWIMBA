@@ -29,12 +29,12 @@ function poison_nova:OnSpellStart()
     if caster:TG_HasTalent("special_bonus_venomancer_8") then
         local AB=caster:FindAbilityByName("plague_ward")
         if AB and AB:GetLevel()>0 then
-            local duration = AB:GetSpecialValueFor("duration")
+            local dur = AB:GetSpecialValueFor("duration")
             caster:EmitSound("Hero_Venomancer.Plague_Ward")
             for i=1,AB:GetSpecialValueFor("num") do
                local ward=CreateUnitByNameAsync("npc_plague_ward", caster_pos, true, caster, caster, caster:GetTeamNumber(),function(ward)
-                ward:AddNewModifier(caster, AB, "modifier_plague_ward", {duration=duration})
-                ward:AddNewModifier(caster, AB, "modifier_kill", {duration=duration})
+                ward:AddNewModifier(caster, AB, "modifier_plague_ward", {duration=dur})
+                ward:AddNewModifier(caster, AB, "modifier_kill", {duration=dur})
                 ward:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
                 end)
 
@@ -52,10 +52,10 @@ function poison_nova:OnSpellStart()
                         modifier="modifier_poison_sting_debuff",
                         init= 35,
                         stack= 35,
-                        duration=  TG_StatusResistance_GET(tg.target,3)
+                        duration=  3
                     })
                 end
-                target:AddNewModifier_RS(caster, self, "modifier_poison_nova", {duration = duration})
+                target:AddNewModifier(caster, self, "modifier_poison_nova", {duration = duration})
         end
     end
 end
@@ -91,7 +91,7 @@ function modifier_poison_nova:GetStatusEffectName()
 end
 
 function modifier_poison_nova:StatusEffectPriority()
-    return 20
+    return 4
 end
 
 function modifier_poison_nova:OnCreated()

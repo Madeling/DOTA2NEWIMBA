@@ -144,7 +144,7 @@ function modifier_item_red_cape_buff:OnAbilityFullyCast(tg)
         if not tg.ability or tg.ability:IsItem() or tg.ability:IsToggle() then
             return
         end
-        TG_Remove_Modifier(self:GetParent(),"modifier_item_red_cape_mr",0)
+            TG_Remove_Modifier(self:GetParent(),"modifier_item_red_cape_mr",0)
     end
 end
 

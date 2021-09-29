@@ -87,7 +87,7 @@ function nether_strike:OnSpellStart()
                 local num=1
                 Timers:CreateTimer(0, function()
                 if heros[num] and IsValidEntity(heros[num]) and heros[num]:IsAlive() then
-                    local illusions=CreateIllusions(caster, caster, modifier, 1,RandomInt(-500, 500), false, true)
+                    local illusions=CreateIllusions(caster, caster, modifier, 1,100, false, false)
                     for _, illusion in pairs(illusions) do
                         illusion:AddNewModifier(caster, self, "modifier_kill", {duration=30})
                         illusion:AddNewModifier(caster, self, "modifier_nether_strike_illusions", {target=heros[num]:entindex()})
@@ -97,7 +97,7 @@ function nether_strike:OnSpellStart()
                 if num>#heros then
                     return nil
                 else
-                    return 0.1
+                    return 0.2
                 end
                 end)
         end

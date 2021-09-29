@@ -1,14 +1,14 @@
 <root>
 	<styles>
 		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
-		<include src="s2r://panorama/layout/custom_game/tooltips/aghs_status/aghs_status.vcss_c" />
+		<include src="s2r://panorama/layout/custom_game/tooltips/aghs_status.vcss_c" />
 	</styles>
 
 	<scripts>
 		<include src="s2r://panorama/scripts/sequence_actions.vjs_c" />
 		<include src="s2r://panorama/scripts/custom_game/common.vjs_c" />
 
-		<include src="s2r://panorama/layout/custom_game/tooltips/aghs_status/aghs_status.vjs_c" />
+		<include src="s2r://panorama/layout/custom_game/tooltips/aghs_status.vjs_c" />
 	</scripts>
 
 	<snippets>

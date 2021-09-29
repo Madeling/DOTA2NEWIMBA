@@ -1,3 +1,4 @@
+CreateTalents("npc_dota_hero_monkey_king", "heros/hero_monkey_king/boundless_strike.lua")
 boundless_strike=class({})
 LinkLuaModifier("modifier_boundless_strike_start", "heros/hero_monkey_king/boundless_strike.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_boundless_strike_buff", "heros/hero_monkey_king/boundless_strike.lua", LUA_MODIFIER_MOTION_NONE)
@@ -5,53 +6,53 @@ LinkLuaModifier("modifier_boundless_strike_debuff2", "heros/hero_monkey_king/bou
 function boundless_strike:IsHiddenWhenStolen()
     return false
 end
-
 function boundless_strike:IsStealable()
     return true
 end
-
 function boundless_strike:IsRefreshable()
     return true
 end
+function boundless_strike:Init()
+  self.caster=self:GetCaster()
+end
 
 function boundless_strike:OnAbilityPhaseStart()
-    local caster=self:GetCaster()
-    caster:EmitSound("Hero_MonkeyKing.Strike.Cast")
-	caster:AddNewModifier(caster, self, "modifier_boundless_strike_start", { duration = self:GetCastPoint()})
+    self.caster:EmitSound("Hero_MonkeyKing.Strike.Cast")
+	self.caster:AddNewModifier(self.caster, self, "modifier_boundless_strike_start", { duration = self:GetCastPoint()})
     return true
 end
 
 function boundless_strike:OnAbilityPhaseInterrupted()
-	local caster = self:GetCaster()
-	caster:StopSound("Hero_MonkeyKing.Strike.Cast")
-	caster:RemoveModifierByName("modifier_boundless_strike_start")
+	self.caster:StopSound("Hero_MonkeyKing.Strike.Cast")
+	self.caster:RemoveModifierByName("modifier_boundless_strike_start")
 	return true
 end
 
 function boundless_strike:OnSpellStart()
-    local caster=self:GetCaster()
-    MK(caster)
-    caster:RemoveModifierByName("modifier_boundless_strike_start")
-    local caster_pos = caster:GetAbsOrigin()
+    self.caster:MK()
+    self.caster:RemoveModifierByName("modifier_boundless_strike_start")
+    local caster_pos = self.caster:GetAbsOrigin()
     local cur_pos = self:GetCursorPosition()
     local strike_radius=self:GetSpecialValueFor("strike_radius")
     local strike_cast_range=self:GetSpecialValueFor("strike_cast_range")
-    local dir=caster:GetForwardVector()
-    local end_pos=caster_pos+dir*(strike_cast_range+caster:GetCastRangeBonus())
+    local spdur=self:GetSpecialValueFor("spdur")
+     local stun_duration=self:GetSpecialValueFor("stun_duration")+ self.caster:TG_GetTalentValue("special_bonus_night_stalker_2")
+    local dir=self.caster:GetForwardVector()
+    local end_pos=caster_pos+dir*(strike_cast_range+self.caster:GetCastRangeBonus())
     local cast=self:GetAutoCastState()
     local fxname="particles/econ/items/monkey_king/ti7_weapon/mk_ti7_golden_immortal_strike.vpcf"
     if cast then
         fxname="particles/econ/items/monkey_king/ti7_weapon/mk_ti7_immortal_strike.vpcf"
     end
-    local particle = ParticleManager:CreateParticle(fxname, PATTACH_CUSTOMORIGIN, caster)
+    local particle = ParticleManager:CreateParticle(fxname, PATTACH_CUSTOMORIGIN, self.caster)
     ParticleManager:SetParticleControl(particle, 0, caster_pos)
     ParticleManager:SetParticleControlForward(particle, 0, dir)
     ParticleManager:SetParticleControl(particle, 1, end_pos)
     ParticleManager:ReleaseParticleIndex(particle)
-    caster:AddNewModifier(caster, self, "modifier_boundless_strike_buff", {})
-    EmitSoundOnLocationWithCaster(caster_pos, "Hero_MonkeyKing.Strike.Impact", caster)
+    self.caster:AddNewModifier(self.caster, self, "modifier_boundless_strike_buff", {})
+    EmitSoundOnLocationWithCaster(caster_pos, "Hero_MonkeyKing.Strike.Impact", self.caster)
 	local heros = FindUnitsInLine(
-        caster:GetTeamNumber(),
+        self.caster:GetTeamNumber(),
         caster_pos,
         end_pos,
         nil,
@@ -61,19 +62,19 @@ function boundless_strike:OnSpellStart()
         self:GetAbilityTargetFlags())
     if #heros>0 then
         for _, hero in pairs(heros) do
-            caster:PerformAttack(hero, false, true, true, false, true, false, true)
+            self.caster:PerformAttack(hero, false, true, true, false, true, false, true)
             if cast then
                 local pos=caster_pos+dir*TG_Distance(hero:GetAbsOrigin(),caster_pos)
                 FindClearSpaceForUnit(hero, pos, true)
-                hero:AddNewModifier_RS(caster, self, "modifier_boundless_strike_debuff2", { duration =self:GetSpecialValueFor("spdur") })
+                hero:AddNewModifier_RS(self.caster, self, "modifier_boundless_strike_debuff2", { duration =spdur })
             else
-                hero:AddNewModifier_RS(caster, self, "modifier_stunned", { duration = self:GetSpecialValueFor("stun_duration") })
+                hero:AddNewModifier_RS(self.caster, self, "modifier_stunned", { duration =stun_duration })
             end
         end
     end
-    caster:RemoveModifierByName("modifier_boundless_strike_buff")
-    EmitSoundOnLocationWithCaster(end_pos, "Hero_MonkeyKing.Strike.Impact.EndPos", caster)
-    if caster:Has_Aghanims_Shard() then
+    self.caster:RemoveModifierByName("modifier_boundless_strike_buff")
+    EmitSoundOnLocationWithCaster(end_pos, "Hero_MonkeyKing.Strike.Impact.EndPos", self.caster)
+    if self.caster:Has_Aghanims_Shard() then
     local modifier=
     {
         outgoing_damage=-90,
@@ -83,9 +84,9 @@ function boundless_strike:OnSpellStart()
         outgoing_damage_structure=0,
         outgoing_damage_roshan=0,
     }
-        local illusions=CreateIllusions(caster, caster, modifier, 2, 150, true, true)
-        for i=1,2 do
-            illusions[i]:AddNewModifier(caster, self, "modifier_kill", {duration=12})
+        local illusions=CreateIllusions(self.caster, self.caster, modifier, 1, 300, false, true)
+        for i=1,#illusions do
+            illusions[i]:AddNewModifier(self.caster, self, "modifier_kill", {duration=12})
             FindClearSpaceForUnit(illusions[i], cur_pos, true)
         end
     end
@@ -169,7 +170,7 @@ function modifier_boundless_strike_buff:DeclareFunctions()
 end
 
 function modifier_boundless_strike_buff:GetModifierPreAttack_CriticalStrike()
-	return  self.strike_crit_mult or 0
+	return  self.strike_crit_mult+self:GetCaster():TG_GetTalentValue("special_bonus_night_stalker_1")
 end
 
 

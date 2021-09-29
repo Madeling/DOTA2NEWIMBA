@@ -137,6 +137,7 @@ function modifier_freezing_field:IsHidden()
 end
 
 function modifier_freezing_field:OnCreated()
+    self.caster=self:GetCaster()
     self.slow_duration=self:GetAbility():GetSpecialValueFor("slow_duration")
     self.radius=self:GetAbility():GetSpecialValueFor("radius")
     self.damage=self:GetAbility():GetSpecialValueFor("damage")
@@ -155,6 +156,11 @@ function modifier_freezing_field:OnCreated()
 end
 
 function modifier_freezing_field:OnIntervalThink()
+        if not self.caster or not IsValidEntity(self.caster)  or not self.caster:IsAlive() then
+            self:StartIntervalThink(-1)
+            self:Destroy()
+            return
+        end
         local pos = GetGroundPosition(GetRandomPosition2D(self:GetParent():GetAbsOrigin(),self.radius),self:GetParent())
         ParticleManager:SetParticleControl( self.fx, 0,pos)
         ParticleManager:SetParticleControl( self.fx, 3, pos)

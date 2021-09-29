@@ -1,4 +1,9 @@
 <root>
+	<scripts>
+	<!--
+		<include src="s2r://panorama/scripts/kv/abilitieskv.js" />
+		<include src="s2r://panorama/scripts/kv/heroeskv.js" />-->
+	</scripts>
 	<script>
 		GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_HERO_SELECTION_TEAMS, false );
 		GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_FLYOUT_SCOREBOARD, false );
@@ -12,18 +17,14 @@
 		GameUI.CustomUIConfig().team_logo_xml = {}
 		GameUI.CustomUIConfig().team_logo_xml[DOTATeam_t.DOTA_TEAM_GOODGUYS] = "file://{images}/custom_game/team_icons/team_icon_tiger_01.png";
 		GameUI.CustomUIConfig().team_logo_xml[DOTATeam_t.DOTA_TEAM_BADGUYS ] = "file://{images}/custom_game/team_icons/team_icon_monkey_01.png";
-		var color=[
-			 "#FFD700",
-			 "#FFFF00",
-			 "#ADFF2F",
-			 "#87CEFA",
-			 "#FF8C69",
-			 "#DDA0DD",
-			 "#C6E2FF"
-		]
+
 		var PreGame = $.GetContextPanel().GetParent().GetParent().FindChildTraverse("PreGame")
+		var LoadingScreenContent = $.GetContextPanel().GetParent().GetParent().FindChildTraverse("LoadingScreenContent")
 		var PregameBG = PreGame.FindChildTraverse("PregameBG")
 		var HeroPickMinimap = PreGame.FindChildTraverse("HeroPickMinimap")
+		var HeroInspect = PreGame.FindChildTraverse("HeroInspect")
+		var LockInButton = PreGame.FindChildTraverse("LockInButton")
+		var RandomButton = PreGame.FindChildTraverse("RandomButton")
 		Show_PreGame()
 		function Show_PreGame()
 		{
@@ -43,9 +44,10 @@
 		if (PreGame && PreGame.FindChildTraverse("BattlePassHeroData"))
 			PreGame.FindChildTraverse("BattlePassHeroData").style.visibility = "collapse";
 		}
-		PregameBG.style.washColor = color[Math.floor((Math.random()*color.length))];
-		PregameBG.style.transitionDuration = "0.0s";
 		HeroPickMinimap.style.visibility = "collapse";
+		HeroInspect.style.backgroundColor="#00000050";
+		LockInButton.style.backgroundColor="#00000090";
+		RandomButton.style.backgroundColor="#00000090";
 	</script>
 
 	<Panel>
@@ -55,10 +57,11 @@
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/option.xml" />
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/player.xml" />
 		<!--<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/skills_select.xml" />-->
-		<!--<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/hikari.xml" />-->
 		<CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/team_select.xml" />
 		<CustomUIElement type="HeroSelection" layoutfile="file://{resources}/layout/custom_game/multiteam_hero_select_overlay.xml" />
 		<CustomUIElement type="FlyoutScoreboard" layoutfile="file://{resources}/layout/custom_game/multiteam_flyout_scoreboard.xml" />
 		<CustomUIElement type="EndScreen" layoutfile="file://{resources}/layout/custom_game/multiteam_end_screen.xml" />
+		<!--<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/tooltips/aghs_status.xml" />-->
 	</Panel>
+
 </root>

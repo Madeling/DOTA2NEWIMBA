@@ -32,7 +32,7 @@ function ice_blast:OnSpellStart()
 	for num=1,4+self:GetCaster():TG_GetTalentValue("special_bonus_ancient_apparition_6") do
 		local null = CreateUnitByName(
 			"npc_dummy_unit",
-			Vector(cur_pos.x+RandomInt(-1000,1000),cur_pos.y+RandomInt(-300,300),cur_pos.z+100),
+			cur_pos+RandomVector(500),
 			 true,
 			 nil,
 			 nil,

@@ -29,7 +29,7 @@
 #base mb/dark_willow/hero.txt
 #base mb/death_prophet/hero.txt
 #base mb/legion_commander/hero.txt
-#base mb/nevermore/hero.txt
+//#base mb/nevermore/hero.txt
 #base mb/slardar/hero.txt
 #base mb/slark/hero.txt
 #base mb/tidehunter/hero.txt
@@ -47,6 +47,43 @@
 "DOTAHeroes"
 {
 	"Version"		"1"
+
+	"npc_dota_hero_alchemist"
+	{
+		"Ability1"		"acid_spray"
+		"Ability2"		"unstable_concoction_throw"
+		"Ability3"		"goblins_greed"
+		"Ability4"		"alchemist_berserk_potion"
+		"Ability5"		"generic_hidden"
+		"Ability6"		"chemical_rage"
+		"Ability10"		"special_bonus_alchemist_1"
+		"Ability11"		"special_bonus_alchemist_2"
+		"Ability12"		"special_bonus_alchemist_3"
+		"Ability13"		"special_bonus_alchemist_4"
+		"Ability14"		"special_bonus_alchemist_5"
+		"Ability15"		"special_bonus_attack_speed_175"
+		"Ability16"		"special_bonus_alchemist_7"
+		"Ability17"		"special_bonus_cleave_25"
+	}
+
+
+	"npc_dota_hero_magnataur"
+	{
+		"Ability1"		"shockwave"
+		"Ability2"		"empower"
+		"Ability3"		"skewer"
+		"Ability4"		"magnataur_horn_toss"
+		"Ability5"		"generic_hidden"
+		"Ability6"		"reverse_polarity"
+		"Ability10"		"special_bonus_magnataur_1"
+		"Ability11"		"special_bonus_magnataur_2"
+		"Ability12"		"special_bonus_magnataur_3"
+		"Ability13"		"special_bonus_magnataur_4"
+		"Ability14"		"special_bonus_magnataur_5"
+		"Ability15"		"special_bonus_magnataur_6"
+		"Ability16"		"special_bonus_magnataur_7"
+		"Ability17"		"special_bonus_magnataur_8"
+	}
 
 	"npc_dota_hero_bane"
 	{
@@ -77,10 +114,10 @@
 		"Ability10"		"special_bonus_vengefulspirit_5"
 		"Ability11"		"special_bonus_vengefulspirit_6"
 		"Ability12"		"special_bonus_vengefulspirit_4"
-		"Ability13"		"special_bonus_vengefulspirit_2"
+		"Ability13"		"special_bonus_vengefulspirit_7"
 		"Ability14"		"special_bonus_vengefulspirit_1"
-		"Ability15"		"special_bonus_vengefulspirit_3"
-		"Ability16"		"special_bonus_vengefulspirit_7"
+		"Ability15"		"special_bonus_vengefulspirit_2"
+		"Ability16"		"special_bonus_vengefulspirit_3"
 		"Ability17"		"special_bonus_unique_vengeful_spirit_2"
 	}
 
@@ -94,13 +131,13 @@
 		"Ability4"		"earth_spirit_stone_caller"
 		"Ability5"		"earth_spirit_petrify"
 		"Ability6"		"earth_spirit_magnetize"
-		"Ability10"		"special_bonus_unique_earth_spirit_4"
+		"Ability10"		"special_bonus_unique_earth_spirit_2"
 		"Ability11"		"special_bonus_unique_earth_spirit_3"
 		"Ability12"		"special_bonus_armor_8"
 		"Ability13"		"special_bonus_unique_earth_spirit"
 		"Ability14"		"special_bonus_spell_amplify_18"
 		"Ability15"		"special_bonus_unique_earth_spirit_5"
-		"Ability16"		"special_bonus_unique_earth_spirit_2"
+		"Ability16"		"special_bonus_unique_earth_spirit_4"
 		"Ability17"		"special_bonus_attack_damage_60"
 	}
 
@@ -244,6 +281,7 @@
 
 	"npc_dota_hero_obsidian_destroyer"
 	{
+		"AttackRange"		"600"
 		"Ability1"		"arcane_orb"
 		"Ability2"		"astral_imprisonment"
 		"Ability3"		"essence_aura"
@@ -358,7 +396,7 @@
 		"Ability3"		"divine_favor"
 		"Ability4"		"test_of_faith"
 		"Ability5"		"generic_hidden"
-		"Ability6"		"hand_of_god"		
+		"Ability6"		"hand_of_god"
 		"Ability10"		"special_bonus_chen_4"
 		"Ability11"		"special_bonus_chen_3"
 		"Ability12"		"special_bonus_chen_2"
@@ -412,12 +450,12 @@
 	"npc_dota_hero_sniper"
 	{
 		"override_hero"	"npc_dota_hero_sniper"
-		"Ability1"		"slug"					
-		"Ability2"		"sniper_roll"				
-		"Ability3"		"one_shot"			
+		"Ability1"		"slug"
+		"Ability2"		"sniper_roll"
+		"Ability3"		"one_shot"
 		"Ability4"		"sniper_concussive_grenade"
-		"Ability5"		"generic_hidden"					
-		"Ability6"		"grenade" 			
+		"Ability5"		"generic_hidden"
+		"Ability6"		"grenade"
 		"Ability10"		"special_bonus_sniper_10r"
 		"Ability11"		"special_bonus_sniper_10l"
 		"Ability12"		"special_bonus_sniper_15r"
@@ -475,14 +513,14 @@
 		"Ability4"		"generic_hidden"
 		"Ability5"		"generic_hidden"
 		"Ability6"		"call_down" //"gyrocopter_call_down"
-		"Ability10"		"special_bonus_hp_regen_10"
-		"Ability11"		"special_bonus_mp_regen_150"
-		"Ability12"		"special_bonus_armor_8"
-		"Ability13"		"special_bonus_hp_300"
-		"Ability14"		"special_bonus_cast_range_100"
-		"Ability15"		"special_bonus_attack_range_50"
-		"Ability16"		"special_bonus_attack_speed_60"
-		"Ability17"		"special_bonus_attack_damage_60"
+		"Ability10"		"special_bonus_gyrocopter_1"
+		"Ability11"		"special_bonus_gyrocopter_2"
+		"Ability12"		"special_bonus_gyrocopter_3"
+		"Ability13"		"special_bonus_gyrocopter_4"
+		"Ability14"		"special_bonus_gyrocopter_5"
+		"Ability15"		"special_bonus_gyrocopter_6"
+		"Ability16"		"special_bonus_gyrocopter_7"
+		"Ability17"		"special_bonus_gyrocopter_8"
 	}
 
 		"npc_dota_hero_juggernaut"
@@ -560,22 +598,22 @@
 		"Ability17"		"special_bonus_ancient_apparition_6"
 	}
 
-		"npc_dota_hero_enchantress"
+	"npc_dota_hero_enchantress"
 	{
-				"Ability1"		"impetus"//"enchantress_impetus"
+		"Ability1"		"impetus"//"enchantress_impetus"
 		"Ability2"		"bunny_hop"
 		"Ability3"		"natures_attendants"	//"enchantress_natures_attendants"
 		"Ability4"		"enchant"//"enchantress_enchant"//"enchantress_bunny_hop"
 		"Ability5"		"generic_hidden"
 		"Ability6"		"untouchable"//"enchantress_untouchable"
-		"Ability10"		"special_bonus_hp_regen_10"
-		"Ability11"		"special_bonus_hp_300"
-		"Ability12"		"special_bonus_armor_8"
-		"Ability13"		"special_bonus_attack_damage_30"
-		"Ability14"		"special_bonus_attack_speed_30"
-		"Ability15"		"special_bonus_cast_range_125"
-		"Ability16"		"special_bonus_movement_speed_50"
-		"Ability17"		"special_bonus_attack_range_100"
+		"Ability10"		"special_bonus_enchantress_1"
+		"Ability11"		"special_bonus_enchantress_2"
+		"Ability12"		"special_bonus_enchantress_3"
+		"Ability13"		"special_bonus_enchantress_4"
+		"Ability14"		"special_bonus_enchantress_5"
+		"Ability15"		"special_bonus_enchantress_6"
+		"Ability16"		"special_bonus_enchantress_7"
+		"Ability17"		"special_bonus_enchantress_8"
 	}
 
 		"npc_dota_hero_sven"
@@ -754,14 +792,14 @@
 		"Ability6"		"wukongs_command"//"monkey_king_wukongs_command"
 	//	"Ability7"		"monkey_king_primal_spring_early"
 		"Ability8"		"untransform"//"monkey_king_untransform"
-		"Ability10"		"special_bonus_hp_regen_10"
-		"Ability11"		"special_bonus_mp_regen_150"
-		"Ability12"		"special_bonus_armor_8"
-		"Ability13"		"special_bonus_hp_300"
-		"Ability14"		"special_bonus_movement_speed_40"
-		"Ability15"		"special_bonus_night_vision_400"
-		"Ability16"		"special_bonus_attack_speed_60"
-		"Ability17"		"special_bonus_attack_damage_60"
+		"Ability10"		"special_bonus_monkey_king_1"
+		"Ability11"		"special_bonus_monkey_king_2"
+		"Ability12"		"special_bonus_monkey_king_3"
+		"Ability13"		"special_bonus_monkey_king_4"
+		"Ability14"		"special_bonus_monkey_king_5"
+		"Ability15"		"special_bonus_monkey_king_6"
+		"Ability16"		"special_bonus_monkey_king_7"
+		"Ability17"		"special_bonus_monkey_king_8"
 	}
 
 
@@ -770,7 +808,7 @@
 				"Ability1"		"shackleshot"	//"windrunner_shackleshot"
 		"Ability2"		"powershot"	//"windrunner_powershot"
 		"Ability3"		"windrun"//"windrunner_windrun"
-		"Ability4"		"generic_hidden"
+		"Ability4"		"windrunner_gale_force"
 		"Ability5"		"generic_hidden"
 		"Ability6"		"focusfire"//"windrunner_focusfire"
 
@@ -815,24 +853,6 @@
 
 
 
-
-		"npc_dota_hero_techies"
-	{
-				"Ability1"	"imba_techies_land_mines"
-		"Ability2"	"imba_techies_stasis_trap"
-		"Ability3"	"techies_suicide"
-		"Ability4"	"imba_techies_focused_detonate"
-		"Ability5"	"imba_techies_minefield_sign"
-		"Ability6"	"imba_techies_remote_mines"
-		"Ability10"		"special_bonus_magic_resistance_20"
-		"Ability11"		"special_bonus_attack_damage_50"
-		"Ability12"		"special_bonus_hp_275"
-		"Ability13"		"special_bonus_mp_regen_5"
-		"Ability14"		"special_bonus_movement_speed_40"
-		"Ability15"		"special_bonus_night_vision_400"
-		"Ability16"		"special_bonus_attack_damage_251"
-		"Ability17"		"special_bonus_mp_regen_150"
-	}
 
 		"npc_dota_hero_bounty_hunter"
 	{
@@ -879,11 +899,11 @@
 		"Ability1"		"tinker_laser"
 		"Ability2"		"tinker_heat_seeking_missile"
 		"Ability3"		"tinker_defense_matrix"
-		"Ability4"		"tinker_march_of_the_machines"
-		"Ability5"		"generic_hidden"
+		"Ability4"		"generic_hidden"
+		"Ability5"		"tinker_keen_teleport"
 		"Ability6"		"rearm"
 		"Ability10"		"special_bonus_spell_amplify_8"
-		"Ability11"		"special_bonus_exp_boost_15" 
+		"Ability11"		"special_bonus_exp_boost_15"
 		"Ability12"		"special_bonus_cast_range_125"
 		"Ability13"		"special_bonus_mana_reduction_9"
 		"Ability14"		"special_bonus_armor_8"
@@ -901,14 +921,14 @@
 		"Ability4"		"assassin_trap"
 		"Ability5"		"trap_teleport"
 		"Ability6"		"psionic_trap"
-		"Ability10"	"special_bonus_hp_125"
-		"Ability11"	"special_bonus_exp_boost_15"
-		"Ability12"	"special_bonus_attack_speed_20"
-		"Ability13"	"special_bonus_movement_speed_25"
-		"Ability14"	"special_bonus_spell_amplify_8"
-		"Ability15"	"special_bonus_attack_damage_65"
-		"Ability16"	"special_bonus_attack_speed_30"
-		"Ability17"	"special_bonus_hp_400"
+		"Ability10"	"special_bonus_templar_assassin_1"
+		"Ability11"	"special_bonus_templar_assassin_2"
+		"Ability12"	"special_bonus_templar_assassin_3"
+		"Ability13"	"special_bonus_templar_assassin_4"
+		"Ability14"	"special_bonus_templar_assassin_5"
+		"Ability15"	"special_bonus_templar_assassin_6"
+		"Ability16"	"special_bonus_templar_assassin_7"
+		"Ability17"	"special_bonus_templar_assassin_8"
 	}
 
 
@@ -986,11 +1006,11 @@
 		"Ability1"	"imba_lich_frost_nova"
 		"Ability2"	"imba_lich_frost_armor"
 		"Ability3"	"imba_lich_sinister_gaze"
-		"Ability4"	"lich_ice_spire"
+		"Ability4"	"imba_lich_ice_spire"
 		"Ability5"	"generic_hidden"
 		"Ability6"	"imba_lich_chain_frost"
-		"Ability10"	"special_bonus_cast_range_100"
-		"Ability11"	"special_bonus_movement_speed_15"
+		"Ability10"	"special_bonus_imba_lich_7"
+		"Ability11"	"special_bonus_imba_lich_8"
 		"Ability12"	"special_bonus_imba_lich_5"
 		"Ability13"	"special_bonus_imba_lich_4"
 		"Ability14"	"special_bonus_imba_lich_3"
@@ -1026,46 +1046,40 @@
 
 	"npc_dota_hero_lina"
 	{
-		"Ability1"	"imba_lina_dragon_slave"
-		"Ability2"	"imba_lina_light_strike_array"
-		"Ability3"	"imba_lina_fiery_soul"
+		"Ability1"	"dragon_slave"
+		"Ability2"	"light_strike_array"
+		"Ability3"	"fiery_soul"
 		"Ability4"	"generic_hidden"
 		"Ability5"	"generic_hidden"
-		"Ability6"	"imba_lina_laguna_blade"
-		"Ability10"	"special_bonus_hp_125"
-		"Ability11"	"special_bonus_exp_boost_15"
-		"Ability12"	"special_bonus_attack_speed_20"
-		"Ability13"	"special_bonus_movement_speed_25"
-		"Ability14"	"special_bonus_spell_amplify_8"
-		"Ability15"	"special_bonus_attack_damage_65"
-		"Ability16"	"special_bonus_attack_speed_30"
-		"Ability17"	"special_bonus_hp_400"
-		"Ability7"	""
-		"Ability8"	""
-		"Ability9"	""
+		"Ability6"	"laguna_blade"
+		"Ability10"	"special_bonus_lina_1"
+		"Ability11"	"special_bonus_lina_2"
+		"Ability12"	"special_bonus_lina_3"
+		"Ability13"	"special_bonus_lina_4"
+		"Ability14"	"special_bonus_lina_5"
+		"Ability15"	"special_bonus_lina_6"
+		"Ability16"	"special_bonus_lina_7"
+		"Ability17"	"special_bonus_lina_8"
 	}
 
 
 
 	"npc_dota_hero_pudge"
 	{
-		"AbilityLayout"	"6"
-		"Ability1"		"imba_pudge_meat_hook"
-		"Ability2"		"imba_pudge_rot"
-		"Ability3"		"imba_pudge_flesh_heap"
-		"Ability4"		"imba_pudge_sharp_hook"
-		"Ability5"		"imba_pudge_light_hook"
-		"Ability6"		"imba_pudge_dismember"
-
-		"Ability10"	"special_bonus_hp_150"
-		"Ability11"	"special_bonus_mp_regen_2"
-		"Ability12"	"special_bonus_attack_speed_35"
-		"Ability13"	"special_bonus_movement_speed_20"
-		"Ability14"	"special_bonus_armor_6"
-		"Ability15"	"special_bonus_intelligence_35"
-		"Ability15"	"special_bonus_spell_amplify_8"
-		"Ability16"	"special_bonus_imba_pudge_2"
-		"Ability17"	"special_bonus_imba_pudge_1"
+		"Ability1"		"meat_hook"
+		"Ability2"		"prot"
+		"Ability3"		"flesh_heap"
+		"Ability4"		"generic_hidden"
+		"Ability5"		"generic_hidden"
+		"Ability6"		"dismember"
+		"Ability10"		"special_bonus_pudge_1"
+		"Ability11"		"special_bonus_pudge_2"
+		"Ability12"		"special_bonus_pudge_3"
+		"Ability13"		"special_bonus_pudge_4"
+		"Ability14"		"special_bonus_pudge_5"
+		"Ability15"		"special_bonus_pudge_6"
+		"Ability16"		"special_bonus_pudge_7"
+		"Ability17"		"special_bonus_pudge_8"
 	}
 
 
@@ -1186,8 +1200,8 @@
 		"Ability13"		"special_bonus_skeleton_king_4"
 		"Ability14"		"special_bonus_skeleton_king_5"
 		"Ability15"		"special_bonus_skeleton_king_6"
-		"Ability16"		"special_bonus_attack_speed_60"
-		"Ability17"		"special_bonus_attack_damage_100"
+		"Ability16"		"special_bonus_skeleton_king_7"
+		"Ability17"		"special_bonus_skeleton_king_8"
 	}
 
 
@@ -1225,7 +1239,7 @@
 		"Ability2"		"imba_leshrac_diabolic_edict"
 		"Ability3"		"imba_leshrac_lightning_storm"
 		"Ability4"		"generic_hidden"
-		"Ability5"		"leshrac_greater_lightning_storm" //虚无主义      
+		"Ability5"		"leshrac_greater_lightning_storm" //虚无主义
 		"Ability6"		"imba_leshrac_pulse_nova"
 
 
@@ -1467,7 +1481,7 @@
 		"Ability5"		"imba_tiny_tree_channel"
 		"Ability6"		"imba_tiny_grow"
 		"Ability7"		"imba_tiny_toss_tree"
-	
+
 		"Ability10"		"special_bonus_attack_speed_40"
 		"Ability11"		"special_bonus_movement_speed_20"
 		"Ability12"		"special_bonus_imba_tiny_3"

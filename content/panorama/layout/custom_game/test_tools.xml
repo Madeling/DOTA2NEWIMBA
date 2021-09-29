@@ -1,9 +1,9 @@
-<root> 
+<root>
 	<scripts>
-		<include src="file://{resources}/scripts/custom_game/test_tools.vjs_c" />
+		<include src="file://{resources}/scripts/custom_game/test_tools.js" />
 	</scripts>
     <styles>
-        <include src="file://{resources}/styles/custom_game/test_tools.vcss_c"/>
+        <include src="file://{resources}/styles/custom_game/test_tools.css"/>
     </styles>
     <Panel class="ROOT">
         <Panel id="TOOLS_ID" >
@@ -37,4 +37,3 @@
 			</Button>
     </Panel>
 </root>
-

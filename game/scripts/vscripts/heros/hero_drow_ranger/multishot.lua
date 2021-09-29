@@ -29,35 +29,39 @@ function multishot:GetCastRange()
 		end
 end
 
+function multishot:Init()
+        self.caster=self:GetCaster()
+end
+
 function multishot:OnAbilityPhaseStart()
-    local caster=self:GetCaster()
     local curpos=self:GetCursorPosition()
-    local casterpos=caster:GetAbsOrigin()
-    caster.shot_multishot=true
-    local fx = ParticleManager:CreateParticle("particles/tgp/drow/drow_precision_modify.vpcf", PATTACH_CUSTOMORIGIN, caster)
+    local casterpos= self.caster:GetAbsOrigin()
+     self.caster.shot_multishot=true
+    local fx = ParticleManager:CreateParticle("particles/tgp/drow/drow_precision_modify.vpcf", PATTACH_CUSTOMORIGIN,  self.caster)
 	ParticleManager:SetParticleControl(fx, 0, casterpos)
 	ParticleManager:SetParticleControl(fx, 1, casterpos)
     ParticleManager:SetParticleControl(fx, 2, casterpos)
 	ParticleManager:ReleaseParticleIndex(fx)
-    caster:AddNewModifier(caster, self, "modifier_multishot_shot", {duration=caster:HasScepter() and 0.1 or 0.45,pos=curpos})
-    caster:StartGestureWithPlaybackRate(ACT_DOTA_CAST_ABILITY_2, 3)
-    AddFOWViewer(caster:GetTeamNumber(), curpos, 500, 3, false)
+     self.caster:AddNewModifier( self.caster, self, "modifier_multishot_shot", {duration= self.caster:HasScepter() and 0.1 or 0.45,pos=curpos})
+     self.caster:StartGestureWithPlaybackRate(ACT_DOTA_CAST_ABILITY_2, 3)
     return true
 end
 
 function multishot:OnAbilityPhaseInterrupted()
-	local caster = self:GetCaster()
-    if caster:HasModifier("modifier_multishot_shot") then
-            caster.shot_multishot=false
-            caster:RemoveModifierByName("modifier_multishot_shot")
+    if  self.caster:HasModifier("modifier_multishot_shot") then
+             self.caster.shot_multishot=false
+             self.caster:RemoveModifierByName("modifier_multishot_shot")
     end
-        caster:RemoveGesture(ACT_DOTA_CAST_ABILITY_2)
+         self.caster:RemoveGesture(ACT_DOTA_CAST_ABILITY_2)
 	return true
 end
 
+function multishot:OnSpellStart()
+        local curpos=self:GetCursorPosition()
+        AddFOWViewer( self.caster:GetTeamNumber(), curpos, 500, 3, false)
+end
 
 function multishot:OnProjectileHit_ExtraData(target, location, kv)
-    local caster=self:GetCaster()
 	if target==nil then
 		return
 	end
@@ -66,12 +70,11 @@ function multishot:OnProjectileHit_ExtraData(target, location, kv)
 	ParticleManager:ReleaseParticleIndex(kv.fx)
     end
     local rd=self:GetSpecialValueFor("rd")
-    local dmg=self:GetSpecialValueFor("dmg")+caster:TG_GetTalentValue("special_bonus_drow_ranger_5")
-    local dmg1=self:GetSpecialValueFor("dmg1")
+    local dmg=self:GetSpecialValueFor("dmg")+ self.caster:TG_GetTalentValue("special_bonus_drow_ranger_5")
     local root=self:GetSpecialValueFor("root")
     local pos=target:GetAbsOrigin()
-    if caster:HasScepter() then
-        dmg=dmg+caster:GetBaseDamageMax()*0.07
+    if  self.caster:HasScepter() then
+        dmg=dmg+ self.caster:GetBaseDamageMax()*0.05
     end
     local fx=ParticleManager:CreateParticle("particles/units/heroes/hero_drow/drow_silence.vpcf", PATTACH_CUSTOMORIGIN, nil)
     ParticleManager:SetParticleControl(fx, 0, pos)
@@ -79,7 +82,7 @@ function multishot:OnProjectileHit_ExtraData(target, location, kv)
     ParticleManager:SetParticleControl(fx, 3, pos)
     ParticleManager:ReleaseParticleIndex(fx)
     local heros = FindUnitsInRadius(
-        caster:GetTeamNumber(),
+         self.caster:GetTeamNumber(),
         target:GetAbsOrigin(),
         nil,
         rd,
@@ -90,26 +93,22 @@ function multishot:OnProjectileHit_ExtraData(target, location, kv)
         false )
         if #heros > 0 then
             for _,hero in pairs(heros) do
-                if hero:IsSilenced() then
-                    dmg=dmg+dmg*0.01*dmg1
-                end
                 local damageTable =
                 {
                     victim = hero,
-                    attacker = caster,
+                    attacker =  self.caster,
                     damage = dmg,
-                    damage_type = caster:HasModifier("modifier_marksmanship") and DAMAGE_TYPE_PURE or DAMAGE_TYPE_PHYSICAL,
-                    damage_flags=DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION ,
+                    damage_type = DAMAGE_TYPE_MAGICAL,
                     ability = self,
                 }
                 ApplyDamage(damageTable)
                 if not hero:IsMagicImmune() then
-                    hero:AddNewModifier_RS(caster, self, "modifier_rooted", {duration=root})
+                    hero:AddNewModifier_RS( self.caster, self, "modifier_rooted", {duration=root})
                 end
             end
         end
         EmitSoundOn("Hero_Clinkz.SearingArrows.Impact", target)
-        caster:RemoveGesture(ACT_DOTA_CHANNEL_ABILITY_3)
+         self.caster:RemoveGesture(ACT_DOTA_CHANNEL_ABILITY_3)
         target:Kill(nil, nil)
         return true
 end
@@ -149,11 +148,9 @@ function modifier_multishot_shot:OnDestroy()
             local sp=ability:GetSpecialValueFor("sp")
             local sp1=ability:GetSpecialValueFor("sp1")
             local num=ability:GetSpecialValueFor("num")
-            local num1=ability:GetSpecialValueFor("num1")
-            local num2=caster:HasModifier("modifier_marksmanship") and  num1+num or num
             local pos=caster:GetAttachmentOrigin(caster:ScriptLookupAttachment("attach_attack1"))
             caster:RemoveGesture(ACT_DOTA_CAST_ABILITY_2)
-            for b=1,num2 do
+            for b=1,num do
                 EmitSoundOn("Hero_DrowRanger.FrostArrows", caster)
                 local null=CreateModifierThinker(caster, ability, "modifier_multishot_th", {duration=30}, Vector(self.pos.x+RandomInt(-300, 300),self.pos.y+RandomInt(-300, 300),0), team, false)
                 local fx = ParticleManager:CreateParticle("particles/tgp/drow/drow_m0.vpcf", PATTACH_CUSTOMORIGIN, nil)

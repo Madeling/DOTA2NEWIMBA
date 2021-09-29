@@ -28,11 +28,11 @@ function item_siege:OnSpellStart()
          FIND_ANY_ORDER, false)
         if #units>0 then
             for _, unit in pairs(units) do
-                if not unit:HasModifier("modifier_item_siege_buff") then
-                    local sp=self:GetParent():GetMoveSpeedModifier(self:GetParent():GetBaseMoveSpeed(), true)
-                    sp=sp>spF and sp or spF
-                    unit:AddNewModifier(caster, self, "modifier_item_siege_buff", {duration = dur,sp=sp})
-                end
+                    if not unit:HasModifier("modifier_item_siege_buff") then
+                        local sp=unit:GetMoveSpeedModifier(unit:GetBaseMoveSpeed(), true)
+                        sp=sp>spF and sp or spF
+                        unit:AddNewModifier(caster, self, "modifier_item_siege_buff", {duration = dur,sp=sp})
+                    end
             end
         end
 end
@@ -181,7 +181,7 @@ function modifier_item_siege_buff:OnCreated(tg)
     self.rs=self:GetAbility():GetSpecialValueFor("rs")
     if IsServer() then
         self:SetStackCount(tg.sp)
-        local particle = ParticleManager:CreateParticle("particles/tgp/items/siege/siege_m.vpcf", PATTACH_OVERHEAD_FOLLOW    , self:GetParent())
+        local particle = ParticleManager:CreateParticle("particles/items_fx/drum_of_endurance_buff.vpcf", PATTACH_ABSORIGIN_FOLLOW     , self:GetParent())
        self:AddParticle(particle, false, false, -1, false, false)
    end
 end
@@ -190,7 +190,7 @@ function modifier_item_siege_buff:OnRefresh(tg)
     if self:GetAbility()==nil then
         return
     end
-    self.rs=self:GetAbility():GetSpecialValueFor("rs")
+    self.evasion=self:GetAbility():GetSpecialValueFor("evasion")
     if IsServer() then
         self:SetStackCount(tg.sp)
    end
@@ -210,7 +210,7 @@ function modifier_item_siege_buff:GetModifierMoveSpeed_Absolute()
 end
 
 function modifier_item_siege_buff:GetModifierEvasion_Constant()
-    return self.rs
+    return self.evasion
 end
 
 
@@ -218,10 +218,14 @@ end
 modifier_item_siege_debuff=class({})
 
 function modifier_item_siege_debuff:IsDebuff()
-    if self.caster:GetTeamNumber()==self.parent:GetTeamNumber() then
-        return false
+    if IsValidEntity(self.parent) and IsValidEntity(self.caster) then
+        if self.caster:GetTeamNumber()==self.parent:GetTeamNumber() then
+            return  false
+        else
+             return true
+        end
     end
-        return true
+      return true
 end
 
 function modifier_item_siege_debuff:IsHidden()
@@ -250,8 +254,7 @@ function modifier_item_siege_debuff:OnCreated()
     if self:GetAbility()==nil then
         return
     end
-    self.armorB=self:GetAbility():GetSpecialValueFor("armorB") or 0
-    self.armorO=self:GetAbility():GetSpecialValueFor("armorO") or 0
+    self.armorA=self:GetAbility():GetSpecialValueFor("armorA")
 end
 
 function modifier_item_siege_debuff:DeclareFunctions()
@@ -262,20 +265,15 @@ function modifier_item_siege_debuff:DeclareFunctions()
 end
 
 function modifier_item_siege_debuff:GetModifierPhysicalArmorBonus()
-    if self.parent:IsBoss() then
+    if IsValidEntity(self.parent) then
+        if self.parent:IsBoss() then
+            return 0
+        end
+        if self.caster:GetTeamNumber()==self.parent:GetTeamNumber() then
+                return self.armorA*-1
+        else
+                return self.armorA
+        end
+    end
         return 0
-    end
-    if self.caster:GetTeamNumber()==self.parent:GetTeamNumber() then
-        if self.parent:IsBuilding() then
-            return self.armorB*-1
-        else
-            return self.armorO*-1
-        end
-    else
-        if self.parent:IsBuilding() then
-            return self.armorB
-        else
-            return self.armorO
-        end
-    end
 end

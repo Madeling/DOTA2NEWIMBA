@@ -94,6 +94,7 @@ function custom_events:OnAbility_Set(k,j)
 				if HERO.ROLL_NUM==nil then HERO.ROLL_NUM=0 end
 				if j.rollnum and j.rollnum==1 then
 					 HERO.ROLL_NUM=HERO.ROLL_NUM+1
+					 EmitSoundOnEntityForPlayer("DOTA_Item.Cheese.Activate", HERO, j.id)
 				end
 				if HERO.RandomTable==nil or (j.res and j.res==1) then
 					HERO.IS_RandomAbility={}
@@ -147,10 +148,10 @@ function custom_events:OnAbility_Show(n,k)
 		if HERO.Random_Skill and not HERO:HasModifier("modifier_sk_cd")  then
 			HERO:AddNewModifier(HERO, nil, "modifier_sk_cd", {duration=600})
 			local name=HERO.Random_Skill:GetAbilityName()
-			Notifications:BottomToAll({text=PLN.."\t", duration=3, class="NotificationMessage",style={color="#FFA500",["font-size"]="35px"}})
-			Notifications:BottomToAll({text="随机到了\t", duration=3, class="NotificationMessage",continue=true,style={color="#EEE5DE",["font-size"]="30px"}})
-			Notifications:BottomToAll({text="#DOTA_Tooltip_ability_"..name, duration=3, class="NotificationMessage", continue=true,style={color="#FFEFDB", ["font-size"]="40px", border="5px solid #FFEFDB"}})
-			Notifications:BottomToAll({ability=name,duration=3,continue=true})
+			Notifications:BottomToAll({text=PLN.."\t", duration=2, class="NotificationMessage",style={color="#FFA500",["font-size"]="35px"}})
+			Notifications:BottomToAll({text="随机到了\t", duration=2, class="NotificationMessage",continue=true,style={color="#EEE5DE",["font-size"]="30px"}})
+			Notifications:BottomToAll({text="#DOTA_Tooltip_ability_"..name, duration=2, class="NotificationMessage", continue=true,style={color="#FFEFDB", ["font-size"]="40px", border="5px solid #FFEFDB"}})
+			Notifications:BottomToAll({ability=name,duration=2,continue=true})
 		end
 	end
 end
@@ -207,34 +208,85 @@ function custom_events:OnCheat(n, k)
 	local NAME= k.name
 	local HERO= PL:GetAssignedHero()
 	if HERO~=nil and HERO:IS_TrueHero_TG() then
+	local POS=HERO:GetAbsOrigin()
+	local ID=HERO:GetPlayerOwnerID()
 		if NAME=="xpall" then
 			HERO:AddExperience(99999, DOTA_ModifyXP_Unspecified, false, false)
 		elseif NAME=="xp" then
-			if IsInToolsMode() then
-				SendToConsole("dota_dev hero_level 1")
-			else
-				HERO:AddExperience(1000, DOTA_ModifyXP_Unspecified, false, false)
-			end
+			HERO:AddExperience(GetXPNeededToReachNextLevel(HERO:GetLevel()+1), DOTA_ModifyXP_Unspecified, false, false)
 		elseif NAME=="gold" then
-			PlayerResource:SetGold(HERO:GetPlayerOwnerID(), 99999, true)
+			PlayerResource:SetGold(ID, 99999, true)
 		elseif NAME=="eaxe" then
-				local A1=CreateUnitByNameAsync("npc_dota_hero_axe", HERO:GetAbsOrigin(), true, nil, nil,DOTA_TEAM_BADGUYS,function(tg)
-					tg:SetControllableByPlayer( HERO:GetPlayerOwnerID(), true )
+			local axe=GameRules:AddBotPlayerWithEntityScript("npc_dota_hero_axe","SB",DOTA_TEAM_BADGUYS,"",false)
+			axe:SetControllableByPlayer( ID, true )
+			FindClearSpaceForUnit(axe,POS,false)
+				local A1=CreateUnitByNameAsync("npc_dota_hero_sniper",POS, true, nil, nil,DOTA_TEAM_BADGUYS,function(tg)
+					tg:SetControllableByPlayer( ID, true )
 					tg:AddExperience(99999, DOTA_ModifyXP_Unspecified, false, false)
 				 end)
 		elseif NAME=="faxe" then
-			local A1=CreateUnitByNameAsync("npc_dota_hero_axe", HERO:GetAbsOrigin(), true, nil, nil,DOTA_TEAM_GOODGUYS,function(tg)
-				tg:SetControllableByPlayer( HERO:GetPlayerOwnerID(), true )
+			local axe=GameRules:AddBotPlayerWithEntityScript("npc_dota_hero_axe","SB",DOTA_TEAM_GOODGUYS,"",true)
+			axe:SetControllableByPlayer( ID, true )
+			FindClearSpaceForUnit(axe,POS,false)
+			local A1=CreateUnitByNameAsync("npc_dota_hero_sniper", POS, true, nil, nil,DOTA_TEAM_GOODGUYS,function(tg)
+				tg:SetControllableByPlayer( ID, true )
 				tg:AddExperience(99999, DOTA_ModifyXP_Unspecified, false, false)
 			 end)
 		elseif NAME=="sandbag" then
-			CreateUnitByName("npc_dota_hero_target_dummy", HERO:GetAbsOrigin(), true, nil, nil, DOTA_TEAM_NEUTRALS)
+		local dum=CreateUnitByName("npc_dota_hero_target_dummy", POS, true, nil, nil, DOTA_TEAM_NEUTRALS)
+		table.insert (GameRules.dummy,dum)
 		elseif NAME=="heal"then
 			SendToConsole("dota_dev hero_refresh")
 			SendToServerConsole( "dota_dev hero_refresh" )
 			TG_Refresh_AB(HERO)
 			HERO:Heal(99999, HERO)
 			HERO:GiveMana(99999)
+		end
 	end
+end
+
+
+function custom_events:GameOver(winTeam)
+	if  IsInToolsMode() or  GameRules:IsCheatMode()  or not IsDedicatedServer()  then--or (CDOTA_PlayerResource.TG_HERO~=nil and #CDOTA_PlayerResource.TG_HERO<10)
+		return false
 	end
+
+			network:UpdateHeroWR(winTeam)
+--------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------
+			for a=0,20 do
+				local player=PlayerResource:GetPlayer(a)
+				local num=a+1
+				if player and not PlayerResource:IsFakeClient(a)  then
+					local hero=player:GetAssignedHero()
+					local team=hero:GetTeam()
+					local win=0
+							win=team==winTeam and 1 or 0
+							local kills=PlayerResource:GetKills(a)
+							local ishk=kills>=100 and true or false
+							if  hero:HasModifier("modifier_victory") and win==0 then
+								win=1
+								kills=kills+100
+							end
+							local data=
+							{
+								id=tostring(PlayerResource:GetSteamID(a)),
+								name=PlayerResource:GetPlayerName(a),
+								kill=CDOTA_PlayerResource.TG_HERO[num].kill+kills,
+								death=CDOTA_PlayerResource.TG_HERO[num].death+PlayerResource:GetDeaths(a),
+								win=CDOTA_PlayerResource.TG_HERO[num].win+win,
+								max_count=CDOTA_PlayerResource.TG_HERO[num].max_count+1,
+								tower=CDOTA_PlayerResource.TG_HERO[num].tower+PlayerResource:GetTowerKills(a),
+								roshan=CDOTA_PlayerResource.TG_HERO[num].roshan+PlayerResource:GetRoshanKills(a),
+								des_ward=hero.des_ward,
+								use_ward=hero.use_ward,
+								hk=ishk and CDOTA_PlayerResource.TG_HERO[num].hk+1 or 0
+							}
+							network:UpdateData(data)
+				end
+			end
+--------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------
+
+
 end

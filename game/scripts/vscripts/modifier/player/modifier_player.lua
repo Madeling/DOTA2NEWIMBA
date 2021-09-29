@@ -38,9 +38,9 @@ function modifier_player:OnCreated()
         self.pos=self.parent.original_team == DOTA_TEAM_GOODGUYS and GOOD_POS or BAD_POS
         self.id=self.parent:GetPlayerOwnerID()
         self.PL=PlayerResource:GetPlayer(self.id)
-        if self.parent:IS_TrueHero_TG() and not PlayerResource:IsFakeClient(self.id) then
-            --self:StartIntervalThink(3)
-        end
+        --[[if self.parent:IS_TrueHero_TG() and not PlayerResource:IsFakeClient(self.id) then
+            self:StartIntervalThink(3)
+        end]]
     end
 end
 
@@ -85,17 +85,13 @@ function modifier_player:DeclareFunctions()
     {
         MODIFIER_EVENT_ON_ABILITY_EXECUTED,
         MODIFIER_EVENT_ON_ATTACK_LANDED,
-        --MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
-        --MODIFIER_PROPERTY_HEALTH_BONUS,
-        --MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
-        MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE,
         MODIFIER_EVENT_ON_HERO_KILLED,
     }
 end
 
 function modifier_player:OnAttackLanded(tg)
    if IsServer() then
-        if tg.attacker==self.parent then
+        if tg.attacker==self.parent  then
             local name=tg.target:GetUnitName()
             if name=="npc_dota_observer_wards" or name=="npc_dota_sentry_wards" then
                 if CDOTA_PlayerResource.TG_HERO[self.id + 1].des_ward~=nil then
@@ -113,7 +109,7 @@ end
 
 function modifier_player:OnAbilityExecuted(tg)
     if IsServer() then
-            if tg.unit==self.parent then
+            if tg.unit==self.parent  and not self.parent:IsIllusion() then
                 local name=tg.ability:GetName()
                     if  tg.ability:IsItem() and (name=="item_ward_observer" or name=="item_ward_dispenser" or name=="item_ward_sentry")  then
                             if CDOTA_PlayerResource.TG_HERO[self.id + 1].use_ward~=nil then
@@ -126,51 +122,25 @@ function modifier_player:OnAbilityExecuted(tg)
 
  function modifier_player:OnHeroKilled(tg)
     if IsServer() then
-         if tg.attacker==self.parent and tg.unit:IsRealHero() then
+         if tg.attacker==self.parent and tg.unit:IsRealHero() and not self.parent:IsIllusion() then
             local level1=self.parent:GetLevel()
             local level2=tg.unit:GetLevel()
             if level and level2 and level2>level1 then
                 local lv=level2-level
-                self.parent:AddExperience(lv*650, DOTA_ModifyXP_Unspecified, false, false)
-                PlayerResource:ModifyGold(self.id,lv*250 ,false,DOTA_ModifyGold_Unspecified)
+                self.parent:AddExperience(lv*700, DOTA_ModifyXP_Unspecified, false, false)
+                PlayerResource:ModifyGold(self.id,lv*300 ,false,DOTA_ModifyGold_Unspecified)
             end
          end
-         if tg.unit==self.parent  then
-            if PlayerResource:GetConnectionState(self.id) == DOTA_CONNECTION_STATE_ABANDONED then
-                self.parent:SetMinimumGoldBounty(0)
-                self.parent:SetMaximumGoldBounty(0)
-                self.parent:SetCustomDeathXP(0)
-            end
+         if tg.unit==self.parent and not self.parent:IsIllusion() and tg.attacker:IsRealHero() then
+            		if tg.unit:GetLevel()<tg.attacker:GetLevel() then
+                            PlayerResource:ModifyGold(self.parent,RandomInt(400,1000), false, DOTA_ModifyGold_Unspecified)
+                            tg.unit:AddExperience(RandomInt(400,900), DOTA_ModifyXP_Unspecified, false, false)
+					end
+                    if PlayerResource:GetConnectionState(self.id) == DOTA_CONNECTION_STATE_ABANDONED then
+                        self.parent:SetMinimumGoldBounty(0)
+                        self.parent:SetMaximumGoldBounty(0)
+                        self.parent:SetCustomDeathXP(0)
+                    end
         end
     end
  end
-
-
---[[
-function modifier_player:GetModifierPhysicalArmorBonus()
-        return 2
-end
-]]
-
---[[
-function modifier_player:GetModifierHealthBonus()
-        return self.parent:GetLevel()*30
-end
-]]
-
---[[
-function modifier_player:GetModifierMagicalResistanceBonus()
-        return 10
-end
-]]
-
-function modifier_player:GetModifierIncomingDamage_Percentage(tg)
-    if tg.target~=self:GetParent() then
-		return  0
-	end
-    if self.parent:HasModifier("modifier_fountain_aura_buff") then
-        return  -100
-    else
-        return 0
-    end
-end

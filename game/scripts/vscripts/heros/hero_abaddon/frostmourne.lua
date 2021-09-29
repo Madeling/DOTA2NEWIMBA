@@ -40,6 +40,9 @@ function modifier_frostmourne:OnCreated()
     self.parent=self:GetParent()
     self.caster=self:GetCaster()
     self.ability=self:GetAbility()
+    if not self.ability then
+        return
+    end
     self.hit_count=self.ability:GetSpecialValueFor("hit_count")
     self.slow_duration=self.ability:GetSpecialValueFor("slow_duration")
     self.ch=self.ability:GetSpecialValueFor("ch")

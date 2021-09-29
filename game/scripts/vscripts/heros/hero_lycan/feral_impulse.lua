@@ -56,7 +56,6 @@ function modifier_feral_impulse_a:DeclareFunctions()
 
         MODIFIER_EVENT_ON_DEATH,
         MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE,
-        MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
     }
 end
 
@@ -82,10 +81,6 @@ function modifier_feral_impulse_a:GetModifierBaseAttack_BonusDamage()
 	return self:GetStackCount()
 end
 
-function modifier_feral_impulse_a:GetModifierMoveSpeedBonus_Constant()
-	return self:GetStackCount()
-end
-
 
 modifier_feral_impulse=class({})
 
@@ -105,6 +100,9 @@ function modifier_feral_impulse:OnCreated()
     self.ability=self:GetAbility()
     self.parent=self:GetParent()
     self.caster=self:GetCaster()
+    if not self.ability then
+        return
+    end
     self.bonus_damage=self.ability:GetSpecialValueFor("bonus_damage")+self.caster:TG_GetTalentValue("special_bonus_lycan_5")
     self.bonus_hp_regen=self.ability:GetSpecialValueFor("bonus_hp_regen")+self.caster:TG_GetTalentValue("special_bonus_lycan_6")
     if IsServer() then

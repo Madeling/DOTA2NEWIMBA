@@ -36,7 +36,6 @@ function supernova:OnSpellStart()
     null:AddNewModifier(caster, self, "modifier_kill", {duration=dur })
     null:AddNewModifier(caster, self, "modifier_supernova_buff2", {duration=dur})
 
-
 end
 
 modifier_supernova_buff=class({})
@@ -54,61 +53,84 @@ function modifier_supernova_buff:IsPurgeException()
 end
 
 function modifier_supernova_buff:OnCreated()
-    local tick=self:GetAbility():GetSpecialValueFor( "tick" )
-   self.dam=self:GetAbility():GetSpecialValueFor( "dam" )
+    self.ability=self:GetAbility()
+    self.parent=self:GetParent()
+    self.caster=self:GetCaster()
+    self.team=self.parent:GetTeamNumber()
+    self.tick=self.ability:GetSpecialValueFor( "tick" )
+    self.dam=self.ability:GetSpecialValueFor( "dam" )
+    self.damageTable=
+    {
+        attacker = self.parent,
+        damage_type = DAMAGE_TYPE_MAGICAL,
+        ability =  self.ability,
+        damage = self.dam,
+	}
     if not IsServer() then
         return
     end
-     self.pos={}
-     self.h=1500
-    local caster=self:GetParent()
-    local caster_pos=caster:GetAbsOrigin()
-    caster:AddNoDraw()
+    self.pos={}
+    self.h=1500
+    self.rd=150+self.caster:TG_GetTalentValue("special_bonus_phoenix_5")
+    self.parent:AddNoDraw()
+    local caster_pos=self.parent:GetAbsOrigin()
     self.pos[1]= Vector(caster_pos.x+500,caster_pos.y,caster_pos.z+150)
     self.pos[2]= Vector(caster_pos.x-500,caster_pos.y,caster_pos.z+150)
     self.pos[3]= Vector(caster_pos.x,caster_pos.y-500,caster_pos.z+150)
     self.pos[4]= Vector(caster_pos.x,caster_pos.y+500,caster_pos.z+150)
-    if  caster:Has_Aghanims_Shard() then
-        self.h=150
+    if  self.parent:Has_Aghanims_Shard() then
+        self.h=200
         self.pos[1]= Vector(caster_pos.x+2000,caster_pos.y,caster_pos.z+100)
         self.pos[2]= Vector(caster_pos.x-2000,caster_pos.y,caster_pos.z+100)
         self.pos[3]= Vector(caster_pos.x,caster_pos.y-2000,caster_pos.z+100)
         self.pos[4]= Vector(caster_pos.x,caster_pos.y+2000,caster_pos.z+100)
     end
     for num=1,#self.pos do
-        local fx = ParticleManager:CreateParticle( "particles/heros/phoenix/phoenix_sunray_solar_forge.vpcf", PATTACH_WORLDORIGIN, nil )
-        ParticleManager:SetParticleControl(fx, 0, caster_pos+caster:GetUpVector()*self.h)
-        ParticleManager:SetParticleControl(fx, 1,self.pos[num])
-        ParticleManager:SetParticleControl(fx, 2,self.pos[num])
-        ParticleManager:SetParticleControl(fx, 3,self.pos[num])
-        ParticleManager:SetParticleControl(fx, 9,self.pos[num])
-        self:AddParticle(fx, false, false, 20, false, false)
-        AddFOWViewer(caster:GetTeamNumber(),self.pos[num], 300, 5, false)
+        self.fx = ParticleManager:CreateParticle( "particles/heros/phoenix/phoenix_sunray_solar_forge.vpcf", PATTACH_WORLDORIGIN, nil )
+        ParticleManager:SetParticleControl( self.fx, 0, caster_pos+self.parent:GetUpVector()*self.h)
+        ParticleManager:SetParticleControl( self.fx, 1,self.pos[num])
+        ParticleManager:SetParticleControl( self.fx, 2,self.pos[num])
+        ParticleManager:SetParticleControl( self.fx, 3,self.pos[num])
+        ParticleManager:SetParticleControl( self.fx, 9,self.pos[num])
+        self:AddParticle( self.fx, false, false, 20, false, false)
+        AddFOWViewer(self.team,self.pos[num], 300, 5, false)
     end
-    self:StartIntervalThink(tick)
+    self:StartIntervalThink(self.tick)
 end
 
 function modifier_supernova_buff:OnIntervalThink()
     for num=1,#self.pos do
-        local heros = FindUnitsInRadius(
-            self:GetParent():GetTeamNumber(),
-            self.pos[num],
-            nil,
-            150+self:GetCaster():TG_GetTalentValue("special_bonus_phoenix_5"),
-            DOTA_UNIT_TARGET_TEAM_ENEMY,
-            DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
-            DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
-            FIND_ANY_ORDER,
-            false )
-        for _, hero in pairs(heros) do
-            local damageTable = {
-                victim = hero,
-                attacker = self:GetParent(),
-                damage = self.dam,
-                damage_type = DAMAGE_TYPE_MAGICAL,
-                ability = self:GetAbility(),
-            }
-            ApplyDamage(damageTable)
+        if  self.parent:Has_Aghanims_Shard() then
+            local heros = FindUnitsInLine(
+                self.team,
+                self.parent:GetAbsOrigin(),
+                self.pos[num],
+                self.parent,
+                self.rd,
+                DOTA_UNIT_TARGET_TEAM_ENEMY,
+                DOTA_UNIT_TARGET_HERO+DOTA_UNIT_TARGET_BASIC,
+                DOTA_UNIT_TARGET_FLAG_NONE)
+                if #heros>0 then
+                    for _,target in pairs(heros) do
+                            self.damageTable.victim = target
+                            ApplyDamage(self.damageTable)
+                    end
+                end
+        else
+            local heros = FindUnitsInRadius(
+                self.team,
+                self.pos[num],
+                nil,
+                self.rd,
+                DOTA_UNIT_TARGET_TEAM_ENEMY,
+                DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
+                DOTA_UNIT_TARGET_FLAG_NONE,
+                FIND_ANY_ORDER,
+                false )
+            for _, hero in pairs(heros) do
+                    self.damageTable.victim = hero
+                    ApplyDamage(self.damageTable)
+            end
         end
     end
 end
@@ -117,7 +139,7 @@ function modifier_supernova_buff:OnDestroy()
     if not IsServer() then
         return
     end
-    self:GetParent():RemoveNoDraw()
+    self.parent:RemoveNoDraw()
 end
 
 function modifier_supernova_buff:CheckState()
@@ -153,20 +175,30 @@ function modifier_supernova_buff2:IsPurgeException()
 end
 
 function modifier_supernova_buff2:OnCreated()
-    local att_num=self:GetAbility():GetSpecialValueFor( "att_num" )+self:GetCaster():TG_GetTalentValue("special_bonus_phoenix_8")
-    local tick=self:GetAbility():GetSpecialValueFor( "tick" )
-    self.DAM=self:GetAbility():GetSpecialValueFor( "dam" )+self:GetCaster():TG_GetTalentValue("special_bonus_phoenix_6")
-    self.HP_MAX=self:GetAbility():GetSpecialValueFor( "hpmax" )
+    self.ability=self:GetAbility()
+    self.parent=self:GetParent()
+    self.caster=self:GetCaster()
+    self.team=self.parent:GetTeamNumber()
+    local att_num=self.ability:GetSpecialValueFor( "att_num" )+self.caster:TG_GetTalentValue("special_bonus_phoenix_8")
+    local tick=self.ability:GetSpecialValueFor( "tick" )
+    self.DAM=self.ability:GetSpecialValueFor( "dam" )+self.caster:TG_GetTalentValue("special_bonus_phoenix_6")
+    self.HP_MAX=self.ability:GetSpecialValueFor( "hpmax" )
     self.HPMAX=0
+    self.damageTable=
+    {
+        damage_type = DAMAGE_TYPE_MAGICAL,
+        ability =  self.ability,
+        damage = self.DAM,
+	}
     if not IsServer() then
         return
     end
-    self:GetParent():SetBaseMaxHealth(att_num)
-    self:GetParent():SetMaxHealth(att_num)
-    self:GetParent():SetHealth(att_num)
-    local fx = ParticleManager:CreateParticle( "particles/units/heroes/hero_phoenix/phoenix_supernova_egg.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent() )
-    ParticleManager:SetParticleControlEnt( fx, 0, self:GetParent(), PATTACH_POINT_FOLLOW, "attach_hitloc", self:GetParent():GetAbsOrigin(), true )
-    ParticleManager:SetParticleControlEnt( fx, 1, self:GetParent(), PATTACH_POINT_FOLLOW, "attach_hitloc", self:GetParent():GetAbsOrigin(), true )
+    self.parent:SetBaseMaxHealth(att_num)
+    self.parent:SetMaxHealth(att_num)
+    self.parent:SetHealth(att_num)
+    local fx = ParticleManager:CreateParticle( "particles/units/heroes/hero_phoenix/phoenix_supernova_egg.vpcf", PATTACH_ABSORIGIN_FOLLOW, self.parent)
+    ParticleManager:SetParticleControlEnt( fx, 0, self.parent, PATTACH_POINT_FOLLOW, "attach_hitloc", self.parent:GetAbsOrigin(), true )
+    ParticleManager:SetParticleControlEnt( fx, 1, self.parent, PATTACH_POINT_FOLLOW, "attach_hitloc",self.parent:GetAbsOrigin(), true )
     ParticleManager:SetParticleControl(fx, 60, Vector(math.random(0,255),math.random(0,255),math.random(0,255)))
     ParticleManager:SetParticleControl(fx, 61, Vector(1,1,1))
     self:AddParticle(fx, false, false, -1, false, false)
@@ -178,8 +210,8 @@ function modifier_supernova_buff2:OnIntervalThink()
 		return
 	end
 	local heros = FindUnitsInRadius(
-        self:GetParent():GetTeamNumber(),
-        self:GetParent():GetAbsOrigin(),
+        self.team,
+        self.parent:GetAbsOrigin(),
 		nil,
 		1200,
 		DOTA_UNIT_TARGET_TEAM_ENEMY,
@@ -191,24 +223,19 @@ function modifier_supernova_buff2:OnIntervalThink()
         if hero:IsRealHero() then
             self.HPMAX=self.HPMAX+hero:GetMaxHealth()*0.01*self.HP_MAX
         end
-		local damageTable = {
-			victim = hero,
-			attacker = self:GetParent().phoenix,
-			damage = self.DAM,
-			damage_type = DAMAGE_TYPE_MAGICAL,
-			ability = self:GetAbility(),
-		}
-		ApplyDamage(damageTable)
+                self.damageTable.attacker = self.parent.phoenix
+                self.damageTable.victim = hero
+                ApplyDamage(self.damageTable)
 	end
 end
 
 function modifier_supernova_buff2:OnDestroy()
     if  IsServer() then
-        if self:GetParent():GetHealth()>0 then
-            local caster=self:GetParent().phoenix
+        if self.parent:GetHealth()>0 then
+            local caster=self.parent.phoenix
             local caster_pos=caster:GetAbsOrigin()
-            local stun=self:GetAbility():GetSpecialValueFor( "stun" )
-            local rd=self:GetAbility():GetSpecialValueFor( "rd" )+caster:GetCastRangeBonus()
+            local stun=self.ability:GetSpecialValueFor( "stun" )
+            local rd=self.ability:GetSpecialValueFor( "rd" )+caster:GetCastRangeBonus()
             caster:StopSound("Hero_Phoenix.SuperNova.Cast")
             caster:StopSound("Hero_Phoenix.SuperNova.Begin")
             caster:EmitSound("Hero_Phoenix.SuperNova.Explode")
@@ -222,7 +249,7 @@ function modifier_supernova_buff2:OnDestroy()
             caster:SetHealth( caster:GetMaxHealth())
             caster:SetMana(caster:GetMaxMana())
             if caster:HasScepter() then
-                caster:AddNewModifier(caster, self:GetAbility(), "modifier_supernova_buff3", {hp= self.HPMAX})
+                caster:AddNewModifier(caster, self.ability, "modifier_supernova_buff3", {hp= self.HPMAX})
             end
             for i=0,10 do
                 local ab = caster:GetAbilityByIndex(i)
@@ -243,7 +270,7 @@ function modifier_supernova_buff2:OnDestroy()
             FIND_ANY_ORDER,
             false )
         for _, hero in pairs(heros) do
-            hero:AddNewModifier_RS(caster, self:GetAbility(), "modifier_stunned", {duration=stun})
+            hero:AddNewModifier_RS(caster, self.ability, "modifier_stunned", {duration=stun})
         end
         end
     end
@@ -272,11 +299,11 @@ function modifier_supernova_buff2:OnAttackLanded(tg)
     if not IsServer() then
         return
     end
-    if  tg.target == self:GetParent() and not tg.attacker:IsBuilding() and not tg.attacker:IsCreep() and not tg.attacker:IsNeutralUnitType() then
-        if self:GetParent():GetHealth()>0 then
-            self:GetParent():SetHealth(self:GetParent():GetHealth() - 1)
-        elseif self:GetParent():GetHealth()<=0 then
-            self:GetParent():Kill(self:GetAbility(), tg.attacker)
+    if  tg.target == self.parent and not tg.attacker:IsBuilding() and not tg.attacker:IsCreep() and not tg.attacker:IsNeutralUnitType() then
+        if self.parent:GetHealth()>0 then
+            self.parent:SetHealth(self.parent:GetHealth() - 1)
+        elseif self.parent:GetHealth()<=0 then
+            self.parent:Kill(self.ability, tg.attacker)
         end
 	end
 end
@@ -285,15 +312,15 @@ function modifier_supernova_buff2:OnDeath(tg)
     if not IsServer() then
         return
     end
-    if tg.unit==self:GetParent() then
+    if tg.unit==self.parent and not self.parent:IsIllusion() then
         local fx = ParticleManager:CreateParticle( "particles/units/heroes/hero_phoenix/phoenix_supernova_death.vpcf", PATTACH_WORLDORIGIN, nil)
-        local attach_hitloc = self:GetParent().phoenix:ScriptLookupAttachment( "attach_hitloc" )
-        ParticleManager:SetParticleControl( fx, 0,  self:GetParent().phoenix:GetAttachmentOrigin(attach_hitloc) )
-        ParticleManager:SetParticleControl( fx, 1,  self:GetParent().phoenix:GetAttachmentOrigin(attach_hitloc) )
-        ParticleManager:SetParticleControl( fx, 3,  self:GetParent().phoenix:GetAttachmentOrigin(attach_hitloc) )
+        local attach_hitloc = self.parent.phoenix:ScriptLookupAttachment( "attach_hitloc" )
+        ParticleManager:SetParticleControl( fx, 0,  self.parent.phoenix:GetAttachmentOrigin(attach_hitloc) )
+        ParticleManager:SetParticleControl( fx, 1,  self.parent.phoenix:GetAttachmentOrigin(attach_hitloc) )
+        ParticleManager:SetParticleControl( fx, 3,  self.parent.phoenix:GetAttachmentOrigin(attach_hitloc) )
         ParticleManager:ReleaseParticleIndex(fx)
-        self:GetParent().phoenix:RemoveModifierByName("modifier_supernova_buff3")
-        self:GetParent().phoenix:Kill(self:GetAbility(), tg.attacker)
+        self.parent.phoenix:RemoveModifierByName("modifier_supernova_buff3")
+        self.parent.phoenix:Kill(self:GetAbility(), tg.attacker)
     end
 end
 
@@ -324,6 +351,10 @@ function modifier_supernova_buff3:IsPurgable()
 end
 
 function modifier_supernova_buff3:IsPurgeException()
+    return false
+end
+
+function modifier_supernova_buff3:RemoveOnDeath()
     return false
 end
 

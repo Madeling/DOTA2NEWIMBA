@@ -9,7 +9,7 @@ function imba_luna_lucent_beam:GetCooldown(level)
 	local caster = self:GetCaster()
 	local Talent = caster:TG_GetTalentValue("special_bonus_imba_luna_1")
 	local  Getcd = cooldown - Talent
-	if caster:TG_HasTalent("special_bonus_imba_luna_1") then 
+	if caster:TG_HasTalent("special_bonus_imba_luna_1") then
 		return (Getcd)
 	end
 	return cooldown
@@ -21,11 +21,11 @@ function imba_luna_lucent_beam:OnSpellStart()
 		if self:GetCursorTarget() then
 			local target = self:GetCursorTarget()
 			--slf:start(是否给视野，目标，是否是点地放的，是否是大招)
-			self:start(true,target,false,false)	
+			self:start(true,target,false,false)
 		else
 			local target = CreateModifierThinker(caster, self, "modifier_dummy_thinker", {duration = 1}, pos, caster:GetTeamNumber(), false)
 			self:start(true,target:entindex(),true,false)
-		end		
+		end
 end
 
 
@@ -47,11 +47,11 @@ function imba_luna_lucent_beam:start(vision,tar,bool,bool_u)	--目标位置，�
 							ability = self, --Optional.
 							}
 	local pfx = "particles/units/heroes/hero_luna/luna_lucent_beam.vpcf"
-	if bool_u then 
+	if bool_u then
 		pfx = "particles/econ/items/luna/luna_lucent_ti5/luna_lucent_beam_moonfall.vpcf"
 		stun_duration = caster:TG_GetTalentValue("special_bonus_imba_luna_4")
 	end
-	
+
 	--点地并且不是大就先找人，找到了对他放月光然后攻击，造成伤害
 	if bool then
 		target = EntIndexToHScript(tar)
@@ -79,7 +79,7 @@ function imba_luna_lucent_beam:start(vision,tar,bool,bool_u)	--目标位置，�
 	ParticleManager:SetParticleControlEnt(particle,	5, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
 	ParticleManager:SetParticleControlEnt(particle,	6, self:GetCaster(), PATTACH_POINT_FOLLOW, "attach_attack1", self:GetCaster():GetAbsOrigin(), true)
 	ParticleManager:ReleaseParticleIndex(particle)
-	
+
 	if enemy_flag then
 		damageTable.victim = target
 		ApplyDamage(damageTable)
@@ -91,7 +91,7 @@ function imba_luna_lucent_beam:start(vision,tar,bool,bool_u)	--目标位置，�
 	if enemy_flag and not bool_u then
 		local enemies2 = FindUnitsInRadius(caster:GetTeamNumber(), target:GetAbsOrigin(), nil, 500, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO+DOTA_UNIT_TARGET_BASIC+DOTA_UNIT_TARGET_BUILDING , DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
 		for _,enemy2 in pairs(enemies2) do
-			if enemy_count > 0 and enemy2~=target  then 
+			if enemy_count > 0 and enemy2~=target  then
 				caster:PerformAttack(enemy2, true, true, true, false, false, false, true)
 				enemy_count= enemy_count - 1
 			end
@@ -116,7 +116,7 @@ function imba_luna_moon_glaive:Init()
 	self.damage_reduction = self:GetSpecialValueFor("damage_reduction_percent")
 	self.damageTable=	{
 						attacker = self:GetCaster(),
-						ability = self, 
+						ability = self,
 						damage_type = self:GetAbilityDamageType(),
 						damage_flags = DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION + DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL
 						}
@@ -132,7 +132,7 @@ function imba_luna_moon_glaive:OnUpgrade()
 end
 
 function imba_luna_moon_glaive:GlaiveAttck(source, damage, bounce)
-	local target = nil 
+	local target = nil
 	local enemies = FindUnitsInRadius(self:GetCaster():GetTeamNumber(), source:GetAbsOrigin(), nil, self.range, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_BUILDING, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_NO_INVIS + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE + DOTA_UNIT_TARGET_FLAG_NOT_ATTACK_IMMUNE, FIND_ANY_ORDER, false)
 	for _, enemy in pairs(enemies) do
 		if enemy ~= source then
@@ -143,11 +143,11 @@ function imba_luna_moon_glaive:GlaiveAttck(source, damage, bounce)
 	if target == nil then
 		return
 	end
-	local info = 
+	local info =
 	{
 		Target = target,
 		Source = source,
-		Ability = self,	
+		Ability = self,
 		EffectName = self:GetCaster():GetUnitName() == "npc_dota_hero_luna" and self:GetCaster():GetRangedProjectileName() or "particles/units/heroes/hero_luna/luna_moon_glaive.vpcf",
 		iMoveSpeed = (self:GetCaster():IsRangedAttacker() and self:GetCaster():GetProjectileSpeed() or 900),
 		iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_HITLOCATION,
@@ -171,7 +171,7 @@ function imba_luna_moon_glaive:OnProjectileHit_ExtraData(target, location, keys)
 		self.damageTable.victim = target
 		self.damageTable.damage = damage
 		ApplyDamage(self.damageTable)
-		local bounce = keys.bounces + 1 
+		local bounce = keys.bounces + 1
 		if bounce >= self.bounces then
 			return
 		end
@@ -212,7 +212,7 @@ function modifier_imba_luna_moon_glaive:OnAttackLanded(keys)
 	self:GetAbility():GlaiveAttck(keys.target, dmg, 0)
 end
 function modifier_imba_luna_moon_glaive:OnDeath(keys)
---not self:GetCaster():IsAlive() or keys.unit~= self:GetParent() 
+--not self:GetCaster():IsAlive() or keys.unit~= self:GetParent()
 	if not IsServer() then return end
 
 	if keys.unit:IS_TrueHero_TG() and keys.attacker == self:GetParent() then
@@ -233,7 +233,7 @@ function imba_luna_lunar_blessing:OnUpgrade()
 	local mod = self:GetCaster():FindModifierByName("modifier_imba_luna_lunar_blessing")
 	if mod then
 		mod.cd = self:GetSpecialValueFor("cd")
-	end	
+	end
 end
 modifier_imba_luna_lunar_blessing = class({})
 LinkLuaModifier("modifier_luna_beam_blink", "ting/hero_luna", LUA_MODIFIER_MOTION_NONE)
@@ -247,27 +247,27 @@ function modifier_imba_luna_lunar_blessing:GetAuraRadius() return self:GetAbilit
 function modifier_imba_luna_lunar_blessing:GetAuraSearchFlags() return DOTA_UNIT_TARGET_FLAG_NONE end
 function modifier_imba_luna_lunar_blessing:GetAuraSearchTeam() return DOTA_UNIT_TARGET_TEAM_FRIENDLY end
 function modifier_imba_luna_lunar_blessing:GetAuraSearchType() return DOTA_UNIT_TARGET_HERO end
-function modifier_imba_luna_lunar_blessing:OnCreated() 	
+function modifier_imba_luna_lunar_blessing:OnCreated()
 	self.cd = self:GetAbility():GetSpecialValueFor("cd")
     if not IsServer() then
 		return
     end
-    if not  self:GetParent():IsIllusion() then 
+    if not  self:GetParent():IsIllusion() then
 		self.count = 0
-		self:GetAbility():StartCooldown(self.cd) 
+		self:GetAbility():StartCooldown(self.cd)
         self:StartIntervalThink(1)
     end
 end
 
-function modifier_imba_luna_lunar_blessing:OnIntervalThink() 	
+function modifier_imba_luna_lunar_blessing:OnIntervalThink()
 	local caster = self:GetCaster()
 	if not caster:IsAlive() then return end
-	self.count = self.count + 1 
-	if self.count == self.cd  then 
+	self.count = self.count + 1
+	if self.count == self.cd  then
 		local ability = caster:FindAbilityByName("imba_luna_lucent_beam")
-		local enemy_count = true 
-		self.count = 0 
-		self:GetAbility():StartCooldown(self.cd ) 
+		local enemy_count = true
+		self.count = 0
+		self:GetAbility():StartCooldown(self.cd )
 		if ability and ability:GetLevel() > 0 then
 			local enemies = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), nil, self:GetAbility():GetSpecialValueFor("p_radius"), DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO , DOTA_UNIT_TARGET_FLAG_NO_INVIS,FIND_CLOSEST, false)
 			for _,enemy in pairs(enemies) do
@@ -289,7 +289,7 @@ function modifier_imba_luna_lunar_blessing:OnIntervalThink()
 					break
 				end
 			end
-				if enemy_count or self:GetParent():HasScepter() then	
+				if enemy_count or self:GetParent():HasScepter() then
 				ability:start(true,caster,false,true)
 				caster:AddNewModifier(caster,self:GetAbility(),"modifier_luna_beam_blink",{})
 				caster:Heal(self:GetAbility():GetSpecialValueFor("heal")*caster:GetLevel(),caster)
@@ -297,13 +297,13 @@ function modifier_imba_luna_lunar_blessing:OnIntervalThink()
 				return
 			end
 		end
-		if enemy_count or self:GetParent():HasScepter() then	
+		if enemy_count or self:GetParent():HasScepter() then
 			caster:Heal(self:GetAbility():GetSpecialValueFor("heal")*caster:GetLevel(),caster)
 			caster:GiveMana(self:GetAbility():GetSpecialValueFor("heal")*caster:GetLevel())
 		end
-		
+
 	end
-	
+
 end
 --月袭buff
 modifier_luna_beam_blink = class({})
@@ -323,8 +323,8 @@ function modifier_lunar_blessing:DeclareFunctions() return {MODIFIER_PROPERTY_ST
 function modifier_lunar_blessing:GetModifierBonusStats_Strength() 	return self:GetStackCount()  == 0 and self:GetAbility():GetSpecialValueFor("bonus_all") end
 function modifier_lunar_blessing:GetModifierBonusStats_Agility() 	return self:GetStackCount()  == 1 and self:GetAbility():GetSpecialValueFor("bonus_all") end
 function modifier_lunar_blessing:GetModifierBonusStats_Intellect() 	return self:GetStackCount()  == 2 and self:GetAbility():GetSpecialValueFor("bonus_all") end
-function modifier_lunar_blessing:GetBonusNightVision() 	
-	if self:GetParent() == self:GetCaster() or self:GetCaster():TG_HasTalent("special_bonus_imba_luna_3") then 
+function modifier_lunar_blessing:GetBonusNightVision()
+	if self:GetParent() == self:GetCaster() or self:GetCaster():TG_HasTalent("special_bonus_imba_luna_3") then
 		return self:GetAbility():GetSpecialValueFor("bonus_night_vision")
 	end
 	return 0
@@ -351,15 +351,15 @@ function imba_luna_lunar_grace:IsHiddenWhenStolen() 		return false end
 function imba_luna_lunar_grace:IsRefreshable() 			return true  end
 function imba_luna_lunar_grace:IsStealable() 			return true  end
 function imba_luna_lunar_grace:GetBehavior()
-	if self:GetCaster():HasModifier("modifier_luna_beam_blink")  then
-		return DOTA_ABILITY_BEHAVIOR_POINT 
+	if self:GetCaster():HasModifier("modifier_luna_beam_blink") and not self:GetCaster():IsRooted()  then
+		return DOTA_ABILITY_BEHAVIOR_POINT
 	else
 		return DOTA_ABILITY_BEHAVIOR_PASSIVE
 	end
 end
 function imba_luna_lunar_grace:OnInventoryContentsChanged()
 	if not IsServer() then return end
-    if self:GetCaster():Has_Aghanims_Shard() then 
+    if self:GetCaster():Has_Aghanims_Shard() then
        self:SetHidden(false)
 	   self:SetStolen(true)
 --	   self:SetHidden(false)
@@ -375,7 +375,8 @@ end
 function imba_luna_lunar_grace:OnSpellStart()
 	local caster = self:GetCaster()
 	local pos = self:GetCursorPosition()
-	FindClearSpaceForUnit(caster, pos, false)
+
+	FindClearSpaceForUnit(caster, pos, true)
 	caster:EmitSound("Hero_Luna.LucentBeam.Cast")
 	local target = CreateModifierThinker(caster, self, "modifier_dummy_thinker", {duration = 1}, pos, caster:GetTeamNumber(), false)
 	local ability = self:GetCaster():FindAbilityByName("imba_luna_lucent_beam")
@@ -408,14 +409,14 @@ function imba_luna_eclipse:GetBehavior()
 		return DOTA_ABILITY_BEHAVIOR_POINT + DOTA_ABILITY_BEHAVIOR_UNIT_TARGET + DOTA_ABILITY_BEHAVIOR_AUTOCAST + DOTA_ABILITY_BEHAVIOR_AOE
 	else
 		return DOTA_ABILITY_BEHAVIOR_NO_TARGET + DOTA_ABILITY_BEHAVIOR_AUTOCAST + DOTA_ABILITY_BEHAVIOR_AOE
-	end 
+	end
 end
 function imba_luna_eclipse:GetCooldown(level)
 	local cooldown = self.BaseClass.GetCooldown(self, level)
 	local caster = self:GetCaster()
 	local Talent = caster:TG_GetTalentValue("special_bonus_imba_luna_7")
 	local  Getcd = cooldown - Talent
-	if caster:TG_HasTalent("special_bonus_imba_luna_7") then 
+	if caster:TG_HasTalent("special_bonus_imba_luna_7") then
 		return (Getcd)
 	end
 	return cooldown
@@ -435,7 +436,7 @@ function imba_luna_eclipse:OnSpellStart()
 		caster:AddNewModifier(caster, self, "modifier_luna_eclipse_thinker", {duration = duration})
 	end
 	caster:EmitSound("Hero_Luna.LucentBeam.Cast")
-	
+
 	caster:AddNewModifier(caster,self,"modifier_imba_luna_time",{duration = self:GetSpecialValueFor("night_duration")})
 end
 
@@ -451,31 +452,31 @@ function modifier_luna_eclipse_thinker:OnCreated(keys)
 	self.hits =  self:GetAbility():GetSpecialValueFor("beams") + caster:TG_GetTalentValue("special_bonus_imba_luna_8")
 	local eclipse_particle = ParticleManager:CreateParticle("particles/units/heroes/hero_luna/luna_eclipse.vpcf", PATTACH_POINT, self:GetParent())
 	ParticleManager:SetParticleControl(eclipse_particle, 1, Vector(self.radius, 0, 0))
-	
+
 	if keys.x then
 		self.target_position = Vector(keys.x, keys.y, keys.z)
 		ParticleManager:SetParticleControl(eclipse_particle, 0, self.target_position)
-	end	
+	end
 	self:AddParticle(eclipse_particle, false, false, -1, false, false)
-	
+
 	if IsServer() then
 		self.lucent = caster:FindAbilityByName("imba_luna_lucent_beam")
 		self.glaive = caster:FindAbilityByName("imba_luna_moon_glaive")
-		GameRules:BeginTemporaryNight( self:GetAbility():GetSpecialValueFor("night_duration") ) 
+		GameRules:BeginTemporaryNight( self:GetAbility():GetSpecialValueFor("night_duration") )
 		AddFOWViewer(self:GetCaster():GetTeamNumber(), self:GetParent():GetAbsOrigin(),self.radius , self:GetAbility():GetSpecialValueFor("night_duration"), false)	--高空视野
 		self:StartIntervalThink(self.interval)
-		
+
 	end
 end
 
 function modifier_luna_eclipse_thinker:OnIntervalThink()
 	local parent = self:GetParent()
 	local caster = self:GetCaster()
-	local position = parent:GetAbsOrigin() 
-	
+	local position = parent:GetAbsOrigin()
+
 	local search_flag = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
 	local search_flag_scept = DOTA_UNIT_TARGET_HERO
-	
+
 	local search_type = FIND_ANY_ORDER
 	local search_type_scept = FIND_CLOSEST
 	local enemy_count = true
@@ -487,7 +488,7 @@ function modifier_luna_eclipse_thinker:OnIntervalThink()
 				enemy:AddNewModifier(caster,self:GetAbility(),"modifier_imba_luna_mag",{duration = 10})
 		else
 			local enemies2 = FindUnitsInRadius(enemy:GetTeamNumber(), enemy:GetAbsOrigin(), nil, 500, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_BUILDING, DOTA_UNIT_TARGET_FLAG_NO_INVIS, FIND_CLOSEST, false)
-			for k = 1,#enemies2,1 do 
+			for k = 1,#enemies2,1 do
 				if enemies2[k] ~= enemy  then
 					caster:PerformAttack(enemies2[k], true, true, true, false, false, false, true)
 				break
@@ -542,10 +543,10 @@ function modifier_imba_luna_mag:OnCreated()
 		self:SetStackCount(0)
 		self:OnRefresh()
 	end
-	
+
 end
 function modifier_imba_luna_mag:OnRefresh()
-	self:SetStackCount(self:GetStackCount() + 1) 
+	self:SetStackCount(self:GetStackCount() + 1)
 end
 
 function modifier_imba_luna_mag:DeclareFunctions()

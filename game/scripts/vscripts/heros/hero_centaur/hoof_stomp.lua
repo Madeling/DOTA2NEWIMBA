@@ -54,9 +54,8 @@ function hoof_stomp:OnSpellStart()
                     ApplyDamage( damageTable )
                 end
             end
-            num=#heros
         end
-        CreateModifierThinker(caster, self, "modifier_hoof_stomp", {duration=self:GetSpecialValueFor( "dur" ),num=num}, caster_pos, caster:GetTeamNumber(), false)
+        CreateModifierThinker(caster, self, "modifier_hoof_stomp", {duration=self:GetSpecialValueFor( "dur" )}, caster_pos, caster:GetTeamNumber(), false)
 end
 
 modifier_hoof_stomp= class({})
@@ -81,14 +80,13 @@ function modifier_hoof_stomp:OnCreated(tg)
         return
     end
     self.POS=self:GetParent():GetAbsOrigin()
-    self:SetDuration(self:GetRemainingTime()+(tg.num or 0), true)
     local fx = ParticleManager:CreateParticle("particles/heros/centaur/centaur_hoof_stomp_circle.vpcf", PATTACH_CUSTOMORIGIN, nil)
     ParticleManager:SetParticleControl(fx, 0,  self.POS)
     ParticleManager:SetParticleControl(fx, 1, Vector(self.radius+self:GetCaster():GetCastRangeBonus(),1,1))
     ParticleManager:SetParticleControl(fx, 2, Vector(self:GetRemainingTime(),1,1))
     self:AddParticle(fx, false, false, -1, false, false)
     self:OnIntervalThink()
-    self:StartIntervalThink(1)
+    self:StartIntervalThink(FrameTime())
 end
 
 
@@ -101,24 +99,14 @@ function modifier_hoof_stomp:OnIntervalThink()
         DOTA_UNIT_TARGET_TEAM_BOTH,
         DOTA_UNIT_TARGET_HERO+DOTA_UNIT_TARGET_BASIC,
         DOTA_UNIT_TARGET_FLAG_NONE,
-        FIND_CLOSEST,
+        FIND_ANY_ORDER,
         false)
         if #heros>0 then
         for _, hero in pairs(heros) do
             if hero==self:GetCaster() then
                 hero:AddNewModifier(hero, self:GetAbility(), "modifier_hoof_stomp_buff", {duration=1.5})
-                elseif not Is_Chinese_TG(hero,self:GetParent()) then
-                    local Knockback ={
-                        should_stun = true,
-                        knockback_duration = self.stun2,
-                        duration = self.stun2,
-                        knockback_distance = 0,
-                        knockback_height = 350,
-                        center_x =  hero:GetAbsOrigin().x,
-                        center_y =  hero:GetAbsOrigin().y,
-                        center_z =  hero:GetAbsOrigin().z
-                    }
-                hero:AddNewModifier_RS(self:GetParent(),self:GetAbility(), "modifier_knockback", Knockback)
+                elseif not Is_Chinese_TG(hero,self:GetParent()) and TG_Distance(hero:GetAbsOrigin(),self.POS)>=self.radius+self:GetCaster():GetCastRangeBonus()  then
+                        FindClearSpaceForUnit(hero, hero:GetAbsOrigin()+hero:GetForwardVector()*-50, false)
             end
         end
     end

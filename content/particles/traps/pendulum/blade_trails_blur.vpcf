@@ -1,20 +1,19 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{36c3961f-02a4-4c52-bf8f-6e3147d7d142} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
 	m_nMaxParticles = 150
 	m_flConstantRadius = 120.000000
 	m_flConstantLifespan = 0.500000
-	m_ConstantColor = 
+	m_ConstantColor =
 	[
 		235,
 		235,
 		255,
 		255,
 	]
-	m_Renderers = 
+	m_Renderers =
 	[
-		
 		{
 			_class = "C_OP_RenderRopes"
 			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
@@ -31,7 +30,6 @@
 			m_bRefract = true
 			m_flRefractAmount = 2.000000
 		},
-		
 		{
 			_class = "C_OP_RenderSprites"
 			m_bRefract = true
@@ -40,24 +38,20 @@
 			m_hTexture = resource:"materials/particle/warp_cloud_01.vtex"
 		},
 	]
-	m_Operators = 
+	m_Operators =
 	[
-		
 		{
 			_class = "C_OP_Decay"
 		},
-		
 		{
 			_class = "C_OP_FadeOutSimple"
 		},
-		
 		{
 			_class = "C_OP_InterpolateRadius"
 		},
-		
 		{
 			_class = "C_OP_ColorInterpolate"
-			m_ColorFade = 
+			m_ColorFade =
 			[
 				3,
 				83,
@@ -67,78 +61,59 @@
 			m_flFadeStartTime = 0.250000
 			m_bDisableOperator = true
 		},
-		
 		{
 			_class = "C_OP_FadeInSimple"
 		},
-		
 		{
 			_class = "C_OP_BasicMovement"
 			m_fDrag = 0.050000
 		},
 	]
-	m_Initializers = 
+	m_Initializers =
 	[
-		
 		{
 			_class = "C_INIT_CreateWithinSphere"
 		},
-		
 		{
 			_class = "C_INIT_RandomAlpha"
 			m_nAlphaMin = 50
 			m_nAlphaMax = 50
 		},
-		
 		{
 			_class = "C_INIT_RandomRadius"
 			m_flRadiusMin = 120.000000
 			m_flRadiusMax = 150.000000
 		},
-		
-		{
-			_class = "C_INIT_RandomRotation"
-		},
-		
 		{
 			_class = "C_INIT_PositionOffset"
-			m_OffsetMin = 
+			m_OffsetMin =
 			[
 				-20.000000,
 				-20.000000,
 				-10.000000,
 			]
-			m_OffsetMax = 
+			m_OffsetMax =
 			[
 				20.000000,
 				20.000000,
 				0.000000,
 			]
 		},
-		
+		{
+			_class = "C_INIT_RandomRotation"
+		},
 		{
 			_class = "C_INIT_InheritVelocity"
 			m_flVelocityScale = 0.250000
 		},
 	]
-	m_Emitters = 
+	m_Emitters =
 	[
-		
 		{
 			_class = "C_OP_ContinuousEmitter"
-			m_flEmissionDuration = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 2.700000
-			}
-			m_flEmitRate = 
-			{
-				m_nType = "PF_TYPE_LITERAL"
-				m_flLiteralValue = 30.000000
-			}
+			m_flEmitRate = 30.000000
+			m_flEmissionDuration = 2.700000
 		},
 	]
 	m_flCullRadius = -1.000000
-	m_nBehaviorVersion = 4
-	m_nFirstMultipleOverride_BackwardCompat = 4
 }

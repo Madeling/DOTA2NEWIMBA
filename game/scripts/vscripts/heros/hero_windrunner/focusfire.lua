@@ -81,10 +81,10 @@ function modifier_focusfire_att:OnAttack(tg)
 	if tg.attacker == self:GetParent() and not self:GetParent():PassivesDisabled() and  RollPseudoRandomPercentage(self.ch,0,self:GetParent()) then
 			tg.attacker:EmitSound("Ability.Powershot")
 			local pos=tg.attacker:GetAbsOrigin()
-			local spawn=tg.target:GetAbsOrigin()
-			local dirt=TG_Direction(spawn+Vector(1,1,0),pos+Vector(1,1,0))
+			local tpos=tg.target:GetAbsOrigin()
+			local dirt=pos==tpos and tg.attacker:GetForwardVector()  or TG_Direction(tpos,pos)
 			for i=1,self.num do
-				local dir=TG_Direction(RotatePosition(pos, QAngle(0, math.random(-5,5), 0), pos + dirt * 1000),spawn)
+				local dir=TG_Direction(RotatePosition(pos, QAngle(0, math.random(-5,5), 0), pos + dirt * 1000),tpos)
 				local projectileTable2 =
 				{
 				EffectName ="particles/units/heroes/hero_windrunner/windrunner_spell_powershot.vpcf",

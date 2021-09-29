@@ -3,7 +3,7 @@ CreateTalents("npc_dota_hero_shadow_demon", "linken/hero_shadow_demon")
 imba_shadow_demon_disruption = class({})
 
 LinkLuaModifier("modifier_imba_disruption","linken/hero_shadow_demon.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_imba_disruption_damage","linken/hero_shadow_demon.lua", LUA_MODIFIER_MOTION_NONE) 
+LinkLuaModifier("modifier_imba_disruption_damage","linken/hero_shadow_demon.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_imba_disruption_talent","linken/hero_shadow_demon.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_imba_disruption_muted", "linken/hero_shadow_demon.lua", LUA_MODIFIER_MOTION_NONE)
 
@@ -12,18 +12,19 @@ function imba_shadow_demon_disruption:IsRefreshable() 		return true  end
 function imba_shadow_demon_disruption:IsStealable()			return true end
 function imba_shadow_demon_disruption:GetIntrinsicModifierName() return "modifier_imba_disruption_talent" end
 function imba_shadow_demon_disruption:GetCastRange()
-	return self:GetSpecialValueFor("range") 
+	return self:GetSpecialValueFor("range")
 end
-function imba_shadow_demon_disruption:OnSpellStart() 
+function imba_shadow_demon_disruption:OnSpellStart()
 	local caster = self:GetCaster()
 	local target = self:GetCursorTarget()
 	if target:TG_TriggerSpellAbsorb(self) then
 		return
-	end	
+	end
 	self.caster = caster
 	self.target = target
 	local duration = self:GetSpecialValueFor("disruption_duration") + caster:TG_GetTalentValue("special_bonus_imba_shadow_demon_2")
-	target:AddNewModifier_RS(caster, self, "modifier_imba_disruption", {duration = duration})
+	duration= Is_Chinese_TG(caster,target) and duration or TG_StatusResistance_GET(target,duration)
+	target:AddNewModifier(caster, self, "modifier_imba_disruption", {duration = duration})
 	local illusions_incoming = self:GetSpecialValueFor("illusions_incoming")
 	local modifier_illusions =
 	{
@@ -37,23 +38,23 @@ function imba_shadow_demon_disruption:OnSpellStart()
 	if not self:GetCaster():TG_HasTalent("special_bonus_imba_shadow_demon_4") then
 		caster.illusions = CreateIllusions(target, target, modifier_illusions, 1, 0, false, false)
 		for i=1, #caster.illusions do
-			caster.illusions[i]:AddNewModifier(target, self, "modifier_kill", {duration = duration})
+			caster.illusions[i]:AddNewModifier(target, self, "modifier_kill", {duration =duration})
 			caster.illusions[i]:AddNewModifier(target, self, "modifier_phased", {duration = duration})
 		end
 		caster.illusions[1]:AddNewModifier(target, self, "modifier_imba_disruption_damage", {duration = duration, int = 1})
-		caster.illusions[1]:SetAbsOrigin(target:GetAbsOrigin() + caster:GetRightVector()*150)		
-	else	
+		caster.illusions[1]:SetAbsOrigin(target:GetAbsOrigin() + caster:GetRightVector()*150)
+	else
 		caster.illusions = CreateIllusions(target, target, modifier_illusions, 2, 0, false, false)
 		for i=1, #caster.illusions do
-			caster.illusions[i]:AddNewModifier(target, self, "modifier_kill", {duration = duration})
+			caster.illusions[i]:AddNewModifier(target, self, "modifier_kill", {duration =duration})
 			caster.illusions[i]:AddNewModifier(target, self, "modifier_phased", {duration = duration})
 		end
 		--两个不同的状态
 		caster.illusions[1]:AddNewModifier(target, self, "modifier_imba_disruption_damage", {duration = duration, int = 1})
 		caster.illusions[1]:SetAbsOrigin(target:GetAbsOrigin() + caster:GetRightVector()*150)
 
-		caster.illusions[2]:AddNewModifier(target, self, "modifier_imba_disruption_damage", {duration = duration, int = 2})	
-		
+		caster.illusions[2]:AddNewModifier(target, self, "modifier_imba_disruption_damage", {duration = duration, int = 2})
+
 		caster.illusions[2]:SetAbsOrigin(target:GetAbsOrigin() - caster:GetRightVector()*150)
 		Timers:CreateTimer(FrameTime()*3, function()
 			caster.illusions[1]:MoveToTargetToAttack(caster.illusions[2])
@@ -61,7 +62,7 @@ function imba_shadow_demon_disruption:OnSpellStart()
 			caster.illusions[2]:MoveToTargetToAttack(caster.illusions[1])
 			caster.illusions[2]:SetAttacking(caster.illusions[1])
 		end)
-	end		
+	end
 	EmitSoundOn("Hero_ShadowDemon.Disruption.Cast", self:GetCaster())
 end
 modifier_imba_disruption = class({})
@@ -72,10 +73,10 @@ function modifier_imba_disruption:IsPurgeException() 	return false end
 function modifier_imba_disruption:CheckState()
 	local state = {
 		[MODIFIER_STATE_STUNNED] = true,
-		[MODIFIER_STATE_OUT_OF_GAME] = true,  
+		[MODIFIER_STATE_OUT_OF_GAME] = true,
 		[MODIFIER_STATE_INVULNERABLE] = true,
 		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
-		[MODIFIER_STATE_COMMAND_RESTRICTED] = true, 	
+		[MODIFIER_STATE_COMMAND_RESTRICTED] = true,
 	}
 	return state
 end
@@ -84,18 +85,18 @@ function modifier_imba_disruption:OnCreated()
 		self.bool = false
 		if self:GetParent():HasModifier("modifier_imba_demonic_purge_debuff") then
 			self.bool = true
-		end	
+		end
 		EmitSoundOn("Hero_ShadowDemon.Disruption", self:GetParent())
 	   	self.pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_shadow_demon/shadow_demon_disruption.vpcf", PATTACH_CUSTOMORIGIN, nil)
 	    ParticleManager:SetParticleControl(self.pfx, 0, GetGroundPosition(self:GetParent():GetAbsOrigin(),self:GetParent())+Vector(0,0,150))
 	    ParticleManager:SetParticleControl(self.pfx, 4, GetGroundPosition(self:GetParent():GetAbsOrigin(),self:GetParent())+Vector(0,0,150))
-	    self:AddParticle(self.pfx, false, false, -1, false, false)		
+	    self:AddParticle(self.pfx, false, false, -1, false, false)
 		self:GetParent():AddNoDraw()
 	end
 end
 
 function modifier_imba_disruption:OnDestroy()
-	if IsServer() then	
+	if IsServer() then
 		StopSoundOn("Hero_ShadowDemon.Disruption", self:GetParent())
 		EmitSoundOn("Hero_ShadowDemon.Disruption.End", self:GetParent())
 		self:GetParent():RemoveNoDraw()
@@ -106,7 +107,7 @@ function modifier_imba_disruption:OnDestroy()
 	    local duration = self:GetAbility():GetSpecialValueFor("muted_duration")
 	    if self.bool and self:GetParent():IsAlive() and IsEnemy(self:GetParent(),self:GetCaster()) then
 	    	self:GetParent():AddNewModifier(self:GetCaster(), self:GetAbility(), "modifier_imba_disruption_muted", {duration = duration})
-	    end		
+	    end
 	end
 end
 modifier_imba_disruption_talent = class({})
@@ -115,16 +116,16 @@ function modifier_imba_disruption_talent:IsDebuff()			return false end
 function modifier_imba_disruption_talent:IsHidden() 			return true end
 function modifier_imba_disruption_talent:IsPurgable() 		return false end
 function modifier_imba_disruption_talent:IsPurgeException() 	return false end
-function modifier_imba_disruption_talent:DeclareFunctions() 
+function modifier_imba_disruption_talent:DeclareFunctions()
 	return {
 			MODIFIER_PROPERTY_CASTTIME_PERCENTAGE
-			} 
+			}
 end
-function modifier_imba_disruption_talent:GetModifierPercentageCasttime() 
+function modifier_imba_disruption_talent:GetModifierPercentageCasttime()
 	if self:GetCaster():TG_HasTalent("special_bonus_imba_shadow_demon_6") then
-		local cast_time = 0 - self:GetCaster():TG_GetTalentValue("special_bonus_imba_shadow_demon_6")	
+		local cast_time = 0 - self:GetCaster():TG_GetTalentValue("special_bonus_imba_shadow_demon_6")
 		return cast_time
-	end	  
+	end
 	return nil
 end
 function modifier_imba_disruption_talent:OnCreated()
@@ -157,19 +158,19 @@ function modifier_imba_disruption_damage:StatusEffectPriority()
 end
 function modifier_imba_disruption_damage:CheckState()
 	local state = {
-		[MODIFIER_STATE_STUNNED] = self.stun, 
-		[MODIFIER_STATE_PASSIVES_DISABLED] = true, 
-		[MODIFIER_STATE_ATTACK_ALLIES] = true, 
-		[MODIFIER_STATE_COMMAND_RESTRICTED] = true, 
+		[MODIFIER_STATE_STUNNED] = self.stun,
+		[MODIFIER_STATE_PASSIVES_DISABLED] = true,
+		[MODIFIER_STATE_ATTACK_ALLIES] = true,
+		[MODIFIER_STATE_COMMAND_RESTRICTED] = true,
 	}
 	return state
 end
-function modifier_imba_disruption_damage:DeclareFunctions() 
+function modifier_imba_disruption_damage:DeclareFunctions()
 	return {
-	MODIFIER_EVENT_ON_TAKEDAMAGE, 
+	MODIFIER_EVENT_ON_TAKEDAMAGE,
 	MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
 	MODIFIER_PROPERTY_MIN_HEALTH,
-	} 
+	}
 end
 function modifier_imba_disruption_damage:GetMinHealth() return self.hp end
 function modifier_imba_disruption_damage:OnCreated(keys)
@@ -186,18 +187,18 @@ end
 function modifier_imba_disruption_damage:OnIntervalThink()
 	if not self.target:IsAlive() then
 		self:GetParent():ForceKill(false)
-	end	
+	end
 end
 function modifier_imba_disruption_damage:OnTakeDamage(keys)
 	if not IsServer() then
 		return
 	end
 	if keys.unit ~= self:GetParent() then
-		return	
+		return
 	end
 	if keys.damage == self:GetParent():GetHealth() or keys.original_damage == self:GetParent():GetHealth() then
 		return
-	end	
+	end
 	if keys.attacker:IsHero() and not keys.attacker:IsIllusion() then
 		self.attacker = keys.attacker
 	end
@@ -213,23 +214,23 @@ function modifier_imba_disruption_damage:OnTakeDamage(keys)
 							damage_flags = DOTA_DAMAGE_FLAG_HPLOSS + DOTA_DAMAGE_FLAG_BYPASSES_INVULNERABILITY + DOTA_DAMAGE_FLAG_BYPASSES_BLOCK + DOTA_DAMAGE_FLAG_NO_DAMAGE_MULTIPLIERS + DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION + DOTA_DAMAGE_FLAG_REFLECTION,
 							}
 		ApplyDamage(damageTable)
-		SendOverheadEventMessage(nil, OVERHEAD_ALERT_BONUS_SPELL_DAMAGE, self.target, keys.damage, nil) 
+		SendOverheadEventMessage(nil, OVERHEAD_ALERT_BONUS_SPELL_DAMAGE, self.target, keys.damage, nil)
 	elseif not IsEnemy(self.caster,self.target) and self.target:IsAlive() then
 		--是队友就治疗
 		self.target:Heal(keys.damage, self:GetCaster())
-		SendOverheadEventMessage(nil, OVERHEAD_ALERT_HEAL, self.target, keys.damage, nil) 
-	end		
+		SendOverheadEventMessage(nil, OVERHEAD_ALERT_HEAL, self.target, keys.damage, nil)
+	end
 end
 function modifier_imba_disruption_damage:OnDestroy()
 	if IsServer() then
-		self.attacker = self.caster	
+		self.attacker = self.caster
 		self.target = nil
 		self.caster = nil
 		--检测技能是否丢失 水人专属
 		if self:GetAbility() then
 			self:GetAbility().target = nil
 			self:GetAbility().caster = nil
-		end		
+		end
 	end
 end
 modifier_imba_disruption_muted = class({})
@@ -251,27 +252,27 @@ function imba_shadow_demon_soul_catcher:IsRefreshable() 		return true  end
 function imba_shadow_demon_soul_catcher:IsStealable()			return true end
 function imba_shadow_demon_soul_catcher:GetAOERadius()
 	local radius = self:GetSpecialValueFor("radius")
-	return radius		 
+	return radius
 end
 function imba_shadow_demon_soul_catcher:GetCastRange()
-	return self:GetSpecialValueFor("range") 
+	return self:GetSpecialValueFor("range")
 end
-function imba_shadow_demon_soul_catcher:OnSpellStart() 
+function imba_shadow_demon_soul_catcher:OnSpellStart()
 	local caster = self:GetCaster()
 	local pos = self:GetCursorPosition()
 	local duration = self:GetSpecialValueFor("duration")
 	local radius = self:GetSpecialValueFor("radius")
 	self.attacker = caster
 	local enemies = FindUnitsInRadius(
-		self:GetCaster():GetTeamNumber(), 
-		pos, 
-		nil, 
-		radius, 
-		DOTA_UNIT_TARGET_TEAM_ENEMY, 
-		DOTA_UNIT_TARGET_HERO, 
+		self:GetCaster():GetTeamNumber(),
+		pos,
+		nil,
+		radius,
+		DOTA_UNIT_TARGET_TEAM_ENEMY,
+		DOTA_UNIT_TARGET_HERO,
 		--搜索无敌隐藏单位
-		DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES + DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD + DOTA_UNIT_TARGET_FLAG_INVULNERABLE, 
-		FIND_ANY_ORDER, 
+		DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES + DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD + DOTA_UNIT_TARGET_FLAG_INVULNERABLE,
+		FIND_ANY_ORDER,
 		false
 		)
 	for _, enemy in pairs(enemies) do
@@ -280,10 +281,10 @@ function imba_shadow_demon_soul_catcher:OnSpellStart()
 		elseif enemy:HasModifier("modifier_imba_disruption") then
 			--无敌单位只能自己给自己上修饰器
 			enemy:AddNewModifier_RS(enemy, self, "modifier_imba_soul_catcher", {duration = duration, attacker_entindex = self:GetCaster():entindex()})
-		elseif not enemy:IsInvulnerable() then 	 	
+		elseif not enemy:IsInvulnerable() then
 			enemy:AddNewModifier_RS(enemy, self, "modifier_imba_soul_catcher", {duration = duration, attacker_entindex = self:GetCaster():entindex()})
 		end
-		EmitSoundOn("Hero_ShadowDemon.Soul_Catcher", enemy)	
+		EmitSoundOn("Hero_ShadowDemon.Soul_Catcher", enemy)
 	end
 	local particle_ground = "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_v2_projected_ground.vpcf"
 	local particle_ground_fx = ParticleManager:CreateParticle(particle_ground, PATTACH_WORLDORIGIN, nil)
@@ -296,7 +297,7 @@ function imba_shadow_demon_soul_catcher:OnSpellStart()
 		ParticleManager:DestroyParticle(particle_ground_fx, false)
 		ParticleManager:ReleaseParticleIndex(particle_ground_fx)
 	end)
-	EmitSoundOn("Hero_ShadowDemon.Soul_Catcher.Cast", caster)		
+	EmitSoundOn("Hero_ShadowDemon.Soul_Catcher.Cast", caster)
 end
 modifier_imba_soul_catcher = class({})
 function modifier_imba_soul_catcher:IsDebuff()			return true end
@@ -316,7 +317,7 @@ function modifier_imba_soul_catcher:OnCreated(keys)
 			self.attacker = EntIndexToHScript(keys.attacker_entindex)
 		else
 			self.attacker = self:GetCaster()
-		end	
+		end
 		self.damage = self.health_lost * self:GetParent():GetHealth() * 0.01
 			local damageTable = {
 							victim = self:GetParent(),
@@ -329,7 +330,7 @@ function modifier_imba_soul_catcher:OnCreated(keys)
 							}
 		if self:GetParent():IsIllusion() then
 			damageTable.damage = damageTable.damage * self.illusion * 0.01
-		end					
+		end
 		ApplyDamage(damageTable)
 	   	self.pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
 	    ParticleManager:SetParticleControl(self.pfx, 0, self:GetParent():GetAbsOrigin())
@@ -344,14 +345,14 @@ function modifier_imba_soul_catcher:OnCreated(keys)
 	    ParticleManager:SetParticleControl(self.pfx_1, 4, self:GetParent():GetAbsOrigin())
 	    self:AddParticle(self.pfx_1, false, false, -1, false, false)
 	    self:OnIntervalThink()
-	    self:StartIntervalThink(0.1)	    			
+	    self:StartIntervalThink(0.1)
 	end
 end
 function modifier_imba_soul_catcher:OnIntervalThink()
 	--imba效果 记录是否被大招影响过
-	if (self:GetParent():HasModifier("modifier_imba_demonic_purge_debuff") or self:GetParent():HasModifier("modifier_imba_disruption")) and self.bool then 
+	if (self:GetParent():HasModifier("modifier_imba_demonic_purge_debuff") or self:GetParent():HasModifier("modifier_imba_disruption")) and self.bool then
 		self.bool = false
-	end	
+	end
 	if self:GetParent():IsStunned() then
 		for i = 0, 23 do
 			local current_ability = self:GetParent():GetAbilityByIndex(i)
@@ -362,7 +363,7 @@ function modifier_imba_soul_catcher:OnIntervalThink()
 
 			end
 		end
-	end		
+	end
 end
 function modifier_imba_soul_catcher:OnDestroy(keys)
 	if IsServer() then
@@ -370,14 +371,14 @@ function modifier_imba_soul_catcher:OnDestroy(keys)
 			local hp = math.min(self:GetParent():GetHealth() + self.damage/2,self:GetParent():GetMaxHealth())
 			if self:GetParent():IsIllusion() then
 				hp = hp * self.illusion * 0.01
-			end			
+			end
 	  		self:GetParent():SetHealth(hp)
 	  	end
 	  	self.bool = true
 	  	--检测技能是否丢失
-	  	if self:GetAbility() then	
+	  	if self:GetAbility() then
   			self:GetAbility().attacker = nil
-  		end	
+  		end
  		if self.pfx then
 	    	ParticleManager:DestroyParticle(self.pfx, false)
 	    	ParticleManager:ReleaseParticleIndex(self.pfx)
@@ -385,11 +386,11 @@ function modifier_imba_soul_catcher:OnDestroy(keys)
  		if self.pfx_1 then
 	    	ParticleManager:DestroyParticle(self.pfx_1, false)
 	    	ParticleManager:ReleaseParticleIndex(self.pfx_1)
-	    end	    	 		
+	    end
 	end
 end
 imba_shadow_demon_shadow_poison = class({})
-LinkLuaModifier("modifier_imba_shadow_poison", "linken/hero_shadow_demon.lua", LUA_MODIFIER_MOTION_NONE) 
+LinkLuaModifier("modifier_imba_shadow_poison", "linken/hero_shadow_demon.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_imba_shadow_poison_thinker", "linken/hero_shadow_demon.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_imba_shadow_poison_auto", "linken/hero_shadow_demon.lua", LUA_MODIFIER_MOTION_NONE)
 function imba_shadow_demon_shadow_poison:GetIntrinsicModifierName() return "modifier_imba_shadow_poison_auto" end
@@ -400,7 +401,7 @@ function imba_shadow_demon_shadow_poison:OnSpellStart(keys)
 		self.caster = caster
 		self.pos = caster:GetAbsOrigin()
 		self.target_pos = self:GetCursorPosition()
-	end	
+	end
 	local direction = (self.target_pos - self.pos):Normalized()
 	direction.z = 0
 	self.speed = self:GetSpecialValueFor("speed") + self:GetCaster():TG_GetTalentValue("special_bonus_imba_shadow_demon_5")
@@ -432,17 +433,17 @@ function imba_shadow_demon_shadow_poison:OnSpellStart(keys)
 	elseif not self:GetAutoCastState() or keys then
 		EmitSoundOn("Hero_ShadowDemon.ShadowPoison.Cast", caster)
 		self.dummy_sound = CreateModifierThinker(
-			self:GetCaster(), 
+			self:GetCaster(),
 			self,
-			"modifier_imba_shadow_poison_thinker", 
+			"modifier_imba_shadow_poison_thinker",
 			{
 				duration = 60,
-			}, 
+			},
 			self.pos,
 			self:GetCaster():GetTeamNumber(),
 			false
-		)	
-		self.dummy_sound:EmitSound("Hero_ShadowDemon.ShadowPoison")			
+		)
+		self.dummy_sound:EmitSound("Hero_ShadowDemon.ShadowPoison")
 	    local info = {
 	        Ability = self,
 	        EffectName = "particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_projectile.vpcf",
@@ -465,7 +466,7 @@ function imba_shadow_demon_shadow_poison:OnSpellStart(keys)
 	        ExtraData = {dummy_sound = self.dummy_sound:entindex(),int = self.int_number}
 	    }
 	    ProjectileManager:CreateLinearProjectile(info)
-	end    		
+	end
 end
 function imba_shadow_demon_shadow_poison:OnProjectileThink_ExtraData(pos, keys)
 	if keys.dummy_sound and EntIndexToHScript(keys.dummy_sound) then
@@ -480,14 +481,14 @@ function imba_shadow_demon_shadow_poison:OnProjectileHit_ExtraData(target, locat
 	EntIndexToHScript(keys.dummy_sound):ForceKill(false)
 	local caster = self:GetCaster()
 	local enemies = FindUnitsInRadius(
-		self:GetCaster():GetTeamNumber(), 
-		location, 
-		nil, 
-		self.search_radius, 
-		DOTA_UNIT_TARGET_TEAM_ENEMY, 
-		DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 
-		DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES + DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD + DOTA_UNIT_TARGET_FLAG_INVULNERABLE, 
-		FIND_CLOSEST, 
+		self:GetCaster():GetTeamNumber(),
+		location,
+		nil,
+		self.search_radius,
+		DOTA_UNIT_TARGET_TEAM_ENEMY,
+		DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
+		DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES + DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD + DOTA_UNIT_TARGET_FLAG_INVULNERABLE,
+		FIND_CLOSEST,
 		false
 		)
 	if #enemies > 0 and keys.int < self.max then
@@ -532,9 +533,9 @@ function imba_shadow_demon_shadow_poison:OnProjectileHit_ExtraData(target, locat
 		        vVelocity = direction * self.speed,
 		        ExtraData = {dummy_sound = self.dummy_sound:entindex(),int = keys.int}
 		    }
-		    ProjectileManager:CreateLinearProjectile(info)   
-		
-	end 		
+		    ProjectileManager:CreateLinearProjectile(info)
+
+	end
 end
 modifier_imba_shadow_poison_thinker = class({})
 function modifier_imba_shadow_poison_thinker:GetAttributes() return MODIFIER_ATTRIBUTE_MULTIPLE end
@@ -549,16 +550,16 @@ self.range 				= 	self:GetAbility():GetSpecialValueFor("radius")
 end
 function modifier_imba_shadow_poison_thinker:OnIntervalThink()
 	local enemies = FindUnitsInRadius(
-		self:GetCaster():GetTeamNumber(), 
-		self:GetParent():GetAbsOrigin(), 
-		nil, 
-		self.range, 
-		DOTA_UNIT_TARGET_TEAM_ENEMY, 
-		DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 
-		DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES + DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD + DOTA_UNIT_TARGET_FLAG_INVULNERABLE, 
-		FIND_ANY_ORDER, 
+		self:GetCaster():GetTeamNumber(),
+		self:GetParent():GetAbsOrigin(),
+		nil,
+		self.range,
+		DOTA_UNIT_TARGET_TEAM_ENEMY,
+		DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
+		DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES + DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD + DOTA_UNIT_TARGET_FLAG_INVULNERABLE,
+		FIND_ANY_ORDER,
 		false
-		)	
+		)
 	--抄的猛犸拱 记录伤害过的敌人  确保不会一直添加
 	for _, enemy in pairs(enemies) do
 		local hit = false
@@ -575,9 +576,9 @@ function modifier_imba_shadow_poison_thinker:OnIntervalThink()
 				return
 			elseif enemy:HasModifier("modifier_imba_disruption") then
 				enemy:AddNewModifier_RS(enemy, self:GetAbility(), "modifier_imba_shadow_poison", {duration = self.debuff_duration, attacker_entindex = self:GetCaster():entindex()})
-			elseif not enemy:IsInvulnerable() then 	 	
+			elseif not enemy:IsInvulnerable() then
 				enemy:AddNewModifier_RS(enemy, self:GetAbility(), "modifier_imba_shadow_poison", {duration = self.debuff_duration, attacker_entindex = self:GetCaster():entindex()})
-			end			
+			end
 			local damageTable = {
 								victim = enemy,
 								attacker = self:GetCaster(),
@@ -586,10 +587,10 @@ function modifier_imba_shadow_poison_thinker:OnIntervalThink()
 								ability = self:GetAbility(),
 								damage_flags = DOTA_DAMAGE_FLAG_NONE,
 								}
-			ApplyDamage(damageTable)	
+			ApplyDamage(damageTable)
 		end
 	end
-end	
+end
 function modifier_imba_shadow_poison_thinker:OnDestroy()
 	if IsServer() then
 		self.hitted = nil
@@ -621,11 +622,11 @@ function modifier_imba_shadow_poison:ShadowPoisonDamage()
 	elseif 	self:GetStackCount() == 3 then
 		self.int = 8
 	elseif 	self:GetStackCount() == 4 then
-		self.int = 16	
+		self.int = 16
 	elseif 	self:GetStackCount() == 5 then
 		self.int = 32
-	end	
-	local damage = self.int * self:GetParent():GetMaxHealth() * 0.01    
+	end
+	local damage = self.int * self:GetParent():GetMaxHealth() * 0.01
 	return damage
 end
 function modifier_imba_shadow_poison:OnCreated(keys)
@@ -636,18 +637,18 @@ function modifier_imba_shadow_poison:OnCreated(keys)
 			self.caster = EntIndexToHScript(keys.attacker_entindex)
 		else
 			self.caster = self:GetCaster()
-		end	
-		
-		self:IncrementStackCount()				
+		end
+
+		self:IncrementStackCount()
 		self.pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_stackui.vpcf", PATTACH_OVERHEAD_FOLLOW, self:GetParent())
 		ParticleManager:SetParticleControl(self.pfx, 0, self:GetParent():GetAbsOrigin())
 		ParticleManager:SetParticleControl(self.pfx, 1, Vector(math.floor(self:GetStackCount() / 10 % 10), self:GetStackCount() % 10, 0))
-		self:AddParticle(self.pfx, false, false, -1, false, false)										
+		self:AddParticle(self.pfx, false, false, -1, false, false)
 	end
 end
 function modifier_imba_shadow_poison:OnRefresh()
 	if IsServer() then
-		if self:GetStackCount() >= self.max_stack then 
+		if self:GetStackCount() >= self.max_stack then
 			self:SetStackCount(self.max_stack)
 		else
 			self:IncrementStackCount()
@@ -657,12 +658,12 @@ end
 function modifier_imba_shadow_poison:OnStackCountChanged(iStack)
 	if IsServer() and self.pfx then
 		--头上数字特效变更
-		ParticleManager:SetParticleControl(self.pfx, 1, Vector(math.floor(self:GetStackCount() / 10 % 10), self:GetStackCount() % 10, 0))	
+		ParticleManager:SetParticleControl(self.pfx, 1, Vector(math.floor(self:GetStackCount() / 10 % 10), self:GetStackCount() % 10, 0))
 		if self:GetStackCount() == self.max_stack then
 			self:Destroy()
-		end		
-	end	
-end		
+		end
+	end
+end
 function modifier_imba_shadow_poison:OnDestroy(keys)
 	if IsServer() then
 		local damage = self:ShadowPoisonDamage()
@@ -674,24 +675,24 @@ function modifier_imba_shadow_poison:OnDestroy(keys)
 							ability = self:GetAbility(),
 							damage_flags = DOTA_DAMAGE_FLAG_NONE,
 							}
-		--对1技能的无敌单位有效					
+		--对1技能的无敌单位有效
 		if self:GetParent():IsInvulnerable() and self:GetParent():HasModifier("modifier_imba_disruption") then
 			damageTable.damage_flags = DOTA_DAMAGE_FLAG_BYPASSES_INVULNERABILITY
-		end							
+		end
 		ApplyDamage(damageTable)
 		SendOverheadEventMessage(nil, OVERHEAD_ALERT_BONUS_SPELL_DAMAGE, self:GetParent(), damage, nil)
-		self.int = 1 
-		if self.pfx  then			
+		self.int = 1
+		if self.pfx  then
 			ParticleManager:DestroyParticle(self.pfx, false)
-			ParticleManager:ReleaseParticleIndex(self.pfx)	
+			ParticleManager:ReleaseParticleIndex(self.pfx)
 		end
-		EmitSoundOn("Hero_ShadowDemon.ShadowPoison.Impact", self:GetParent()) 
-		self.particle_kill_fx = ParticleManager:CreateParticle("particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_kill.vpcf", PATTACH_ABSORIGIN, self:GetParent())        
+		EmitSoundOn("Hero_ShadowDemon.ShadowPoison.Impact", self:GetParent())
+		self.particle_kill_fx = ParticleManager:CreateParticle("particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_kill.vpcf", PATTACH_ABSORIGIN, self:GetParent())
 		ParticleManager:SetParticleControlEnt(self.particle_kill_fx, 0, self:GetParent(), PATTACH_POINT_FOLLOW, "attach_hitloc", self:GetParent():GetAbsOrigin(), true)
-		ParticleManager:SetParticleControlEnt(self.particle_kill_fx, 2, self:GetParent(), PATTACH_POINT_FOLLOW, "attach_hitloc", self:GetParent():GetAbsOrigin(), true)    
+		ParticleManager:SetParticleControlEnt(self.particle_kill_fx, 2, self:GetParent(), PATTACH_POINT_FOLLOW, "attach_hitloc", self:GetParent():GetAbsOrigin(), true)
 		ParticleManager:SetParticleControlEnt(self.particle_kill_fx, 3, self:GetParent(), PATTACH_POINT_FOLLOW, "attach_hitloc", Vector(1,0,0), true)
 		ParticleManager:ReleaseParticleIndex(self.particle_kill_fx)
-					
+
 	end
 end
 
@@ -710,45 +711,45 @@ function modifier_imba_shadow_poison_auto:OnOrder(keys)
 	if not IsServer() or keys.unit ~= self:GetParent() or keys.order_type ~= DOTA_UNIT_ORDER_CAST_TOGGLE_AUTO or keys.ability ~= self:GetAbility() then return end
 	--检测开关自动施法  不确定疯狂开关会不会卡顿
 	local enemies = FindUnitsInRadius(
-		self:GetCaster():GetTeamNumber(), 
-		self:GetParent():GetAbsOrigin(), 
-		nil, 
-		40000, 
-		DOTA_UNIT_TARGET_TEAM_ENEMY, 
-		DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 
-		DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES + DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD + DOTA_UNIT_TARGET_FLAG_INVULNERABLE, 
-		FIND_ANY_ORDER, 
+		self:GetCaster():GetTeamNumber(),
+		self:GetParent():GetAbsOrigin(),
+		nil,
+		40000,
+		DOTA_UNIT_TARGET_TEAM_ENEMY,
+		DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
+		DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES + DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD + DOTA_UNIT_TARGET_FLAG_INVULNERABLE,
+		FIND_ANY_ORDER,
 		false
 		)
 	for _, enemy in pairs(enemies) do
 		if enemy:HasModifier("modifier_imba_shadow_poison") then
 			enemy:FindModifierByName("modifier_imba_shadow_poison"):Destroy()
-		end	
-	end	
+		end
+	end
 end
 
 imba_shadow_demon_shadow_energy = class({})
-LinkLuaModifier("modifier_imba_shadow_energy", "linken/hero_shadow_demon.lua", LUA_MODIFIER_MOTION_NONE) 
-LinkLuaModifier("modifier_imba_shadow_energy_thinker", "linken/hero_shadow_demon.lua", LUA_MODIFIER_MOTION_NONE)  
-LinkLuaModifier("modifier_imba_life_thinker", "linken/hero_shadow_demon.lua", LUA_MODIFIER_MOTION_NONE) 
+LinkLuaModifier("modifier_imba_shadow_energy", "linken/hero_shadow_demon.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_imba_shadow_energy_thinker", "linken/hero_shadow_demon.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_imba_life_thinker", "linken/hero_shadow_demon.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_imba_shadow_energy_debuff", "linken/hero_shadow_demon.lua", LUA_MODIFIER_MOTION_NONE)
-function imba_shadow_demon_shadow_energy:Set_InitialUpgrade(tg) 			
-    return {LV=1} 
+function imba_shadow_demon_shadow_energy:Set_InitialUpgrade(tg)
+    return {LV=1}
 end
-function imba_shadow_demon_shadow_energy:GetManaCost(a) 
-	if self:GetCaster():Has_Aghanims_Shard() then  
-		return 50	
+function imba_shadow_demon_shadow_energy:GetManaCost(a)
+	if self:GetCaster():Has_Aghanims_Shard() then
+		return 50
 	end
-	return 0 
+	return 0
 end
 function imba_shadow_demon_shadow_energy:GetCooldown(level)
-	if self:GetCaster():Has_Aghanims_Shard() then  
-		return 10	
+	if self:GetCaster():Has_Aghanims_Shard() then
+		return 10
 	end
-	return 0 
+	return 0
 end
 function imba_shadow_demon_shadow_energy:GetBehavior()
-	if self:GetCaster():Has_Aghanims_Shard() then  
+	if self:GetCaster():Has_Aghanims_Shard() then
 		return  DOTA_ABILITY_BEHAVIOR_NO_TARGET
 	end
 	return DOTA_ABILITY_BEHAVIOR_PASSIVE
@@ -767,7 +768,7 @@ function imba_shadow_demon_shadow_energy:OnSpellStart()
 		self:GetCaster():GetTeamNumber(),
 		false
 	)
-end	
+end
 modifier_imba_shadow_energy = class({})
 function modifier_imba_shadow_energy:IsDebuff()				return false end
 function modifier_imba_shadow_energy:IsHidden() 			return true end
@@ -794,7 +795,7 @@ function modifier_imba_shadow_energy:OnDeath(keys)
 	end
 	self.chance = self.chance + self.parent:TG_GetTalentValue("special_bonus_imba_shadow_demon_3")
 	if PseudoRandom:RollPseudoRandom(self:GetAbility(), self.chance) then
-		Timers:CreateTimer(self.delay, function()	
+		Timers:CreateTimer(self.delay, function()
 			self.dummy_sound = CreateModifierThinker(
 				self:GetCaster(), -- player source
 				self:GetAbility(), -- ability source
@@ -805,9 +806,9 @@ function modifier_imba_shadow_energy:OnDeath(keys)
 				pos,
 				self:GetCaster():GetTeamNumber(),
 				false
-			)	
+			)
 		end)
-	end		
+	end
 end
 modifier_imba_shadow_energy_thinker = class({})
 function modifier_imba_shadow_energy_thinker:IsAura() return true end
@@ -833,7 +834,7 @@ function modifier_imba_shadow_energy_thinker:OnCreated(keys)
 	   	self.pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_shadow_demon/shadow_demon_disruption.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
 	    ParticleManager:SetParticleControl(self.pfx, 0, GetGroundPosition(self:GetParent():GetAbsOrigin(),self:GetParent())+Vector(0,0,150))
 	    ParticleManager:SetParticleControl(self.pfx, 4, GetGroundPosition(self:GetParent():GetAbsOrigin(),self:GetParent())+Vector(0,0,150))
-	    self:AddParticle(self.pfx, false, false, -1, false, false)	
+	    self:AddParticle(self.pfx, false, false, -1, false, false)
 	    EmitSoundOn("Imba.Hero_shadow_demon.shadow_energy", self:GetParent())
 
 		--[[self.pfx2 = ParticleManager:CreateParticle("particles/basic_ambient/generic_range_display.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
@@ -855,20 +856,20 @@ function modifier_imba_shadow_energy_thinker:OnIntervalThink(keys)
 			self.pos = flamebreak[i]:GetAbsOrigin()
 			break
 		end
-	end		
+	end
 	local enemies = FindUnitsInRadius(self:GetCaster():GetTeamNumber(), self:GetParent():GetAbsOrigin(), nil, self.search_radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD + DOTA_UNIT_TARGET_FLAG_INVULNERABLE, FIND_CLOSEST, false)
 	for _, enemy in pairs(enemies) do
-		if (enemy:HasModifier("modifier_imba_disruption") or enemy:HasModifier("modifier_imba_soul_catcher") or enemy:HasModifier("modifier_imba_shadow_poison") or enemy:HasModifier("modifier_imba_demonic_purge_debuff")) and enemy ~= self:GetParent() then 
+		if (enemy:HasModifier("modifier_imba_disruption") or enemy:HasModifier("modifier_imba_soul_catcher") or enemy:HasModifier("modifier_imba_shadow_poison") or enemy:HasModifier("modifier_imba_demonic_purge_debuff")) and enemy ~= self:GetParent() then
 			self.pos = enemy:GetAbsOrigin()
 			break
 		end
-	end		
+	end
 	if self.pos ~= nil then
-		local current_pos = self:GetParent():GetAbsOrigin()			
+		local current_pos = self:GetParent():GetAbsOrigin()
 		local distacne = 20 / (1.0 / FrameTime())
 		local distance = (self:GetParent():GetAbsOrigin() - self.pos):Length2D()
 		--旋转角度 越靠近角度越大
-		local angle = 300 / distance 
+		local angle = 300 / distance
 		--接近速度  越远速度越快
 		local in_pull = (distance / 10)^2
 		local new_pos = GetGroundPosition(RotatePosition(self.pos, QAngle(0,angle,0), current_pos), self:GetParent())
@@ -878,10 +879,10 @@ function modifier_imba_shadow_energy_thinker:OnIntervalThink(keys)
 
 		self:GetParent():SetOrigin(new_pos)
 	    ParticleManager:SetParticleControl(self.pfx, 0, GetGroundPosition(self:GetParent():GetAbsOrigin(),self:GetParent())+Vector(0,0,150))
-	    ParticleManager:SetParticleControl(self.pfx, 4, GetGroundPosition(self:GetParent():GetAbsOrigin(),self:GetParent())+Vector(0,0,150))			
+	    ParticleManager:SetParticleControl(self.pfx, 4, GetGroundPosition(self:GetParent():GetAbsOrigin(),self:GetParent())+Vector(0,0,150))
 		if (self.pos - current_pos):Length2D() < self.radius then
-			--释放3技能	
-			self.thinker = self.thinker + FrameTime()			
+			--释放3技能
+			self.thinker = self.thinker + FrameTime()
 		    self.ability = self:GetCaster():FindAbilityByName("imba_shadow_demon_shadow_poison")
 			if self.ability and self.ability:IsTrained() and self.thinker >= self.delay then
 				self:GetCaster():SetCursorPosition(self.pos)
@@ -891,15 +892,15 @@ function modifier_imba_shadow_energy_thinker:OnIntervalThink(keys)
 				self.ability:OnSpellStart(true)
 				self.thinker = 0
 			end
-		end	
+		end
 	end
 	if self:GetCaster():Has_Aghanims_Shard() then
 		AddFOWViewer(self:GetCaster():GetTeamNumber(), self:GetParent():GetAbsOrigin(), self.radius, FrameTime(), false)
-	end	
+	end
 	if not self:GetAbility() then
 		self:Destroy()
-	end	
-end	
+	end
+end
 function modifier_imba_shadow_energy_thinker:OnDestroy()
 	if IsServer() then
 		if self.pfx then
@@ -909,16 +910,16 @@ function modifier_imba_shadow_energy_thinker:OnDestroy()
 		if self.pfx2 then
 			ParticleManager:DestroyParticle(self.pfx2, false)
 			ParticleManager:ReleaseParticleIndex(self.pfx2)
-		end	    
+		end
 	    if self.pos == nil then
 	    	self.pos = self:GetCaster():GetAbsOrigin()
-	    end	
-	    self.thinker = 0    	
+	    end
+	    self.thinker = 0
 	    self.dummy:ForceKill(false)
 	    self:GetParent():RemoveSelf()
 	    self.pos = nil
 	    self.dummy = nil
-	    StopSoundOn("Imba.Hero_shadow_demon.shadow_energy", self:GetParent())		
+	    StopSoundOn("Imba.Hero_shadow_demon.shadow_energy", self:GetParent())
 	end
 end
 modifier_imba_shadow_energy_debuff = class({})
@@ -935,7 +936,7 @@ function modifier_imba_shadow_energy_debuff:DeclareFunctions() return {MODIFIER_
 function modifier_imba_shadow_energy_debuff:GetAttributes() return MODIFIER_ATTRIBUTE_MULTIPLE + MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE end
 function modifier_imba_shadow_energy_debuff:OnCreated()
 	self.vision = self:GetAbility():GetSpecialValueFor("vision")
-	self.out_going = self:GetAbility():GetSpecialValueFor( "out_going" ) 
+	self.out_going = self:GetAbility():GetSpecialValueFor( "out_going" )
 	if IsServer() then
 	end
 end
@@ -945,7 +946,7 @@ end
 function modifier_imba_shadow_energy_debuff:GetModifierTotalDamageOutgoing_Percentage()
 	if self:GetParent():HasModifier("modifier_imba_disruption_damage") then
 		return nil
-	end 
+	end
 	return 0 - self.out_going
 end
 
@@ -956,32 +957,32 @@ function modifier_imba_life_thinker:IsHidden() 			return false end
 function modifier_imba_life_thinker:IsPurgable() 		return false end
 function modifier_imba_life_thinker:IsPurgeException() 	return false end
 function modifier_imba_life_thinker:IsStunDebuff() return true end
-function modifier_imba_life_thinker:CheckState() return 
+function modifier_imba_life_thinker:CheckState() return
 	{
-	[MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY] = true, 
-	[MODIFIER_STATE_NO_HEALTH_BAR] = true, 
-	[MODIFIER_STATE_NOT_ON_MINIMAP] = true, 
-	[MODIFIER_STATE_INVULNERABLE] = true, 
-	[MODIFIER_STATE_NO_UNIT_COLLISION] = true, 
-	[MODIFIER_STATE_OUT_OF_GAME] = true, 
-	[MODIFIER_STATE_UNSELECTABLE] = true, 
-	[MODIFIER_STATE_DISARMED] = true, 
+	[MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY] = true,
+	[MODIFIER_STATE_NO_HEALTH_BAR] = true,
+	[MODIFIER_STATE_NOT_ON_MINIMAP] = true,
+	[MODIFIER_STATE_INVULNERABLE] = true,
+	[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
+	[MODIFIER_STATE_OUT_OF_GAME] = true,
+	[MODIFIER_STATE_UNSELECTABLE] = true,
+	[MODIFIER_STATE_DISARMED] = true,
 	[MODIFIER_STATE_COMMAND_RESTRICTED] = true
-} 
+}
 end
-function modifier_imba_life_thinker:OnCreated() 
+function modifier_imba_life_thinker:OnCreated()
 	if IsServer() then
 	end
 end
 
 imba_shadow_demon_demonic_purge = class({})
 LinkLuaModifier("modifier_imba_demonic_purge_debuff", "linken/hero_shadow_demon.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_imba_demonic_purge_scepter", "linken/hero_shadow_demon.lua", LUA_MODIFIER_MOTION_NONE) 
+LinkLuaModifier("modifier_imba_demonic_purge_scepter", "linken/hero_shadow_demon.lua", LUA_MODIFIER_MOTION_NONE)
 function imba_shadow_demon_demonic_purge:GetIntrinsicModifierName() return "modifier_imba_demonic_purge_scepter" end
 function imba_shadow_demon_demonic_purge:GetCooldown(level)
 	local cooldown = self.BaseClass.GetCooldown(self, level)
 	local caster = self:GetCaster()
-	if caster:TG_HasTalent("special_bonus_imba_shadow_demon_8") then 
+	if caster:TG_HasTalent("special_bonus_imba_shadow_demon_8") then
 		return (cooldown + caster:TG_GetTalentValue("special_bonus_imba_shadow_demon_8"))
 	end
 	return cooldown
@@ -992,14 +993,14 @@ function imba_shadow_demon_demonic_purge:OnSpellStart(x)
 	local duration = self:GetSpecialValueFor("duration")
 	if target:TG_TriggerSpellAbsorb(self) then
 		return
-	end	
-	EmitSoundOn("Hero_ShadowDemon.DemonicPurge.Cast", caster) 
+	end
+	EmitSoundOn("Hero_ShadowDemon.DemonicPurge.Cast", caster)
 	if IsEnemy(caster, target) then
 		target:AddNewModifier_RS(caster, self, "modifier_imba_demonic_purge_debuff", {duration = duration})
 	else
 	 	target:AddNewModifier(caster, self, "modifier_imba_demonic_purge_debuff", {duration = duration})
-	end	
-	
+	end
+
 
 end
 modifier_imba_demonic_purge_debuff = class({})
@@ -1026,11 +1027,11 @@ function modifier_imba_demonic_purge_debuff:GetModifierMoveSpeedBonus_Percentage
 		return math.min(0-int, 0-self.min_slow)
 	else
 		return math.min(int, self.min_slow)
-	end	
-  	
+	end
+
 end
 function modifier_imba_demonic_purge_debuff:OnCreated()
-	self.purge_damage = self:GetAbility():GetSpecialValueFor("purge_damage") 
+	self.purge_damage = self:GetAbility():GetSpecialValueFor("purge_damage")
 	self.max_slow = self:GetAbility():GetSpecialValueFor("max_slow")
 	self.min_slow = self:GetAbility():GetSpecialValueFor("min_slow")
 	if IsServer() then
@@ -1040,8 +1041,8 @@ function modifier_imba_demonic_purge_debuff:OnCreated()
 		ParticleManager:SetParticleControl(self.pfx, 1, self:GetParent():GetAbsOrigin())
 		ParticleManager:SetParticleControl(self.pfx, 3, direction)
 		ParticleManager:SetParticleControl(self.pfx, 4, self:GetParent():GetAbsOrigin())
-		self:AddParticle(self.pfx, false, false, -1, false, false)	
-		EmitSoundOn("Hero_ShadowDemon.DemonicPurge.Impact", self:GetParent())		
+		self:AddParticle(self.pfx, false, false, -1, false, false)
+		EmitSoundOn("Hero_ShadowDemon.DemonicPurge.Impact", self:GetParent())
 		self:StartIntervalThink(FrameTime())
 		local ability = self:GetCaster():FindAbilityByName("imba_shadow_demon_shadow_energy")
 		local pos = self:GetParent():GetAbsOrigin() + self:GetParent():GetForwardVector() * 150
@@ -1058,7 +1059,7 @@ function modifier_imba_demonic_purge_debuff:OnCreated()
 				self:GetCaster():GetTeamNumber(),
 				false
 			)
-		end			
+		end
 	end
 end
 function modifier_imba_demonic_purge_debuff:OnIntervalThink()
@@ -1066,31 +1067,31 @@ function modifier_imba_demonic_purge_debuff:OnIntervalThink()
 		self:GetParent():Purge(true, false, false, false, false)
 	else
 		self:GetParent():Purge(false, true, false, false, false)
-	end	
+	end
 end
 function modifier_imba_demonic_purge_debuff:OnRemoved()
 	if not IsServer() then return end
 	if self.pfx then
     	ParticleManager:DestroyParticle(self.pfx, false)
     	ParticleManager:ReleaseParticleIndex(self.pfx)
-    end	
+    end
     if IsEnemy(self:GetParent(), self:GetCaster()) then
 		local damageTable = {victim = self:GetParent(),
 							attacker = self:GetCaster(),
 							damage = self.purge_damage,
-							damage_type = DAMAGE_TYPE_MAGICAL,  
-							damage_flags = DOTA_DAMAGE_FLAG_NONE, 
+							damage_type = DAMAGE_TYPE_MAGICAL,
+							damage_flags = DOTA_DAMAGE_FLAG_NONE,
 							ability = self:GetAbility()}
 		if self:GetParent():IsInvulnerable() and self:GetParent():HasModifier("modifier_imba_disruption") then
 			damageTable.damage_flags = DOTA_DAMAGE_FLAG_BYPASSES_INVULNERABILITY
-		end    
+		end
 		ApplyDamage(damageTable)
-	else	
-		self:GetParent():Heal(self.purge_damage, self:GetCaster()) 
+	else
+		self:GetParent():Heal(self.purge_damage, self:GetCaster())
 		SendOverheadEventMessage(nil, OVERHEAD_ALERT_HEAL, self:GetParent(), self.purge_damage, nil)
-	end		 
+	end
 	if self:GetParent():IsAlive() then
-		EmitSoundOn("Hero_ShadowDemon.DemonicPurge.Damage", self:GetParent())	
+		EmitSoundOn("Hero_ShadowDemon.DemonicPurge.Damage", self:GetParent())
 	end
 	local ability = self:GetCaster():FindAbilityByName("imba_shadow_demon_shadow_energy")
 	local pos = self:GetParent():GetAbsOrigin() + self:GetParent():GetForwardVector() * 150
@@ -1107,8 +1108,8 @@ function modifier_imba_demonic_purge_debuff:OnRemoved()
 			self:GetCaster():GetTeamNumber(),
 			false
 		)
-	end				  
-end	
+	end
+end
 --检测a杖给与充能
 modifier_imba_demonic_purge_scepter = class({})
 

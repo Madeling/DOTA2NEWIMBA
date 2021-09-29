@@ -1,33 +1,33 @@
 omni_slash=class({})
 LinkLuaModifier("modifier_omni_slash_buff", "heros/hero_juggernaut/omni_slash.lua", LUA_MODIFIER_MOTION_NONE)
 
-function omni_slash:IsHiddenWhenStolen() 
-    return false 
+function omni_slash:IsHiddenWhenStolen()
+    return false
 end
 
-function omni_slash:IsStealable() 
-    return true 
+function omni_slash:IsStealable()
+    return true
 end
 
-function omni_slash:IsRefreshable() 			
-    return true 
+function omni_slash:IsRefreshable()
+    return true
 end
 
 function omni_slash:CastFilterResultTarget(tg)
     local caster=self:GetCaster()
-    if  caster:HasModifier("modifier_blade_fury_buff") and not caster:HasModifier("modifier_item_aghanims_shard") then  
+    if  caster:HasModifier("modifier_blade_fury_buff") and not caster:HasModifier("modifier_item_aghanims_shard") then
         return UF_FAIL_CUSTOM
     end
-    if  tg:GetTeamNumber()==caster:GetTeamNumber() then  
+    if  tg:GetTeamNumber()==caster:GetTeamNumber() then
         return UF_FAIL_CUSTOM
     end
-    if IsServer() and  not tg:IsAlive() then  
+    if IsServer() and  not tg:IsAlive() then
         return UF_FAIL_DEAD
 	end
 end
 
-function omni_slash:GetCustomCastErrorTarget(tg) 
-    return "无法使用" 
+function omni_slash:GetCustomCastErrorTarget(tg)
+    return "无法使用"
 end
 
 
@@ -36,7 +36,7 @@ function omni_slash:OnSpellStart()
     local target=self:GetCursorTarget()
     local dur=self:GetSpecialValueFor("dur")+caster:TG_GetTalentValue("special_bonus_juggernaut_7")
     EmitSoundOn("Hero_Juggernaut.ArcanaTrigger", caster)
-    caster:Purge(false,true,false,false,false) 
+    caster:Purge(false,true,false,false,false)
     caster:AddNewModifier(caster, self, "modifier_omni_slash_buff",{duration=dur,target = target:entindex()})
     local p1 = ParticleManager:CreateParticle("particles/econ/items/juggernaut/jugg_arcana/juggernaut_arcana_v2_omni_dash.vpcf", PATTACH_CUSTOMORIGIN, nil)
     ParticleManager:SetParticleControlEnt(p1, 0, caster, PATTACH_ABSORIGIN, nil, caster:GetAbsOrigin(), true)
@@ -53,7 +53,7 @@ end
 
 function omni_slash:OnInventoryContentsChanged()
     local caster=self:GetCaster()
-    if caster:HasScepter() then 
+    if caster:HasScepter() then
         TG_Set_Scepter(caster,false,1,"swift_slash2")
     else
         TG_Set_Scepter(caster,true,1,"swift_slash2")
@@ -62,25 +62,25 @@ end
 
 modifier_omni_slash_buff=modifier_omni_slash_buff or class({})
 
-function modifier_omni_slash_buff:IsHidden()				
-    return false 
+function modifier_omni_slash_buff:IsHidden()
+    return false
 end
 
 
-function modifier_omni_slash_buff:IsPurgable() 			
-    return false 
+function modifier_omni_slash_buff:IsPurgable()
+    return false
 end
 
-function modifier_omni_slash_buff:IsPurgeException() 	
-    return false 
+function modifier_omni_slash_buff:IsPurgeException()
+    return false
 end
 
-function modifier_omni_slash_buff:GetStatusEffectName()  
-    return "particles/status_fx/status_effect_omnislash.vpcf" 
+function modifier_omni_slash_buff:GetStatusEffectName()
+    return "particles/status_fx/status_effect_omnislash.vpcf"
 end
 
-function modifier_omni_slash_buff:StatusEffectPriority() 
-    return 100 
+function modifier_omni_slash_buff:StatusEffectPriority()
+    return 100
 end
 
 
@@ -105,10 +105,7 @@ end
 function modifier_omni_slash_buff:OnIntervalThink()
     self:SetStackCount(self:GetRemainingTime())
     EmitSoundOn("Hero_Juggernaut.Attack", self.parent)
-    local X= math.random(self.target:GetAbsOrigin().x+500,self.target:GetAbsOrigin().x-500)
-    local Y= math.random(self.target:GetAbsOrigin().y+500,self.target:GetAbsOrigin().y-500)
-    local pos= Vector(X,Y,self.target:GetAbsOrigin().z)
-    FindClearSpaceForUnit(self.parent, pos, true)
+    FindClearSpaceForUnit(self.parent, self.target:GetAbsOrigin()+RandomVector(666), true)
     local dir= TG_Direction(self.target:GetAbsOrigin(),self.parent:GetAbsOrigin())
     local p1 = ParticleManager:CreateParticle("particles/econ/items/juggernaut/jugg_arcana/juggernaut_arcana_v2_omni_dash.vpcf", PATTACH_CUSTOMORIGIN, nil)
     ParticleManager:SetParticleControlEnt(p1, 0, self.parent, PATTACH_ABSORIGIN, nil, self.parent:GetAbsOrigin(), true)
@@ -131,7 +128,7 @@ function modifier_omni_slash_buff:OnIntervalThink()
     ParticleManager:SetParticleControl(pfx_trail, 0, self.parent:GetAbsOrigin())
     ParticleManager:SetParticleControl(pfx_trail, 1, self.target:GetAbsOrigin())
     ParticleManager:ReleaseParticleIndex(pfx_trail)
-    self.parent:PerformAttack(self.target, false, true, true, false, true, false, true)  
+    self.parent:PerformAttack(self.target, false, true, true, false, true, false, true)
 end
 
 function modifier_omni_slash_buff:OnDestroy()
@@ -146,7 +143,7 @@ function modifier_omni_slash_buff:OnDestroy()
     end
     if self.target~=nil then
         FindClearSpaceForUnit(self.parent, self.target:GetAbsOrigin(), true)
-    elseif self.end_pos~=nil then 
+    elseif self.end_pos~=nil then
         FindClearSpaceForUnit(self.parent, self.end_pos, true)
     else
         FindClearSpaceForUnit(self.parent, self.parent:GetAbsOrigin(), true)
@@ -167,7 +164,7 @@ function modifier_omni_slash_buff:OnDeath(tg)
             self:SetStackCount(time-1)
             self:SetDuration(time, true)
         end
-            local enemies = FindUnitsInRadius(tg.attacker:GetTeamNumber(), tg.unit:GetAbsOrigin(), nil,700 , DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_FARTHEST, false)
+            local enemies = FindUnitsInRadius(tg.attacker:GetTeamNumber(), tg.unit:GetAbsOrigin(), nil,800 , DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_FARTHEST, false)
             if  #enemies>0 then
                  self.target=enemies[RandomInt(1, #enemies)]
                  if (self.target==nil or not self.target:IsAlive()) and tg.attacker:HasModifier("modifier_omni_slash_buff") then
@@ -183,27 +180,27 @@ function modifier_omni_slash_buff:OnDeath(tg)
     end
 end
 
-function modifier_omni_slash_buff:CheckState() 
-    return 
+function modifier_omni_slash_buff:CheckState()
+    return
     {
-        [MODIFIER_STATE_INVULNERABLE] = true, 
-        [MODIFIER_STATE_NO_HEALTH_BAR] = true, 
-        [MODIFIER_STATE_NO_UNIT_COLLISION] = true, 
-    } 
+        [MODIFIER_STATE_INVULNERABLE] = true,
+        [MODIFIER_STATE_NO_HEALTH_BAR] = true,
+        [MODIFIER_STATE_NO_UNIT_COLLISION] = true,
+    }
 end
 
-function modifier_omni_slash_buff:DeclareFunctions() 
-    return 
-    { 
+function modifier_omni_slash_buff:DeclareFunctions()
+    return
+    {
         MODIFIER_PROPERTY_OVERRIDE_ANIMATION,
-        MODIFIER_EVENT_ON_DEATH, 
-    } 
+        MODIFIER_EVENT_ON_DEATH,
+    }
 end
 
-function modifier_omni_slash_buff:GetModifierMoveSpeed_Absolute() 
-    return 1 
+function modifier_omni_slash_buff:GetModifierMoveSpeed_Absolute()
+    return 1
 end
 
-function modifier_omni_slash_buff:GetOverrideAnimation() 
-    return ACT_DOTA_OVERRIDE_ABILITY_4 
+function modifier_omni_slash_buff:GetOverrideAnimation()
+    return ACT_DOTA_OVERRIDE_ABILITY_4
 end

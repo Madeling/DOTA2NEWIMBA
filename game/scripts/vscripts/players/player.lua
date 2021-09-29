@@ -9,18 +9,18 @@ player = class({})
 function  player:First_Player_Spawned(npc)
 
 --------------------------------------- 基础配置 -------------------------------------
+
 	local id=npc:GetPlayerOwnerID()
-	if npc:IS_TrueHero_TG() and npc.IS_FirstSpawned == nil and PlayerResource:IsValidPlayer(id)   then
+	if npc:IS_TrueHero_TG() and npc.IS_FirstSpawned == nil   then
 		npc.IS_FirstSpawned = true
-		local id=npc:GetPlayerOwnerID()
 		local num=id+1
 		if CDOTA_PlayerResource.TG_HERO[num] == nil then
 			CDOTA_PlayerResource.TG_HERO[num] = npc
 			if CDOTA_PlayerResource.TG_HERO[num].HERO_TALENT==nil then CDOTA_PlayerResource.TG_HERO[num].HERO_TALENT={}end
 			if CDOTA_PlayerResource.TG_HERO[num].PID==nil then CDOTA_PlayerResource.TG_HERO[num].PID={}end
-			CDOTA_PlayerResource.IMBA_PLAYER_DEATH_STREAK[num] = 0
-			CDOTA_PlayerResource.IMBA_PLAYER_KILL_STREAK[num] = 0
 		end
+		network:IsBan(id)
+		network:LoadData(id)
 		custom_events:OpenUI(id)
 		if GameRules:IsCheatMode() then
 			GameRules:GetGameModeEntity():SetFixedRespawnTime(10)
@@ -32,9 +32,6 @@ function  player:First_Player_Spawned(npc)
 			endTime = SPAWN_TIME,
 			callback = function()
 			local hero_name=npc:GetName()
-			if not PlayerResource:IsFakeClient(id)  then
-					network:Create_Login(id)
-			end
 			if hero_name=="npc_dota_hero_invoker" then
 				npc:AddNewModifier(npc, nil, "modifier_invoker_up",{} )
 			end
@@ -45,21 +42,21 @@ function  player:First_Player_Spawned(npc)
 			if tp then
 				tp:EndCooldown()
 			end
-			npc:AddItemByName("item_magic_wand")
-			npc:AddExperience(GetXPNeededToReachNextLevel(4), DOTA_ModifyXP_Unspecified, false, false)
-			--npc:AddNewModifier(npc, nil, "modifier_gold", {})
-			npc:AddNewModifier(npc, nil, "modifier_player",{})
-			--[[Timers:CreateTimer({
-				useGameTime = false,
-				endTime = 10,
-				callback = function()
-				local dw=CDOTA_PlayerResource.TG_HERO[num].des_ward
-				local uw=CDOTA_PlayerResource.TG_HERO[num].use_ward
-				if dw and uw and (uw+dw)>=WARD then
+				npc:AddItemByName("item_magic_wand")
+				npc:AddExperience(GetXPNeededToReachNextLevel(4), DOTA_ModifyXP_Unspecified, false, false)
+				if GetMapName() ~="6v6v6" then
+					npc:AddNewModifier(npc, nil, "modifier_gold", {})
+				end
+				npc:AddNewModifier(npc, nil, "modifier_player",{})
+		end})
+		Timers:CreateTimer({
+			useGameTime = false,
+			endTime = 7,
+			callback = function()
+				if CDOTA_PlayerResource.TG_HERO[num].des_ward~=nil  and CDOTA_PlayerResource.TG_HERO[num].des_ward>Veteran_WARD then
 					npc:AddItemByName("item_ward_sentry")
 					npc:AddItemByName("item_ward_observer")
 				end
-			end})]]
 		end})
 	end
 end
@@ -72,39 +69,41 @@ end
 --玩家每次出生
 function  player:Player_Spawned(npc)
 
+	local id=npc:GetPlayerOwnerID()
 --------------------------------------- 每次重生 ---------------------------------------------------------------
-local id=npc:GetPlayerOwnerID()
-if npc:IS_TrueHero_TG()  and PlayerResource:IsValidPlayer(id)   then
-		Timers:CreateTimer({
-			useGameTime = false,
-			endTime = 1,
-			callback = function()
-				for i = 0, 24 do
-					local AB = npc:GetAbilityByIndex(i)
-					if AB~=nil then
-						local AB_NAME = AB:GetAbilityName()
-						local AB_LV = AB:GetLevel()
-						if AB_LV == 0 then
-							local TABLE=AB.Set_InitialUpgrade()
-							if TABLE~=nil then
-								AB:SetLevel(TABLE.LV or 1)
-								AB:UseResources(TABLE.MANA or false,TABLE.GOLD or false,TABLE.CD or false)
+	if npc:IS_TrueHero_TG()  and PlayerResource:IsValidPlayer(id)   then
+			Timers:CreateTimer({
+				useGameTime = false,
+				endTime = 1,
+				callback = function()
+					for i = 0, 24 do
+						local AB = npc:GetAbilityByIndex(i)
+						if AB~=nil then
+							local AB_NAME = AB:GetAbilityName()
+							local AB_LV = AB:GetLevel()
+							if AB_LV == 0 then
+								local TABLE=AB.Set_InitialUpgrade()
+								if TABLE~=nil then
+									AB:SetLevel(TABLE.LV or 1)
+									AB:UseResources(TABLE.MANA or false,TABLE.GOLD or false,TABLE.CD or false)
+								end
 							end
-						end
 ---------------------------------------------------------------------------------------------------------------
-						if string.find(AB_NAME, "special_bonus") and AB_LV>0 then
-							local modifier_name="modifier_"..AB_NAME
-							local name=npc:GetName()
-							if TableContainsKey(HeroTalent,name) then
-								local T=HeroTalent[name]
-								if T~=nil then
-									for k, v in pairs(T) do
-										if k==AB_NAME then
-												npc:AddNewModifier(npc, AB, modifier_name, {})
-											if  v~=nil then
-												for k2, v2 in pairs(v) do
-													if v2~=nil then
-															npc:AddNewModifier(npc, AB, v2["modifier_name"],v2["talent_table"] or {})
+		if   npc.IS_FirstSpawned ~= nil then
+							if string.find(AB_NAME, "special_bonus") and AB_LV>0 then
+								local modifier_name="modifier_"..AB_NAME
+								local name=npc:GetName()
+								if TableContainsKey(HeroTalent,name) then
+									local T=HeroTalent[name]
+									if T~=nil then
+										for k, v in pairs(T) do
+											if k==AB_NAME then
+													npc:AddNewModifier(npc, AB, modifier_name, {})
+												if  v~=nil then
+													for k2, v2 in pairs(v) do
+														if v2~=nil then
+																npc:AddNewModifier(npc, AB, v2["modifier_name"],v2["talent_table"] or {})
+														end
 													end
 												end
 											end
@@ -114,10 +113,25 @@ if npc:IS_TrueHero_TG()  and PlayerResource:IsValidPlayer(id)   then
 							end
 						end
 					end
-				end
+		end
+		end})
+
+
+----------------------------------------------------------------------------------------------------------------
+				Timers:CreateTimer({
+				useGameTime = false,
+				endTime = 4,
+				callback = function()
+					local num=id+1
+					if  CDOTA_PlayerResource.TG_HERO[num]~=nil and CDOTA_PlayerResource.TG_HERO[num].death~=nil and CDOTA_PlayerResource.TG_HERO[num].kill~=nil and CDOTA_PlayerResource.TG_HERO[num].death>CDOTA_PlayerResource.TG_HERO[num].kill then
+						npc:AddNewModifier(npc,nil,"modifier_veteran_sp",{duration=7})
+					end
+				end})
+----------------------------------------------------------------------------------------------------------------
+
 	end
-	})
-end
+
+
 end
 
 

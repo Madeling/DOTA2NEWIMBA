@@ -18,22 +18,25 @@ function select_skills(data) {
         var t1 = create_ab("Label", hsk, "Author", "AuthorC", hsk);
         var aut = data[1][index]["Author"]
         var hero_name = Players.GetPlayerSelectedHero(plid);
-        t.text = "选择";
-        t1.text = "介绍";
+        t.text = $.Localize("#Skills_Select");
+        t1.text = $.Localize("#Skills_Desc");
         t1.html = true;
         t1.hittest = true;
         t.html = true;
         t.hittest = true;
         add_select_events(t, index);
-        if (aut != null) {
+        if (aut != null)
+        {
             var n1 = aut["name"];
             var p1 = aut["portrait"];
             var tip1 = n1 == "Valve" ? $.Localize("#Valve_Hero_Tip") : aut["tip"];
-            add_author_events(t1, (n1 == null || n1 == "") ? "无作者" : n1, (p1 == null || p1 == "") ? "file://{images}/heroes/" + hero_name + ".png" : p1, (tip1 == null || tip1 == "") ? "无介绍" : tip1);
+            add_author_events(t1, (n1 == null || n1 == "") ? $.Localize("#No_Skills_Select") : n1, (p1 == null || p1 == "") ? "file://{images}/heroes/" + hero_name + ".png" : p1, (tip1 == null || tip1 == "") ? $.Localize("#No_Skills_Desc") : tip1);
         }
-        for (var index1 = 1; index1 < 10; index1++) {
+        for (var index1 = 1; index1 < 10; index1++)
+        {
             var name = data[1][index][index1]
-            if (name == null || name == "generic_hidden") {
+            if (name == null || name == "generic_hidden")
+            {
                 continue;
             }
             var ab = create_ab("DOTAAbilityImage", hsk, "HERO_AB", "HERO_ABC", hsk);

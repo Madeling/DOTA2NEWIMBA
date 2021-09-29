@@ -7,7 +7,7 @@ function item_abyssal_blade_v2:GetIntrinsicModifierName()return "modifier_item_a
 end
 
 function item_abyssal_blade_v2:OnSpellStart()
-        local t1 = GetSystemTimeMS()
+       -- local t1 = GetSystemTimeMS()
         self.caster=self.caster or self:GetCaster()
         self.stun_m=self.stun_m or self:GetSpecialValueFor("stun_m")
         self.pa_dur=self.pa_dur or self:GetSpecialValueFor("pa_dur")
@@ -20,8 +20,8 @@ function item_abyssal_blade_v2:OnSpellStart()
         target:AddNewModifier_RS(self.caster, self, "modifier_item_abyssal_blade_v2_debuff", {duration=self.stun_m})
         target:AddNewModifier_RS(self.caster, self, "modifier_item_abyssal_blade_v2_debuff2", {duration=self.pa_dur})
        self.caster:MoveToPositionAggressive(tpos)
-       local t2 =GetSystemTimeMS()
-       print(string.format("time: %.10f\n", t2 - t1))
+      -- local t2 =GetSystemTimeMS()
+       --print(string.format("time: %.10f\n", t2 - t1))
 end
 
 modifier_item_abyssal_blade_v2_pa = class({})

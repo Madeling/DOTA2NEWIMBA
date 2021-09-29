@@ -19,8 +19,8 @@ function imba_riki_smoke_screen:IsHiddenWhenStolen()	return false end
 function imba_riki_smoke_screen:IsRefreshable()			return true end
 function imba_riki_smoke_screen:IsStealable() 			return true end
 function imba_riki_smoke_screen:IsNetherWardStealable()	return false end
-function imba_riki_smoke_screen:GetCastRange(location, target)
-	return self.BaseClass.GetCastRange(self, location, target) + self:GetCaster():GetCastRangeBonus()
+function imba_riki_smoke_screen:GetCastRange(location, target) --已经计算过额外施法距离
+	return self.BaseClass.GetCastRange(self, location, target)
 end
 function imba_riki_smoke_screen:GetAOERadius(iLevel)
 	return self:GetSpecialValueFor("radius") + self:GetCaster():TG_GetTalentValue("special_bonus_imba_riki_1")
@@ -73,7 +73,7 @@ function imba_riki_smoke_screen:OnSpellStart()
 			smoke_particle = "particles/econ/items/riki/riki_head_ti8_gold/riki_smokebomb_ti8_gold.vpcf"
 		elseif mode_type == 3 then 
 			smoke_particle = "particles/econ/items/riki/riki_head_ti8/riki_smokebomb_ti8.vpcf"
-			aoe = aoe + caster:GetCastRangeBonus()
+			--aoe = aoe + caster:GetCastRangeBonus()  不再享受施法距离增益
 		end
 
 		EmitSoundOnLocationWithCaster(target_point, smoke_sound, caster)
@@ -163,7 +163,7 @@ function modifier_imba_smoke_screen_aura:OnCreated(keys)
 	end
 end
 function modifier_imba_smoke_screen_aura:OnIntervalThink()
-	if self.caster:TG_HasTalent("special_bonus_imba_riki_4") and self.parent.bFollow == 1 then 
+	if self.caster:TG_HasTalent("special_bonus_imba_riki_4") and self.parent.bFollow == 1 and not self.parent.target:IsNull() then 
 		self.parent:SetOrigin(self.parent.target:GetAbsOrigin())
 	end
 	self.Interval = self.Interval + FrameTime()

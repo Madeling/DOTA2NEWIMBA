@@ -99,15 +99,14 @@
 #TeamScorePanel {
     margin-top: 1px;
     margin-left: 286px;
-    width: 49px;
+    width: 99px;
     height: 100%;
-    //background-color: BACKGROUND_COLOR;
     background-color: #000000d2;
 }
 
 .Legend {
     flow-children: right;
-    margin-left: 37px;
+   // margin-left: 10px;
 }
 
 .Legend Label {
@@ -183,6 +182,7 @@
     text-align: center;
     margin-top: 3px;
     width: 100%;
+    color: #FFFFFF;
 }
 
 #PlayerName {
@@ -192,9 +192,12 @@
     margin-top: 2px;
     white-space: nowrap;
 }
+.is_local_player #PlayerName {
+    color: #ffd900;
+}
 
 #HeroNameAndDescription {
-    color: #CDC9C999;
+    color: #e6e6e6bc;
     font-size: 13px;
     text-shadow: 2px 2px 2px black;
     margin-top: 1px;
@@ -253,24 +256,19 @@
 }
 
 #RDSKButton {
-    margin-right: 0px;
-    margin-top: 0px;
-    horizontal-align: right;
-    vertical-align: bottom;
     width: 30px;
     height: 30px;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    opacity: 1;
+    vertical-align: center;
+    horizontal-align: center;
 }
+
 
 .is_local_player #Kills,
 .is_local_player #Deaths,
 .is_local_player #Assists,
 .is_local_player #Level,
 .is_local_player #HeroName {
-    color: white;
+    color: rgb(255, 217, 0);
 }
 
 .ScoreCol_TeamInfo {
@@ -285,17 +283,14 @@
     width: 53px;
 }
 
-.ScoreCol_TeamScore {
-    width: 50px;
-    text-align: center;
-}
 
+
+.ScoreCol_TeamScore,
 .ScoreCol_Kills,
 .ScoreCol_Deaths,
 .ScoreCol_Assists,
 .ScoreCol_Golds,
-.ScoreCol_RDSK,
 .ScoreCol_Mute {
-    width: 70px;
+    width: 100px;
     text-align: center;
 }

@@ -63,7 +63,7 @@ function modifier_flak_cannon_pa:OnCreated(tg)
     if not IsServer() then
         return
     end
-  self:StartIntervalThink(1.8)
+  self:StartIntervalThink(1.6)
 end
 
 
@@ -125,7 +125,8 @@ function modifier_flak_cannon:DeclareFunctions()
     {
         MODIFIER_PROPERTY_ATTACK_RANGE_BONUS,
         MODIFIER_PROPERTY_BONUS_DAY_VISION,
-        MODIFIER_EVENT_ON_ATTACK_LANDED
+        MODIFIER_EVENT_ON_ATTACK_LANDED,
+        MODIFIER_PROPERTY_BONUS_NIGHT_VISION
     }
 end
 
@@ -137,26 +138,27 @@ function modifier_flak_cannon:GetBonusDayVision()
     return self.DAYV
 end
 
+function modifier_flak_cannon:GetBonusNightVision()
+    if self:GetCaster():TG_HasTalent("special_bonus_gyrocopter_5") then
+    return 1000
+    end
+    return 0
+end
+
+
 function modifier_flak_cannon:OnCreated(tg)
     self.ATTRG=self:GetAbility():GetSpecialValueFor( "attrg" )
     self.DAYV=self:GetAbility():GetSpecialValueFor( "dayv" )
     self.rd=self:GetAbility():GetSpecialValueFor( "rd" )
+    self.NUM=self:GetAbility():GetSpecialValueFor( "num" )
     if not IsServer() then
         return
     end
-    self.NUM=self:GetAbility():GetSpecialValueFor( "num" )+self:GetParent():TG_GetTalentValue("special_bonus_imba_gyrocopter_1")
     self:SetStackCount( self.NUM)
 end
 
 function modifier_flak_cannon:OnRefresh(tg)
-    self.ATTRG=self:GetAbility():GetSpecialValueFor( "attrg" )
-    self.DAYV=self:GetAbility():GetSpecialValueFor( "dayv" )
-    self.rd=self:GetAbility():GetSpecialValueFor( "rd" )
-    if not IsServer() then
-        return
-    end
-    self.NUM=self:GetAbility():GetSpecialValueFor( "num" )+self:GetParent():TG_GetTalentValue("special_bonus_imba_gyrocopter_1")
-    self:SetStackCount( self.NUM)
+    self:OnCreated(tg)
 end
 
 
@@ -187,7 +189,7 @@ function modifier_flak_cannon:OnAttackLanded(tg)
                         Ability = self:GetAbility(),
                         iSourceAttachment = RollPseudoRandomPercentage(50,0,self:GetAbility()) and DOTA_PROJECTILE_ATTACHMENT_ATTACK_1 or DOTA_PROJECTILE_ATTACHMENT_ATTACK_2,
                         EffectName ="particles/tgp/gyrocopter/flak_cannon1.vpcf",
-                        iMoveSpeed = self:GetAbility():GetSpecialValueFor( "psp" ),
+                        iMoveSpeed = self:GetParent():TG_HasTalent("special_bonus_gyrocopter_4") and 2500 or self:GetAbility():GetSpecialValueFor( "psp" ),
                         bDrawsOnMinimap = false,
                         bDodgeable = true,
                         bIsAttack = false,

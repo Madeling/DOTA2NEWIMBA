@@ -3,35 +3,35 @@ LinkLuaModifier("modifier_enchanted_edge_pa", "items/item_enchanted_edge.lua", L
 LinkLuaModifier("modifier_enchanted_edge_buff", "items/item_enchanted_edge.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_enchanted_edge_debuff", "items/item_enchanted_edge.lua", LUA_MODIFIER_MOTION_NONE)
 
-function item_enchanted_edge:IsRefreshable() 			
-    return true 
+function item_enchanted_edge:IsRefreshable()
+    return true
 end
 
-function item_enchanted_edge:GetIntrinsicModifierName() 
+function item_enchanted_edge:GetIntrinsicModifierName()
     if self:GetCaster():IsRangedAttacker() then
         return ""
     else
-        return "modifier_enchanted_edge_pa" 
+        return "modifier_enchanted_edge_pa"
     end
 end
 
 modifier_enchanted_edge_pa = class({})
 
 
-function modifier_enchanted_edge_pa:IsHidden() 			
-    return true 
+function modifier_enchanted_edge_pa:IsHidden()
+    return true
 end
 
-function modifier_enchanted_edge_pa:IsPurgable() 			
-    return false 
+function modifier_enchanted_edge_pa:IsPurgable()
+    return false
 end
 
-function modifier_enchanted_edge_pa:IsPurgeException() 	
-    return false 
+function modifier_enchanted_edge_pa:IsPurgeException()
+    return false
 end
 
-function modifier_enchanted_edge_pa:AllowIllusionDuplicate() 	
-    return false 
+function modifier_enchanted_edge_pa:AllowIllusionDuplicate()
+    return false
 end
 
 
@@ -41,30 +41,30 @@ function modifier_enchanted_edge_pa:OnCreated()
     end
     self.ability=self:GetAbility()
     self.stats=self.ability:GetSpecialValueFor("stats") or 0
-    self.AttackSpeed=self.ability:GetSpecialValueFor("AttackSpeed") or 0 
-    self.mana=self.ability:GetSpecialValueFor("mana") or 0 
-    self.att_dis=self.ability:GetSpecialValueFor( "att_dis" ) or 0 
-    self.att=self.ability:GetSpecialValueFor("att") or 0 
-    self.attr=self.ability:GetSpecialValueFor("attr") or 0 
+    self.AttackSpeed=self.ability:GetSpecialValueFor("AttackSpeed") or 0
+    self.mana=self.ability:GetSpecialValueFor("mana") or 0
+    self.att_dis=self.ability:GetSpecialValueFor( "att_dis" ) or 0
+    self.att=self.ability:GetSpecialValueFor("att") or 0
+    self.attr=self.ability:GetSpecialValueFor("attr") or 0
 end
 
 
-function modifier_enchanted_edge_pa:DeclareFunctions() 
-    return 
+function modifier_enchanted_edge_pa:DeclareFunctions()
+    return
     {
-        MODIFIER_PROPERTY_STATS_INTELLECT_BONUS, 
-        MODIFIER_PROPERTY_STATS_STRENGTH_BONUS, 
-        MODIFIER_PROPERTY_STATS_AGILITY_BONUS, 
+        MODIFIER_PROPERTY_STATS_INTELLECT_BONUS,
+        MODIFIER_PROPERTY_STATS_STRENGTH_BONUS,
+        MODIFIER_PROPERTY_STATS_AGILITY_BONUS,
         MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
         MODIFIER_PROPERTY_MANA_REGEN_CONSTANT,
         MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
         MODIFIER_EVENT_ON_ATTACK,
         MODIFIER_PROPERTY_ATTACK_RANGE_BONUS,
         MODIFIER_EVENT_ON_DEATH
-    } 
+    }
 end
 
-function modifier_enchanted_edge_pa:OnAttack(tg) 
+function modifier_enchanted_edge_pa:OnAttack(tg)
     if not IsServer() or tg.attacker:IsIllusion() then
         return
     end
@@ -74,7 +74,7 @@ function modifier_enchanted_edge_pa:OnAttack(tg)
     end
 end
 
-function modifier_enchanted_edge_pa:OnDeath(tg) 
+function modifier_enchanted_edge_pa:OnDeath(tg)
     if not IsServer() or tg.attacker:IsIllusion() then
         return
     end
@@ -83,60 +83,60 @@ function modifier_enchanted_edge_pa:OnDeath(tg)
     end
 end
 
-function modifier_enchanted_edge_pa:GetModifierAttackRangeBonus() 
+function modifier_enchanted_edge_pa:GetModifierAttackRangeBonus()
     return self.attr
 end
 
-function modifier_enchanted_edge_pa:GetModifierBonusStats_Intellect() 
+function modifier_enchanted_edge_pa:GetModifierBonusStats_Intellect()
     return  self.stats
 end
 
-function modifier_enchanted_edge_pa:GetModifierBonusStats_Agility() 
+function modifier_enchanted_edge_pa:GetModifierBonusStats_Agility()
     return  self.stats
 end
 
-function modifier_enchanted_edge_pa:GetModifierBonusStats_Strength() 
+function modifier_enchanted_edge_pa:GetModifierBonusStats_Strength()
     return  self.stats
 end
 
-function modifier_enchanted_edge_pa:GetModifierAttackSpeedBonus_Constant() 
+function modifier_enchanted_edge_pa:GetModifierAttackSpeedBonus_Constant()
     return self.AttackSpeed
 end
 
-function modifier_enchanted_edge_pa:GetModifierPreAttack_BonusDamage() 
-    return self.att 
+function modifier_enchanted_edge_pa:GetModifierPreAttack_BonusDamage()
+    return self.att
 end
 
-function modifier_enchanted_edge_pa:GetModifierConstantManaRegen() 
-    return self.mana 
+function modifier_enchanted_edge_pa:GetModifierConstantManaRegen()
+    return self.mana
 end
 
 
 modifier_enchanted_edge_buff= class({})
 
 
-function modifier_enchanted_edge_buff:IsHidden() 			
-    return false 
+function modifier_enchanted_edge_buff:IsHidden()
+    return false
 end
 
-function modifier_enchanted_edge_buff:IsPurgable() 			
-    return false 
+function modifier_enchanted_edge_buff:IsPurgable()
+    return false
 end
 
-function modifier_enchanted_edge_buff:IsPurgeException() 	
-    return false 
+function modifier_enchanted_edge_buff:IsPurgeException()
+    return false
 end
 
-function modifier_enchanted_edge_buff:AllowIllusionDuplicate() 	
-    return false 
+function modifier_enchanted_edge_buff:AllowIllusionDuplicate()
+    return false
 end
 
-function modifier_enchanted_edge_buff:DeclareFunctions() 
-    return 
+function modifier_enchanted_edge_buff:DeclareFunctions()
+    return
     {
         MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
         MODIFIER_EVENT_ON_ATTACK_LANDED
-    } 
+    }
 end
 
 function modifier_enchanted_edge_buff:OnCreated()
@@ -146,7 +146,7 @@ function modifier_enchanted_edge_buff:OnCreated()
     end
     self.ability=self:GetAbility()
     self.attsp= self.ability:GetSpecialValueFor("attsp")
-    self.dam=self.ability:GetSpecialValueFor("dam") 
+    self.dam=self.ability:GetSpecialValueFor("dam")
     self.damageTable1 = {
         attacker = self.parent,
         damage = self.dam,
@@ -156,7 +156,7 @@ function modifier_enchanted_edge_buff:OnCreated()
 end
 
 
-function modifier_enchanted_edge_buff:OnAttackLanded(tg) 	
+function modifier_enchanted_edge_buff:OnAttackLanded(tg)
     if not IsServer() or tg.attacker:IsIllusion() then
         return
     end
@@ -167,31 +167,31 @@ function modifier_enchanted_edge_buff:OnAttackLanded(tg)
     end
 end
 
-function modifier_enchanted_edge_buff:GetModifierAttackSpeedBonus_Constant() 
+function modifier_enchanted_edge_buff:GetModifierAttackSpeedBonus_Constant()
     return self.attsp
 end
 
 modifier_enchanted_edge_debuff= class({})
 
 
-function modifier_enchanted_edge_debuff:IsHidden() 			
-    return false 
+function modifier_enchanted_edge_debuff:IsHidden()
+    return false
 end
 
-function modifier_enchanted_edge_debuff:IsPurgable() 			
-    return false 
+function modifier_enchanted_edge_debuff:IsPurgable()
+    return false
 end
 
-function modifier_enchanted_edge_debuff:IsPurgeException() 	
-    return false 
+function modifier_enchanted_edge_debuff:IsPurgeException()
+    return false
 end
 
 
-function modifier_enchanted_edge_debuff:DeclareFunctions() 
-    return 
+function modifier_enchanted_edge_debuff:DeclareFunctions()
+    return
     {
         MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE
-    } 
+    }
 end
 
 function modifier_enchanted_edge_debuff:GetModifierMoveSpeedBonus_Percentage()

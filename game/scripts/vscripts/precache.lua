@@ -23,6 +23,7 @@ function Awake()
     LinkLuaModifier("modifier_paralyzed", "modifier/other/modifier_paralyzed.lua", LUA_MODIFIER_MOTION_NONE )
     LinkLuaModifier("modifier_truesight_f", "modifier/other/modifier_truesight_f.lua", LUA_MODIFIER_MOTION_NONE )
     LinkLuaModifier("modifier_kill_illusion", "modifier/other/modifier_kill_illusion.lua", LUA_MODIFIER_MOTION_NONE )
+    LinkLuaModifier("modifier_home", "modifier/other/modifier_home.lua", LUA_MODIFIER_MOTION_NONE )
     LinkLuaModifier("modifier_imba_meepo_clone_controller", "linken/hero_meepo.lua", LUA_MODIFIER_MOTION_NONE )
     LinkLuaModifier("modifier_imba_stunned", "modifier/old_imba/modifier_imba_stunned.lua", LUA_MODIFIER_MOTION_NONE )
     LinkLuaModifier("modifier_imba_bashed", "modifier/old_imba/modifier_imba_stunned.lua", LUA_MODIFIER_MOTION_NONE )
@@ -37,4 +38,8 @@ function Awake()
     LinkLuaModifier("modifier_animation_freeze", "libraries/modifiers/modifier_animation_freeze.lua", LUA_MODIFIER_MOTION_NONE )
     LinkLuaModifier("modifier_animation_translate", "libraries/modifiers/modifier_animation_translate.lua", LUA_MODIFIER_MOTION_NONE )
     LinkLuaModifier("modifier_animation_translate_permanent", "libraries/modifiers/modifier_animation_translate_permanent.lua", LUA_MODIFIER_MOTION_NONE )
+
+
+    LinkLuaModifier("modifier_dfinv", "modifier/player/modifier_dfinv.lua", LUA_MODIFIER_MOTION_NONE )
+    LinkLuaModifier("modifier_veteran_sp", "modifier/veteran/modifier_veteran_sp.lua", LUA_MODIFIER_MOTION_NONE )
 end

@@ -336,7 +336,7 @@
 		"HasScepterUpgrade"	"1"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
 	}
-	// 密林奔走1.6攻击间隔
+	// 密林奔走1.5攻击间隔
 	"special_bonus_imba_hoodwink_3"
 	{
 		// General
@@ -351,7 +351,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"value"	"1.6"
+				"value"	"1.5"
 			}
 		}
 		"LinkedAbility"
@@ -522,7 +522,7 @@
 			"06"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"max_damage"				"800 1200 1600"
+				"max_damage"				"600 900 1200"
 			}
 			"07"
 			{

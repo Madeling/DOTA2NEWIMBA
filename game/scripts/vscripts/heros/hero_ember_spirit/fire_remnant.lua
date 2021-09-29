@@ -39,13 +39,13 @@ function fire_remnant:OnSpellStart()
     local duration = self:GetSpecialValueFor("duration")
 	local cur_pos = self:GetCursorPosition()
 	local dis = TG_Distance(pos,cur_pos)
-    local dir = TG_Direction(cur_pos+Vector(1,1,1),pos)
+    local dir = TG_Direction(cur_pos,pos)
     if caster.fire_remnantTB==nil  then
         caster.fire_remnantTB={}
         caster:AddNewModifier(caster, self, "modifier_fire_remnant_num", {})
     end
     EmitSoundOn("Hero_EmberSpirit.FireRemnant.Cast", caster)
-    local ESR=CreateUnitByName("npc_dota_ember_spirit_remnant", pos, true, nil, nil,caster:GetTeamNumber())
+    local ESR=CreateUnitByName("npc_dota_ember_spirit_remnant", pos+dir*100, true, nil, nil,caster:GetTeamNumber())
     ESR:AddNewModifier(caster, self, "modifier_kill", {duration = duration})
     ESR:AddNewModifier(caster, self, "modifier_fire_remnant_hb", {})
     table.insert (caster.fire_remnantTB,#caster.fire_remnantTB+1, ESR)
@@ -64,7 +64,6 @@ function fire_remnant:OnSpellStart()
 		Source = caster,
 		bHasFrontalCone = false,
 		bReplaceExisting = false,
-		bDeleteOnHit = true,
 		vVelocity = dir * 3000,
         bProvidesVision = false,
         ExtraData = {ESR=ESR:entindex()}

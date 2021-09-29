@@ -14,7 +14,7 @@ function powershot:IsRefreshable()
 end
 
 function powershot:OnAbilityPhaseStart()
-    self.caster=self:GetCaster()
+    	self.caster=self:GetCaster()
 	self.caster_pos = self.caster:GetAbsOrigin()
 	self.caster:EmitSound("Ability.PowershotPull")
 	self.caster:AddActivityModifier("stinger")
@@ -37,7 +37,7 @@ end
 
 function powershot:OnSpellStart()
 	local curpos = self:GetCursorPosition()
-	local dir=TG_Direction(curpos+Vector(1,1,1),self.caster_pos)
+	local dir=curpos==self.caster_pos and self.caster:GetForwardVector() or TG_Direction(curpos,self.caster_pos)
 	local sp=self:GetSpecialValueFor( "sp1" )
 	local rg=self.caster:Has_Aghanims_Shard() and 25000 or self:GetSpecialValueFor( "rg" )
 	local wh=self:GetSpecialValueFor( "wh" )

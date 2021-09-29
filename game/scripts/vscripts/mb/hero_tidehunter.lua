@@ -74,11 +74,12 @@ function imba_tidehunter_gush:OnSpellStart()
 	dummy.hit_table = {}
 	dummy:EmitSound(gush_sound)
 	-- 直线抛射物
-	local direction	= (target_pos - caster_pos):Normalized()
+	--local direction	= (target_pos - caster_pos):Normalized()
+	local direction = (target_pos ~= caster_pos and (target_pos - caster_pos):Normalized()) or caster:GetForwardVector()
 		direction.z = 0
 	local info = {
 		Ability				= self,
-		EffectName			= "particles/units/heroes/hero_tidehunter/tidehunter_gush_upgrade.vpcf", -- Might not do anything
+		EffectName			= "particles/units/heroes/hero_tidehunter/tidehunter_gush_upgrade.vpcf",
 		vSpawnOrigin		= caster_pos,
 		fDistance			= self:GetCastRange(caster_pos,caster) + caster:GetCastRangeBonus(),
 		fStartRadius		= self:GetSpecialValueFor("aoe") + caster:TG_GetTalentValue("special_bonus_imba_tidehunter_5"),
@@ -517,6 +518,7 @@ function modifier_imba_tidehunter_anchor_smash_charge:IsPurgeException()	return 
 imba_tidehunter_ravage = class({})
 
 LinkLuaModifier("modifier_imba_tidehunter_ravage_debuff","mb/hero_tidehunter.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_imba_tidehunter_ravage_order","mb/hero_tidehunter.lua", LUA_MODIFIER_MOTION_NONE)
 
 function imba_tidehunter_ravage:IsHiddenWhenStolen() 		return false end
 function imba_tidehunter_ravage:IsRefreshable() 			return true end
@@ -554,6 +556,8 @@ function imba_tidehunter_ravage:OnAbilityPhaseStart()
 		-- 施法范围特效
 		local pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_tidehunter/tidehunter_anchor_hero.vpcf", PATTACH_ABSORIGIN, caster)
 		ParticleManager:ReleaseParticleIndex(pfx)
+		-- 添加一个不能关闭自动施法的操作指令
+		caster:AddNewModifier(caster, self, "modifier_imba_tidehunter_ravage_order", {duration = self:GetSpecialValueFor("gush_castpoint")})
 	end
 	return true
 end
@@ -566,6 +570,10 @@ function imba_tidehunter_ravage:OnAbilityPhaseInterrupted()
 		caster:FadeGesture(ACT_DOTA_VICTORY)
 		-- 施法音效
 		caster:StopSound("Hero_Tidehunter.Taunt.BackStroke")
+		-- 移除关闭自动施法的操作指令
+		if caster:HasModifier("modifier_imba_tidehunter_ravage_order") then 
+			caster:RemoveModifierByName("modifier_imba_tidehunter_ravage_order")
+		end
 	end
 	return true
 end
@@ -712,6 +720,32 @@ end
 function modifier_imba_tidehunter_ravage_debuff:DeclareFunctions() return {MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS} end
 function modifier_imba_tidehunter_ravage_debuff:GetModifierPhysicalArmorBonus() return (0 - (self:GetAbility():GetSpecialValueFor("negative_armor") + self:GetCaster():GetLevel())) end
 
+--Order
+modifier_imba_tidehunter_ravage_order = class({})
+-------------------------------------------------------------------------------
+-- Classifications
+function modifier_imba_tidehunter_ravage_order:IsHidden() return true end
+function modifier_imba_tidehunter_ravage_order:IsDebuff() return false end
+function modifier_imba_tidehunter_ravage_order:IsPurgable() return false end
+--------------------------------------------------------------------------------
+-- Initializations
+--------------------------------------------------------------------------------
+-- Modifier Effects
+function modifier_imba_tidehunter_ravage_order:DeclareFunctions()
+	local funcs = {
+		MODIFIER_EVENT_ON_ORDER,
+	}
+	return funcs
+end
+
+function modifier_imba_tidehunter_ravage_order:OnOrder( params )
+	if params.unit~=self:GetParent() then return end
+	if 	params.order_type == DOTA_UNIT_ORDER_CAST_TOGGLE_AUTO then
+		if params.ability == self:GetAbility() then 
+			self:GetAbility():ToggleAutoCast() --不允许前摇开始期间关闭/开启 自动施法
+		end
+	end
+end
 
 ----------------------
 --new shard
@@ -754,7 +788,8 @@ function imba_tidehunter_calling_Maelrawn:OnSpellStart()
 	if not self:GetCursorTargetingNothing() then
 		pos = self:GetCursorPosition()
 	end
-	local direction = (pos - startpos):Normalized()
+	--local direction = (pos - startpos):Normalized()
+	local direction = caster:GetForwardVector()
 	direction.z = 0.0
 	--音效和特效
 	local ravage_sound = "Ability.Ravage"

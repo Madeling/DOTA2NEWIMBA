@@ -45,7 +45,7 @@ function shackles:OnSpellStart()
             if caster:TG_HasTalent("special_bonus_shadow_shaman_5") then
                 caster:AddNewModifier( caster, self, "modifier_invisible", {duration=hchannel_t+caster:TG_GetTalentValue("special_bonus_shadow_shaman_4")})
             end
-            curtar:AddNewModifier_RS(caster, self, "modifier_shackles_stun", {duration=hchannel_t+caster:TG_GetTalentValue("special_bonus_shadow_shaman_4")})
+            curtar:AddNewModifier(caster, self, "modifier_shackles_stun", {duration=hchannel_t+caster:TG_GetTalentValue("special_bonus_shadow_shaman_4")})
         else
             Notifications:Bottom(PlayerResource:GetPlayer(caster:GetPlayerOwnerID()), {text="无法操控自己人", duration=1.25, style={color="#EEEE00", ["font-size"]="30px"}})
             caster:Stop()
@@ -76,7 +76,7 @@ function shackles:OnSpellStart()
                     modifier:SetStackCount(0)
                 end
             end
-            curtar:AddNewModifier_RS(caster, self, "modifier_shackles_ctrl", {duration =hchannel_t+caster:TG_GetTalentValue("special_bonus_shadow_shaman_4")})
+            curtar:AddNewModifier(caster, self, "modifier_shackles_ctrl", {duration =hchannel_t+caster:TG_GetTalentValue("special_bonus_shadow_shaman_4")})
         else
             Notifications:Bottom(PlayerResource:GetPlayer(caster:GetPlayerOwnerID()), {text="无法操控自己人", duration=1.25, style={color="#EEEE00", ["font-size"]="30px"}})
             caster:Stop()

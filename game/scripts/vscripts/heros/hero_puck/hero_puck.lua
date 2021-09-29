@@ -34,14 +34,14 @@ function imba_puck_illusory_orb:OnSpellStart()
 		speed = caster:TG_GetTalentValue("special_bonus_imba_puck_1") * speed
 	end
 	local ability_1 = caster:FindAbilityByName("imba_puck_phase_shift")
-	if caster:TG_HasTalent("special_bonus_imba_puck_8") and ability_1 and ability_1:IsTrained() then 
+	if caster:TG_HasTalent("special_bonus_imba_puck_8") and ability_1 and ability_1:IsTrained() then
 		caster:AddNewModifier(caster, ability_1, "modifier_imba_phase_shift", {duration = caster:TG_GetTalentValue("special_bonus_imba_puck_8"), int = 1})
-	end 
+	end
 	local pfx_name = "particles/units/heroes/hero_puck/puck_illusory_orb.vpcf"
 --	if HeroItems:UnitHasItem(self:GetCaster(), "blossom_of_the_merry_wanderer") then
 --		pfx_name = "particles/econ/items/puck/puck_merry_wanderer/puck_illusory_orb_merry_wanderer.vpcf"
 --	end
-	local info = 
+	local info =
 	{
 		Ability = self,
 		EffectName = pfx_name,
@@ -72,17 +72,13 @@ function imba_puck_illusory_orb:OnSpellStart()
 			for i=1, #enemy do
 				if not caster:IsDisarmed() or caster:HasModifier("modifier_imba_phase_shift") then
 					caster:PerformAttack(enemy[i], false, true, true, false, true, false, true)
-					Timers:CreateTimer(FrameTime()*8, function()
-						caster:PerformAttack(enemy[i], false, true, true, false, true, false, true)
-						return nil
-					end)						
 				end
 				if i >= 3 then
 					break
-				end				
+				end
 			end
-		end	
-	end	
+		end
+	end
 end
 
 function imba_puck_illusory_orb:OnProjectileThink_ExtraData(pos, keys)
@@ -203,14 +199,14 @@ function imba_puck_waning_rift:IsStealable() 			return true end
 function imba_puck_waning_rift:GetCastRange() if IsClient() then return self:GetSpecialValueFor("radius") end end
 function imba_puck_waning_rift:GetCooldown(i) return (self.BaseClass.GetCooldown(self, -1) + self:GetCaster():TG_GetTalentValue("special_bonus_imba_puck_2")) end
 function imba_puck_waning_rift:GetAOERadius()	return self:GetSpecialValueFor("radius") end
-LinkLuaModifier("modifier_imba_waning_rift_silenced", "heros/hero_puck/hero_puck.lua", LUA_MODIFIER_MOTION_NONE) 
+LinkLuaModifier("modifier_imba_waning_rift_silenced", "heros/hero_puck/hero_puck.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_imba_waning_rift_agh", "heros/hero_puck/hero_puck.lua", LUA_MODIFIER_MOTION_NONE)
 
 function imba_puck_waning_rift:OnSpellStart(bHalf)
 	local caster = self:GetCaster()
 	--local pos = caster:GetAbsOrigin()
 	local range = self:GetSpecialValueFor("radius")
-	local pos_next = self:GetCursorPosition()	
+	local pos_next = self:GetCursorPosition()
 	local max_dis = self:GetSpecialValueFor("distance") --+ self:GetCaster():GetCastRangeBonus()
 	local distance = (pos_next - caster:GetAbsOrigin()):Length2D()
 	local direction = (pos_next - caster:GetAbsOrigin()):Normalized()
@@ -223,17 +219,17 @@ function imba_puck_waning_rift:OnSpellStart(bHalf)
 		else
 			pos_next = caster:GetAbsOrigin() + direction * max_dis
 			FindClearSpaceForUnit(caster, pos_next, false)
-		end		
-	end	
-	if caster:Has_Aghanims_Shard() then	
+		end
+	end
+	if caster:Has_Aghanims_Shard() then
 		local enemy1 = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), nil, range, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO+DOTA_UNIT_TARGET_BASIC+DOTA_UNIT_TARGET_OTHER, DOTA_UNIT_TARGET_FLAG_INVULNERABLE + DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
 		for i=1, #enemy1 do
 			enemy1[i]:AddNewModifier(caster, self, "modifier_item_dustofappearance", {duration = 5})
 			if not enemy1[i]:IsMagicImmune() then
 				enemy1[i]:AddNewModifier(caster, self, "modifier_imba_waning_rift_agh", {duration = 0.4})
-			end	
+			end
 		end
-	end	
+	end
 
 
 	if caster:GetUnitName() == "npc_dota_hero_puck" then
@@ -261,19 +257,15 @@ function imba_puck_waning_rift:OnSpellStart(bHalf)
 				for i=1, #enemy do
 					if not caster:IsDisarmed() or caster:HasModifier("modifier_imba_phase_shift") then
 						caster:PerformAttack(enemy[i], false, true, true, false, true, false, true)
-						Timers:CreateTimer(FrameTime()*8, function()
-							caster:PerformAttack(enemy[i], false, true, true, false, true, false, true)
-							return nil
-						end)
 					end
 					if i >= 3 then
 						break
-					end					
+					end
 				end
-			end	
-		end	
+			end
+		end
 		return nil
-	end)	
+	end)
 end
 
 modifier_imba_waning_rift_silenced = class({})
@@ -304,12 +296,12 @@ function modifier_imba_waning_rift_agh:IsHidden() 			return false end
 function modifier_imba_waning_rift_agh:IsPurgable() 		return false end
 function modifier_imba_waning_rift_agh:IsPurgeException() 	return false end
 function modifier_imba_waning_rift_agh:GetOverrideAnimation() return ACT_DOTA_FLAIL end
-function modifier_imba_waning_rift_agh:DeclareFunctions() 
+function modifier_imba_waning_rift_agh:DeclareFunctions()
 	return {
 			MODIFIER_PROPERTY_OVERRIDE_ANIMATION,
-			MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE, 
+			MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE,
 			MODIFIER_PROPERTY_MOVESPEED_LIMIT
-			} 
+			}
 end
 function modifier_imba_waning_rift_agh:GetModifierMoveSpeed_Absolute() if IsServer() then return 1 end end
 function modifier_imba_waning_rift_agh:GetModifierMoveSpeed_Limit() if IsServer() then return 1 end end
@@ -318,13 +310,13 @@ function modifier_imba_waning_rift_agh:OnCreated(keys)
 		self.target_pos = keys.target_pos
 		self.direction = (self:GetParent():GetAbsOrigin() - self:GetCaster():GetAbsOrigin()):Normalized()
 		self.knockback_distance = 100
-		self.knockback_height = 1		
+		self.knockback_height = 1
 		self:StartIntervalThink(FrameTime())
-	end 
-end	
+	end
+end
 function modifier_imba_waning_rift_agh:OnIntervalThink()
 	local total_ticks = self:GetDuration() / FrameTime()
-	local motion_progress = math.min(self:GetElapsedTime() / self:GetDuration(), 1.0)	
+	local motion_progress = math.min(self:GetElapsedTime() / self:GetDuration(), 1.0)
 	local distance = self.knockback_distance / total_ticks
 	local height = self.knockback_height
 	local next_pos = GetGroundPosition(self:GetParent():GetAbsOrigin() + self.direction * distance, nil)
@@ -362,7 +354,7 @@ function imba_puck_phase_shift:OnSpellStart()
 	end
 	if self:GetCaster():TG_HasTalent("special_bonus_imba_puck_6") then
 		caster:Purge(false,true,false,false,false)
-	end		
+	end
 	if self:GetCaster():TG_HasTalent("special_bonus_imba_puck_5") then
 		local ability = caster:FindAbilityByName("imba_puck_dream_coil")
 		if ability and ability:IsTrained() and not ability:GetAutoCastState() then
@@ -370,17 +362,13 @@ function imba_puck_phase_shift:OnSpellStart()
 			for i=1, #enemy do
 				if not caster:IsDisarmed() or caster:HasModifier("modifier_imba_phase_shift") then
 					caster:PerformAttack(enemy[i], false, true, true, false, true, false, true)
-					Timers:CreateTimer(FrameTime()*8, function()
-						caster:PerformAttack(enemy[i], false, true, true, false, true, false, true)
-						return nil
-					end)					
 				end
 				if i >= 3 then
 					break
-				end				
+				end
 			end
-		end	
-	end	
+		end
+	end
 end
 
 modifier_imba_phase_shift = class({})
@@ -412,7 +400,7 @@ function modifier_imba_phase_shift:OnDestroy()
 		if self.int == 0 then
 			self:GetAbility():EndCooldown()
 			self:GetAbility():StartCooldown(math.max(FrameTime(), (self:GetAbility():GetCooldown(-1) * self:GetCaster():GetCooldownReduction()) - self:GetElapsedTime()))
-		end	
+		end
 	end
 end
 modifier_imba_phase_shift_talent_passive = class({})
@@ -430,7 +418,7 @@ function modifier_imba_phase_shift_talent_passive:OnAttackLanded(keys)
 	end
 	if not self:GetParent():TG_HasTalent("special_bonus_imba_puck_7") then
 		return
-	end	
+	end
 	local caster = self:GetParent()
 	local ability = self:GetAbility()
 	local spe = math.abs(keys.target:GetSpellAmplification(false)) * 100
@@ -439,10 +427,10 @@ function modifier_imba_phase_shift_talent_passive:OnAttackLanded(keys)
 
 	ApplyDamage(
 		{
-			victim = keys.target, 
-			attacker = caster, 
-			ability = ability, 
-			damage = damage, 
+			victim = keys.target,
+			attacker = caster,
+			ability = ability,
+			damage = damage,
 			damage_type = DAMAGE_TYPE_MAGICAL
 		})
 

@@ -84,7 +84,7 @@ function modifier_item_laojie_pa:OnAttackLanded(tg)
                 caster=self.parent,
                 ability= self.ability,
                 modifier="modifier_item_laojie_debuff",
-                init= ar,
+                init= 7,
                 stack= ar,
                 duration=self.dur
             })

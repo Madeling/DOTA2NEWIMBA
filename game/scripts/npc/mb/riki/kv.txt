@@ -21,7 +21,7 @@
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"550"
+		"AbilityCastRange"				"500"
 		"AbilityCastPoint"				"0.2"
 
 		// Time		
@@ -40,7 +40,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"radius"	"310 340 370 400"
+				"radius"	"300 350 400 450"
 				"LinkedSpecialBonus"	"special_bonus_imba_riki_1"
 			}
 			"02"
@@ -61,7 +61,7 @@
 			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"poisoned_damage"	"100 200 300 400"
+				"poisoned_damage"	"100 150 200 250"
 			}
 		}
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
@@ -90,9 +90,9 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"0.1"
-		"AbilityCharges"				"2"
-		"AbilityChargeRestoreTime"		"25 20 15 10"
+		"AbilityCooldown"				"25 20 15 10"
+		//"AbilityCharges"				"1"
+		//"AbilityChargeRestoreTime"		"25 20 15 10"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -105,7 +105,7 @@
 			{
 				"var_type"					"FIELD_INTEGER"
 				"abilitycastrange"					""
-				"LinkedSpecialBonus"		"special_bonus_imba_riki_3"
+				//"LinkedSpecialBonus"		"special_bonus_imba_riki_3"
 			}
 			"02"
 			{
@@ -125,18 +125,18 @@
 			"05"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"illusion_duration"	"6.0"
+				"illusion_duration"	"5.0"
 			}
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"strike_crit_mult"	"200 220 240 260"
+				"strike_crit_mult"	"120 135 150 165"
 			}
 			"07"
 			{
 				"var_type"						"FIELD_FLOAT"
-				"abilitychargerestoretime"		""
-				"LinkedSpecialBonus"			"special_bonus_imba_riki_6"
+				"AbilityChargeRestoreTime"		""
+				"LinkedSpecialBonus"			"special_bonus_imba_riki_3"
 				"LinkedSpecialBonusOperation"	"SPECIAL_BONUS_SUBTRACT"
 			}
 			"08"
@@ -226,7 +226,7 @@
 			"06"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"target_count"				"1 2 3 4"
+				"target_count"				"2"
 			}
 		}
 	}
@@ -296,7 +296,7 @@
 			"09"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"poisoned_damage_multiplier"	"1.4 1.8 2.2"
+				"poisoned_damage_multiplier"	"0.8 1 1.2"
 				"LinkedSpecialBonus"	"special_bonus_imba_riki_2"
 				"CalculateSpellDamageTooltip"	"0"
 			}
@@ -459,6 +459,7 @@
 	}
 
 	// default talent to add blink castrange 475
+	// now reduce cooldown 4s
 	"special_bonus_imba_riki_3"
 	{
 		// General
@@ -473,7 +474,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"value"	"475"
+				"value"	"-4"
 			}
 		}
 		"LinkedAbility"
@@ -541,7 +542,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"value"	"1"
+				"value"		"1"
 			}
 			"02"
 			{

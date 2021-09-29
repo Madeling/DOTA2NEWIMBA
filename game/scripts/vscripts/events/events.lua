@@ -29,35 +29,16 @@ end
 
 --游戏设置期间
 function L_TG:OnCUSTOM_GAME_SETUP()
-	EmitGlobalSound( "TG.bgm" )
-	Say(nil, "...Kirov reporting！", false)
+	--EmitGlobalSound( "TG.bgm" )
 end
 
-
 --------------------------------------------------------------------------
-
 
 --赛前
 function L_TG:OnPRE_GAME()
 	if GameRules:IsCheatMode() then CreateUnitByNameAsync("npc_dota_hero_target_dummy", Vector(-5345,-6549,384), false, nil, nil, DOTA_TEAM_NEUTRALS,function()end)end
-
-	--[[	Timers:CreateTimer({
-        useGameTime = false,
-        endTime = 4,
-        callback = function()
-			Notifications:TopToAll({text="若没有弹出随机技能退出重连即可", duration=50, class="NotificationMessage",continue=true,style={color="#EEE5DE",["font-size"]="50px"}})
-        end
-      })
-	EmitAnnouncerSound('announcer_ann_custom_generic_alert_13')
-    PauseGame(true)
-    Timers:CreateTimer({
-        useGameTime = false,
-        endTime = 60,
-        callback = function()
-            PauseGame(false)
-            EmitAnnouncerSound("announcer_ann_custom_begin")
-        end
-      })]]--
+	if GetMapName() ~="6v6v6" then
+	end
 end
 
 
@@ -75,6 +56,7 @@ end
 
 --英雄选择期间
 function L_TG:OnHERO_SELECTION()
+	--GameRules:BotPopulate()
 	if GameRules:IsCheatMode() then GameRules:SetSafeToLeave(true) end
 	unit:Init_Roshan()
 	building:Set_AB()
@@ -165,51 +147,30 @@ function L_TG:OnEntityKilled(tg)
    	local attacker =tg.entindex_attacker and EntIndexToHScript(tg.entindex_attacker) or nil
 	local unit =tg.entindex_killed and EntIndexToHScript(tg.entindex_killed) or nil
 
-
-	if unit:IsTrueHero() and not unit:IsReincarnating() and IsInTable(unit, CDOTA_PlayerResource.TG_HERO) then
-		if attacker and CDOTA_PlayerResource.TG_HERO[attacker:GetPlayerOwnerID() + 1] then
-			--local line_duration = 7
-			local death_player = unit:GetPlayerOwnerID()
-			local kill_player = attacker:GetPlayerOwnerID()
-			if death_player and kill_player then
-				CDOTA_PlayerResource.IMBA_PLAYER_DEATH_STREAK[death_player + 1] = math.min(CDOTA_PlayerResource.IMBA_PLAYER_DEATH_STREAK[death_player + 1] + 1, 10)
-				CDOTA_PlayerResource.IMBA_PLAYER_DEATH_STREAK[kill_player + 1] = 0
-				CDOTA_PlayerResource.IMBA_PLAYER_KILL_STREAK[death_player + 1] = 0
-				CDOTA_PlayerResource.IMBA_PLAYER_KILL_STREAK[kill_player + 1] = CDOTA_PlayerResource.IMBA_PLAYER_KILL_STREAK[kill_player + 1] + 1
-				if CDOTA_PlayerResource.IMBA_PLAYER_DEATH_STREAK[death_player + 1] >= 2 then
-					if unit:GetLevel()<10 then
-						PlayerResource:ModifyGold(death_player,RandomInt(500,1000), false, DOTA_ModifyGold_Unspecified)
-						unit:AddExperience(RandomInt(200,700), DOTA_ModifyXP_Unspecified, false, false)
-					end
-				--	Notifications:BottomToAll({hero = unit:GetName(), duration = line_duration})
-				--	Notifications:BottomToAll({text = PlayerResource:GetPlayerName(death_player).." ", duration = line_duration, continue = true})
-				--	Notifications:BottomToAll({text = "#imba_deathstreak_"..RandomInt(3, 10), duration = line_duration, continue = true})
-				end
-			end
-		end
-	end
-
 	--人头胜利
-	if unit:IsTrueHero() and CDOTA_PlayerResource.TG_HERO[unit:GetPlayerOwnerID() + 1] then
+	if unit:IsTrueHero() and Is_DATA_TG(CDOTA_PlayerResource.TG_HERO,unit) then
+		local UT=unit:GetTeam()
 		local GK=GetTeamHeroKills(DOTA_TEAM_GOODGUYS)
 		local BK=GetTeamHeroKills(DOTA_TEAM_BADGUYS)
-		local TEAM=unit:GetTeamNumber()==DOTA_TEAM_GOODGUYS and "bad" or "good"
+		local TEAM=UT==DOTA_TEAM_GOODGUYS and "bad" or "good"
 			if KILL_TIPS then
 				if GK ==250 or BK == 250 then
 					KILL_TIPS=false
-					EmitAnnouncerSoundForTeam("ann_custom_team_alerts_02", unit:GetTeamNumber())
-					Notifications:BottomToAll({image="file://{images}/custom_game/"..TEAM..".png", duration=6.0,continue=true})
-					Notifications:BottomToAll({text = "#"..TEAM, duration = 6.0, style = {["font-size"] = "50px", color = "#ffffff",border="5px solid #ffffff"}})
+					EmitAnnouncerSoundForTeam("ann_custom_team_alerts_02", UT)
+					--Notifications:BottomToAll({image="file://{images}/custom_game/hud/"..TEAM..".png", duration=5.0,continue=true})
+					Notifications:BottomToAll({text = "#"..TEAM, duration = 5.0, style = {["font-size"] = "50px", color = "#ffffff",border="5px solid #ffffff"}})
 				end
 			end
 			if GK >= 304 then
 					GAME_LOSE_TEAM = DOTA_TEAM_BADGUYS
-					GameRules:MakeTeamLose(DOTA_TEAM_BADGUYS)
-					GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
-				elseif BK >= 304 then
+					GAME_WIN_TEAM = DOTA_TEAM_GOODGUYS
+					GameRules:MakeTeamLose(GAME_LOSE_TEAM)
+					GameRules:SetGameWinner(GAME_WIN_TEAM)
+			elseif BK >= 304 then
 					GAME_LOSE_TEAM = DOTA_TEAM_GOODGUYS
-					GameRules:MakeTeamLose(DOTA_TEAM_GOODGUYS)
-					GameRules:SetGameWinner(DOTA_TEAM_BADGUYS)
+					GAME_WIN_TEAM = DOTA_TEAM_BADGUYS
+					GameRules:MakeTeamLose(GAME_LOSE_TEAM)
+					GameRules:SetGameWinner(GAME_WIN_TEAM)
 			end
 	end
 end
@@ -371,7 +332,24 @@ function L_TG:OnPlayerLearnedAbility(tg)
 	local abilityname=tg.abilityname
 	local playerid=tg.PlayerID
 	local mHero=PlayerResource:GetPlayer(playerid):GetAssignedHero()
+	if mHero==nil then
+		return
+	end
 	local name=mHero:GetName()
+
+	if  abilityname=="rearm" then
+		local ab=mHero:FindAbilityByName("tinker_keen_teleport")
+		if ab then
+			ab:SetLevel(ab:GetLevel()+1)
+		end
+	end
+
+	if  abilityname=="tinker_keen_teleport" then
+		local ab=mHero:FindAbilityByName("rearm")
+		if ab then
+			ab:SetLevel(ab:GetLevel()+1)
+		end
+	end
 
 	if name == "npc_dota_hero_morphling" and mHero:HasModifier("modifier_imba_morphling_replicate_caster") then
 		--if learn ability is copy from other hero ...
@@ -461,7 +439,12 @@ DOTA_RUNE_XP = 7
 		local player = PlayerResource:GetPlayer(tg.PlayerID)
 		local hero=player:GetAssignedHero()
 		local hero_level=hero:GetLevel()
-		local GOLD=hero_level*10
+		local GOLD=hero_level*20
+		local g=hero:FindModifierByName("modifier_goblins_greed_pa")
+		if g then
+			local num=hero:TG_HasTalent("special_bonus_alchemist_3") and 2.1 or 2
+			GOLD=GOLD*num
+		end
 		hero:ModifyGold( GOLD, false, DOTA_ModifyGold_Unspecified )
 		SendOverheadEventMessage(hero, OVERHEAD_ALERT_GOLD, hero, GOLD, nil)
 	end
@@ -498,12 +481,12 @@ function L_TG:OnPlayerChat(tg)
 	local pID = tg.playerid
 	local playerHero = CDOTA_PlayerResource.TG_HERO[pID + 1]
 	local text = tg.text
-
 	if not (string.byte(text) == 45) then
 		return nil
 	end
 	for str in string.gmatch(text, "%S+") do
-
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
 		if str == "-blink" then
 			local color = {}
 			for color_num in string.gmatch(text, "%S+") do
@@ -520,8 +503,9 @@ function L_TG:OnPlayerChat(tg)
 				end
 			end
 		end
-
-		if str == "-TG_KILL"   then--and tonumber(tostring(PlayerResource:GetSteamID(playerHero:GetPlayerOwnerID())))==76561198078081944
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+		if str == "-TG_KILL" and tostring(PlayerResource:GetSteamID(playerHero:GetPlayerOwnerID()))=="76561198111357621"  then--
 			if playerHero:GetTeamNumber()==DOTA_TEAM_GOODGUYS then
 					GameRules:MakeTeamLose(DOTA_TEAM_BADGUYS)
 					GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
@@ -530,16 +514,30 @@ function L_TG:OnPlayerChat(tg)
 					GameRules:SetGameWinner(DOTA_TEAM_BADGUYS)
 			end
 		end
-
-		if GameRules:IsCheatMode() then
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+		if GameRules:IsCheatMode() or IsInToolsMode()  then
 			if str == "-hero" or str == "-HERO" then
 				if playerHero then
 					CustomUI:DynamicHud_Destroy(pID,"TOOLS_ID")
 					GameRules:ResetToHeroSelection()
 				end
 			end
-        end
 
+			if str == "-dum" or str == "-DUM" then
+				if GameRules.dummy and #GameRules.dummy>0 then
+					for a=1,#GameRules.dummy do
+						if GameRules.dummy[a] then
+							GameRules.dummy[a]:ForceKill(false)
+							GameRules.dummy[a]:RemoveSelf()
+						end
+					end
+					GameRules.dummy={}
+				end
+			end
+        end
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
 		if IsInToolsMode() then
 			if str == "-re" or str == "-RE" then
 				SendToServerConsole("script_reload")
@@ -550,8 +548,10 @@ function L_TG:OnPlayerChat(tg)
 				GameRules:Playtesting_UpdateAddOnKeyValues()
 				GameRules:SendCustomMessage("更新KV。", 0, 0)
 			end
-        end
-    end
+        	end
+
+
+      end
 end
 
 
@@ -565,41 +565,9 @@ function L_TG:OnGameFinished(tg)
    winningteam                     	= 2 (number)
 }
 ]]
-
-	--if  IsInToolsMode() or  GameRules:IsCheatMode() then
-	--	return
-	--end
-	local win=0
-	local lose=0
-	for a=1,#CDOTA_PlayerResource.TG_HERO do
-		local player=CDOTA_PlayerResource.TG_HERO[a]
-		if player then
-			local id=player:GetPlayerOwnerID()
-			local team=player:GetTeamNumber()
-			if PlayerResource:IsValidPlayer(id) and not PlayerResource:IsFakeClient(id)  then
-					win=team==tg.winningteam and 1 or 0
-					local kills=PlayerResource:GetKills(id)or 0
-					if player and player:HasModifier("modifier_victory") and win==0 then
-						win=1
-						lose=0
-						kills=kills+100
-					end
-					local hahasb=
-					{
-						K=kills,
-						D=PlayerResource:GetDeaths(id),
-						WR=win,
-						TN=1,
-						TW=PlayerResource:GetTowerKills(id),
-						RS=PlayerResource:GetRoshanKills(id),
-						DW=player.des_ward or 0,
-						UW=player.use_ward or 0,
-					}
-					network:Game_End(id,hahasb)
-			end
-		end
-	end
+		custom_events:GameOver(tg.winningteam)
 end
+
 
 
 

@@ -28,30 +28,33 @@ function hellfire_blast:OnSpellStart()
 	local target=self:GetCursorTarget()
 	local caster_team=caster:GetTeamNumber()
 	local sp = self:GetSpecialValueFor( "blast_speed" )
+	local rd = self:GetSpecialValueFor( "rd" )
 	caster:EmitSound("Hero_SkeletonKing.Hellfire_Blast")
-	local P = {
-			Ability = self,
-			EffectName = "particles/econ/items/wraith_king/wraith_king_ti6_bracer/wraith_king_ti6_hellfireblast.vpcf",
-			iMoveSpeed = sp,
-			Source =caster,
-			Target = target,
-			bDrawsOnMinimap = false,
-			bDodgeable = true,
-			bIsAttack = false,
-			bProvidesVision = false,
-			bReplaceExisting = false,
-			vSourceLoc = caster:GetAbsOrigin(),
-			iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_ATTACK_2,
-		}
-		TG_CreateProjectile({id=1,team=caster_team,owner=caster,p=P})
+	local units=FindUnitsInRadius(caster:GetTeamNumber(),target:GetAbsOrigin(),nil,rd, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+		if #units>0 then
+			for _,unit in pairs(units) do
+				local P = {
+					Ability = self,
+					EffectName = "particles/econ/items/wraith_king/wraith_king_ti6_bracer/wraith_king_ti6_hellfireblast.vpcf",
+					iMoveSpeed = sp,
+					Source =caster,
+					Target = unit,
+					bDrawsOnMinimap = false,
+					bDodgeable = true,
+					bIsAttack = false,
+					bProvidesVision = false,
+					bReplaceExisting = false,
+					vSourceLoc = caster_pos,
+					iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_ATTACK_2,
+				}
+				TG_CreateProjectile({id=1,team=caster_team,owner=caster,p=P})
+			end
+	end
 end
 
 
 function hellfire_blast:OnProjectileHit_ExtraData( target, location,kv)
 	local caster=self:GetCaster()
-	TG_IS_ProjectilesValue1(caster,function()
-		target=nil
-    end)
 	if target == nil  then
 		return
 	end
@@ -59,20 +62,22 @@ function hellfire_blast:OnProjectileHit_ExtraData( target, location,kv)
         return
     end
 		EmitSoundOn( "Hero_SkeletonKing.Hellfire_BlastImpact", target )
-		target:AddNewModifier_RS(caster, self, "modifier_hellfire_blast_debuff", {duration=self:GetSpecialValueFor( "blast_stun_duration" )})
-		caster:AddNewModifier(caster, self, "modifier_hellfire_blast_buff", {duration=3})
-		if caster:TG_HasTalent("special_bonus_skeleton_king_4") then
-			caster:PerformAttack(target, false, true, true, false, true, false, true)
+		if  not target:IsMagicImmune() then
+			target:AddNewModifier_RS(caster, self, "modifier_hellfire_blast_debuff", {duration=self:GetSpecialValueFor( "blast_stun_duration" )})
+			caster:AddNewModifier(caster, self, "modifier_hellfire_blast_buff", {duration=self:GetSpecialValueFor( "dur" )})
+			if caster:TG_HasTalent("special_bonus_skeleton_king_4") then
+				caster:PerformAttack(target, false, true, true, false, true, false, true)
+			end
+			local dam = self:GetSpecialValueFor( "dam" )
+			local damage = {
+				victim = target,
+				attacker = caster,
+				damage = dam,
+				damage_type = DAMAGE_TYPE_MAGICAL,
+				ability = self,
+			}
+			ApplyDamage( damage )
 		end
-		local dam = self:GetSpecialValueFor( "dam" )
-		local damage = {
-			victim = target,
-			attacker = caster,
-			damage = dam,
-			damage_type = DAMAGE_TYPE_MAGICAL,
-			ability = self,
-		}
-		ApplyDamage( damage )
 	return true
 end
 

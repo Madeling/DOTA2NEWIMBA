@@ -19,6 +19,7 @@ end
 -- Load all the necessary key value files
 function LoadGameKeyValues()
 	local scriptPath ="scripts/npc/"
+	local scriptPath1 ="scripts/npc/original"
 --	local override = LoadKeyValues(scriptPath.."npc_abilities_override.txt")
 	local files = {
 		AbilityKV = {base="npc_abilities",custom="npc_abilities_custom"},
@@ -33,7 +34,7 @@ function LoadGameKeyValues()
 	for k,v in pairs(files) do
 		local file = {}
 		if LOAD_BASE_FILES then
-			file = LoadKeyValues(scriptPath..v.base..".txt")
+			file = LoadKeyValues(scriptPath1..v.base..".txt")
 		end
 
 		-- Replace main game keys by any match on the override file
@@ -52,10 +53,10 @@ function LoadGameKeyValues()
 --			print("[KeyValues] Critical Error on "..v.custom..".txt")
 			return
 		end
-		
+
 		GameRules[k] = file --backwards compatibility
 		KeyValues[k] = file
-	end   
+	end
 
 	-- Merge All KVs
 	KeyValues.All = {}

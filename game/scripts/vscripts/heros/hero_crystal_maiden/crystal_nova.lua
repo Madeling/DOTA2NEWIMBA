@@ -99,16 +99,10 @@ function crystal_nova:OnSpellStart()
                         ApplyDamage(damageTable)
                     end
         end
-
 end
 
 
-
-
-
-
 modifier_crystal_nova_th=class({})
-
 function modifier_crystal_nova_th:IsHidden()
     return true
 end
@@ -254,13 +248,15 @@ function modifier_crystal_nova_debuff:GetEffectAttachType()
 end
 
 function modifier_crystal_nova_debuff:OnCreated()
+    if self:GetAbility()==nil then
+        return
+    end
     self.sp=self:GetAbility():GetSpecialValueFor("sp")
     self.attsp=self:GetAbility():GetSpecialValueFor("attsp")
 end
 
 function modifier_crystal_nova_debuff:OnRefresh()
-    self.sp=self:GetAbility():GetSpecialValueFor("sp")
-    self.attsp=self:GetAbility():GetSpecialValueFor("attsp")
+    self:OnCreated()
 end
 
 

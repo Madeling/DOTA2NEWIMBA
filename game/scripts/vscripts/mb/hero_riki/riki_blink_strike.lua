@@ -15,8 +15,11 @@ function imba_riki_blink_strike:IsHiddenWhenStolen() 	return false end
 function imba_riki_blink_strike:IsRefreshable() 		return true end
 function imba_riki_blink_strike:IsStealable() 			return true end
 function imba_riki_blink_strike:IsNetherWardStealable()	return false end
-function imba_riki_blink_strike:GetCastRange(location, target)
+--[[function imba_riki_blink_strike:GetCastRange(location, target)
 	return self.BaseClass.GetCastRange(self, location, target) + self:GetCaster():TG_GetTalentValue("special_bonus_imba_riki_3")
+end]]
+function imba_riki_blink_strike:GetCooldown(iLevel)	
+	return self.BaseClass.GetCooldown(self, iLevel) + self:GetCaster():TG_GetTalentValue("special_bonus_imba_riki_3")
 end
 
 function imba_riki_blink_strike:CastFilterResultTarget(target)
@@ -65,7 +68,7 @@ function imba_riki_blink_strike:OnSpellStart()
 	--IMBA
 	local illusion_duration = self:GetSpecialValueFor("illusion_duration")
 	local images_do_damage_percent = 0
-	local images_take_damage_percent = 100
+	local images_take_damage_percent = 20
 	local modifier = caster:FindModifierByNameAndCaster("modifier_imba_riki_mode_switch", caster)
 	local modifier_illusions =
 	{
@@ -76,7 +79,31 @@ function imba_riki_blink_strike:OnSpellStart()
 	    outgoing_damage_structure=0,
 	    outgoing_damage_roshan=0,
 	}
-	
+	--创建幻象
+	caster.illusions = CreateIllusions(caster, caster, modifier_illusions, 1, 0, false, false)
+	for i=1, #caster.illusions do
+		FindClearSpaceForUnit(caster.illusions[i], caster:GetAbsOrigin(), true)
+		caster.illusions[i]:SetForwardVector(TG_Direction(target:GetAbsOrigin(),caster.illusions[i]:GetAbsOrigin()))
+		caster.illusions[i]:AddNewModifier(caster, self, "modifier_kill", {duration = illusion_duration})
+		caster.illusions[i]:AddNewModifier(caster, self, "modifier_phased", {duration = illusion_duration})
+		caster.illusions[i]:AddNewModifier(caster, self, "modifier_imba_riki_blink_strike_illusion", {duration = illusion_duration})
+	end
+	--Particle
+	--local pfx_name1 = "particles/units/heroes/hero_riki/riki_blink_strike_start.vpcf"
+	--local pfx_name2 = "particles/units/heroes/hero_riki/riki_blink_strike.vpcf"
+	local pfx_name1 = "particles/econ/items/riki/riki_immortal_ti6/riki_immortal_ti6_blinkstrike_gold_start.vpcf"
+	local pfx_name2 = "particles/econ/items/riki/riki_immortal_ti6/riki_immortal_ti6_blinkstrike_gold.vpcf"
+
+	local pfx2 = ParticleManager:CreateParticle(pfx_name2, PATTACH_ABSORIGIN, caster)
+	ParticleManager:SetParticleControl(pfx2, 0, startpos)  --start
+	ParticleManager:SetParticleControl(pfx2, 1, endpos) --endpos
+	ParticleManager:DestroyParticle(pfx2, false)
+	ParticleManager:ReleaseParticleIndex(pfx2)
+	--Move
+	FindClearSpaceForUnit(caster, endpos, true)
+	--Hero_Riki.Blink_Strike.Immortal Hero_Riki.Blink_Strike
+	EmitSoundOnLocationWithCaster(caster:GetAbsOrigin(), "Hero_Riki.Blink_Strike.Immortal", caster)
+	--IMBA 1
 	if modifier == nil or modifier:GetStackCount() == 1 then
 		--IMBA attack line enemies
 		local enemies = FindUnitsInLine(
@@ -100,50 +127,13 @@ function imba_riki_blink_strike:OnSpellStart()
 		if caster:TG_HasTalent("special_bonus_imba_riki_6") then 
 			target:AddNewModifier(caster,self,"modifier_imba_riki_back_to_back",{duration = self:GetSpecialValueFor("back_duration")})
 		end	
+		
 	end
-
+	--IMBA 2
 	if modifier ~=nil and modifier:GetStackCount() == 2 then 
-		caster.illusions = CreateIllusions(caster, caster, modifier_illusions, 1, 0, false, false)
-		FindClearSpaceForUnit(caster.illusions[i], caster:GetAbsOrigin(), true)
-		for i=1, #caster.illusions do
-			caster.illusions[i]:SetForwardVector(TG_Direction(target:GetAbsOrigin(),caster.illusions[i]:GetAbsOrigin()))
-			caster.illusions[i]:AddNewModifier(caster, self, "modifier_kill", {duration = illusion_duration})
-			caster.illusions[i]:AddNewModifier(caster, self, "modifier_phased", {duration = illusion_duration})
-			caster.illusions[i]:AddNewModifier(caster, self, "modifier_imba_riki_blink_strike_illusion", {duration = illusion_duration})
-		end
 		if caster:TG_HasTalent("special_bonus_imba_riki_6") then 
 			caster:AddNewModifier(caster, self, "modifier_rune_super_invis", {duration = self:GetSpecialValueFor("back_duration")})
 		end
-	end
-	--Particle
-	--local pfx_name1 = "particles/units/heroes/hero_riki/riki_blink_strike_start.vpcf"
-	--local pfx_name2 = "particles/units/heroes/hero_riki/riki_blink_strike.vpcf"
-	local pfx_name1 = "particles/econ/items/riki/riki_immortal_ti6/riki_immortal_ti6_blinkstrike_gold_start.vpcf"
-	local pfx_name2 = "particles/econ/items/riki/riki_immortal_ti6/riki_immortal_ti6_blinkstrike_gold.vpcf"
-
-	local pfx2 = ParticleManager:CreateParticle(pfx_name2, PATTACH_ABSORIGIN, caster)
-	ParticleManager:SetParticleControl(pfx2, 0, startpos)  --start
-	ParticleManager:SetParticleControl(pfx2, 1, endpos) --endpos
-	ParticleManager:DestroyParticle(pfx2, false)
-	ParticleManager:ReleaseParticleIndex(pfx2)
-	--Move
-	FindClearSpaceForUnit(caster, endpos, true)
-	--Hero_Riki.Blink_Strike.Immortal Hero_Riki.Blink_Strike
-	EmitSoundOnLocationWithCaster(caster:GetAbsOrigin(), "Hero_Riki.Blink_Strike.Immortal", caster)
-	--Apply Damage
-	if target:GetTeamNumber() ~= caster:GetTeamNumber() then
-		Timers:CreateTimer(0.03, function()
-			caster:SetForceAttackTarget(nil)
-		end)
-		ApplyDamage({victim = target, attacker = caster, damage = bonus_damage, damage_type = self:GetAbilityDamageType()})
-		--add debuff
-		if modifier ~=nil and modifier:GetStackCount() == 2 then 
-			caster:AddNewModifier(caster, self, "modifier_imba_riki_blink_strike_crit", {})
-			caster:PerformAttack(target, false, true, true, false, true, false, true)
-			caster:RemoveModifierByName("modifier_imba_riki_blink_strike_crit")
-		end 
-		-- Order the caster to attack the target
-		caster:MoveToTargetToAttack(target)
 	end
 	--IMBA 3
 	if modifier ~=nil and modifier:GetStackCount() == 3 then 
@@ -166,7 +156,7 @@ function imba_riki_blink_strike:OnSpellStart()
 					damage_type = DAMAGE_TYPE_MAGICAL
 				})
 		for _,enemy in pairs(enemies) do
-			if not enemy:IsMagicImmune() and enemy ~= target then
+			if not enemy:IsMagicImmune() then
 				damage_table.victim = enemy
 				--造成伤害
 				ApplyDamage(damage_table)
@@ -181,6 +171,22 @@ function imba_riki_blink_strike:OnSpellStart()
 		ParticleManager:SetParticleControlEnt(particle, 0, target, PATTACH_ABSORIGIN_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
 		ParticleManager:SetParticleControl(particle, 62, Vector(1, 255, 255))
 		ParticleManager:ReleaseParticleIndex(particle)
+	end
+
+	--Apply Damage
+	if target:GetTeamNumber() ~= caster:GetTeamNumber() then
+		Timers:CreateTimer(0.03, function()
+			caster:SetForceAttackTarget(nil)
+		end)
+		ApplyDamage({victim = target, attacker = caster, damage = bonus_damage, damage_type = self:GetAbilityDamageType()})
+		--add debuff
+		if modifier ~=nil and modifier:GetStackCount() == 2 then 
+			caster:AddNewModifier(caster, self, "modifier_imba_riki_blink_strike_crit", {})
+			caster:PerformAttack(target, false, true, true, false, true, false, true)
+			caster:RemoveModifierByName("modifier_imba_riki_blink_strike_crit")
+		end 
+		-- Order the caster to attack the target
+		caster:MoveToTargetToAttack(target)
 	end
 end
 
@@ -210,8 +216,9 @@ function modifier_imba_riki_blink_strike_illusion:CheckState()
 		{
 		[MODIFIER_STATE_COMMAND_RESTRICTED]	= true,
 		[MODIFIER_STATE_ROOTED]	= true,
-		--[MODIFIER_STATE_DISARMED]	= true,
+		[MODIFIER_STATE_DISARMED] = true,
 		[MODIFIER_STATE_NOT_ON_MINIMAP]	= true,
+		[MODIFIER_STATE_INVISIBLE] = true
 		}
 end
 function modifier_imba_riki_blink_strike_illusion:DeclareFunctions() 	return {MODIFIER_EVENT_ON_ORDER} end
@@ -227,7 +234,7 @@ end
 
 function modifier_imba_riki_blink_strike_illusion:SetValidTarget( location )
 	--switch location
-	local caster_location = self:GetCaster():GetAbsOrigin()
+	local caster_location = self:GetCaster():GetAbsOrigin() + self:GetCaster():GetUpVector() * 50
 	self:GetCaster():SetAbsOrigin(location)
 	FindClearSpaceForUnit(self:GetParent(), caster_location, false)
 	EmitSoundOnLocationWithCaster(self:GetCaster():GetAbsOrigin(), "Hero_Riki.Blink_Strike.Immortal", self:GetCaster())

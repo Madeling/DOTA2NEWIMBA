@@ -4,6 +4,8 @@ imba_treant_natures_grasp = class({})
 LinkLuaModifier("modifier_imba_treant_natures_grasp_flag", "ting/hero_treant", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_imba_treant_natures_grasp_debuff", "ting/hero_treant", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_imba_treant_natures_grasp_slow", "ting/hero_treant", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_imba_treant_overgrowth_pa", "ting/hero_treant", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_imba_treant_overgrowth_root", "ting/hero_treant", LUA_MODIFIER_MOTION_NONE)
 
 
 function imba_treant_natures_grasp:IsHiddenWhenStolen() 
@@ -27,7 +29,12 @@ function imba_treant_natures_grasp:OnSpellStart()
     local dur = self:GetSpecialValueFor("vines_duration")
 	local next_pos = GetGroundPosition(caster:GetAbsOrigin() + dir * 250, caster)
 	local count_max = math.floor((self:GetSpecialValueFor("range")+self:GetCaster():GetCastRangeBonus()) /250)
-    CreateModifierThinker(caster, self, "modifier_imba_treant_natures_grasp_debuff", {duration=dur+count_max*0.1,dir_x = dir.x,dir_y = dir.y,dir_z = dir.z,count = 0}, next_pos, team, false)
+    CreateModifierThinker(caster, self, "modifier_imba_treant_natures_grasp_debuff", {duration=dur+count_max*0.02,dir_x = dir.x,dir_y = dir.y,dir_z = dir.z,count = 0}, next_pos, team, false)
+	if caster:FindAbilityByName("imba_treant_overgrowth") then
+		caster:AddNewModifier(caster,self,"modifier_imba_treant_overgrowth_pa",{duration = dur})
+	end
+
+
 end
 modifier_imba_treant_natures_grasp_debuff=class({})
 LinkLuaModifier("modifier_imba_treant_natures_grasp_debuff", "ting/hero_treant", LUA_MODIFIER_MOTION_NONE)
@@ -57,6 +64,7 @@ function modifier_imba_treant_natures_grasp_debuff:OnCreated(keys)
 	self.tree = keys.tree 
 	self.dur = self:GetAbility():GetSpecialValueFor("vines_duration")
 	self.isovergrowth  = keys.overgrowth
+	self.ab = self.caster:FindAbilityByName("imba_treant_overgrowth") 
 	if IsServer() then
        	self.bramble_particle = ParticleManager:CreateParticle("particles/units/heroes/hero_treant/treant_bramble_root.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
 		ParticleManager:SetParticleControl(self.bramble_particle, 0, Vector(0, 0, 0))
@@ -81,13 +89,14 @@ function modifier_imba_treant_natures_grasp_debuff:OnCreated(keys)
 	
 	
 		if count < self.count_max then
-				Timers:CreateTimer(0.1, function()
-		local thinker = CreateModifierThinker(self.caster, self:GetAbility(), "modifier_imba_treant_natures_grasp_debuff", {duration=self.dur+(self.count_max-count)*0.1,dir_x = dir.x,dir_y = dir.y,dir_z = dir.z,count = count , tree = self.tree}, next_pos, self.caster:GetTeamNumber(), false)
+				Timers:CreateTimer(0.02, function()
+		local thinker = CreateModifierThinker(self.caster, self:GetAbility(), "modifier_imba_treant_natures_grasp_debuff", {duration=self.dur+(self.count_max-count)*0.02,dir_x = dir.x,dir_y = dir.y,dir_z = dir.z,count = count , tree = self.tree}, next_pos, self.caster:GetTeamNumber(), false)
 		thinker:EmitSound("Hero_Treant.NaturesGrasp.Spawn")
 		end)
 		end
 		if count == self.count_max then
 			self.max = true
+			self:OnIntervalThink()	
 			self:StartIntervalThink(0.5)		
 		end
     end
@@ -101,18 +110,21 @@ function modifier_imba_treant_natures_grasp_debuff:OnIntervalThink()
 	local pos_start = self.stpos + self.dir*-75
 	local pos_end = self.stpos + self.dir*-250*(self.count_max-1)
 	local root = false
-	local cas = FindUnitsInLine(
-        self.team,
-        pos_start,
-		pos_end, 
-        self.parent,
-        225, 
-        DOTA_UNIT_TARGET_TEAM_FRIENDLY, 
-        DOTA_UNIT_TARGET_HERO, 
-        DOTA_UNIT_TARGET_FLAG_NONE)
-	for _,unit in pairs(cas) do
-			unit:AddNewModifier(self.caster,self:GetAbility(),"modifier_imba_treant_natures_grasp_flag",{duration = 0.5})
-		
+	if self.ab then
+		if self.caster:HasScepter() and self.ab:GetLevel() > 0 then
+			local cas = FindUnitsInLine(
+			self.team,
+			pos_start,
+			pos_end, 
+			self.parent,
+			225, 
+			DOTA_UNIT_TARGET_TEAM_FRIENDLY, 
+			DOTA_UNIT_TARGET_HERO, 
+			DOTA_UNIT_TARGET_FLAG_NONE)
+		for _,unit in pairs(cas) do
+				unit:AddNewModifier(self.caster,self:GetAbility(),"modifier_imba_treant_natures_grasp_flag",{duration = 0.5})		
+		end
+		end
 	end
 	
     local heros = FindUnitsInLine(
@@ -127,7 +139,8 @@ function modifier_imba_treant_natures_grasp_debuff:OnIntervalThink()
         if heros and #heros>0 then
             for _,target in pairs(heros) do
 					if self.caster:HasModifier("modifier_imba_treant_natures_grasp_flag") then
-						target:AddNewModifier(self.caster,self:GetAbility(),"modifier_rooted",{duration = 0.6})
+						--target:AddNewModifier(self.caster,self:GetAbility(),"modifier_rooted",{duration = 0.6})
+						target:AddNewModifier(self.caster,self.ab,"modifier_imba_treant_overgrowth_root",{duration = 0.6})
 					end
 					target:AddNewModifier(self.caster,self:GetAbility(),"modifier_imba_treant_natures_grasp_slow",{duration = 0.6})
                     self.damageTable.victim = target
@@ -148,9 +161,17 @@ modifier_imba_treant_natures_grasp_slow = class({})
 function modifier_imba_treant_natures_grasp_slow:IsDebuff()			return true end
 function modifier_imba_treant_natures_grasp_slow:IsHidden() 			return true end
 function modifier_imba_treant_natures_grasp_slow:IsPurgable() 			return true end
+function modifier_imba_treant_natures_grasp_slow:CheckState()
+	return
+	{
+        [MODIFIER_STATE_CANNOT_BE_MOTION_CONTROLLED ] = true,
+        [MODIFIER_STATE_TETHERED] = true,
+	}
+end
 function modifier_imba_treant_natures_grasp_slow:DeclareFunctions() 
 	return {
-		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE }
+		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
+		}
 end
 function modifier_imba_treant_natures_grasp_slow:GetModifierMoveSpeedBonus_Percentage()
 	return self.move
@@ -171,6 +192,7 @@ function imba_treant_leech_seed:OnSpellStart()
 		return
 	end
 	target:AddNewModifier_RS(caster,self,"modifier_imba_treant_leech_seed_debuff",{duration = self:GetSpecialValueFor("duration")})
+
 	self:GetCaster():EmitSound("Hero_Treant.LeechSeed.Target")
 end
 function imba_treant_leech_seed:OnProjectileHit_ExtraData(target, location, ExtraData)
@@ -181,7 +203,7 @@ end
 modifier_imba_treant_leech_seed_debuff = class({})
 function modifier_imba_treant_leech_seed_debuff:IsDebuff()			return true end
 function modifier_imba_treant_leech_seed_debuff:IsHidden() 			return false end
-function modifier_imba_treant_leech_seed_debuff:IsPurgable() 			return true end
+function modifier_imba_treant_leech_seed_debuff:IsPurgable() 			return not self:GetCaster():TG_HasTalent("special_bonus_imba_treant_6") end
 function modifier_imba_treant_leech_seed_debuff:RemoveOnDeath()			return false end
 function modifier_imba_treant_leech_seed_debuff:DeclareFunctions() return {MODIFIER_EVENT_ON_DEATH,MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE} end
 function modifier_imba_treant_leech_seed_debuff:GetModifierMoveSpeedBonus_Percentage()
@@ -243,7 +265,9 @@ function modifier_imba_treant_leech_seed_debuff:OnIntervalThink()
 		}
 			ProjectileManager:CreateTrackingProjectile(projectile)
         end
-
+	if self:GetCaster():TG_HasTalent("special_bonus_imba_treant_6") and self:GetParent():IsMagicImmune() then
+		self:SetDuration(self:GetRemainingTime() + 1, true)
+	end
 end
 
 function modifier_imba_treant_leech_seed_debuff:OnDeath(keys)	
@@ -377,11 +401,15 @@ LinkLuaModifier("modifier_imba_treant_overgrowth_root", "ting/hero_treant", LUA_
 LinkLuaModifier("modifier_imba_treant_overgrowth", "ting/hero_treant", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_imba_treant_overgrowth_g", "ting/hero_treant", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_imba_treant_overgrowth_pa", "ting/hero_treant", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_imba_treant_overgrowth_damage", "ting/hero_treant", LUA_MODIFIER_MOTION_NONE)
 
 
 function imba_treant_overgrowth:OnSpellStart()
 	local caster = self:GetCaster()
 	caster:EmitSound("Hero_Treant.Overgrowth.Cast")
+	if caster:HasScepter() then --防止a失效 树木刷新时间
+		GameRules:SetTreeRegrowTime(10)
+	end
 	local duration_overgrowth = self:GetSpecialValueFor("duration")
 	local cast_particle = ParticleManager:CreateParticle("particles/econ/items/treant_protector/treant_ti10_immortal_head/treant_ti10_immortal_overgrowth_cast.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetCaster())
 	ParticleManager:ReleaseParticleIndex(cast_particle)
@@ -394,6 +422,8 @@ function imba_treant_overgrowth:OnSpellStart()
 			if not self:GetAutoCastState() then
 			enemy:Stop()
 			enemy:AddNewModifier_RS(caster, self, "modifier_imba_treant_overgrowth_root", {duration = duration_overgrowth})	
+			enemy:AddNewModifier_RS(caster, self, "modifier_imba_treant_overgrowth_damage", {duration = duration_overgrowth})	
+			
 			end
 
 		end
@@ -433,6 +463,7 @@ function imba_treant_overgrowth:OnSpellStart()
 			for _,enemy in pairs(enemy_tree) do	
 				enemy:Stop()
 				enemy:AddNewModifier_RS(caster, self, "modifier_imba_treant_overgrowth_root", {duration = duration_overgrowth})	
+				enemy:AddNewModifier_RS(caster, self, "modifier_imba_treant_overgrowth_damage", {duration = duration_overgrowth})	
 			end
 		end
 	end
@@ -545,13 +576,19 @@ function modifier_imba_treant_overgrowth_root:CheckState()
 function modifier_imba_treant_overgrowth_root:GetEffectName()
 	return "particles/units/heroes/hero_treant/treant_overgrowth_vines.vpcf"
 end
-function modifier_imba_treant_overgrowth_root:OnCreated()
+
+--大伤害
+modifier_imba_treant_overgrowth_damage = class({})
+function modifier_imba_treant_overgrowth_damage:IsHidden() 			return true end
+function modifier_imba_treant_overgrowth_damage:IsDebuff() 			return true end
+function modifier_imba_treant_overgrowth_damage:IsPurgable() 			return true end
+function modifier_imba_treant_overgrowth_damage:OnCreated()
 	self.damage = self:GetAbility():GetSpecialValueFor("damage")
 	if IsServer() then 
 		self:StartIntervalThink(1.0)
 	end
 end
-function modifier_imba_treant_overgrowth_root:OnIntervalThink()
+function modifier_imba_treant_overgrowth_damage:OnIntervalThink()
 	if not IsServer() then return end
 	ApplyDamage({
 			victim 			= self:GetParent(),
@@ -562,7 +599,6 @@ function modifier_imba_treant_overgrowth_root:OnIntervalThink()
 			ability 		= self:GetAbility()
 		})
 end
-
 
 --树眼
 imba_treant_eyes_in_the_forest = class({})
@@ -605,7 +641,7 @@ function imba_treant_eyes_in_the_forest:OnSpellStart()
 		end
 	end
 	mod.tree = tre
-	if mod:GetStackCount() > self:GetSpecialValueFor("max") + caster:TG_GetTalentValue("special_bonus_imba_treant_6") then 
+	if mod:GetStackCount() > self:GetSpecialValueFor("max")  then 
 		mod.tree[1]:RemoveModifierByName("modifier_treant_eyes_in_the_forest")
 		mod.tree[1]:RemoveModifierByName("modifier_imba_treant_eyes_in_the_forest")
 		UTIL_Remove(mod.tree[1])
@@ -618,6 +654,8 @@ end
 modifier_imba_treant_eyes_in_the_forest = class({})
 LinkLuaModifier("modifier_imba_treant_overgrowth_root", "ting/hero_treant", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_imba_treant_overgrowth_pa", "ting/hero_treant", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_imba_treant_overgrowth_damage", "ting/hero_treant", LUA_MODIFIER_MOTION_NONE)
+
 function modifier_imba_treant_eyes_in_the_forest:IsHidden() 			return true end
 function modifier_imba_treant_eyes_in_the_forest:IsPurgable() 			return false end
 function modifier_imba_treant_eyes_in_the_forest:IsPurgeException() 			return false end
@@ -689,6 +727,7 @@ function modifier_imba_treant_eyes_in_the_forest:OnIntervalThink()
 			for _,enemy in pairs(enemy_tree) do	
 				enemy:Stop()
 				enemy:AddNewModifier(self:GetCaster(), ab, "modifier_imba_treant_overgrowth_root", {duration = self.duration})	
+				enemy:AddNewModifier(self:GetCaster(), ab, "modifier_imba_treant_overgrowth_damage", {duration = self.duration})	
 			end
 		end
 		self.caster:AddNewModifier(self.caster,self:GetAbility(),"modifier_imba_treant_overgrowth_pa",{duration = self.duration})

@@ -119,7 +119,8 @@ function modifier_serpent_ward_base:DeclareFunctions() return
          MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
          MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE,
          MODIFIER_PROPERTY_DISABLE_HEALING,
-         MODIFIER_PROPERTY_MODEL_SCALE
+         MODIFIER_PROPERTY_MODEL_SCALE,
+         MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT
     }
 end
 
@@ -143,6 +144,12 @@ function modifier_serpent_ward_base:GetModifierModelScale()
     return 30
 end
 
+function modifier_serpent_ward_base:GetModifierAttackSpeedBonus_Constant()
+    if self:GetParent():HasModifier("modifier_shock_dam") then
+            return self:GetAbility():GetSpecialValueFor("attsp")
+    end
+    return 0
+end
 
 modifier_serpent_ward_eat=class({})
 

@@ -1,10 +1,10 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf31:version{593cd181-a1d6-4c6f-9a8c-0534e8d44db0} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf36:version{d15c9157-10e0-47bc-9333-1ac81da07b8d} -->
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
 	m_nMaxParticles = 512
 	m_flConstantRadius = 1.0
-	m_ConstantColor = [ 255, 165, 0, 255 ]
+	m_ConstantColor = [ 0, 140, 255, 255 ]
 	m_nConstantSequenceNumber = 7
 	m_nBehaviorVersion = 4
 	m_nFirstMultipleOverride_BackwardCompat = 3
@@ -16,29 +16,24 @@
 			[
 				{
 					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_vecOffset = [ 0.0, 0.0, 0.0 ]
-					m_angOffset = [ 0.0, 0.0, 0.0 ]
 					m_entityName = "self"
 				},
 				{
 					m_iControlPoint = 60
 					m_iAttachType = "PATTACH_WORLDORIGIN"
 					m_vecOffset = [ 50.0, 255.0, 50.0 ]
-					m_angOffset = [ 0.0, 0.0, 0.0 ]
 					m_entityName = "self"
 				},
 				{
 					m_iControlPoint = 61
 					m_iAttachType = "PATTACH_WORLDORIGIN"
 					m_vecOffset = [ 1.0, 0.0, 0.0 ]
-					m_angOffset = [ 0.0, 0.0, 0.0 ]
 					m_entityName = "self"
 				},
 				{
 					m_iControlPoint = 62
 					m_iAttachType = "PATTACH_WORLDORIGIN"
 					m_vecOffset = [ 0.833333, -0.196078, 0.0 ]
-					m_angOffset = [ 0.0, 0.0, 0.0 ]
 					m_entityName = "self"
 				},
 			]
@@ -117,7 +112,7 @@
 		},
 		{
 			_class = "C_OP_VectorNoise"
-			m_nFieldOutput = "0"
+			m_nFieldOutput = 0
 			m_vecOutputMin = [ -32.0, -32.0, -4.0 ]
 			m_vecOutputMax = [ 32.0, 32.0, 4.0 ]
 			m_bAdditive = true
@@ -139,7 +134,6 @@
 				},
 			]
 			m_nOutputBlendMode = "PARTICLE_OUTPUT_BLEND_MODE_ADD"
-			m_OutlineColor = [ 255, 255, 255 ]
 		},
 	]
 }

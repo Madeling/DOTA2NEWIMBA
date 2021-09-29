@@ -153,17 +153,18 @@ function modifier_item_radiance_v2:OnIntervalThink()
             for _, unit in pairs(units) do
                     self.damageTable.victim = unit
                     if self.parent:IsIllusion() then
-                        self.damageTable.damage = 75
+                                if  not unit:IsHero() then
+                                    self.damageTable.damage = self.base_dmg
+                                end
                     else
-                        if unit:IsCreep() or unit:IsNeutralUnitType() then
-                            self.damageTable.damage = self.base_dmg
-                        end
                         if unit:IsHero() then
-                            if TG_Distance(unit:GetAbsOrigin(),self.parent:GetAbsOrigin())<400 then
-                                self.damageTable.damage = self.base_dmg+unit:GetMaxHealth()*self.extra_dmg
-                            else
-                                self.damageTable.damage = self.base_dmg+unit:GetHealth()*self.extra_dmg
-                            end
+                                if TG_Distance(unit:GetAbsOrigin(),self.parent:GetAbsOrigin())<350 then
+                                    self.damageTable.damage = self.base_dmg+unit:GetMaxHealth()*self.extra_dmg
+                                else
+                                    self.damageTable.damage = self.base_dmg+unit:GetHealth()*self.extra_dmg
+                                end
+                        else
+                                self.damageTable.damage = self.base_dmg
                         end
                     end
                     ApplyDamage(self.damageTable)

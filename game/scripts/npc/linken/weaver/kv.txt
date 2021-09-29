@@ -166,7 +166,7 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
 		"AbilitySound"					"Hero_Weaver.Shukuchi"
-		"AbilityCharges"				"2"
+		"AbilityCharges"				"1"
 		"AbilityChargeRestoreTime"		"12.0 10.0 8.0 6.0"
 		"HasShardUpgrade"               "1"
 		"precache"
@@ -263,7 +263,7 @@
 		"ScriptFile"	"linken/hero_weaver"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"		
-		"AbilityCooldown"				"4.5 4.0 3.5 3.0"
+		"AbilityCooldown"				"6 5.5 5 4.5"
 		"HasScepterUpgrade"			"1"
 			
 		// Special	
@@ -288,7 +288,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"reduce_damage"			"20"
+				"reduce_damage"			"10"
 				"LinkedSpecialBonus"			"special_bonus_imba_weaver_8"
 			}									
 		}		

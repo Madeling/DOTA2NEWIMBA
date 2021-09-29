@@ -109,7 +109,7 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityCastPoint"	"0.2"
+		"AbilityCastPoint"	"0"
 
 		"HasShardUpgrade"               "1"
 
@@ -301,7 +301,7 @@
 			"03"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"mana_multiplier"			"1.0 1.25 1.50 1.75"
+				"mana_multiplier"			"1.5 1.8 2.1 2.4"
 				"LinkedSpecialBonus"		"special_bonus_unique_pugna_3"
 			}
 			"04"
@@ -338,7 +338,7 @@
 		"CastFilterRejectCaster"	"1"
 		"FightRecapLevel"	"1"
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
-		"AbilityCastPoint"	"0.2"
+		"AbilityCastPoint"	"0"
 		// Time
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"	"22.0"
@@ -363,12 +363,12 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"health_drain"	"150 225 300"
+				"health_drain"	"200 280 360"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"health_drain_scepter"	"4"
+				"health_drain_scepter"	"5"
 				"RequiresScepter"	"1"
 			}
 			"03"

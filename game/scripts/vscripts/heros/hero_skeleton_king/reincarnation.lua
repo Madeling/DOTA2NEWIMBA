@@ -3,7 +3,7 @@ LinkLuaModifier("modifier_reincarnation", "heros/hero_skeleton_king/reincarnatio
 LinkLuaModifier("modifier_reincarnation_sp", "heros/hero_skeleton_king/reincarnation.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_reincarnation_buff", "heros/hero_skeleton_king/reincarnation.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_reincarnation_attsp", "heros/hero_skeleton_king/reincarnation.lua", LUA_MODIFIER_MOTION_NONE)
-
+LinkLuaModifier("modifier_reincarnation_ghost", "heros/hero_skeleton_king/reincarnation.lua", LUA_MODIFIER_MOTION_NONE)
 function reincarnation:CastFilterResultTarget(target)
     local caster=self:GetCaster()
 	if target==caster or not target:IsRealHero() or not Is_Chinese_TG(caster,target)  then
@@ -24,7 +24,7 @@ function reincarnation:GetCastRange()
 end
 
 function reincarnation:GetManaCost(iLevel)
-    if self:GetCaster():HasScepter() then
+    if self:GetCaster():Has_Aghanims_Shard() then
         return 0
     else
         return self.BaseClass.GetManaCost(self,iLevel)
@@ -95,12 +95,16 @@ function modifier_reincarnation:ReincarnateTime()
 	if (self:GetAbility():IsCooldownReady() and  self:GetAbility():IsOwnersManaEnough()) or self:GetParent()~=self:GetCaster() then
         self:GetParent():EmitSound("Hero_SkeletonKing.Reincarnate")
         self:GetAbility():UseResources(true, false, true)
-        if self:GetCaster():HasAbility("vampiric_aura") then
             local AB=self:GetCaster():FindAbilityByName("vampiric_aura")
             if AB~=nil and AB:GetLevel()>0 then
                 AB:EndCooldown()
             end
-        end
+
+            local AB1=self:GetCaster():FindAbilityByName("hellfire_blast")
+            if AB1~=nil and AB1:GetLevel()>0 then
+                AB1:EndCooldown()
+            end
+
         if self:GetParent()==self:GetCaster() then
             Timers:CreateTimer(4.1, function()
                 self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_reincarnation_attsp", {duration=self:GetAbility():GetSpecialValueFor("dur2")})
@@ -137,6 +141,7 @@ function modifier_reincarnation:OnDeath(tg)
         end
     end
 end
+
 
 modifier_reincarnation_sp = class({})
 
@@ -227,4 +232,36 @@ end
 
 function modifier_reincarnation_attsp:GetModifierAttackSpeedBonus_Constant()
     return self:GetAbility():GetSpecialValueFor("attsp")
+end
+
+modifier_reincarnation_ghost=class({})
+function modifier_reincarnation_ghost:IsPurgable()return false
+end
+function modifier_reincarnation_ghost:IsPurgeException()return false
+end
+function modifier_reincarnation_ghost:GetStatusEffectName()return "particles/tgp/king/status_effect_ghost.vpcf"
+end
+function modifier_reincarnation_ghost:StatusEffectPriority()return 4
+end
+function modifier_reincarnation_ghost:DeclareFunctions()
+    return
+    {
+        MODIFIER_PROPERTY_DISABLE_HEALING,
+        MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL,
+        MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
+        MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE,
+	}
+end
+function modifier_reincarnation_ghost:GetDisableHealing()return 1
+end
+function modifier_reincarnation_ghost:GetAbsoluteNoDamageMagical()return 1
+end
+function modifier_reincarnation_ghost:GetAbsoluteNoDamagePhysical()return 1
+end
+function modifier_reincarnation_ghost:GetAbsoluteNoDamagePure()return 1
+end
+function modifier_reincarnation_ghost:OnDestroy()
+        if IsServer() then
+                self:GetParent():Kill(self:GetAbility(), self:GetParent())
+        end
 end

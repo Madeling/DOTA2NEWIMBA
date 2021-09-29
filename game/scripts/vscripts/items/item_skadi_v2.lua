@@ -122,7 +122,7 @@ function modifier_item_skadi_v2_pa:OnTakeDamage(tg)
 		return
 	end
     if tg.attacker == self:GetParent() or tg.attacker:GetOwner() == self:GetParent()  then
-        if self:GetParent():IsIllusion() or tg.unit:IsBuilding() or tg.unit:IsOther() or  Is_Chinese_TG(tg.unit, self:GetParent()) or tg.damage<100 then
+        if self:GetParent():IsIllusion() or tg.unit:IsBuilding() or tg.unit:IsOther() or  Is_Chinese_TG(tg.unit, self:GetParent()) or tg.damage<50 then
             return
         end
         if not tg.unit:IsMagicImmune() then

@@ -77,7 +77,7 @@ function wave_of_terror:OnProjectileHit_ExtraData( target, location,kv)
 		return
 	end
     if kv.hit and kv.hit==1 then
-        self:EndCooldown()
+        --self:EndCooldown()
     end
         target:AddNewModifier(caster, self, "modifier_wave_of_terror_debuff", {duration=self:GetSpecialValueFor( "duration" )})
         if caster:TG_HasTalent("special_bonus_vengefulspirit_4") then

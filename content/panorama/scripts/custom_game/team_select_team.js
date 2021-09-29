@@ -14,7 +14,7 @@ function OnJoinTeamPressed() {
 
 
 //--------------------------------------------------------------------------------------------------
-// Entry point function for a team panel, there is one team panel per-team, so this will be called 
+// Entry point function for a team panel, there is one team panel per-team, so this will be called
 // once for each each of the teams.
 //--------------------------------------------------------------------------------------------------
 (function() {
@@ -31,7 +31,21 @@ function OnJoinTeamPressed() {
 
     // Set the team name
     var teamDetails = Game.GetTeamDetails(teamId);
-    var name = teamDetails.team_name == "#DOTA_GoodGuys" ? "TEAM0" : "TEAM1";
+    var name = "";
+    switch (teamDetails.team_name) {
+        case "#DOTA_GoodGuys":
+            name = "TEAM0";
+            break;
+        case "#DOTA_BadGuys":
+            name = "TEAM1";
+            break;
+        case "#DOTA_Custom1":
+            name = "TEAM6";
+            break;
+        default:
+            name = "TEAM";
+            break;
+    }
     $("#TeamNameLabel").text = $.Localize(name);
 
     // Get the player list and add player slots so that there are upto team_max_player slots

@@ -28,7 +28,6 @@ function plague_ward:OnSpellStart()
        ward:AddNewModifier(caster, self, "modifier_kill", {duration=duration})
        ward:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
     end
-
 end
 
 modifier_plague_ward=class({})
@@ -133,7 +132,6 @@ function modifier_plague_ward:OnAttackLanded(tg)
                 attacker = self:GetParent(),
                 damage = 40,
                 damage_type = DAMAGE_TYPE_MAGICAL,
-                damage_flag=DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
                 ability = self:GetAbility(),
                 }
         end

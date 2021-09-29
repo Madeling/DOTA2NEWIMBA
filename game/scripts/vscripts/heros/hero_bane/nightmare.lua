@@ -99,7 +99,7 @@ function modifier_nightmare_buff:OnTakeDamage(tg)
     if not IsServer() then
             return
    end
-      if tg.unit == self:GetParent() and tg.attacker~=self:GetParent() and   tg.attacker:IsHero() then
+      if tg.unit == self:GetParent() and tg.attacker~=self:GetParent() and   tg.attacker:IsHero() and tg.damage_category==DOTA_DAMAGE_CATEGORY_ATTACK  then
             local dur=self:GetAbility():GetSpecialValueFor( "duration" )
             if Is_Chinese_TG(tg.unit ,tg.attacker) then
                   tg.attacker:AddNewModifier(self:GetCaster(),self:GetAbility(),"modifier_nightmare_buff",{duration=dur})
@@ -211,7 +211,7 @@ function modifier_nightmare_debuff:OnTakeDamage(tg)
     if not IsServer() then
             return
    end
-      if tg.unit == self:GetParent() and tg.attacker~=self:GetParent() and tg.attacker~=self:GetCaster() and   tg.attacker:IsHero() then
+      if tg.unit == self:GetParent() and tg.attacker~=self:GetParent() and tg.attacker~=self:GetCaster() and   tg.attacker:IsHero() and tg.damage_category==DOTA_DAMAGE_CATEGORY_ATTACK  then
             local dur=self:GetAbility():GetSpecialValueFor( "duration" )
             if Is_Chinese_TG(tg.unit ,tg.attacker) then
                   tg.attacker:AddNewModifier(self:GetCaster(),self:GetAbility(),"modifier_nightmare_debuff",{duration=dur})

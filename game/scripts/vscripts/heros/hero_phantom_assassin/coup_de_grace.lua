@@ -104,7 +104,7 @@ function modifier_coup_de_grace_pa:OnAttackLanded(tg)
         TG_Kill(self:GetParent(), tg.target, self:GetAbility())
         SendOverheadEventMessage( tg.target, OVERHEAD_ALERT_CRITICAL,  tg.target, 7777777, nil)
         Notifications:TopToAll({hero=self:GetParent():GetUnitName(),duration = 3.0})
-        Notifications:TopToAll({image="file://{images}/custom_game/pa_kill.png", duration=3.0,continue=true})
+        Notifications:TopToAll({image="file://{images}/custom_game/skills/pa_kill.png", duration=3.0,continue=true})
         Notifications:TopToAll({hero=tg.target:GetUnitName(),duration = 3.0,continue=true})
         Notifications:TopToAll({text = "宿命", duration = 3.0, style = {["font-size"] = "50px", color = "#CD2626"}})
     end

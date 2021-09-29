@@ -25,9 +25,11 @@ end
 function imba_huskar_burning_spear:GetIntrinsicModifierName() return "modifier_imba_huskar_burning_spear_passive" end
 
 function imba_huskar_burning_spear:GetAbilityTextureName()
-if self:GetCaster():HasItemInInventory("item_imba_armlet") or self:GetCaster():HasItemInInventory("item_imba_armlet_v2")then
-return "imba_huskar_burning_spear"  end
-return "huskar_burning_spear_a"  end
+if self:GetCaster():HasModifier("modifier_imba_huskar_armlet") then
+
+	return "imba_huskar_burning_spear"  end
+	return "huskar_burning_spear_a"  
+	end
 function imba_huskar_burning_spear:OnUpgrade()
 	if IsServer() then
 		local mod = self:GetCaster():FindModifierByName("modifier_imba_huskar_burning_spear_passive")
@@ -71,11 +73,15 @@ function modifier_imba_huskar_armlet:RemoveOnDeath() 		return false end
 function modifier_imba_huskar_armlet:DeclareFunctions()
 	return {MODIFIER_PROPERTY_ATTACK_RANGE_BONUS}
 end
-function modifier_imba_huskar_armlet:GetModifierAttackRangeBonus() return -150 end
+function modifier_imba_huskar_armlet:GetModifierAttackRangeBonus() return self.attrange end
 function modifier_imba_huskar_armlet:OnCreated()
+	self.attrange = 0
 	if IsServer() then
 		self.attack_cap = self:GetParent():GetAttackCapability()
 		self:GetParent():SetAttackCapability(DOTA_UNIT_CAP_MELEE_ATTACK)
+	end
+	if self.attack_cap ~= DOTA_UNIT_CAP_MELEE_ATTACK then
+		self.attrange = 200 - self:GetParent():Script_GetAttackRange()
 	end
 end
 
@@ -104,7 +110,6 @@ end
 function modifier_imba_huskar_burning_spear_passive:GetModifierProjectileName()
 return "particles/units/heroes/hero_huskar/huskar_burning_spear.vpcf" end
 function modifier_imba_huskar_burning_spear_passive:OnCreated()
-	if not IsServer() then return end
 	self.caster = self:GetCaster()
 	self.parent = self:GetParent()
 	self.ability = self:GetAbility()
@@ -125,7 +130,7 @@ function modifier_imba_huskar_burning_spear_passive:OnAttack(keys)
 	if  not keys.attacker:IsAlive() then
 		return
 	end
-	if keys.target:IsOther() or not keys.target:IsAlive() or  keys.target:GetTeamNumber() == keys.attacker:GetTeamNumber() then return end
+	if not keys.target:IsAlive() or  keys.target:GetTeamNumber() == keys.attacker:GetTeamNumber() then return end
 		keys.attacker:EmitSound("Hero_Huskar.Burning_Spear.Cast")
 		
 		self.damageTable.damage = keys.attacker:GetHealth()*self.health_cost*0.01
@@ -135,10 +140,10 @@ function modifier_imba_huskar_burning_spear_passive:OnAttack(keys)
 
 		ApplyDamage(self.damageTable)
 		
-		if self.parent:HasModifier("modifier_imba_huskar_armlet") and keys.target:IsHero() then
+		if self.parent:HasModifier("modifier_imba_huskar_armlet") then
 		local mod = self.parent:AddNewModifier(self.parent,self:GetAbility(),"modifier_imba_huskar_burning_spear_hp",{duration = self.duration}) 
 		if mod~= nil then
-			mod:SetStackCount(mod:GetStackCount()+ hp_cost)
+			mod:SetStackCount(math.min(mod:GetStackCount()+ keys.attacker:GetMaxHealth()*self.health_cost*0.01,12000))
 		end
 		self.parent:CalculateStatBonus(true)
 		end
@@ -684,7 +689,7 @@ function modifier_imba_huskar_life_break_yidong:OnDestroy()
 		if self.caster:HasModifier("modifier_imba_huskar_armlet") then
 		local mod = self.caster:AddNewModifier(self:GetParent(),self:GetAbility(),"modifier_imba_huskar_burning_spear_hp",{duration = self:GetAbility():GetSpecialValueFor("duration")}) 
 		if mod~= nil then
-		mod:SetStackCount(mod:GetStackCount()+self:GetAbility():GetSpecialValueFor("health_cost_percent")*self.caster:GetHealth()*0.01)
+		mod:SetStackCount(math.min(mod:GetStackCount()+self:GetAbility():GetSpecialValueFor("health_cost_percent")*self.caster:GetMaxHealth()*0.01,12000))
 		end
 		self.caster:CalculateStatBonus(true)
 		end

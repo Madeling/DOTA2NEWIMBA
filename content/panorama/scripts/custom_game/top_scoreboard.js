@@ -3,10 +3,10 @@ var TeamPanels = {};
 var darknessEndTime = -Number.MAX_VALUE;
 var TopBarScore = null;
 var teamColors = {};
+var map = Game.GetMapInfo().map_display_name == "6v6v6" ? true : false;
 teamColors[DOTATeam_t.DOTA_TEAM_GOODGUYS] = "#008000";
 teamColors[DOTATeam_t.DOTA_TEAM_BADGUYS] = "#FF0000";
-//teamColors[DOTATeam_t.DOTA_TEAM_CUSTOM_1] = "#FF0000";
-
+teamColors[DOTATeam_t.DOTA_TEAM_CUSTOM_1] = "#FF0000";
 function Snippet_TopBarPlayerSlot(playerId) {
     if (PlayerPanels[playerId] != null) return PlayerPanels[playerId];
     var team = Players.GetTeam(playerId)
@@ -61,14 +61,8 @@ function Snippet_TopBarPlayerSlot_Update(panel) {
     panel.SetDialogVariableInt('respawn_seconds', respawnSeconds + 1);
     panel.SetHasClass('Dead', respawnSeconds >= 0);
     panel.SetHasClass('Disconnected', connectionState === DOTAConnectionState_t.DOTA_CONNECTION_STATE_DISCONNECTED);
-
-    const uniquePortraits = CustomNetTables.GetTableValue("game_state", "portraits");
     const heroImage = panel.FindChildTraverse('HeroImage');
-    if (uniquePortraits && uniquePortraits[playerId]) {
-        heroImage.SetImage("file://{images}/heroes/" + uniquePortraits[playerId] + ".png");
-    } else {
-        heroImage.heroname = playerInfo.player_selected_hero;
-    }
+    heroImage.heroname = playerInfo.player_selected_hero;
     panel.FindChildTraverse('PlayerColor').style.backgroundColor = GetHEXPlayerColor(playerId);
     var ultStateOrTime = isAlly ? Game.GetPlayerUltimateStateOrTime(playerId) : PlayerUltimateStateOrTime_t.PLAYER_ULTIMATE_STATE_HIDDEN;
     panel.SetHasClass('UltLearned', ultStateOrTime !== PlayerUltimateStateOrTime_t.PLAYER_ULTIMATE_STATE_NOT_LEVELED);
@@ -87,14 +81,26 @@ function Snippet_TopBarPlayerSlot_Update(panel) {
 }
 
 function Snippet_DotaTeamBar(team) {
+
     if (TeamPanels[team] == null) {
-        var isRight = team % 2 !== 0;
+        var num = map?1:2;
+        var isRight = team % num !== 0;
         var rootPanel = $(isRight ? '#TopBarRightPlayers' : '#TopBarLeftPlayers');
         var panel = $.CreatePanel('Panel', rootPanel, '');
         panel.BLoadLayoutSnippet('DotaTeamBar');
         panel.team = team;
         TopBarScore = panel.FindChildTraverse('TopBarScore')
         TopBarScore.style.textShadow = '0 0 10px ' + teamColors[team];
+        if (map)
+        {
+            var context = $.GetContextPanel();
+            var TopBarLeftTeams = context.FindChildTraverse("TopBarLeftTeams")
+            TopBarLeftTeams.style.width = "1500px";
+            var TimeOfDayBG = context.FindChildTraverse("TimeOfDayBG")
+            TimeOfDayBG.style.marginLeft="1250px";
+            var TimeOfDay = context.FindChildTraverse("TimeOfDay")
+            TimeOfDay.style.marginLeft = "1250px";
+        }
         TeamPanels[team] = panel;
         SortPanelChildren(rootPanel, dynamicSort('team'), function(child, child2) {
             return child.team < child2.team;
@@ -111,14 +117,13 @@ function Snippet_DotaTeamBar_Update(panel) {
 }
 
 function Update() {
-    $.Schedule(0.2, Update);
+    $.Schedule(0.1, Update);
     var rawTime = Game.GetDOTATime(false, true);
     var time = Math.abs(rawTime);
     var isNSNight = rawTime < darknessEndTime;
     var timeThisDayLasts = time - (Math.floor(time / 600) * 600);
     var isDayTime = !isNSNight && timeThisDayLasts <= 300;
     var context = $.GetContextPanel();
-
     context.SetHasClass('DayTime', isDayTime);
     context.SetHasClass('NightTime', !isDayTime);
     context.SetDialogVariable('time_of_day', secondsToMS(time, true));
@@ -154,6 +159,10 @@ function TimerClick() {
     $("#TopBarRightPlayers").RemoveAndDeleteChildren();
     Snippet_DotaTeamBar(DOTATeam_t.DOTA_TEAM_GOODGUYS);
     Snippet_DotaTeamBar(DOTATeam_t.DOTA_TEAM_BADGUYS);
+    if (map) {
+    Snippet_DotaTeamBar(DOTATeam_t.DOTA_TEAM_CUSTOM_1);
+    }
+
     Update();
 })()
 

@@ -1,16 +1,16 @@
 earth_splitter=class({})
 LinkLuaModifier("modifier_earth_splitter", "heros/hero_elder_titan/earth_splitter.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_earth_splitter_debuff", "heros/hero_elder_titan/earth_splitter.lua", LUA_MODIFIER_MOTION_NONE)
-function earth_splitter:IsHiddenWhenStolen() 
-    return false 
+function earth_splitter:IsHiddenWhenStolen()
+    return false
 end
 
-function earth_splitter:IsStealable() 
-    return true 
+function earth_splitter:IsStealable()
+    return true
 end
 
-function earth_splitter:IsRefreshable() 			
-    return true 
+function earth_splitter:IsRefreshable()
+    return true
 end
 
 function earth_splitter:OnSpellStart()
@@ -44,24 +44,25 @@ function earth_splitter:OnSpellStart()
         knockback_height = 300,
     }
 
-    EmitSoundOn( "Hero_ElderTitan.EarthSplitter.Cast", caster ) 	
+    EmitSoundOn( "Hero_ElderTitan.EarthSplitter.Cast", caster )
 
-    local particle= ParticleManager:CreateParticle("particles/units/heroes/hero_elder_titan/elder_titan_earth_splitter.vpcf", PATTACH_ABSORIGIN,caster)
+    local particle= ParticleManager:CreateParticle("particles/econ/items/elder_titan/elder_titan_2021/elder_titan_2021_earth_splitter.vpcf", PATTACH_CUSTOMORIGIN,nil)
     ParticleManager:SetParticleControl(particle, 0,caster_pos)
     ParticleManager:SetParticleControl(particle, 1,pos)
     ParticleManager:SetParticleControl(particle, 3,Vector(0,t,0))
     ParticleManager:SetParticleControl(particle, 60,Vector(RandomInt(0,255),RandomInt(0,255),RandomInt(0,255)))
     ParticleManager:SetParticleControl(particle, 61,Vector(1,1,1))
+     ParticleManager:ReleaseParticleIndex( particle )
     Timers:CreateTimer(t, function()
         EmitSoundOn("Hero_ElderTitan.EarthSplitter.Destroy", caster )
         local heros = FindUnitsInLine(
             team,
             caster_pos,
-            pos, 
-            caster, 
-            wh, 
-            DOTA_UNIT_TARGET_TEAM_ENEMY, 
-            DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 
+            pos,
+            caster,
+            wh,
+            DOTA_UNIT_TARGET_TEAM_ENEMY,
+            DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO,
             DOTA_UNIT_TARGET_FLAG_INVULNERABLE+DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES)
         for _,hero in pairs(heros) do
             local dam2=hero:GetMaxHealth()*dam*0.01/2
@@ -78,11 +79,10 @@ function earth_splitter:OnSpellStart()
             Knockback.center_y =  hero:GetAbsOrigin().y+dir.y
             Knockback.center_z =  caster:GetAbsOrigin().z
             hero:AddNewModifier(caster,self, "modifier_knockback", Knockback)
-            if caster:Has_Aghanims_Shard() then 
+            if caster:Has_Aghanims_Shard() then
                 hero:AddNewModifier(caster,self, "modifier_earth_splitter_debuff", {duration=2.5})
-            end 
+            end
         end
-        ParticleManager:ReleaseParticleIndex( particle )
         return nil
     end)
 end
@@ -90,24 +90,24 @@ end
 
 modifier_earth_splitter_debuff=class({})
 
-function modifier_earth_splitter_debuff:IsDebuff() 			
-	return true 
+function modifier_earth_splitter_debuff:IsDebuff()
+	return true
 end
 
-function modifier_earth_splitter_debuff:IsHidden() 			
-	return false 
+function modifier_earth_splitter_debuff:IsHidden()
+	return false
 end
 
-function modifier_earth_splitter_debuff:IsPurgable() 		
-	return false 
+function modifier_earth_splitter_debuff:IsPurgable()
+	return false
 end
 
-function modifier_earth_splitter_debuff:IsPurgeException() 	
-	return false 
+function modifier_earth_splitter_debuff:IsPurgeException()
+	return false
 end
 
 function modifier_earth_splitter_debuff:CheckState()
-    return 
+    return
     {
 		[MODIFIER_STATE_PASSIVES_DISABLED] = true
 	}

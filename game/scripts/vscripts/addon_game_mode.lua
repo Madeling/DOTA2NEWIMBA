@@ -3,6 +3,7 @@ if L_TG == nil then
 	_G.L_TG = L_TG
 end
 
+
 require('game')
 require('addon_init')
 require('precache')
@@ -10,6 +11,7 @@ require('tools/notifications')
 require('tools/timers')
 require('tools/tg_utils')
 require('tools/util')
+require('tools/network')
 require('tools/pseudorandom')
 require('tools/abilitychargecontroller')
 require('events/events')
@@ -18,7 +20,6 @@ require('units/unit')
 require('towers/building')
 require('players/player')
 require('tools/keyvalues')
-require('tools/network')
 require('tools/animations')
 function Precache( context )
 	GameRules.L_TG = L_TG()
@@ -33,7 +34,6 @@ function Precache( context )
 	PrecacheItemByNameSync( "item_faerie_fire", context )
 	PrecacheItemByNameSync( "item_enchanted_mango", context )
 	PrecacheItemByNameSync( "item_refresher_shard", context )
-	PrecacheItemByNameSync( "item_gift", context )
 
 	--音效
 	PrecacheResource("soundfile", "soundevents/new_soundevents.vsndevts", context)
@@ -77,12 +77,8 @@ function L_TG:InitGameMode()
 	--是否开启自动锁定
 	GameRules:LockCustomGameSetupTeamAssignment(false)
 
-
-	--设置常规小兵野怪是否生成。
-	GameRules:SetCreepSpawningEnabled(true)
-
 	--设置游戏结束延迟。
-	GameRules:SetCustomGameEndDelay(100)
+	GameRules:SetCustomGameEndDelay(99999)
 
 	--设置等待自动启动的时间。
 	GameRules:SetCustomGameSetupAutoLaunchDelay(15)
@@ -94,10 +90,10 @@ function L_TG:InitGameMode()
 	--GameRules:SetCustomGameSetupTimeout(10)
 
 	--设置胜利消息。
-	GameRules:SetCustomVictoryMessage("小废物们赢了的呢")
+	--GameRules:SetCustomVictoryMessage("小废物们赢了的呢")
 
 	--置胜利消息的持续时间。
-	GameRules:SetCustomVictoryMessageDuration(10)
+	--GameRules:SetCustomVictoryMessageDuration(10)
 
 	--设置是否已触发“第一滴血”。
 	GameRules:SetFirstBloodActive(true)
@@ -113,9 +109,6 @@ function L_TG:InitGameMode()
 
 	--设置是否在屏幕上方显示多重杀手，连胜和第一流的标语。
 	GameRules:SetHideKillMessageHeaders(false)
-
-	--设置玩家选择英雄和游戏开始之间的时间。
-	GameRules:SetPreGameTime(90)
 
 	--设置符文生成之间的时间间隔。
 	GameRules:SetRuneSpawnTime(120)
@@ -147,22 +140,9 @@ function L_TG:InitGameMode()
 	--设置风的方向
 	--GameRules:SetWeatherWindDirection(WEATHER_DIR)
 
-	--自定义最大团队数量
-	GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS,10)
-	GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS,10)
-	--if GetMapName()=="dota12"  then
-		--GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS,12)
-		--GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS,12)
-	--end
-
-	--初始金钱
-	GameRules:SetStartingGold(2000)
-
 
 --------------------------------------------------------------------------??
 
-	--重写TP物品栏物品
-	--mode:SetTPScrollSlotItemOverride("item_magic_wand")
 
 	--是否允许掉落中立物品
 	mode:SetAllowNeutralItemDrops(true)
@@ -170,6 +150,7 @@ function L_TG:InitGameMode()
 
 	--是否开启随机英雄的奖励
 	mode:SetRandomHeroBonusItemGrantDisabled(false)
+
 
 	--设置是否启用暂停
 	mode:SetPauseEnabled(false)
@@ -271,6 +252,26 @@ function L_TG:InitGameMode()
 	--为背包中的物品设置交换冷却时间。
 	mode:SetCustomBackpackSwapCooldown(2)
 
+	--mode:SetBotsAlwaysPushWithHuman(true)
+	--mode:SetBotThinkingEnabled(true)
+	--mode:SetBotsInLateGame(true)
+
+
+		--地图抉择
+		GameRules:SetStartingGold(2000)
+		GameRules:SetCreepSpawningEnabled(true)
+		GameRules:SetPreGameTime(90)
+		GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS,10)
+		GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS,10)
+	if GetMapName() =="6v6v6" then
+		GameRules:SetStartingGold(1000)
+		GameRules:SetCreepSpawningEnabled(false)
+		GameRules:SetPreGameTime(0)
+		GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS,6)
+		GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS,6)
+		GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_CUSTOM_1,6)
+	end
+
 
 --------------------------------------------------------------------------??
 	--官方事件
@@ -363,7 +364,19 @@ function L_TG:DamageFilter(tg)
 	local ability =tg.entindex_inflictor_const and EntIndexToHScript(tg.entindex_inflictor_const) or nil
 
 
-
+---------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------
+	--[[
+	★骷髅王绿魂。
+	--]]
+		if attacker and  unit and unit:HasAbility("reincarnation") and unit:IsRealHero() and unit:GetHealth()<=500   then
+		local ab=unit:FindAbilityByName("reincarnation")
+		if ab then
+			if ab~=nil and ab:GetLevel()>0 and not  ab:IsCooldownReady()  and   unit:HasScepter() and not  unit:HasModifier("modifier_reincarnation_ghost") then
+				         unit:AddNewModifier( unit, ab, "modifier_reincarnation_ghost", {duration=4})
+			end
+		end
+	end
 ---------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -521,13 +534,14 @@ function L_TG:DamageFilter(tg)
 		local rapier_spellAMP = 0
 		local total_spellAMP = attacker:GetSpellAmplification(false)
 		for _, buff in pairs(attacker_buffs) do
-			if buff:GetName() == "modifier_imba_rapier_magic_unique" then
+			local name=buff:GetName()
+			if name == "modifier_imba_rapier_magic_unique" then
 				rapier_spellAMP = rapier_spellAMP + SPELL_AMP_RAPIER_1
 			end
-			if buff:GetName() == "modifier_imba_rapier_magic_three_unique" then
+			if name == "modifier_imba_rapier_magic_three_unique" then
 				rapier_spellAMP = rapier_spellAMP + SPELL_AMP_RAPIER_3
 			end
-			if buff:GetName() == "modifier_imba_rapier_super_passive" then
+			if name == "modifier_imba_rapier_super_passive" then
 				rapier_spellAMP = rapier_spellAMP + SPELL_AMP_RAPIER_SUPER
 			end
 		end
@@ -573,7 +587,6 @@ function L_TG:OrderFilter(keys)
 	end
 
 ----------------------------------------------------------------------------------------------------
-
 
 	------------------------------------------------------------------------------------
 	-- 育母突袭施法距离判断
@@ -680,6 +693,7 @@ end
 --	*entindex_healer_const
 --	*entindex_inflictor_const
 --	*heal
+--[[
 function L_TG:HealFilter(tg)
 
 	local target =tg.entindex_target_const and EntIndexToHScript(tg.entindex_target_const) or nil
@@ -691,7 +705,7 @@ function L_TG:HealFilter(tg)
 
 	return true
 end
-
+]]
 
 
 ----------------------------------------------------------------------------------------------------------------------------------
@@ -703,11 +717,11 @@ end
 --	*item_parent_entindex_const
 --	*inventory_parent_entindex_const
 --	*suggested_slot
-
+--[[
 function L_TG:ItemPickFilter(tg)
 	return true
 end
-
+]]
 
 
 ----------------------------------------------------------------------------------------------------------------------------------
@@ -759,7 +773,7 @@ function L_TG:ModifierAddFilter(tg)
 
 	if target and target:HasModifier("modifier_blade_fury_buff") then
 		local mod=target:FindModifierByName(modifier_name)
-		if mod and not mod:IsDebuff() then
+		if mod and not mod:IsDebuff() and tg.duration~=nil and tg.duration>0 then
 			tg.duration=tg.duration+tg.duration*0.4
 		end
 	end
@@ -817,11 +831,7 @@ function L_TG:ExpFilter(tg)
 ----------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------
 	if const == DOTA_ModifyXP_HeroKill then
-		tg.experience=experience+experience*0.08
-	elseif const == DOTA_ModifyXP_CreepKill then
-		tg.experience=experience*2.2
-	elseif const == DOTA_ModifyXP_Outpost then
-		tg.experience=experience*2
+		tg.experience=experience+experience*0.09
 	end
 	return true
 end
@@ -857,7 +867,6 @@ DOTA_ModifyGold_WardKill = 20
 ]]
 function L_TG:GoldFilter(tg)
 	local hero = PlayerResource.TG_HERO[tg.player_id_const + 1]
-
 	if hero==nil then
 		return
 	end
@@ -866,41 +875,27 @@ function L_TG:GoldFilter(tg)
 ----------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------
 	if const == DOTA_ModifyGold_HeroKill then
-		tg.gold=math.max(tg.gold,tg.gold,300)
-		if gold>1000 then
-			tg.gold=800+gold*0.05
+		tg.gold=gold+Hero_KEG
+		if gold>Threshold_KEG then
+			tg.gold=Threshold_KEG+gold*Perc_KEG
 		end
-		local heros = FindUnitsInRadius(
-			hero:GetTeamNumber(),
-			hero:GetAbsOrigin(),
-			nil,
-			1500,
-			DOTA_UNIT_TARGET_TEAM_FRIENDLY,
-			DOTA_UNIT_TARGET_HERO,
-			DOTA_UNIT_TARGET_FLAG_NONE,
-			FIND_ANY_ORDER,
-			false)
-		if #heros>0 then
-			for _,target in pairs(heros) do
-				if target~=hero then
-					PlayerResource:ModifyGold(target:GetPlayerOwnerID(),tg.gold*0.05, false, DOTA_ModifyGold_Unspecified)
-				end
-			end
-		end
-	elseif const == DOTA_ModifyGold_SharedGold then
-		tg.gold=gold<100 and 150 or gold
 	elseif const == DOTA_ModifyGold_NeutralKill then
-		tg.gold=gold*5
+		tg.gold=gold*Neutral_KEG
 	elseif const == DOTA_ModifyGold_CreepKill then
-		tg.gold=gold*5
+		tg.gold=gold*Creep_KEG
 	end
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 	if hero:HasModifier("modifier_item_hand_of_god_buff") then
-		tg.gold=tg.gold+tg.gold*0.1
+		tg.gold=math.floor(tg.gold+tg.gold*0.1)
 	end
+
+	if hero:HasModifier("modifier_unstable_concoction_throw_debuff") then
+		tg.gold=math.floor(tg.gold*0.3)
+	end
+
 
 	return true
 end

@@ -316,7 +316,7 @@
 			"06"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"mana_increase_pct"	"75"
+				"mana_increase_pct"	"10"
 			}
 			"07"
 			{
@@ -337,7 +337,7 @@
 			"10"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"stack_damage"	"20"
+				"stack_damage"	"30"
 			}
 			"11"
 			{

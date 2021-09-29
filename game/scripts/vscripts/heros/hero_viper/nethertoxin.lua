@@ -112,15 +112,18 @@ function modifier_nethertoxin_debuff:OnCreated()
     self.ability=self:GetAbility()
     self.mr=self.ability:GetSpecialValueFor("mr")
     self.ar=self.ability:GetSpecialValueFor("ar")
-    self.sliencer=true
 end
 
 function modifier_nethertoxin_debuff:CheckState()
+    if self.parent:IsMagicImmune() then
+        return {}
+    else
     return
     {
         [MODIFIER_STATE_PASSIVES_DISABLED] = true,
-        [MODIFIER_STATE_ATTACK_ALLIES] = true,
+        [MODIFIER_STATE_SILENCED] = true,
     }
+    end
 end
 
 function modifier_nethertoxin_debuff:DeclareFunctions()
@@ -130,20 +133,6 @@ function modifier_nethertoxin_debuff:DeclareFunctions()
         MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
         MODIFIER_EVENT_ON_ABILITY_START
 	}
-end
-
-function modifier_nethertoxin_debuff:OnAbilityStart(tg)
-    if not IsServer() then
-        return
-    end
-
-    if tg.unit == self.parent then
-        if not tg.ability  or tg.ability:IsToggle() or not self.sliencer then
-            return
-        end
-        self.sliencer=false
-        self.parent:AddNewModifier_RS(self:GetCaster(), self.ability, "modifier_silence", {duration=1.5})
-    end
 end
 
 function modifier_nethertoxin_debuff:GetModifierPhysicalArmorBonus(tg)

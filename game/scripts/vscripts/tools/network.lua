@@ -1,6 +1,11 @@
 network=class({})
 
-function network:Create_Login(id)
+
+----------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+function network:IsBan(id)
         local req = CreateHTTPRequestScriptVM("POST", "https://95150.playfabapi.com/Client/LoginWithCustomID")
         req:SetHTTPRequestHeaderValue("Content-Type", "application/json")
         local pf = '{"CustomId": "'..tostring(PlayerResource:GetSteamID(id))..'","CreateAccount": true,"TitleId": "95150"}'
@@ -11,188 +16,45 @@ function network:Create_Login(id)
                         return
                     end
                     local status=resbody["status"]
+                    local banmsg
+                    if resbody.errorDetails then
+                        for key, value in pairs(resbody.errorDetails) do
+                                banmsg=tostring(key)
+                        end
+                    end
                     if status=="Forbidden" then
                         CDOTA_PlayerResource.TG_HERO[id + 1].ban="Forbidden"
-                        network:GetPlayerBan(status,id)
-                    else
-                    local data=resbody["data"]
-                    if data==nil then
-                        return
+                        network:GetPlayerBan(status,id,banmsg)
                     end
-                    local session_ticket=data["SessionTicket"]
-                    local PlayFabId=data["PlayFabId"]
-                    local pl=PlayerResource:GetPlayer(id)
-                    CDOTA_PlayerResource.TG_HERO[id + 1].session_ticket=session_ticket
-                    CDOTA_PlayerResource.TG_HERO[id + 1].pbid=PlayFabId
-                    pl.session_ticket=session_ticket
-                    pl.pbid=PlayFabId
-                    network:First_Login(session_ticket,id)
-                end
         end)
 end
 
-
 ----------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------
 
 
-
-function network:First_Login(session_ticket,id)
-    local pl=PlayerResource:GetPlayer(id)
-    local name=PlayerResource:GetPlayerName(id)
-    local num=id+1
-    local tb={}
-        network:Send_Request({
-                    FBR="GetUserData",
-                    TYPE="X-Authentication",
-                    ST=session_ticket,
-                    PORT="Client",
-                    POST='{"Keys": ["PL"]}',
-                    Method=(function(resbody)
-                        local data=resbody["data"]
-                        if data==nil then
-                            return
-                        end
-                        local data2=data["Data"]
-                        local PL=data2["PL"]
-                        local SID=PlayerResource:GetSteamID(id)
-                        if PL==nil then
-                            network:Send_Request({
-                                FBR="UpdateUserTitleDisplayName",
-                                TYPE="X-Authentication",
-                                ST=session_ticket,
-                                PORT="Client",
-                                POST='{"DisplayName":"'..name.."+"..tostring(SID)..'","TitleId": "95150"}',
-                                Method=(function(data)end)
-                            })
-                            network:Send_Request({
-                                FBR="UpdateUserData",
-                                TYPE="X-Authentication",
-                                ST=session_ticket,
-                                PORT="Client",
-                                POST='{"Data":{"PL": '..json.encode('{"kill":0,"death":0,"max_count":0,"win":0,"steamid":"'..tostring(SID)..'","roshan":0,"tower":0,"des_ward":0,"use_ward":0,"steamname":"'..name..'"}')..'},"Permission": "Public"}',
-                                Method=(function(data)end)
-                            })
-                            CDOTA_PlayerResource.TG_HERO[num].des_ward=0
-                            CDOTA_PlayerResource.TG_HERO[num].use_ward=0
-                            tb={0,0,0,0,0,0,0,0}
-                            Timers:CreateTimer({
-                                useGameTime = false,
-                                endTime =6,
-                                callback = function()
-                                        table.insert (CDOTA_PlayerResource.NET_DATA,id+1, tb)
-                                        CustomNetTables:SetTableValue("player_data", "PLD", CDOTA_PlayerResource.NET_DATA)
-                                        CustomGameEventManager:Send_ServerToPlayer(pl,"User_Data",{tb})
-                            end
-                            })
-                        else
-                            local VALUE=json.decode(PL["Value"])
-                            if VALUE==nil then
-                                return
-                            end
-                            local kill=VALUE["kill"] or 0
-                            local death=VALUE["death"]or 0
-                            local max_count=VALUE["max_count"] or 0
-                            local win=VALUE["win"] or 0
-                            local roshan=VALUE["roshan"] or 0
-                            local tower=VALUE["tower"] or 0
-                            local des_ward=VALUE["des_ward"] or 0
-                            local use_ward=VALUE["use_ward"] or 0
-                            CDOTA_PlayerResource.TG_HERO[num].kill=kill
-                            CDOTA_PlayerResource.TG_HERO[num].death=death
-                            CDOTA_PlayerResource.TG_HERO[num].win=win
-                            CDOTA_PlayerResource.TG_HERO[num].max_count=max_count
-                            CDOTA_PlayerResource.TG_HERO[num].roshan=roshan
-                            CDOTA_PlayerResource.TG_HERO[num].tower=tower
-                            CDOTA_PlayerResource.TG_HERO[num].des_ward=des_ward
-                            CDOTA_PlayerResource.TG_HERO[num].use_ward=use_ward
-                            table.insert (tb, kill)
-                            table.insert (tb, death)
-                            table.insert (tb, max_count)
-                            table.insert (tb, win)
-                            table.insert (tb, roshan)
-                            table.insert (tb, tower)
-                            table.insert (tb, use_ward)
-                            table.insert (tb, des_ward)
-                                table.insert (CDOTA_PlayerResource.NET_DATA,num, tb)
-                                CustomNetTables:SetTableValue("player_data", "PLD", CDOTA_PlayerResource.NET_DATA)
-                                CustomGameEventManager:Send_ServerToPlayer(pl,"User_Data",{tb})
-                            if win/max_count*100 >= 90 then
-                                PlayerResource:SetCustomPlayerColor(id,	255,255,0)
-                            else
-                                PlayerResource:SetCustomPlayerColor(id,	255,255,255)
-                            end
-                         end
+function network:GetPlayerBan(BAN,id,msg)
+    if BAN~=nil then
+        local pl=PlayerResource:GetPlayer(id)
+        local name=PlayerResource:GetPlayerName(id)
+        local hero=pl:GetAssignedHero()
+        if BAN=="Forbidden" then
+            if not hero:HasModifier("modifier_gnm") then
+                    hero:AddNewModifier(hero, nil, "modifier_gnm", {})
+                    CustomUI:DynamicHud_Create(id,"BAN_ID","file://{resources}/layout/custom_game/net.xml",nil)
+                    Timers:CreateTimer(7, function()
+                        Notifications:TopToAll({text = name.."-"..msg.."-被封禁", duration = 5.0, style = {["font-size"] = "40px", color = "#ffffff"}})
+                        return nil
                     end)
-                })
+            end
+        else
+            if hero:HasModifier("modifier_gnm") then
+                hero:RemoveModifierByName("modifier_gnm")
+                CustomUI:DynamicHud_Destroy( id, "BAN_ID")
+            end
+        end
+    end
 end
-
-
-----------------------------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------------------------
-
-
-
-function network:Game_End(id,tb)
-    local pl=PlayerResource:GetPlayer(id)
-    local name=PlayerResource:GetPlayerName(id)
-    local sid=PlayerResource:GetSteamID(id)
-    local session_ticket=CDOTA_PlayerResource.TG_HERO[id + 1].session_ticket
-    network:Send_Request({
-        FBR="UpdateUserTitleDisplayName",
-        TYPE="X-Authentication",
-        ST=session_ticket,
-        PORT="Client",
-        POST='{"DisplayName":"'..name.."+"..tostring(sid)..'","TitleId": "95150"}',
-        Method=(function(data)end)
-    })
-    network:Send_Request({
-        FBR="GetUserData",
-        TYPE="X-Authentication",
-        ST=session_ticket,
-        PORT="Client",
-        POST='{"Keys": ["PL"]}',
-        Method=(function(resbody)
-            local data=resbody["data"]
-            local data2=data["Data"]
-            local PL=data2["PL"]
-                local VALUE=json.decode(PL["Value"])
-                local kill=VALUE["kill"]
-                local death=VALUE["death"]
-                local max_count=VALUE["max_count"]
-                local win=VALUE["win"]
-                local roshan=VALUE["roshan"]
-                local tower=VALUE["tower"]
-                local use_ward=(CDOTA_PlayerResource.TG_HERO[id+1].use_ward or 0)
-                local des_ward=(CDOTA_PlayerResource.TG_HERO[id+1].des_ward or 0)
-                kill=kill+tb.K
-                death=death+tb.D
-                win=win+tb.WR
-                max_count=max_count+tb.TN
-                roshan=roshan+tb.RS
-                tower=tower+tb.TW
-                network:Send_Request({
-                    FBR="UpdateUserData",
-                    TYPE="X-Authentication",
-                    ST=session_ticket,
-                    PORT="Client",
-                    POST='{"Data":{"PL":'..json.encode('{"kill":'..tostring(kill)..',"death":'..tostring(death)..',"max_count":'..tostring(max_count)..',"win":'..tostring(win)..',"steamid":"'..tostring(sid)..'","roshan":'..tostring(roshan)..',"tower":'..tostring(tower)..',"steamname":"'..name..'","use_ward":'..tostring(use_ward)..',"des_ward":'..tostring(des_ward)..'}')..'},"Permission": "Public"}',
-                    Method=(function(data)  end)
-                })
-        end)
-    })
-
-end
-
-
-----------------------------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------------------------
-
-
-function network:Hero_WinR(id,hero,win,lose)
-    local pl=PlayerResource:GetPlayer(id)
-end
-
 
 
 ----------------------------------------------------------------------------------------------------------------------------------
@@ -219,31 +81,192 @@ end
 ----------------------------------------------------------------------------------------------------------------------------------
 
 
-function network:GetPlayerBan(BAN,id,Reason)
-    if BAN~=nil then
-        local pl=PlayerResource:GetPlayer(id)
-        local name=PlayerResource:GetPlayerName(id)
-        local hero=pl:GetAssignedHero()
-        if BAN=="Forbidden" then
-            if not hero:HasModifier("modifier_gnm") then
-                    hero:AddNewModifier(hero, nil, "modifier_gnm", {})
-                    CustomUI:DynamicHud_Create(id,"BAN_ID","file://{resources}/layout/custom_game/net.xml",nil)
-                    Timers:CreateTimer(7, function()
-                        Notifications:TopToAll({text = name.." 是被封禁人员无法进行游玩", duration = 4.0, style = {["font-size"] = "50px", color = "#ffffff"}})
-                        --SendToServerConsole( "disconnect" )
-                        return nil
-                    end)
-            end
-        else
-            if hero:HasModifier("modifier_gnm") then
-                hero:RemoveModifierByName("modifier_gnm")
-                CustomUI:DynamicHud_Destroy( id, "BAN_ID")
-            end
+
+function network:CreateData(id)
+    local data={}
+    local steamid=PlayerResource:GetSteamID(id)
+    local name=PlayerResource:GetPlayerName(id)
+    data.name=name
+    data.id=tostring(steamid)
+    data.kill=0
+    data.death=0
+    data.max_count=0
+    data.win=0
+    data.roshan=0
+    data.tower=0
+    data.use_ward=0
+    data.des_ward=0
+    data.hk=0
+    local encoded = json.encode(data)
+    local request = CreateHTTPRequestScriptVM("PUT",CDOTA_PlayerResource.address.. data.id..'.json')
+    request:SetHTTPRequestRawPostBody("application/json", encoded)
+    request:Send(function( result )
+            if  (result.StatusCode ~= 200) then
+                 print("failed >CreateData")
+            return false
         end
-    end
+    end)
 end
 
 
+----------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+function network:LoadData(id)
+   local steamid=PlayerResource:GetSteamID(id)
+   local pl=PlayerResource:GetPlayer(id)
+   local num=id+1
+   local pid=id
+   local tb={}
+   local request = CreateHTTPRequestScriptVM( "GET", CDOTA_PlayerResource.address..tostring(steamid)..'.json')
+    request:Send( function( result )
+        if  (result.StatusCode ~= 200) then
+               print("failed >LoadData")
+               network:LoadData(pid)
+            return false
+        end
+         local obj= json.decode(result.Body)
+        if not obj then
+            network:CreateData(pid)
+            CDOTA_PlayerResource.TG_HERO[num].des_ward=0
+            CDOTA_PlayerResource.TG_HERO[num].use_ward=0
+            CDOTA_PlayerResource.TG_HERO[num].kill=0
+            CDOTA_PlayerResource.TG_HERO[num].death=0
+            CDOTA_PlayerResource.TG_HERO[num].win=0
+            CDOTA_PlayerResource.TG_HERO[num].max_count=0
+            CDOTA_PlayerResource.TG_HERO[num].roshan=0
+            CDOTA_PlayerResource.TG_HERO[num].tower=0
+            CDOTA_PlayerResource.TG_HERO[num].hk=0
+            tb={0,0,0,0,0,0,0,0,0}
+            CustomNetTables:SetTableValue("player_data", tostring(steamid), tb)
+            return false
+        else
+                            CDOTA_PlayerResource.TG_HERO[num].kill=obj.kill
+                            CDOTA_PlayerResource.TG_HERO[num].death=obj.death
+                            CDOTA_PlayerResource.TG_HERO[num].win=obj.win
+                            CDOTA_PlayerResource.TG_HERO[num].max_count=obj.max_count
+                            CDOTA_PlayerResource.TG_HERO[num].roshan=obj.roshan
+                            CDOTA_PlayerResource.TG_HERO[num].tower=obj.tower
+                            CDOTA_PlayerResource.TG_HERO[num].des_ward=obj.des_ward
+                            CDOTA_PlayerResource.TG_HERO[num].use_ward=obj.use_ward
+                            CDOTA_PlayerResource.TG_HERO[num].hk=obj.hk
+                            tb={
+                                obj.kill,
+                                obj.death,
+                                obj.max_count,
+                                obj.win,
+                                obj.roshan,
+                                obj.tower,
+                                obj.use_ward,
+                                obj.des_ward,
+                                obj.hk
+                            }
+                            CustomNetTables:SetTableValue("player_data", tostring(steamid),tb)
+        end
+    end )
+end
+
 
 ----------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------
+
+
+function network:LoadHeroWR()
+   local request = CreateHTTPRequestScriptVM( "GET", CDOTA_PlayerResource.wr_address..'.json')
+    request:Send( function( result )
+        if  (result.StatusCode ~= 200) then
+               print("failed > LoadHeroWR")
+               network:LoadHeroWR()
+            return false
+        end
+         local obj= json.decode(result.Body)
+        if not obj then
+            return false
+        end
+            CDOTA_PlayerResource.HeroWR=obj
+    end )
+end
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+function network:UpdateData(data)
+        local requestP = CreateHTTPRequestScriptVM("PUT",CDOTA_PlayerResource.address..data.id..'.json')
+        requestP:SetHTTPRequestRawPostBody("application/json", json.encode(data))
+        requestP:Send(function( result )
+            if (result.StatusCode ~= 200) then
+                print("failed > UpdateData")
+                network:UpdateData(data)
+                return false
+            end
+        end)
+end
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+function network:UpdateHeroWR(winTeam)
+    if CDOTA_PlayerResource.wr_key=="test" then
+           return
+    end
+    local request = CreateHTTPRequestScriptVM( "GET", CDOTA_PlayerResource.wr_address..'.json')
+    request:Send( function( result )
+        if (result.StatusCode ~= 200) then
+               print("failed >UpdateHeroWR")
+               network:UpdateHeroWR(winTeam)
+            return false
+        end
+        local obj= json.decode(result.Body)
+        if not obj then
+            for a=1,#CDOTA_PlayerResource.TG_HERO do
+                    if CDOTA_PlayerResource.TG_HERO~=nil and #CDOTA_PlayerResource.TG_HERO>0  then
+                            local hero=CDOTA_PlayerResource.TG_HERO[a]
+					        local name=hero:GetName()
+                            local team=hero:GetTeam()
+                            local table={}
+                            table.count=1
+                            table.win=0
+                            if team==winTeam then
+                                    table.win=1
+                            end
+                            local requestP = CreateHTTPRequestScriptVM("PUT",CDOTA_PlayerResource.wr_address..name..'.json')
+                            requestP:SetHTTPRequestRawPostBody("application/json", json.encode(table))
+                            requestP:Send(function( result )
+                            end)
+                    end
+			end
+            return false
+        end
+                for a=1,#CDOTA_PlayerResource.TG_HERO do
+				if CDOTA_PlayerResource.TG_HERO~=nil and #CDOTA_PlayerResource.TG_HERO>0  then
+                        local hero=CDOTA_PlayerResource.TG_HERO[a]
+					    local name=hero:GetName()
+                        local team=hero:GetTeam()
+                        local table={}
+                        if obj[name]==nil then
+                                table.win=0
+                                if team==winTeam then
+                                    table.win=1
+                                end
+                                table.count=1
+                        else
+                                table.win=obj[name]["win"]
+                                if team==winTeam then
+                                        table.win=table.win+1
+                                end
+                                        table.count=obj[name]["count"]+1
+                        end
+                        local requestP = CreateHTTPRequestScriptVM("PUT",CDOTA_PlayerResource.wr_address..name..'.json')
+                        requestP:SetHTTPRequestRawPostBody("application/json", json.encode(table))
+                        requestP:Send(function( result )
+                        end)
+				end
+		    end
+        end )
+end

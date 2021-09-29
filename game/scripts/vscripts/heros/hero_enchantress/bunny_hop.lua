@@ -1,22 +1,27 @@
 bunny_hop = class({})
 LinkLuaModifier("modifier_bunny_hop_motion", "heros/hero_enchantress/bunny_hop.lua", LUA_MODIFIER_MOTION_HORIZONTAL)
-LinkLuaModifier("modifier_bunny_hop_buff", "heros/hero_enchantress/bunny_hop.lua", LUA_MODIFIER_MOTION_NONE) 
-function bunny_hop:IsHiddenWhenStolen() 
-    return false 
+LinkLuaModifier("modifier_bunny_hop_buff", "heros/hero_enchantress/bunny_hop.lua", LUA_MODIFIER_MOTION_NONE)
+function bunny_hop:IsHiddenWhenStolen()
+    return false
 end
 
-function bunny_hop:IsStealable() 
-    return true 
+function bunny_hop:IsStealable()
+    return true
 end
 
 
-function bunny_hop:IsRefreshable() 			
-    return true 
+function bunny_hop:IsRefreshable()
+    return true
 end
+
+function bunny_hop:GetCooldown(iLevel)
+        return self.BaseClass.GetCooldown(self,iLevel)-self:GetCaster():TG_GetTalentValue("special_bonus_enchantress_3")
+end
+
 
 function bunny_hop:OnInventoryContentsChanged()
     local caster=self:GetCaster()
-    if caster:Has_Aghanims_Shard() then 
+    if caster:Has_Aghanims_Shard() then
 		self:SetLevel(1)
 		self:SetHidden(false)
     end
@@ -27,7 +32,7 @@ function bunny_hop:OnSpellStart()
 	local caster_pos = caster:GetAbsOrigin()
 	local cur_pos=self:GetCursorPosition()
 	local fw = self:GetSpecialValueFor("dis")
-    local dis=TG_Distance(caster_pos,cur_pos+caster:GetForwardVector()*fw)--
+    	local dis=TG_Distance(caster_pos,cur_pos+caster:GetForwardVector()*fw)--
 	local dir=TG_Direction(caster_pos,cur_pos)
 	local sp=self:GetSpecialValueFor("speed")
 	if dis > fw then
@@ -40,33 +45,33 @@ end
 
 modifier_bunny_hop_motion=class({})
 
-function modifier_bunny_hop_motion:IsHidden() 			
-    return true 
+function modifier_bunny_hop_motion:IsHidden()
+    return true
 end
 
-function modifier_bunny_hop_motion:IsPurgable() 			
-    return false 
+function modifier_bunny_hop_motion:IsPurgable()
+    return false
 end
 
-function modifier_bunny_hop_motion:IsPurgeException() 	
-    return false 
+function modifier_bunny_hop_motion:IsPurgeException()
+    return false
 end
 
 function modifier_bunny_hop_motion:OnCreated(tg)
     if not IsServer() then
         return
 	end
-	local heros = FindUnitsInRadius(self:GetParent():GetTeamNumber(), self:GetParent():GetAbsOrigin(), nil, self:GetParent():Script_GetAttackRange(), DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO+DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_FARTHEST, false)               
-	if #heros>0 then 
-        for a=1,4 do    
+	local heros = FindUnitsInRadius(self:GetParent():GetTeamNumber(), self:GetParent():GetAbsOrigin(), nil, self:GetParent():Script_GetAttackRange(), DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO+DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_FARTHEST, false)
+	if #heros>0 then
+        for a=1,4 do
 			self:GetParent():PerformAttack(heros[RandomInt(1,#heros)],true, false, true, false, true, false, false)
         end
     end
-    local particle = ParticleManager:CreateParticle("particles/econ/courier/courier_trail_blossoms/courier_trail_blossoms.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
-	self:AddParticle( particle, false, false, 20, false, false ) 
+    	local particle = ParticleManager:CreateParticle("particles/econ/courier/courier_trail_blossoms/courier_trail_blossoms.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
+	self:AddParticle( particle, false, false, 20, false, false )
 	self.SP=tg.sp
-    self.DIR=ToVector(tg.dir)
-		if not self:ApplyHorizontalMotionController()then 
+    	self.DIR=ToVector(tg.dir)
+		if not self:ApplyHorizontalMotionController()then
 			self:Destroy()
 		end
 
@@ -75,10 +80,10 @@ end
 function modifier_bunny_hop_motion:UpdateHorizontalMotion( t, g )
     if not IsServer() then
         return
-	end  
-	
+	end
+
 	if  not self:GetParent():IsAlive() then
-        self:Destroy() 
+        self:Destroy()
     else
 		self:GetParent():SetAbsOrigin(self:GetParent():GetAbsOrigin()+self.DIR* (self.SP / (1.0 / FrameTime())))
     end
@@ -112,23 +117,23 @@ function modifier_bunny_hop_motion:GetOverrideAnimation()
     return ACT_DOTA_CAST_ABILITY_4
 end
 
-function modifier_bunny_hop_motion:GetModifierTurnRate_Percentage() 	
+function modifier_bunny_hop_motion:GetModifierTurnRate_Percentage()
 	return 100
 end
 
 
 modifier_bunny_hop_buff= class({})
 
-function modifier_bunny_hop_buff:IsHidden() 			
-	return false 
+function modifier_bunny_hop_buff:IsHidden()
+	return false
 end
 
-function modifier_bunny_hop_buff:IsPurgable() 		
-	return false 
+function modifier_bunny_hop_buff:IsPurgable()
+	return false
 end
 
-function modifier_bunny_hop_buff:IsPurgeException() 	
-	return false 
+function modifier_bunny_hop_buff:IsPurgeException()
+	return false
 end
 
 function modifier_bunny_hop_buff:OnCreated()
@@ -151,4 +156,3 @@ end
 function modifier_bunny_hop_buff:GetModifierAttackRangeBonus()
 	return self.AttackR
 end
-

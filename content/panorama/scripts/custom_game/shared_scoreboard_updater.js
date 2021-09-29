@@ -214,14 +214,27 @@ function _ScoreboardUpdater_UpdateTeamPanel(scoreboardConfig, containerPanel, te
             if (teamLogoPanel) {
                 teamLogoPanel.SetAttributeInt("team_id", teamId);
                 teamLogoPanel.BLoadLayout(logo_xml, false, false);
-                if (teamId == 2) {
-                    teamPanel.style.backgroundImage = "url('file://{images}/custom_game/bg/bg2.jpg')";
-                    teamLogoPanel.style.backgroundImage = "url('file://{images}/custom_game/good.png')";
-                    teamnme = "老狗队";
-                } else if (teamId == 3) {
-                    teamPanel.style.backgroundImage = "url('file://{images}/custom_game/255.jpg')";
-                    teamLogoPanel.style.backgroundImage = "url('file://{images}/custom_game/bad.png')";
-                    teamnme = "老鹿队";
+                switch (teamId) {
+                    case 2:
+                        teamPanel.style.backgroundImage = "url('file://{images}/custom_game/bg/bg2.jpg')";
+                        teamLogoPanel.style.backgroundImage = "url('file://{images}/custom_game/hud/good.png')";
+                        teamnme = "老狗队";
+                        break;
+                    case 3:
+                        teamPanel.style.backgroundImage = "url('file://{images}/custom_game/bg/bg10.jpg')";
+                        teamLogoPanel.style.backgroundImage = "url('file://{images}/custom_game/hud/bad.png')";
+                        teamnme = "老鹿队";
+                        break;
+                    case 6:
+                        teamPanel.style.backgroundImage = "url('file://{images}/custom_game/bg/bg10.jpg')";
+                        teamLogoPanel.style.backgroundImage = "url('file://{images}/custom_game/team_icons/team_icon_rooster_01.png')";
+                        teamnme = "然然队";
+                        break;
+                    default:
+                        teamPanel.style.backgroundImage = "url('file://{images}/custom_game/bg/bg10.jpg')";
+                        teamLogoPanel.style.backgroundImage = "url('file://{images}/custom_game/team_icons/team_icon_rooster_01.png')";
+                        teamnme = "然然队";
+                        break;
                 }
                 teamLogoPanel.SetPanelEvent('onmouseover', function() {
                     $.DispatchEvent("DOTAShowTextTooltip", teamnme);

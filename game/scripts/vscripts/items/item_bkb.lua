@@ -40,7 +40,8 @@ function modifier_item_bkb_pa:DeclareFunctions()
     return
     {
         MODIFIER_PROPERTY_STATS_STRENGTH_BONUS,
-        MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE
+        MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
+        MODIFIER_PROPERTY_MANA_BONUS
 	}
 end
 

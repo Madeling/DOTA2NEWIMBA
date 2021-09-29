@@ -24,16 +24,25 @@ function call_down:OnSpellStart()
     local caster=self:GetCaster()
     local caster_pos=caster:GetAbsOrigin()
     local pos=self:GetCursorPosition()
-    local m_rd=self:GetSpecialValueFor("m_rd")+caster:TG_GetTalentValue("special_bonus_imba_gyrocopter_2")
+    local m_rd=self:GetSpecialValueFor("m_rd")
     local delay=self:GetSpecialValueFor("delay")
-    local dis=self:GetSpecialValueFor("dis")/2
-    local t_time=self:GetSpecialValueFor("dur")
+    local dis=self:GetSpecialValueFor("dis")
     local sp=self:GetSpecialValueFor("sp")
-    local max_m=self:GetSpecialValueFor("max_m")
-    local pos2=caster_pos+caster:GetForwardVector()*dis
+    local max_m=self:GetSpecialValueFor("max_m")+1
+    max_m= caster:TG_HasTalent("special_bonus_gyrocopter_6") and max_m+1 or max_m
     local dis_time=dis/sp
     local m_time=dis_time/max_m
-    caster:AddNewModifier(caster, self, "modifier_call_down_buff", {duration=dis_time,pos=pos2,t=m_time})
+    if caster:TG_HasTalent("special_bonus_gyrocopter_8") then
+        local ab=caster:FindAbilityByName("rocket_barrage")
+        if ab and ab:GetLevel()>0 then
+            ab:OnSpellStart()
+        end
+        local ab1=caster:FindAbilityByName("guided_missile")
+        if ab1  then
+            ab1:EndCooldown()
+        end
+    end
+    caster:AddNewModifier(caster, self, "modifier_call_down_buff", {duration=dis_time,t=m_time})
 end
 
 function call_down:OnProjectileHit_ExtraData( target, location, table )
@@ -146,8 +155,7 @@ function modifier_call_down_buff:OnCreated(tg)
     if IsServer() then
         local time =0
         local max_m=self:GetAbility():GetSpecialValueFor("max_m")
-        self.back=true
-        self.pos = ToVector(tg.pos)
+        max_m= self:GetParent():TG_HasTalent("special_bonus_gyrocopter_6") and max_m+1 or max_m
         self.dir=self:GetParent():GetForwardVector()
         Timers:CreateTimer(0, function()
             time=time+1

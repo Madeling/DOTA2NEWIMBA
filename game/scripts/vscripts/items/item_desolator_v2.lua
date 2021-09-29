@@ -65,7 +65,7 @@ function modifier_item_desolator_v2_pa:OnAttackLanded(tg)
                 caster=self.parent,
                 ability= self.ability,
                 modifier="modifier_item_desolator_v2_debuff",
-                init= self.armor,
+                init= 5,
                 stack= self.armor,
                 duration=TG_StatusResistance_GET(tg.target,self.dur)
             })

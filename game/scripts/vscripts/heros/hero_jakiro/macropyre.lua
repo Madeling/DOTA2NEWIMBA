@@ -26,6 +26,9 @@ function macropyre:OnSpellStart()
     local pos2 = RotatePosition(pos, QAngle(0, -60, 0), pos + dir * 350)
     CreateModifierThinker(caster, self, "modifier_macropyre_debuff", {duration=dur}, pos1, team, false)
     CreateModifierThinker(caster, self, "modifier_macropyre_debuff", {duration=dur}, pos2, team, false)
+    if  cpos==pos then
+            dir=caster:GetForwardVector()
+      end
     local pp =
     {
         EffectName ="particles/units/heroes/hero_jakiro/jakiro_dual_breath_fire.vpcf",

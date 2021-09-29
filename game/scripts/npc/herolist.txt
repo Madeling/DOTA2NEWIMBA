@@ -49,8 +49,8 @@
 	"npc_dota_hero_jakiro"		"1"
 	"npc_dota_hero_abaddon" 		"1"
 	"npc_dota_hero_bane" 			"1"
-
-
+	"npc_dota_hero_alchemist" 			"1"
+	"npc_dota_hero_magnataur"			"1"
 	//////////////////////////////////////////
 	//老imba
 	"npc_dota_hero_rattletrap"			"1"
@@ -88,7 +88,7 @@
 	"npc_dota_hero_dark_willow"	"1"
 	"npc_dota_hero_death_prophet"	"1"
 	"npc_dota_hero_legion_commander"	"1"
-	"npc_dota_hero_nevermore"	"0"
+	"npc_dota_hero_nevermore"	"1"
 	"npc_dota_hero_slardar"	"1"
 	"npc_dota_hero_slark"	"1"
 	"npc_dota_hero_tidehunter"	"1"
@@ -153,14 +153,13 @@
 
 
 	"npc_dota_hero_silencer"			"1"
-	"npc_dota_hero_magnataur"			"1"
 	"npc_dota_hero_winter_wyvern" 		"1"
 	"npc_dota_hero_earth_spirit"			"1"
-
 	"npc_dota_hero_weaver"			"1"
 
 
-
+	"npc_dota_hero_techies" "1"
+	"npc_dota_hero_warlock" "1"
 
 
 

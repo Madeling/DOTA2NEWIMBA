@@ -6,9 +6,8 @@
 .DotaLoadingIcon {
     width: 100%;
     height: 100%;
-    background-size: 100% 100%; //cover;
-    overflow: clip;
-    background-image: url("file://{images}/custom_game/bg/bg2.jpg");
+    background-size: 100% 100%;
+    background-image:url("file://{images}/custom_game/bg/bg2.jpg");
 }
 
 @keyframes 'LoadingIconAnim' {
@@ -39,6 +38,7 @@
 #DOTA2IMBA {
     margin-left: 110px;
     margin-top: 40px;
+    flow-children: right;
     animation-name: ani_move3;
     animation-duration: 2s;
 }
@@ -47,7 +47,7 @@
     width: 70px;
     height: 70px;
     background-size: 100% 100%;
-    background-image: url("file://{images}/custom_game/dota_logo_bright_psd.png");
+    background-image: url("file://{images}/custom_game/hud/dota_logo_bright_psd.png");
 }
 
 #DOTA2IMBA_Text {
@@ -55,71 +55,46 @@
     text-shadow: 3px 1.5px #000000;
     font-weight: bold;
     font-size: 35px;
-    margin-left: 80px;
-    margin-top: 10px;
-    text-overflow: ellipsis;
-
+    vertical-align: center;
+    horizontal-align: center;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////
-
 #DOTA2IMBA_OP {
-    width: 100%;
-    height: 100%;
-}
-
-#DOTA2IMBA_OP0 {
-    margin-left: 100px;
+    width: 2000px;
+    height: 700px;
+    flow-children: right;
     margin-top: 170px;
+    margin-left: 110px;
 }
 
-#DOTA2IMBA_OP1 {
-    margin-left: 670px;
-    background-image: url('file://{images}/custom_game/hud/cm.png');
-}
-
-#DOTA2IMBA_OP2 {
-    margin-left: 870px;
-    background-image: url('file://{images}/custom_game/hud/wr.png');
-}
-
-#DOTA2IMBA_OP3 {
-    margin-left: 1070px;
-    background-image: url('file://{images}/custom_game/hud/dr.png');
-}
-
-#DOTA2IMBA_OP4 {
-    margin-left: 1270px;
-    background-image: url('file://{images}/custom_game/hud/lina.png');
-}
-
-
-
-.DOTA2IMBA_OP_Image2 {
+.DOTA2IMBA_OP_BG {
     width: 150px;
     height: 350px;
-    margin-left: 5px;
-    margin-top: 170px;
     box-shadow: #00000099 0px 0px 10px 0px;
     border: 3px solid#00000099;
+    margin-left: 50px;
     background-size: 100% 100%;
 }
 
-.DOTA2IMBA_OP_TEXT1 {
+.DOTA2IMBA_OP_TEXT {
     color: #ffffff;
     text-decoration: underline;
-    text-shadow: 2px 2px  #000000;
-    font-size: 17px;
+    text-shadow: 2px 2px #000000;
+    font-size: 18px;
     horizontal-align: center;
     vertical-align: center;
     margin-top: 30px;
+    box-shadow: #00000099 0px 0px 0px 1px;
     animation-name: ani_gradients;
     animation-duration: 1.5s;
     animation-iteration-count: 100;
 }
 
-#DOTA2IMBA_OP_Image3 {
+///////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
+#DOTA2IMBA_OP_DESC_BG {
     width: 500px;
     height: 350px;
     margin-left: 5px;
@@ -129,23 +104,7 @@
     background-image: url('file://{images}/custom_game/hud/bg_jull_psd.png');
 }
 
-#DOTA2IMBA_OP_TEXT2 {
-    color: #FFFFFF;
-    text-shadow: 1.5px 1.5px  #000000;
-    font-size: 22px;
-    margin-top: 15px;
-    margin-left: 208px;
-}
-
-#DOTA2IMBA_OP_Image3_1 {
-    width: 500px;
-    height: 350px;
-    margin-left: 5px;
-    background-size: 100% 100%;
-    //background-color: #ffffff8c;
-}
-
-#DOTA2IMBA_OP_Image3_2 {
+#DOTA2IMBA_OP_FLAG {
     width: 35px;
     height: 22px;
     margin-left: 160px;
@@ -156,18 +115,28 @@
     background-image: url('file://{images}/custom_game/hud/gcd.png');
 }
 
-#DOTA2IMBA_TIP {
-    width: 800px;
-    height: 535px;
-    margin-left: 10px;
+#DOTA2IMBA_OP_TITLE {
+    color: #FFFFFF;
+    text-shadow: 1.5px 1.5px #000000;
+    font-size: 22px;
+    margin-left: 200px;
+    margin-top: 17px;
 }
 
-#DOTA2IMBA_TIP_TEXT {
+#DOTA2IMBA_DESC {
+    width: 500px;
+    height: 300px;
+    horizontal-align: center;
+    margin-top: 50px;
+}
+
+#DOTA2IMBA_DESC_INFO {
     color: #FFFFFF;
     text-shadow: 1.5px 1.5px #00000099;
     font-size: 17px;
-    margin-left: 8px;
-    margin-top: 60px;
+    horizontal-align: center;
+    vertical-align: center;
+    text-overflow: shrink;
 }
 
 @keyframes 'ani_move' {
@@ -227,25 +196,51 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////
-#DOTA2IMBA_HERO_Recommend {
+////////////////////////////////////
+#tip_data_ROOT {
     width: 500px;
-    height: 290px;
-    margin-left: 115px;
-    margin-top: 600px;
+    height: 350px;
+    background-image: url('file://{images}/custom_game/bg/bg21.jpg');
     background-size: 100% 100%;
-    background-color: #000000;
-    background-image: url('file://{images}/custom_game/hero/1.jpg');
-    box-shadow: #000000 0px 0px 10px 0px;
-    border: 3px solid#00000099;
+    box-shadow: #000000d5 0px 0px 5px 0px;
+    border: 2px solid#000000de;
+    margin-top: 580px;
+    margin-left: 110px;
 }
 
-#DOTA2IMBA_HERO_Recommend_TEXT {
-    color: #FFFFFF99;
-    text-shadow: 1.5px 1.5px #000000;
-    font-size: 20px;
-    margin-left: 120px;
-    margin-top: 605px;
+#tip_image {
+    width: 500px;
+    height: 350px;
+    background-color: #0000008a;
+    background-size: 100% 100%;
+    vertical-align: center;
+    horizontal-align: center;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////
+#tip_text {
+    color: #ffffff;
+    text-shadow: 2px 2px #000000;
+    font-size: 22px;
+    vertical-align: center;
+    horizontal-align: center;
+    width: 450px;
+}
+
+.btip {
+    width: 35px;
+    height: 30px;
+    background-size: 100% 100%;
+    horizontal-align: center;
+    margin-top: 300px;
+    z-index: 1;
+}
+
+#next_tip {
+    margin-left: 100px;
+    background-image: url('file://{images}/custom_game/hud/arrow_right_png.png');
+}
+
+#back_tip {
+    margin-right: 100px;
+    background-image: url('file://{images}/custom_game/hud/arrow_left_png.png');
+}

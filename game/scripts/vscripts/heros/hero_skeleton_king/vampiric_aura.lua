@@ -50,7 +50,10 @@ function vampiric_aura:OnSpellStart()
     if caster.KINGMOD==nil then
         caster.KINGMOD={}
     end
-
+        local heros = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), nil, 800, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO+DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+        for _, hero in pairs(heros) do
+                hero:AddNewModifier(caster, self, "modifier_imba_stunned", {duration=1})
+        end
 end
 
 --
@@ -164,11 +167,12 @@ function modifier_vampiric_aura_buff2:OnCreated()
     if IsServer() then
         self:GetParent():EmitSound("Hero_SkeletonKing.Hellfire_Blast")
         self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_vampiric_aura_buff3", {duration=self:GetAbility():GetSpecialValueFor( "dur" )})
-        local heros = FindUnitsInRadius(self:GetCaster():GetTeamNumber(), self:GetCaster():GetAbsOrigin(), nil, 800, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+        local heros = FindUnitsInRadius(self:GetCaster():GetTeamNumber(), self:GetCaster():GetAbsOrigin(), nil, 800, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO+DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
         for _, hero in pairs(heros) do
-            if hero:IsAlive() and hero:IsRealHero() then
-                hero:AddNewModifier(self:GetCaster(), self:GetAbility(), "modifier_imba_stunned", {duration=2})
-            end
+                hero:AddNewModifier(self:GetCaster(), self:GetAbility(), "modifier_imba_stunned", {duration=1})
+        end
+        if self:GetParent():TG_HasTalent("special_bonus_skeleton_king_7") then
+            self:GetParent():Heal(99999, self:GetAbility())
         end
     end
  end
@@ -295,11 +299,8 @@ function modifier_vampiric_aura_buff3:GetModifierModelScale()
 end
 
 function modifier_vampiric_aura_buff3:CheckState()
-    if self:GetCaster():Has_Aghanims_Shard() then
         return
         {
             [MODIFIER_STATE_UNSLOWABLE] = true,
         }
-    end
-    return
 end

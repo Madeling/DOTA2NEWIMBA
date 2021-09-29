@@ -1,5 +1,6 @@
 enchant= class({})
 LinkLuaModifier("modifier_enchant_buff", "heros/hero_enchantress/enchant.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_enchant_bkb_buff", "heros/hero_enchantress/enchant.lua", LUA_MODIFIER_MOTION_NONE)
 function enchant:IsHiddenWhenStolen()
     return false
 end
@@ -26,6 +27,7 @@ end
 function enchant:OnSpellStart()
 	local caster = self:GetCaster()
     local target= self:GetCursorTarget()
+    local dur=self:GetSpecialValueFor("dur")
     local unit=target
     caster:EmitSound("Hero_Enchantress.EnchantCreep")
     if target:IS_TrueHero_TG() then
@@ -37,8 +39,11 @@ function enchant:OnSpellStart()
         for a=0,2 do
             unit=CreateUnitByName(target:GetUnitName(), target:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber())
             unit:SetControllableByPlayer(caster:GetPlayerOwnerID(), true)
-            unit:AddNewModifier(caster, self, "modifier_kill", {duration = self:GetSpecialValueFor("dur")})
-            unit:AddNewModifier(caster, self, "modifier_enchant_buff", {duration=self:GetSpecialValueFor("dur")})
+            unit:AddNewModifier(caster, self, "modifier_kill", {duration = dur})
+            unit:AddNewModifier(caster, self, "modifier_enchant_buff", {duration=dur})
+            if  caster:TG_HasTalent("special_bonus_enchantress_6") then
+                        unit:AddNewModifier(caster, self, "modifier_enchant_bkb_buff", {duration=dur})
+            end
         end
     end
 end
@@ -91,4 +96,37 @@ function modifier_enchant_buff:CheckState()
 	 {
 		   [MODIFIER_STATE_DOMINATED] = true,
 	}
+end
+
+
+modifier_enchant_bkb_buff=class({})
+function modifier_enchant_bkb_buff:IsHidden()
+    return true
+end
+
+function modifier_enchant_bkb_buff:IsPurgable()
+    return false
+end
+
+function modifier_enchant_bkb_buff:IsPurgeException()
+    return false
+end
+
+function modifier_enchant_bkb_buff:GetTexture()
+    return "item_black_king_bar"
+end
+
+function modifier_enchant_bkb_buff:GetEffectName()
+    return "particles/items_fx/black_king_bar_avatar.vpcf"
+end
+
+function modifier_enchant_bkb_buff:GetEffectAttachType()
+    return PATTACH_ABSORIGIN_FOLLOW
+end
+
+function modifier_enchant_bkb_buff:CheckState()
+    return
+    {
+        [MODIFIER_STATE_MAGIC_IMMUNE] = true,
+    }
 end

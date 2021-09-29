@@ -1,8 +1,27 @@
 --------------------------------------------------------------------------
 -->游戏内部设置
 --------------------------------------------------------------------------
-KEY=GetDedicatedServerKeyV2("new_imba")
-----------------------------------------------------------------------------------------------------------------------------------
+
+CDOTA_PlayerResource.key = "test"
+CDOTA_PlayerResource.wr_key = "test"
+
+if IsDedicatedServer()  then
+      CDOTA_PlayerResource.key = GetDedicatedServerKeyV2("new-imba")
+      CDOTA_PlayerResource.wr_key="WR-"..tostring(CDOTA_PlayerResource.key)
+end
+
+
+if CDOTA_PlayerResource.address == nil then
+	  CDOTA_PlayerResource.address ="https://dota2new-imba-default-rtdb.asia-southeast1.firebasedatabase.app/"..tostring(CDOTA_PlayerResource.key).."/"
+end
+
+if CDOTA_PlayerResource.wr_address == nil then
+	  CDOTA_PlayerResource.wr_address ="https://dota2new-imba-default-rtdb.asia-southeast1.firebasedatabase.app/"..tostring(CDOTA_PlayerResource.wr_key).."/"
+end
+
+if CDOTA_PlayerResource.HeroWR==nil  then
+  CDOTA_PlayerResource.HeroWR={}
+end
 
 --超级兵
 CDOTAGamerules.IS_SUPER_CREEP=false
@@ -15,7 +34,6 @@ SPELL_AMP_RAPIER_1 = 0.7
 SPELL_AMP_RAPIER_3 = 2.0
 SPELL_AMP_RAPIER_SUPER = 2.0
 
-
 --是否启用抗性
 RS_Switch=true
 
@@ -24,9 +42,10 @@ KILL_TIPS=true
 
 --FV团队
 GAME_LOSE_TEAM=nil
+GAME_WIN_TEAM=nil
 
 --出生延迟
-SPAWN_TIME=0
+SPAWN_TIME=3
 
 --大决战
 PVP=false
@@ -40,7 +59,18 @@ if BOT_BAD==nil  then
 	BOT_BAD = {}
 end
 
-WARD = 2000
+--老将眼奖励
+Veteran_WARD = 1000
+
+Hero_KEG=200
+
+Threshold_KEG=750
+
+Perc_KEG=0.05
+
+Neutral_KEG=3
+
+Creep_KEG=3
 ----------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -48,10 +78,10 @@ WARD = 2000
 ROSHAN_POS=Vector(-2814, 2316, 232)
 
 --G
-GOOD_POS=Vector(-7450, -6550, 500)
+GOOD_POS=Vector(-7000,-6500, 608)
 
 --D
-BAD_POS=Vector(7400, 6500, 500)
+BAD_POS=Vector(6912, 6336, 608)
 
 --中心位置
 C_POS=Vector(-500,-300,0)
@@ -62,53 +92,56 @@ CDOTA_PlayerResource.ROSHAN=nil
 
 --玩家
 if CDOTA_PlayerResource.TG_HERO==nil  then
-	CDOTA_PlayerResource.TG_HERO = {}
+	  CDOTA_PlayerResource.TG_HERO = {}
 end
 
 --玩家信使
 if CDOTA_PlayerResource.TG_COURIER==nil  then
-	CDOTA_PlayerResource.TG_COURIER = {}
+	  CDOTA_PlayerResource.TG_COURIER = {}
 end
 
 --肉山死亡次数
 if CDOTA_PlayerResource.ROSHAN_DIE==nil  then
-	CDOTA_PlayerResource.ROSHAN_DIE = 0
+	  CDOTA_PlayerResource.ROSHAN_DIE = 0
 end
 
 --投射物
 if CDOTA_PlayerResource.Projectile==nil  then
-	CDOTA_PlayerResource.Projectile = {}
+	  CDOTA_PlayerResource.Projectile = {}
 end
 
 --死亡
 if CDOTA_PlayerResource.IMBA_PLAYER_DEATH_STREAK == nil then
-	CDOTA_PlayerResource.IMBA_PLAYER_DEATH_STREAK = {}
+	  CDOTA_PlayerResource.IMBA_PLAYER_DEATH_STREAK = {}
 end
 
 --击杀
 if CDOTA_PlayerResource.IMBA_PLAYER_KILL_STREAK == nil then
-	CDOTA_PlayerResource.IMBA_PLAYER_KILL_STREAK = {}
+	  CDOTA_PlayerResource.IMBA_PLAYER_KILL_STREAK = {}
 end
 
 
 --数据
 if CDOTA_PlayerResource.NET_DATA == nil then
-	CDOTA_PlayerResource.NET_DATA = {}
+	  CDOTA_PlayerResource.NET_DATA = {}
 end
 
 if CDOTA_PlayerResource.RD_SK == nil then
-	CDOTA_PlayerResource.RD_SK = {}
+	  CDOTA_PlayerResource.RD_SK = {}
 end
 
 
 if CDOTAGamerules.IMBA_FOUNTAIN == nil then
-	CDOTAGamerules.IMBA_FOUNTAIN = {}
+	  CDOTAGamerules.IMBA_FOUNTAIN = {}
 end
 
 if CDOTAGamerules.TOWER == nil then
-	CDOTAGamerules.TOWER = {}
+	  CDOTAGamerules.TOWER = {}
 end
 
+if GameRules.dummy == nil then
+	  GameRules.dummy = {}
+end
 
 ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -235,12 +268,13 @@ NOT_MODIFIER_BUFF=
 --去除目标的不死buff
 KILL_MODIFIER_TABLE= {
   "modifier_refraction_buff1","modifier_false_promise_buff","modifier_false_promise_buff2","modifier_supernova_buff2","modifier_c_return_buff",
-  "modifier_imba_shallow_grave","modifier_aphotic_shield"
+  "modifier_imba_shallow_grave","modifier_aphotic_shield","modifier_flesh_heap_buff","modifier_reincarnation_ghost"
 }
 
 
 ----------------------------------------------------------------------------------------------------------------------------------
 
+--👊
 Female_HERO=
 {
   "npc_dota_hero_vengefulspirit","npc_dota_hero_templar_assassin","npc_dota_hero_enchantress","npc_dota_hero_phantom_assassin","npc_dota_hero_naga_siren" ,
@@ -255,7 +289,6 @@ Female_HERO=
 --随机技能1号表
 RandomAbility=
 {
-  --IMBA
   "multishot","chilling_touch","axe_sprint","berserkers_call","counter_helix","double_edge","surge","dragon_blood","dragon_tail","searing_chains",
   "rocket_barrage","blade_dance","torrent","howl","mystic_snake","crippling_fear","essence_aura","purification","fortunes_end","shackleshot",
   "powershot","poison_nova","storm_bolt","slug","hellfire_blast","shock","caustic_finale","icarus_dive","phantom_strike","malefice","stifling_dagger",
@@ -263,21 +296,20 @@ RandomAbility=
   "imba_rattletrap_battery_assault","guardian_angel","sanity_eclipse","boundless_strike","shapeshift","healing_ward","sprout","midnight_pulse","seriously_punch",
   "ion_shell","culling_blade","ice_vortex","ice_blast","imba_storm_spirit_electric_vortex","imba_storm_spirit_ball_lightning","grenade","echo_stomp",
   "guided_missile","imba_bounty_hunter_shuriken_toss","imba_chaos_knight_chaos_bolt","imba_chaos_knight_chaos_strike","imba_lina_dragon_slave","imba_lina_light_strike_array",
-  "imba_razor_plasma_field","oldsky_aseal","imba_leshrac_pulse_nova","aghsfort_mars_spear","imba_mirana_arrow","imba_mirana_leap","hoof_stomp","stampede","breathe_fire",
-  "sleight_of_fist","song_of_the_siren","voodoo","decay","windrun","bulldoze","charge_of_darkness","greater_bash","nether_strike","dual_breath","ice_path","macropyre",
+  "imba_razor_plasma_field","oldsky_aseal","imba_leshrac_pulse_nova","aghsfort_mars_spear","imba_mirana_arrow","imba_mirana_leap","hoof_stomp","breathe_fire",
+  "sleight_of_fist","song_of_the_siren","voodoo","decay","windrun","bulldoze","charge_of_darkness","greater_bash","dual_breath","ice_path","macropyre",
   "toss_","wdnmd","shell_","money", "mount","dog", "gamble", "thunderstorm","deerskin","des_build","fight","kill_trees","reduce","laser_turret","counterattack",
   "tower","aphotic_shield","death_coil","frostmourne","purification_new","guardian_angel_new","imba_queenofpain_blink","imba_queenofpain_shadow_strike","imba_queenofpain_scream_of_pain",
   "imba_queenofpain_sonic_wave","imba_huskar_inner_fire","imba_huskar_burning_spear","imba_huskar_berserkers_blood","polymerization","forbid","deception",
   "mother_love", "tp_tp", "assembly","imba_witch_doctor_voodoo_switcheroo","imba_witch_doctor_voodoo_restoration","brain_sap","enfeeble","nightmare",
   "imba_tiny_grow","imba_tiny_avalanche","imba_treant_natures_grasp","imba_light_radiant_bind","imba_light_blinding_light","imba_luna_lucent_beam",
-  "imba_luna_lunar_blessing", "imba_luna_moon_glaive","imba_spectre_desolate","imba_phantom_lancer_spirit_lance",
-  "imba_phantom_lancer_doppelwalk","imba_phantom_lancer_phantom_edge","imba_bristleback_viscous_nasal_goo","imba_bristleback_quill_spray",
-
+  "imba_luna_lunar_blessing", "imba_spectre_desolate","imba_phantom_lancer_spirit_lance","prot","flesh_heap","dismember","mountain","shockwave","skewer",
+  "imba_phantom_lancer_doppelwalk","imba_phantom_lancer_phantom_edge","imba_bristleback_viscous_nasal_goo","imba_bristleback_quill_spray","empower",
+  "unstable_concoction_throw",
 --"droiyan","traitor","truce","flak_cannon","seer_vacuum"
-  --原版
   "pangolier_swashbuckle","tidehunter_anchor_smash","rattletrap_hookshot", "earthshaker_aftershock","warlock_rain_of_chaos","pudge_meat_hook","queenofpain_blink",
   "shadow_shaman_voodoo",  "faceless_void_time_walk","dark_troll_warlord_ensnare","polar_furbolg_ursa_warrior_thunder_clap","centaur_khan_war_stomp","roshan_spell_block",
-  "roshan_slam","hoodwink_scurry","necronomicon_archer_purge","filler_ability","necronomicon_archer_aoe","satyr_hellcaller_shockwave",
+  "roshan_slam","hoodwink_scurry","filler_ability","necronomicon_archer_aoe","satyr_hellcaller_shockwave","victory","fiery_soul","laguna_blade",
 
 }
 
@@ -285,12 +317,8 @@ RandomAbility=
 --随机技能被动表
 RandomAbility2=
   {
-
-
-    --原版
     "filler_ability",
     "roshan_spell_block",
-    "necronomicon_archer_purge",
     "necronomicon_archer_aoe",
     "shredder_reactive_armor",
     "dragon_knight_dragon_blood",
@@ -302,9 +330,7 @@ RandomAbility2=
     "troll_warlord_fervor",
     "centaur_return",
     "pangolier_heartpiercer",
-    "pangolier_lucky_shot",
     "life_stealer_feast",
-   -- "vengefulspirit_command_aura",
     "pudge_flesh_heap",
     "earthshaker_aftershock",
     "sven_great_cleave",
@@ -318,8 +344,6 @@ RandomAbility2=
     "dragon_knight_elder_dragon_form",
     "huskar_berserkers_blood",
 
-
-    --IMBA
       "greater_bash",
       "tower1_watchtower",
       "blade_dance",
@@ -350,7 +374,7 @@ RandomAbility2=
       "laser_turret",
       "reduce",
       "kill_trees",
-      --"victory",
+      "victory",
       "fight",
       "des_build",
       "deerskin",
@@ -366,11 +390,13 @@ RandomAbility2=
       --"droiyan",
       "assembly",
        "imba_tiny_grow",
-       "imba_luna_moon_glaive",
        "imba_luna_lunar_blessing",
        "imba_spectre_desolate",
       "imba_phantom_lancer_phantom_edge",
       "imba_bristleback_warpath",
+      "prot",
+      "fiery_soul",
+
   }
 
 
@@ -394,7 +420,7 @@ RandomAbilityHero=
   "npc_dota_hero_invoker",
   "npc_dota_hero_visage",
   "npc_dota_hero_tusk",
-  "npc_dota_hero_faceless_void",
+  --"npc_dota_hero_faceless_void",
   "npc_dota_hero_morphling",
   "npc_dota_hero_medusa",
   "npc_dota_hero_tiny",
@@ -434,7 +460,8 @@ NOT_RS_ITEM_TK=
   "item_sphere",
   "item_manta_v2",
   "item_glimmer_cape",
-  "item_imba_orb"
+  "item_imba_orb",
+    "item_laojie"
 }
 
 

@@ -92,7 +92,7 @@ function modifier_flesh_golem_buff:DeclareFunctions()
     return
     {
         MODIFIER_PROPERTY_MODEL_CHANGE,
-        MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
+       -- MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
         MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
         MODIFIER_PROPERTY_HEALTH_BONUS,
 	}
@@ -106,11 +106,11 @@ function modifier_flesh_golem_buff:GetModifierModelChange(tg)
     end
 
 end
-
+--[[
 function modifier_flesh_golem_buff:GetModifierMoveSpeedBonus_Constant(tg)
     return self:GetAbility():GetSpecialValueFor("sp")
 end
-
+]]
 function modifier_flesh_golem_buff:GetModifierPhysicalArmorBonus(tg)
     return self:GetAbility():GetSpecialValueFor("ar")
 end
@@ -207,14 +207,14 @@ function modifier_flesh_golem_hp:DeclareFunctions()
     return
     {
         MODIFIER_PROPERTY_HEALTH_BONUS,
-        MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE
+        --MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE
 	}
 end
 
 function modifier_flesh_golem_hp:GetModifierHealthBonus(tg)
     return self:GetStackCount()
 end
-
+--[[
 function modifier_flesh_golem_hp:GetModifierDamageOutgoing_Percentage()
     return self:GetAbility():GetSpecialValueFor("godmg")
-end
+end]]

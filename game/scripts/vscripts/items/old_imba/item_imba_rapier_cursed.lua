@@ -70,7 +70,7 @@ end
 			ParticleManager:SetParticleControl(pfx,1,Vector(200,0,0))
 			self:AddParticle(pfx, false, false, 15, false, true)
 		end
-		self:StartIntervalThink(0.05)
+		self:StartIntervalThink(0.1)
 		self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_imba_rapier_super_unique", {})
 		--lifesteal
 		self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_imba_rapier_unique_passive", {})

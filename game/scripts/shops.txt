@@ -34,11 +34,10 @@
 		"item"		"item_robe"
 
 
-		"item"		"item_imba_crown"
 		"item"		"item_ogre_axe"
 		"item"		"item_blade_of_alacrity"
 		"item"		"item_staff_of_wizardry"
-		"item"		"item_crown"
+		//"item"		"item_crown"
 
 	}
 
@@ -130,7 +129,7 @@
 		"item"		"item_imba_vladmir"			//"item_vladmir"	
 		"item"		"item_moon_shard"
 		"item"		"item_repair_kit"
-
+		"item"		"item_imba_crown"
 
 		//"item"		"item_guardian_greaves"
 		//"item"		"item_orb_of_corrosion"
@@ -138,11 +137,11 @@
 				
 	"magics"			
 	{
-		"item"		"item_solar_crest"
+		"item"		"item_imba_solar_crest"
 		"item"		"item_red_cape"			//"item_glimmer_cape"
 		"item"		"item_force_staff"
 		"item"		"item_cyclone"
-	
+		"item"		"item_wind_waker"
 		"item"		"item_orchid"	
 		"item"		"item_imba_dagon"
 		"item"		"item_imba_atos"			//"item_rod_of_atos"
@@ -197,9 +196,10 @@
 		"item"		"item_mage_slayer"
 		//"item"		"item_invis_sword"
 		"item"		"item_silver_edge"	
-		"item"		"item_imba_death"			//"item_imba_silver_hunter"
+		//"item"		"item_imba_death"
+		"item"		"item_imba_silver_hunter"
 		"item"		"item_enchanted_edge"
-		"item"		item_grandmasters_glaive
+		//"item"		"item_grandmasters_glaive"
 		"item"		"item_abyssal_blade_v2"
 		"item"		"item_diffusal_blade_witchcraft"	
  		"item"		"item_imba_mjollnir"

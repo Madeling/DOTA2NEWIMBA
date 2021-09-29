@@ -38,9 +38,9 @@ function elder_dragon_form:OnSpellStart()
     local duration=self:GetSpecialValueFor("duration")
     EmitSoundOn("Hero_DragonKnight.ElderDragonForm", caster)
     caster:AddNewModifier(caster, self, "modifier_elder_dragon_form", {duration=duration})
-    if lv>=11 and lv<16 then
+    if lv==2 then
             num="1"
-    elseif lv>=16 then
+    elseif lv==3 then
             num="2"
     end
     if caster:HasScepter() then
@@ -306,8 +306,6 @@ function modifier_elder_dragon_form_buff:DeclareFunctions()
     {
         MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
         MODIFIER_PROPERTY_STATUS_RESISTANCE_STACKING,
-        MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
-        MODIFIER_PROPERTY_ATTACK_RANGE_BONUS,
         MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT
 	}
 end
@@ -329,14 +327,6 @@ end
 
 function modifier_elder_dragon_form_buff:GetModifierStatusResistanceStacking()
     return self.sr
-end
-
-function modifier_elder_dragon_form_buff:GetModifierPreAttack_BonusDamage()
-    return   self.att
-end
-
-function modifier_elder_dragon_form_buff:GetModifierAttackRangeBonus()
-    return   self.att
 end
 
 function modifier_elder_dragon_form_buff:GetModifierAttackSpeedBonus_Constant()

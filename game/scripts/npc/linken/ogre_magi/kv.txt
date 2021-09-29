@@ -410,7 +410,7 @@
 			"04"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"cdr_pct"	"5 10 15"
+				"cdr_pct"	"15 20 25"
 			}
 			"05"
 			{

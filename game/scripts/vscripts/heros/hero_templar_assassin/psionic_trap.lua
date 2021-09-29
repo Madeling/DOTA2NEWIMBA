@@ -1,41 +1,40 @@
 psionic_trap=class({})
 LinkLuaModifier("modifier_psionic_trap_buff", "heros/hero_templar_assassin/psionic_trap.lua", LUA_MODIFIER_MOTION_NONE)
 
-function psionic_trap:IsHiddenWhenStolen() 
-    return false 
+function psionic_trap:IsHiddenWhenStolen()
+    return false
 end
 
-function psionic_trap:IsStealable() 
-    return true 
+function psionic_trap:IsStealable()
+    return true
 end
 
-function psionic_trap:IsRefreshable() 			
-    return true 
+function psionic_trap:IsRefreshable()
+    return true
 end
 
 function psionic_trap:CastFilterResultLocation(tg)
     local max=self:GetSpecialValueFor( "max" )
-    if self:GetCaster().psionic_trapnum~=nil and self:GetCaster().psionic_trapnum>=max then 
+    if self:GetCaster().psionic_trapnum~=nil and self:GetCaster().psionic_trapnum>=max then
         return UF_FAIL_CUSTOM
 	end
 end
 
-function psionic_trap:GetCustomCastErrorLocation(tg) 
-    return "放置的陷阱数量已达到上限" 
+function psionic_trap:GetCustomCastErrorLocation(tg)
+    return "放置的陷阱数量已达到上限"
 end
 
-function psionic_trap:OnSpellStart() 			
+function psionic_trap:OnSpellStart()
     local caster = self:GetCaster()
     local cur_pos = self:GetCursorPosition()
     local dur=self:GetSpecialValueFor( "dur" )
     local max=self:GetSpecialValueFor( "max" )
-    if caster.psionic_trapnum==nil then 
+    if caster.psionic_trapnum==nil then
         caster.psionic_trapnum=0
     end
-    if caster.psionic_trapnum<=max then 
+    if caster.psionic_trapnum<=max then
         caster:EmitSound("Hero_TemplarAssassin.Trap.Cast")
         caster:EmitSound("Hero_TemplarAssassin.Trap")
-        
         local null = CreateUnitByName(
             "npc_dota_psionic_trap",
             cur_pos,
@@ -51,7 +50,7 @@ end
 
 function psionic_trap:OnInventoryContentsChanged()
     local caster=self:GetCaster()
-    if caster:HasScepter() then 
+    if caster:HasScepter() then
         TG_Set_Scepter(caster,false,1,"assassin_trap")
         TG_Set_Scepter(caster,false,1,"trap_teleport")
     else
@@ -62,23 +61,23 @@ end
 
 modifier_psionic_trap_buff=class({})
 
-function modifier_psionic_trap_buff:IsHidden() 			
-    return true 
+function modifier_psionic_trap_buff:IsHidden()
+    return true
 end
 
-function modifier_psionic_trap_buff:IsPurgable() 		
+function modifier_psionic_trap_buff:IsPurgable()
     return false
 end
 
-function modifier_psionic_trap_buff:IsPurgeException() 
-    return false 
+function modifier_psionic_trap_buff:IsPurgeException()
+    return false
 end
 
-function modifier_psionic_trap_buff:OnCreated() 
+function modifier_psionic_trap_buff:OnCreated()
     self.DAM=self:GetAbility():GetSpecialValueFor( "dam" )
     self.RD=self:GetAbility():GetSpecialValueFor( "rd" )
     if not IsServer() then
-        return 
+        return
     end
     local fx = ParticleManager:CreateParticle("particles/heros/templar_assassin/templar_assassin_trap_portrait.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
     ParticleManager:SetParticleControl(fx, 0, self:GetParent():GetAbsOrigin()+self:GetParent():GetUpVector()*1000)
@@ -89,7 +88,7 @@ function modifier_psionic_trap_buff:OnCreated()
     self:StartIntervalThink(0.1)
 end
 
-function modifier_psionic_trap_buff:OnIntervalThink() 
+function modifier_psionic_trap_buff:OnIntervalThink()
     local heros = FindUnitsInRadius(
         self:GetParent():GetTeamNumber(),
         self:GetParent():GetAbsOrigin(),
@@ -100,13 +99,13 @@ function modifier_psionic_trap_buff:OnIntervalThink()
         DOTA_UNIT_TARGET_FLAG_NONE,
         FIND_ANY_ORDER,
         false )
-   if #heros>0 then 
+   if #heros>0 then
     self:StartIntervalThink(-1)
     self:Destroy()
     end
 end
 
-function modifier_psionic_trap_buff:OnDestroy() 
+function modifier_psionic_trap_buff:OnDestroy()
     if  IsServer() then
         local fx = ParticleManager:CreateParticle("particles/units/heroes/hero_templar_assassin/templar_assassin_trap_explode.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
         ParticleManager:ReleaseParticleIndex(fx)
@@ -124,31 +123,31 @@ function modifier_psionic_trap_buff:OnDestroy()
             false )
         for _, hero in pairs(heros) do
             if not hero:IsMagicImmune() then
-            local damageTable = {
-                attacker = self:GetCaster(),
-                victim = hero,
-                damage = self.DAM,
-                damage_type = DAMAGE_TYPE_MAGICAL,
-                ability = self:GetAbility()
-            }
-            ApplyDamage(damageTable)
-            hero:AddNewModifier(self:GetParent() , self:GetAbility(), "modifier_confuse", {duration=self:GetAbility():GetSpecialValueFor( "confuse" )})
-        end
+                if self:GetCaster():TG_HasTalent("special_bonus_templar_assassin_4") then
+                    hero:AddNewModifier(self:GetParent() , self:GetAbility(), "modifier_imba_stunned", {duration=0.5})
+                end
+                hero:AddNewModifier(self:GetParent() , self:GetAbility(), "modifier_confuse", {duration=self:GetAbility():GetSpecialValueFor( "confuse" )})
+                local damageTable = {
+                    attacker = self:GetCaster(),
+                    victim = hero,
+                    damage = self.DAM,
+                    damage_type = DAMAGE_TYPE_MAGICAL,
+                    ability = self:GetAbility()
+                }
+                ApplyDamage(damageTable)
+            end
         end
         if  self:GetParent():GetOwner().psionic_trapnum~=nil then
             self:GetParent():GetOwner().psionic_trapnum= self:GetParent():GetOwner().psionic_trapnum-1
         end
          self:GetParent():Kill( self:GetAbility(), self:GetParent() )
     end
-    self.RD=nil
-    self.DAM=nil
 end
 
 function modifier_psionic_trap_buff:CheckState()
-    return 
+    return
     {
         [MODIFIER_STATE_MAGIC_IMMUNE] = true,
         [MODIFIER_STATE_INVISIBLE] = true,
-         
     }
 end

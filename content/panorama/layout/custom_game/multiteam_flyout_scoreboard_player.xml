@@ -1,6 +1,5 @@
 <root>
     <styles>
-    <!--	<include src="file://{resources}/styles/dotastyles.css" />	-->
 		<include src="file://{resources}/styles/custom_game/shared_scoreboard_styles.css" />
         <include src="file://{resources}/styles/custom_game/multiteam_flyout_scoreboard.css" />
     </styles>
@@ -43,7 +42,7 @@
 			<Panel id="AssistsContainer" class="ScoreCol_Assists ScoreboardPanel">
 				<Label id="Assists" text="0" />
 			</Panel>
-			<Label id="TeammateGoldAmount"  text="999" class="ScoreCol_Golds ScoreboardPanel"/>
+			<Label id="TeammateGoldAmount"  text="0" class="ScoreCol_Golds ScoreboardPanel"/>
 			<DOTAAbilityImage id="RDSKButton"    class="ScoreCol_RDSK ScoreboardPanel"  hittest="true" />
 			<Button id="MuteButton" onactivate="ToggleMute();" class="ScoreCol_Mute ScoreboardPanel"/>
 		</Panel>

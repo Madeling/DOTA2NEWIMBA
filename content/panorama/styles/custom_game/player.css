@@ -1,199 +1,258 @@
-.ROOT {
+.Player_ROOT {
     width: 100%;
     height: 100%;
 }
 
-#player_BG {
-    width: 45px;
-    height: 45px;
-    background-image:url('file://{images}/custom_game/hud/style_unlock_spirit_breaker_psd.png');
-    margin-top: 5px;
+#Custom_B_ROOT {
+    width: 300px;
+    height: 100px;
+    margin-top: 10px;
     margin-left: 190px;
+    flow-children: right;
+}
+
+.B_ROOT {
+    width: 40px;
+    height: 100px;
+    flow-children: down;
+    horizontal-align: left;
+}
+
+#Player_BG {
+    background-image:url('file://{images}/custom_game/hud/style_unlock_utility_psd.png');
 }
 
 #Veteran_BG {
-    width: 50px;
-    height: 50px;
-    background-image: url('file://{images}/custom_game/hud/map_unlock_support_psd.png');
-    margin-top: 2px;
-    margin-left: 240px;
+    background-image:url('file://{images}/custom_game/hud/style_unlock_support_psd.png');
 }
 
-#TIP_BG {
-    width: 60px;
-    height: 90px;
-    background-image: url('file://{images}/custom_game/hud/icon_map_png.png');
-    margin-top: 50px;
-    margin-left: 183px;
+#RDSK_BG {
+    background-image:url('file://{images}/custom_game/hud/style_unlock_carry_psd.png');
 }
 
-.User_Data {
+.desc {
+    color: #ffffff;
+    text-shadow: 1.5px 1.5px #000000;
+    font-size: 16px;
+    text-align: center;
+    horizontal-align: center;
+    vertical-align: center;
+}
+
+.B_Data {
+    width: 40px;
+    height: 40px;
     background-size: 100% 100%;
-    vertical-align: bottom;
-    horizontal-align: right;
 }
 
 /////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
 #player_data_ROOT {
+    background-image: url('file://{images}/custom_game/hud2/b1.png');
     width: 800px;
-    height: 350px;
-    background-image: url('file://{images}/custom_game/hud/sidelane_jpg.png');
+    height: 800px;
     background-size: 100% 100%;
-    box-shadow: #000000 0px 0px 20px 0px;
-    margin-top: 200px;
-    margin-left: 600px;
+    horizontal-align: center;
+    margin-top: 180px;
+    flow-children: down;
+    box-shadow: #00000077 0px 0px 100px 0px;
     visibility: collapse;
+}
+
+#data_ROOT {
+    height: 780px;
+    margin-top: 20px;
+    horizontal-align: center;
+    flow-children: down;
+    background-size: 100% 100%;
+}
+
+#player_LV_BG {
+    width: 1000px;
+    height: 120px;
+    background-size: 100% 100%;
+    horizontal-align: center;
+    vertical-align: center;
+    background-image: url('file://{images}/custom_game/hud2/Banner_half.png');
+    box-shadow: #00000077 0px 0px 100px 0px;
+    border-top: 8px solid rgb(26, 26, 26);
 }
 
 #player_LV {
-    width: 180px;
-    height: 180px;
-    //background-image: url('file://{images}/rank_tier_icons/rank0_psd.vtex');
+    width: 120px;
+    height: 120px;
     background-size: 100% 100%;
-    //horizontal-align: left;
+    horizontal-align: center;
     vertical-align: center;
-    margin-left: 55px;
 }
 
-.veteran_NAME {
-    color: #ffffff;
-    text-shadow: 3px 3px #000000;
-    font-size: 50px;
+.steamAvatar {
+    width: 60px;
+    height: 60px;
+    background-size: 100% 100%;
+    border: 4px solid #000000ea;
     horizontal-align: center;
-    background-color: #000000ef;
     margin-top: 10px;
 }
 
-.veteran_TEXT {
-    color: #ffffff;
-    text-shadow: 2px 2px #000000;
+.data_TEXT {
+    color: #fbfbfb;
+    text-shadow: 1px 1px 0px 2.7 #000000;
     font-size: 25px;
-    margin-left: 275px;
-    background-color: #000000ef;
+    margin-top: 13px;
+    horizontal-align: center;
+    text-overflow: clip;
+    font-family: Radiance, FZKai-Z03, TH Sarabun New, YDYGO 540;
 }
 
-.veteran_TEXT1 {
-    margin-left: 500px;
+.data_TEXT1 {
+    color: #c62c2c;
 }
 
-#veteran1 {
-    margin-top: 100px;
+.data_TEXT2 {
+    color: #000000;
+    font-size: 26px;
 }
 
-#veteran2 {
-    margin-top: 150px;
-}
-
-#veteran3 {
-    margin-top: 200px;
-}
-
-#veteran4 {
-    margin-top: 250px;
-}
-
-#veteran5 {
-    margin-top: 100px;
-}
-
-#veteran6 {
-    margin-top: 150px;
-}
-
-#veteran7 {
-    margin-top: 200px;
-}
-
-#veteran8 {
-    margin-top: 250px;
-}
-
-#veteran9 {
-    margin-left: 80px;
-    margin-top: 300px;
-}
-
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
 #veteran_data_ROOT {
     width: 1000px;
     height: 600px;
-    background-color: #000000d3;
     background-size: 100% 100%;
+    box-shadow: #000000cc 0px 0px 10px 3px;
+    background-image: url('file://{images}/custom_game/hud/gallery_background_png.png');
     vertical-align: top;
     horizontal-align: center;
-    margin-top: 200px;
+    margin-top: 180px;
     visibility: collapse;
 }
 
-#close_veteran {
-    width: 50px;
-    height: 50px;
-    background-color: #ffffffd3;
-    background-size: 100% 100%;
+.close_Veteran {
+    width: 35px;
+    height: 35px;
+    margin-left: 965px;
     vertical-align: top;
-    margin-left: 950px;
+    background-image: url('file://{images}/custom_game/hud/x_close_png.png');
+    background-size: 100% 100%;
 }
 
-////////////////////////////////////
-#tip_data_ROOT {
-    width: 800px;
-    height: 200px;
-    background-image: url('file://{images}/custom_game/366.jpg');
-    background-size: 100% 100%;
-    vertical-align: top;
+#veteran_top_Button {
+    flow-children: right;
+}
+
+.button_Veteran_class {
+    width: 200px;
+    height: 60px;
+    margin-left: 20px;
+    background-color: #00000077;
+}
+
+.button_Veteran_class1 {
+    background-color: #bd4949;
+    box-shadow: #000000cc 0px 0px 10px 0px;
+}
+
+.button_Veteran_text {
+    color: #ffffff;
+    text-shadow: 2px 2px #000000;
+    font-size: 20px;
     horizontal-align: center;
-    box-shadow: #000000d5 0px 0px 20px 0px;
-    border: 2px solid#000000;
-    margin-top: 300px;
-    visibility: collapse;
-}
-
-#tip_image {
-    width: 800px;
-    height: 200px;
-    background-color: #00000085;
-    background-size: 100% 100%;
     vertical-align: center;
-    horizontal-align: center;
 }
 
-#tip_text {
+.veteran_bgc {
+    width: 1000px;
+    height: 545px;
+    horizontal-align: center;
+    vertical-align: bottom;
+}
+
+.veteran0_1_bgc {
+    width: 1000px;
+    height: 520px;
+    background-size: 100% 100%;
+    horizontal-align: center;
+    vertical-align: bottom;
+    background-color: #00000077;
+    flow-children: down;
+}
+
+.veteran_text {
+    color: #ffffff;
+    text-shadow: 1px 1px 0px 3 #000000;
+    font-size: 30px;
+    margin-top: 10px;
+    horizontal-align: center;
+    text-overflow: shrink;
+    font-family: Radiance, FZKai-Z03, TH Sarabun New, YDYGO 540;
+}
+
+/////////////////////////////////////////////
+#random_skills_ROOT {
+    width: 1000px;
+    height: 900px;
+    background-image: url('file://{images}/custom_game/hud/gallery_background_png.png');
+    background-size: 100% 100%;
+    vertical-align: top;
+    horizontal-align: center;
+    margin-top: 100px;
+    visibility: collapse;
+}
+
+.skills_title_TEXT {
     color: #ffffff;
     text-shadow: 2px 2px #000000;
     font-size: 30px;
-    background-color: #00000094;
-    vertical-align: center;
     horizontal-align: center;
-}
-
-#off_tip {
-    width: 30px;
-    height: 30px;
-    background-image: url('file://{images}/custom_game/x_close_png.png');
-    background-size: 100% 100%;
     vertical-align: top;
-    horizontal-align: right;
-    box-shadow: #000000c4 0px 0px 20px 0px;
-    border: 1px solid#000000;
-    z-index: 1;
+    box-shadow: #000000cc 0px 0px 10px 3px;
+    text-overflow: shrink;
 }
 
-.btip {
-    width: 35px;
-    height: 30px;
+#T1 {
+    margin-top: 80px;
+}
+
+#T2 {
+    margin-top: 470px;
+}
+
+#random_skills_BG {
+    width: 1000px;
+    height: 800px;
+    margin-top: 140px;
     background-size: 100% 100%;
-    box-shadow: #00000077 0px 0px 20px 0px;
+}
+
+#random_skills_2 {
+    margin-top: 390px;
+}
+
+.skills {
+    width: 800px;
+    height: 300px;
+    box-shadow: #00000078 0px 0px 10px 3px;
+    background-size: 100% 100%;
     horizontal-align: center;
-    margin-top: 160px;
-    z-index: 1;
+    flow-children: right-wrap;
+    overflow: scroll;
 }
 
-#next_tip {
-    margin-left: 100px;
-    background-image: url('file://{images}/custom_game/arrow_right_png.png');
+.ability {
+    width: 100px;
+    height: 100px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
 }
 
-#back_tip {
-    margin-right: 100px;
-    background-image: url('file://{images}/custom_game/arrow_left_png.png');
+.close_rd {
+    width: 35px;
+    height: 35px;
+    margin-left: 965px;
+    vertical-align: top;
+    background-image: url('file://{images}/custom_game/hud/x_close_png.png');
+    background-size: 100% 100%;
 }

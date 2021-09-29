@@ -52,7 +52,10 @@ function modifier_gods_strength:IsPurgeException()
 end
 
 function modifier_gods_strength:RemoveOnDeath()
-    return true
+    if self:GetCaster():TG_HasTalent("special_bonus_sven_8") then
+    		return false
+    end
+       	return true
 end
 
 

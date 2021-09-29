@@ -3,21 +3,21 @@
 	"Language"		"Schinese"
 	"Tokens"
 	{
-		"addon_game_name"			"DOTA2 新英霸"
+		"addon_game_name"			"DOTA2 NEW IMBA"
 	//=================================================================================================================
 	// 提示
 	//=================================================================================================================
-	"tip1"                 				"○有任何意见，BUG，想法，都可以加入右侧QQ群进行反馈。\n（不要ghs，gzz不然会被干）"
+	"tip1"                 				"○有任何意见，BUG，想法，都可以加入右侧QQ群进行反馈。"
 	"tip2"                 				"○选择完英雄不要切屏或者乱点，否则容易掉线。"
 	"tip3"                 				"○游戏中鼠标悬浮在上方英雄头像时可获取他的 Steam id。\n（团队信息面板头像，点击可进入资料界面）"
 	"tip4"                 				"○开房无法进入多半有人没更新。\n（卸载地图重启steam安装）"
-	"tip5"                 				"○当前版本：新英霸 2021.2.3Z.5"
+	"tip5"                 				"○当前版本：新英霸 2021.2.4D"
 	"tip6"                 				"○感谢游玩！"
 	"tip7"                 				"✰XXXXXXXXXXXXXX！"
-	"die"					"-重生时间恶化，现在每次死亡都会增加复活时间-"
-	"kill"					"己方团队优先击杀304，或者拆掉对方遗迹，均可胜利！！"
+	"die"							"-重生时间恶化，现在每次死亡都会增加复活时间-"
+	"kill"						"己方团队优先击杀304，或者拆掉对方遗迹，均可胜利！！"
 	"buyback"					"买活成功【获得随机神符奖励】"
-	"fv"					"干掉对面这群 <font color='#EE2C2C'>-废 物-</font>"
+	"fv"							"干掉对面这群 <font color='#EE2C2C'>-废 物-</font>"
 
 
 	"QQ"	"点击加入QQ群"
@@ -26,9 +26,12 @@
 	"TV"	"点击观看英霸直播"
 	"BILIBLI"	"点击观看B站视频"
 	"TIP"	"-游玩提示-"
-	"WAIT"	"-怀旧时间-"
+	"WAIT"	"-该结束了-"
+	"TEAM"	"∞ -> 阴间队"
 	"TEAM0"	"∞ -> 老狗队"
 	"TEAM1"	"♥-> 老鹿队"
+	"TEAM6"	"╰(*°▽°*)╯-> 然然队"
+	"HERO_Recommend"	"英雄推荐"
 
 	"good"	"天辉目前取得人头优势"
 	"bad"	"夜魇目前取得人头优势"
@@ -39,7 +42,11 @@
 	"RS"	"击杀肉山："
 	"TW"	"摧毁塔："
 	"MAX"	"总场数："
-
+	"VLV"	"等级："
+	"LV_TIP"	"每击杀500人提升1级，最高8级！中途退出不计算数据"
+	"Veteran_Name"	"英霸老将"
+	"VDATA"	"数据"
+	"VReward"  "奖励"
 
 	"veteran_data1"	"击杀:"
 	"veteran_data2"	"死亡:"
@@ -49,6 +56,10 @@
 	"veteran_data6"	"拆塔:"
 	"veteran_data7"	"使用眼:"
 	"veteran_data8"	"摧毁眼:"
+	"veteran_data9"	"百杀次数:"
+
+	"breward"		"数据中摧毁眼的数量大于1000，则会在每次开局赠送一组眼。\n\n数据中死亡数大于击杀数，则会在复活时获得15%的移速加成，持续7秒。"
+
 
 	"tip_game1"	"拆掉对方<font color='#FFD700'>基地</font>或者己方团队率先<font color='#FFD700'>击杀304人头</font>均可获得胜利"
 	"tip_game2"	"物品中只有<font color='#FFD700'>羊刀</font>和<font color='#FFD700'>天堂</font>不会受到状态抗性的影响"
@@ -56,7 +67,7 @@
 	"tip_game4"	"附魔之刃远程<font color='#FFD700'>无法使用</font>"
 	"tip_game5"	"对付远程物理输出英雄，蝴蝶是非常不错的装备"
 	"tip_game6"	"想要拆塔拆的快<font color='#FFD700'>鹿盔，攻城战甲</font>可少不了"
-	"tip_game7"	"只要输出足够高可以<font color='#FFD700'>无视偷塔保护</font>来摧毁建筑"
+	"tip_game7"	"下路打不过？换路拆塔才是正确的做法"
 	"tip_game8"	"巫师之刃的<font color='#FFD700'>取消蓝条</font>效果可以让很多英雄陷入尴尬的境地"
 	"tip_game9"	"游戏中拥有抚恤金，即使你死亡也会赠送你随机的金钱和经验"
 	"tip_game10"	"不要沉迷团战，而忘记<font color='#FFD700'>推塔</font>"
@@ -76,6 +87,13 @@
 
 	"Hero_Skills_Select"	"选择一套技能"
 	"Valve_Hero_Tip"	"由官方制作的英雄但数值获得了提升。"
+	"Skills_Select"	"选择"
+	"Skills_Desc"	"介绍"
+	"No_Skills_Select"	"无选择"
+	"No_Skills_Desc"	"无介绍"
+
+
+
 
 		"imba_deathstreak_3"																		" 正在<font color='#00FF40'><b>大死特死！！</b></font>"
 		"imba_deathstreak_4"																" 已经<font color='#5E00BD'><b>被死亡主宰！！</b></font>"
@@ -185,7 +203,7 @@
 	"DOTA_Tooltip_modifier_sk_cd"									"发送随机技能CD"
 	"DOTA_Tooltip_modifier_sk_cd_description"							"发送后需要等待600秒！！！"
 
-
+	"DOTA_Tooltip_modifier_veteran_sp"								"老将移速奖励"
 	//=================================================================================================================
 	// 防御塔
 	//=================================================================================================================
@@ -484,7 +502,7 @@
 
 	//--羊刀v2
 	"DOTA_Tooltip_ability_item_sheepstick_v2"									"<font color='#1E90FF'>邪恶镰刀</font>"
-	"DOTA_Tooltip_ability_item_sheepstick_v2_description"								"<h1><font color='#FFFF00'>主动：哪来的狗.jpg</font></h1>使目标变成一个只能移动的狗（移速100），降低%ar%护甲，%mr%%魔抗，持续 %dur% 秒。<br><br>施法距离:800 \n ● 持续时间不受抗性影响（不会增加和减少）可驱散"
+	"DOTA_Tooltip_ability_item_sheepstick_v2_description"								"<h1><font color='#FFFF00'>主动：哪来的狗.jpg</font></h1>使目标变成一个只能移动的狗（移速100），降低%ar%护甲，%mr%%%魔抗，持续 %dur% 秒。<br><br>施法距离:800 \n ● 持续时间不受抗性影响（不会增加和减少）可驱散"
 	"DOTA_Tooltip_ability_item_sheepstick_v2_str"									"+力量"
 	"DOTA_Tooltip_ability_item_sheepstick_v2_int"									"+智力"
 	"DOTA_Tooltip_ability_item_sheepstick_v2_mana"									"+魔法恢复"
@@ -555,7 +573,7 @@
 
 		//--暗灭V2
 	"DOTA_Tooltip_ability_item_desolator_v2"									"黯灭"
-	"DOTA_Tooltip_ability_item_desolator_v2_description"						"<h1><font color='#FFFF00'>被动：腐朽LV.2</font></h1>每次攻击将降低目标%armor%点护甲，持续%dur%秒（若背包里有鹿盔该被动将不会生效）。"
+	"DOTA_Tooltip_ability_item_desolator_v2_description"						"<h1><font color='#FFFF00'>被动：腐朽LV.2</font></h1>每次攻击将降低目标%armor%点护甲，持续%dur%秒,初次攻击降低5点护甲（若背包里有鹿盔该被动将不会生效）。"
 	"DOTA_Tooltip_ability_item_desolator_v2_bonus_damage"						"+攻击力"
 	"DOTA_Tooltip_ability_item_desolator_v2_Lore" 								"毁灭敌方的防御。"
 	"DOTA_Tooltip_ability_item_desolator_v2_Note0"  							"1.被动可被驱散但是无视魔免。\n2.腐朽对建筑有效。\n3.该物品属性不可叠加。"
@@ -625,7 +643,7 @@
 		//--冰眼
 		"DOTA_Tooltip_ability_item_skadi_v2"				"斯嘉蒂之眼"
 		"DOTA_Tooltip_ability_item_skadi_v2_Lore"			"极度罕见的古物，由苍空之龙看管。"
-		"DOTA_Tooltip_ability_item_skadi_v2_description"			"<h1><font color='#FFFF00'>主动：冰冻</font></h1>主动使用可以使附近的敌方英雄被冻在原地，并造成穿戴者主属性值的纯粹伤害。 \n<h1><font color='#FFFF00'>被动：霜冻打击</font></h1>对敌人造成的任意一种伤害类型都会使其受到各种减速效果(大于100点伤害才可触发)。 "
+		"DOTA_Tooltip_ability_item_skadi_v2_description"			"<h1><font color='#FFFF00'>主动：冰冻</font></h1>主动使用可以使附近的敌方英雄被冻在原地，并造成穿戴者主属性值的纯粹伤害。 \n<h1><font color='#FFFF00'>被动：霜冻打击</font></h1>对敌人造成的任意一种伤害类型都会使其受到各种减速效果(大于50点伤害才可触发)。 "
 		"DOTA_Tooltip_ability_item_skadi_v2_Note0"			"1.所有效果均不无视魔免且可被驱散。\n2.冰冻为缠绕效果无法攻击，但可以施法使用技能物品。"
 		"DOTA_Tooltip_ability_item_skadi_v2_stats"			"+全属性"
 		"DOTA_Tooltip_ability_item_skadi_v2_rd"				"冰冻范围:"
@@ -653,7 +671,7 @@
 
 		//--攻城战甲
 		"DOTA_Tooltip_Ability_item_siege"								"攻城战甲"
-				"DOTA_Tooltip_ability_item_siege_description"							"<h1><font color='#FFFF00'>主动：闪击战</font></h1>使周围的友军移速恒定至%spF%并增加%rs%% 闪避，持续 %dur%秒 （移速不会被减速和增加，可被驱散）。\n<h1><font color='#FFFF00'>被动：攻坚</font></h1>(增加/减少)周围的(友军/敌军)的护甲，建筑(增加/降低)%armorB%点护甲,其它单位(增加/降低)%armorO%点护甲。</font>"
+				"DOTA_Tooltip_ability_item_siege_description"							"<h1><font color='#FFFF00'>主动：闪击战</font></h1>使周围的友军移速恒定至%spF%并增加%evasion%% 闪避，持续 %dur%秒 （移速不会被减速和增加，可被驱散）。\n<h1><font color='#FFFF00'>被动：攻坚</font></h1>(增加/减少)周围的(友军/敌军)的护甲%armorA%点护甲。</font>"
 		"DOTA_Tooltip_ability_item_siege_Lore"							"blitzkrieg！"
 		"DOTA_Tooltip_ability_item_siege_Note0"							"1.施法范围和被动范围均为1000。\n 2.减甲对肉山无效。\n 3.主动与被动效果不可覆盖和叠加。\n 4.该装备所有属性不可叠加。"
 		"DOTA_Tooltip_ability_item_siege_stats"								"+全属性"
@@ -714,7 +732,7 @@
 		//恶鬼
 		"DOTA_Tooltip_ability_item_veil_of_evil"						"恶鬼"
 		"DOTA_Tooltip_ability_item_veil_of_evil_Note0"					"\n1.光环对魔免单位无效。\n2.该物品所有属性无法叠加，幻象继承该物品光环。"
-		"DOTA_Tooltip_ability_item_veil_of_evil_description"					"<h1><font color='#FFFF00'>被动：抽魂</font></h1>只要对敌军造成的魔法伤害大于%dam%时，就会额外附加一次自身主属性值%dam2%% 的伤害，拥有1.5秒CD 。\n<h1><font color='#FFFF00'>被动：诡异</font></h1>降低%rd%码范围敌军%sp%% 移动速度，%attsp%攻击速度，%hpr%% 受到的生命恢复和治疗，25% 魔抗。"
+		"DOTA_Tooltip_ability_item_veil_of_evil_description"					"<h1><font color='#FFFF00'>被动：抽魂</font></h1>只要对敌军造成的魔法伤害大于%dam%时，就会额外附加一次自身主属性值%dam2%% 的伤害 。\n<h1><font color='#FFFF00'>被动：诡异</font></h1>降低%rd%码范围敌军%sp%% 移动速度，%attsp%攻击速度，%hpr%% 受到的生命恢复和治疗，25% 魔抗。"
 		"DOTA_Tooltip_ability_item_veil_of_evil_Lore"					"被恶鬼缠身可不是一件好事。"
 		"DOTA_Tooltip_ability_item_veil_of_evil_stats"					"+智力"
 		"DOTA_Tooltip_ability_item_veil_of_evil_armor"					"+护甲"
@@ -754,7 +772,7 @@
 
 		//法强书
 		"DOTA_Tooltip_ability_item_spell_book"						"法强书"
-		"DOTA_Tooltip_ability_item_spell_book_description"			"<font color='#FFFF00'>切记！！！35分钟前,使用后无法在使用攻速书</font>\n每使用1本都会为自身增加1% 法强，最多使用25次。"
+		"DOTA_Tooltip_ability_item_spell_book_description"			"<font color='#FFFF00'>切记！！！35分钟前,使用后无法在使用攻速书</font>\n每使用1本都会为自身增加1% 法强，最多使用50次。"
 		"DOTA_Tooltip_ability_item_spell_book_Lore"					"学好数理化走遍天下都不怕"
 		"DOTA_Tooltip_modifier_item_spell_book"					"叠加的法强"
 		"DOTA_Tooltip_modifier_item_spell_book_description"					"每吃一本加1%%法强"
@@ -804,7 +822,7 @@
 
 		//鹿盔
 		"DOTA_Tooltip_ability_item_laojie"					"鹿盔"
-		"DOTA_Tooltip_ability_item_laojie_description"				"<h1><font color='#FFFF00'>主动：关怀</font></h1>对友军使用时会获得%armor3% 护甲，%sp1%%移动速度并且获得技能免疫（不附带驱散和魔抗），持续%dur%秒。<br><br> 对敌方使用时会减少%armor3% 护甲，%sp1%%移动速度，%rs%%%状态抗性并且无法闪避，持续%dur1%秒 \n<h1><font color='#FFFF00'>被动：腐朽LV3</font></h1>每次普攻对建筑减少%armor1%护甲，对其他单位减少%armor2%护甲，可无限叠加。\n ● 所有效果无法驱散，无视魔免，无视林肯莲花。\n ● 幻象攻击无效"
+		"DOTA_Tooltip_ability_item_laojie_description"				"<h1><font color='#FFFF00'>主动：关怀</font></h1>对友军使用时会获得%armor3% 护甲，%sp1%%移动速度并且获得技能免疫（不附带驱散和魔抗），持续%dur%秒。<br><br> 对敌方使用时会减少%armor3% 护甲，%sp1%%移动速度，%rs%%%状态抗性并且无法闪避，持续%dur1%秒 \n<h1><font color='#FFFF00'>被动：腐朽LV3</font></h1>每次普攻对建筑减少%armor1%护甲，对其他单位减少%armor2%护甲，可无限叠加,初次攻击降低7点护甲。\n ● 所有效果无法驱散，无视魔免，无视林肯莲花。\n ● 幻象攻击无效"
 		"DOTA_Tooltip_ability_item_laojie_Lore"					"是爱！"
 		"DOTA_Tooltip_ability_item_laojie_bonus_damage"				"+攻击力"
 		"DOTA_Tooltip_ability_item_laojie_armor"					"+护甲"
@@ -844,7 +862,7 @@
 
 
 		"DOTA_Tooltip_ability_item_radiance_v2"					"辉耀"
-		"DOTA_Tooltip_ability_item_radiance_v2_Description"			"<h1><font color='#FFFF00'>主动：灼烧</font></h1>打开或者关闭辉耀，开启后每%interval%秒对%radius%范围的敌军造成伤害。<br><br>若是小兵或者中立生物，则只造成%base_dmg%点魔法伤害。<br><br>若是英雄，则根据双方距离造成不同伤害，低于400会造成%base_dmg% + %extra_dmg%% 目标最大生命值的魔法伤害，否则为当前生命值。<br><br>幻象携带只会造成75点伤害。"
+		"DOTA_Tooltip_ability_item_radiance_v2_Description"			"<h1><font color='#FFFF00'>主动：灼烧</font></h1>打开或者关闭辉耀，开启后每%interval%秒对%radius%范围的敌军造成伤害。<br><br>若是小兵或者中立生物，则只造成%base_dmg%点魔法伤害。<br><br>若是英雄，则根据双方距离造成不同伤害，低于350会造成%base_dmg% + %extra_dmg%% 目标最大生命值的魔法伤害，否则为当前生命值。<br><br>幻象携带只会对非英雄单位造成%base_dmg%点魔法伤害。"
 		"DOTA_Tooltip_ability_item_radiance_v2_bonus_damage"             		"+攻击力"
 		"DOTA_Tooltip_ability_item_radiance_v2_bonus_evasion"             		"%+闪避"
 		"DOTA_Tooltip_ability_item_three_knives_Lore"				"一把拥有耀眼光芒灼烧效果的神圣武器，能让敌人化为灰烬。"
@@ -910,6 +928,36 @@
 		//=================================================================================================================
 		// 狗艇的物品
 		//=================================================================================================================
+
+		"DOTA_Tooltip_Ability_item_imba_silver_hunter"									"<font color='#C0C0C0'>白银猎手</font>"
+		"DOTA_Tooltip_Ability_item_imba_silver_hunter_description"						"<h1><font color='#FFFF00'>潜行(主动 cd 1.5s)：</font></h1>进入%invisiable_s%s的隐身状态，破隐一击额外造成%damage_exr%纯粹伤害并且获取目标的速度和护甲并且让目标显隐，状态会持续%dura_normal%秒，如果敌人是被这个物品显隐的，则持续时间更长。\n<h1><font color='#FFFF00'>狩猎(主动)：</font></h1>处于主动隐身状态时再次使用主动，<font color='#B03060'>会让%radius%码内的敌人显隐并且额外延长自己%extra_duration%s的隐身时间</font>。\n<h1><font color='#FFFF00'>暗影猎手（被动）：</font></h1>附近%radius_s%码内有隐身或者被该物品显隐的敌人时，自己移动速度提高%msp%% 。\n 物品设计者:<font color='#FFFF00'>excite‭</font>"
+		"DOTA_Tooltip_Ability_item_imba_silver_hunter_bonus_damage"						"+$damage"
+		"DOTA_Tooltip_Ability_item_imba_silver_hunter_bonus_asp"						"+$attack"
+		"DOTA_Tooltip_Ability_item_imba_silver_hunter_bonus_all_stats"					"+$all"
+		"DOTA_Tooltip_Ability_item_imba_silver_hunter_miss"								"+闪避"
+		"DOTA_Tooltip_Ability_item_imba_silver_hunter_move_speed"						"+移动速度"
+		"DOTA_Tooltip_Ability_item_imba_silver_hunter_attack_speed_buff"								"破隐一击攻速获取："
+		"DOTA_Tooltip_Ability_item_imba_silver_hunter_move_speed_max_buff"								"%破隐一击移速获取："
+		"DOTA_Tooltip_Ability_item_imba_silver_hunter_Lore"								"猎手与猎手的角逐"
+		"DOTA_Tooltip_modifier_imba_silver_invisible"									"潜行"
+		"DOTA_Tooltip_modifier_imba_silver_invisible_description"						"寻找猎物中"
+		"DOTA_Tooltip_modifier_imba_silver_light"									"狩猎"
+		"DOTA_Tooltip_modifier_imba_silver_light_description"						"你被盯上了"
+		"DOTA_Tooltip_modifier_imba_silver_debuff"									"狩猎中"
+
+		"DOTA_Tooltip_Ability_item_imba_solar_crest"									"<font color='#FFFF00'>炎阳纹章</font>"
+		"DOTA_Tooltip_ability_item_imba_solar_crest_Description"						"<h1><font color='#FFFF00'>主动：日耀</font></h1>对一个目标使用，根据目标阵营，改变其%armor%点护甲，100% 移动速度，%attack_speed%点攻击速度,改变移动速度效果会持续衰减，最低%move_speed_min% % ,对敌人只有一半持续时间，对友军初始加速只有50%。\n<h1><font color='#FFFF00'>主动：光辉</font></h1>如果目标是友军，则其会额外获得%miss%%的闪避;\n如果是敌人，则其的隐身会失效。\n"
+		"DOTA_Tooltip_ability_item_imba_solar_crest_Lore"								"为了纪念炎日天空所打造的护符。"
+		"DOTA_Tooltip_ability_item_imba_solar_crest_Note0"								"对自己使用不会增加护甲与闪避。"
+		"DOTA_Tooltip_ability_item_imba_solar_crest_sta"						"+全属性"
+		"DOTA_Tooltip_ability_item_imba_solar_crest_armor"						"+$armor"
+		"DOTA_Tooltip_ability_item_imba_solar_crest_move_speed_c"					"+移动速度"
+		"DOTA_Tooltip_ability_item_imba_solar_crest_mana_re"						"+回蓝"
+		"DOTA_Tooltip_ability_item_imba_solar_crest_miss"						"%+闪避"
+		"DOTA_Tooltip_ability_item_imba_solar_crest_duration"					"持续时间："
+		"DOTA_Tooltip_modifier_imba_sloar_buff"								"我是最靓的崽"
+		"DOTA_Tooltip_modifier_imba_sloar_debuff"								"小贼无所遁形"
+
 
 		"DOTA_tooltip_ability_item_sky_lance" "<font color='#9932CC'>天瑶魔戟</font>"
 		"DOTA_tooltip_ability_item_sky_lance_agi" "+敏捷"
@@ -1064,17 +1112,6 @@
 		"DOTA_Tooltip_modifier_imba_greatwyrm_plate_aura"									"责任"
 		"DOTA_Tooltip_modifier_imba_greatwyrm_plate_aura_Description"						"我会保护你们的。"
 
-		"DOTA_Tooltip_Ability_item_imba_silver_hunter"									"<font color='#C0C0C0'>白银猎手</font>"
-		"DOTA_Tooltip_ability_item_imba_silver_hunter_description"						"<h1><font color='#FFFF00'>潜行(主动 cd 1.5s)：</font></h1>进入%invisiable_s%s的隐身状态，如果附近%radius_S%码内有隐身的敌人，你的隐身将不会被<font color='#B03060'>狩猎之外的反隐手段</font>发现。\n<h1><font color='#FFFF00'>狩猎(主动)：</font></h1>处于主动隐身状态时再次使用主动，<font color='#B03060'>会揭示%radius%码内的处于隐身状态的单位5s并且额外延长%extra_duration%s的隐身时间</font>。\n<h1><font color='#FFFF00'>暗影猎手（被动）：</font></h1>附近%radius_s%码内有隐身状态的敌人会增加你%msp%% 的移动速度与%extra_asp%的攻速。\n 物品设计者:<font color='#FFFF00'>excite‭</font>"
-		"DOTA_Tooltip_Ability_item_imba_silver_hunter_bonus_damage"						"+$damage"
-		"DOTA_Tooltip_Ability_item_imba_silver_hunter_bonus_asp"						"+$attack"
-		"DOTA_Tooltip_Ability_item_imba_silver_hunter_bonus_all_stats"					"+$all"
-		"DOTA_Tooltip_Ability_item_imba_silver_hunter_hp"								"+$health"
-		"DOTA_Tooltip_ability_item_imba_silver_hunter_Lore"								"猎手与猎手的角逐"
-		"DOTA_Tooltip_modifier_imba_silver_invisible"									"潜行"
-		"DOTA_Tooltip_modifier_imba_silver_invisible_description"						"寻找猎物中"
-		"DOTA_Tooltip_modifier_imba_silver_light"									"狩猎"
-		"DOTA_Tooltip_modifier_imba_silver_light_description"						"你被盯上了"
 
 		"DOTA_Tooltip_Ability_item_imba_crown"										"<font color='#FFFF00'>王冠</font>"
 		"DOTA_Tooltip_ability_item_imba_crown_description"							"<h1><font color='#FFFF00'>王权之光(主动)：</font></h1>获得5s的900码反隐效果。\n 物品设计者:<font color='#FFFF00'>excite‭</font>"
@@ -1659,7 +1696,7 @@
 
 		//赢了
 		"DOTA_Tooltip_ability_victory"	                        		"赢了"
-		"DOTA_Tooltip_ability_victory_Description"	           	 		"拥有该技能的玩家，若此局游戏输了，也会算作胜利并上传到服务器，并额外赠送100个人头数据奖励（人头会提升你的老将等级，3级以上的玩家开局可以额外roll一次技能，并且日后获得更多的老将奖励）。"
+		"DOTA_Tooltip_ability_victory_Description"	           	 		"拥有该技能的玩家，若此局游戏输了，也会算作胜利并上传到服务器，并额外赠送100个人头数据奖励（人头会提升你的老将等级，并且日后获得更多的老将奖励）。"
 
 
 
@@ -1727,6 +1764,9 @@
 		"DOTA_Tooltip_ability_droiyan_Description"	           	 "★你将化身恶魔1v19，你会获得额外的5万血量，500护甲，100魔抗，并且不会被眩晕，缴械，沉默， \n ★ 你的死亡将会输掉这局  \n ★ 击杀40人将会赢得胜利"
 
 
+		//山
+		"DOTA_Tooltip_ability_mountain"	                        		"山"
+		"DOTA_Tooltip_ability_mountain_Description"	           	 	"经过1秒延迟在目标点落下石山对500范围内的目标造成自身主属性*%Stat%的伤害并眩晕1秒"
 
 	//激光炮塔
 	"DOTA_Tooltip_ability_laser_turret"												"激光炮塔"
@@ -1844,7 +1884,7 @@
 
 
 	"DOTA_Tooltip_ability_guided_missile"											"跟踪导弹"
-	"DOTA_Tooltip_ability_guided_missile_description"								"向目标发射一颗追踪导弹对齐造成伤害和眩晕，导弹有 %delay% 秒发射准备时间，当导弹受到一定次数攻击后会被摧毁并且每次受到攻击都会额外增加 %att_dam% 伤害。\n<h1><font color='#54FF9F'>1.多重导弹</font></h1>对目标自身700码范围内的英雄各发射一枚导弹 。\n<h1><font color='#54FF9F'>2.火力支援</font></h1>对目标区域内随机位置发射%num%枚飞弹进行轰炸，轰炸范围300，造成%per%% 的导弹伤害"
+	"DOTA_Tooltip_ability_guided_missile_description"								"向目标发射一颗追踪导弹对齐造成伤害和眩晕，导弹有 %delay% 秒发射准备时间，当导弹受到一定次数攻击后会被摧毁并且每次受到攻击都会额外增加 %att_dam% 伤害。\n<h1><font color='#54FF9F'>1.火力支援</font></h1>对目标区域内随机位置发射%num%枚飞弹进行轰炸，轰炸范围300，造成%per%% 的导弹伤害"
 	"DOTA_Tooltip_ability_guided_missile_Lore"										"奥雷尔的飞行器上所能装载的最大的导弹，为了实现最佳效果，他对空气动力学和爆炸物进行精心计算才得到了炸蛋™。"
 	"DOTA_Tooltip_ability_guided_missile_Note0"										"1.对开启清莲宝珠的单位使用，导弹会在开始和撞击时各触发一次。（前提是清莲宝珠BUFF未消失）"
 	"DOTA_Tooltip_ability_guided_missile_stun"										"眩晕时间:"
@@ -1865,7 +1905,7 @@
 	"DOTA_Tooltip_ability_flak_cannon_dayv"										"白天视野:"
 	"DOTA_Tooltip_ability_flak_cannon_num"										"攻击次数:"
 	"DOTA_Tooltip_modifier_flak_cannon"											"热导飞弹"
-	"DOTA_Tooltip_ability_flak_cannon_scepter_description"						"每1.8秒对自身500码范围的所有敌方单位造进行一次普攻（可以触发攻击特效）"
+	"DOTA_Tooltip_ability_flak_cannon_scepter_description"						"每1.6秒对自身500码范围的所有敌方单位造进行一次普攻（可以触发攻击特效）"
 
 
 	"DOTA_Tooltip_ability_call_down"											"俯冲轰炸"
@@ -1876,19 +1916,22 @@
 	"DOTA_Tooltip_ability_call_down_rd"											"爆炸范围:"
 	"DOTA_Tooltip_ability_call_down_sp"											"飞行速度:"
 	//"DOTA_Tooltip_ability_call_down_dis"										"飞行距离:"
-	"DOTA_Tooltip_ability_call_down_dur"										"飞行总时间:"
 	"DOTA_Tooltip_modifier_call_down_buff"										"为了新中国！！！"
 	"DOTA_Tooltip_modifier_call_down_buff_description"							"当前为无敌状态并且无法操作"
 	"DOTA_Tooltip_modifier_call_down_debuff"									"被降低移速和恢复"
 
 
-	"DOTA_Tooltip_ability_special_bonus_imba_gyrocopter_1"						"+{s:value}高射火炮攻击次数"
-	"DOTA_Tooltip_ability_special_bonus_imba_gyrocopter_2"						"+{s:value}精确打击范围"
 
 	"DOTA_Tooltip_ability_call_down_shard_description"							"火箭弹幕范围提高200，可攻击单位提高至2（若只有一个目标导弹将会全部命中该单位）。"
 
-
-
+	"DOTA_Tooltip_ability_special_bonus_gyrocopter_1"						"火箭弹幕造成与伤害相等的魔法损失"
+	"DOTA_Tooltip_ability_special_bonus_gyrocopter_2"						"火箭弹幕不消耗魔法"
+	"DOTA_Tooltip_ability_special_bonus_gyrocopter_3"						"500范围跟踪导弹"
+	"DOTA_Tooltip_ability_special_bonus_gyrocopter_4"						"大幅度提高高射火炮飞弹速度"
+	"DOTA_Tooltip_ability_special_bonus_gyrocopter_5"						"+1000高射火炮夜间视野"
+	"DOTA_Tooltip_ability_special_bonus_gyrocopter_6"						"俯冲轰炸导弹数+1"
+	"DOTA_Tooltip_ability_special_bonus_gyrocopter_7"						"俯冲轰炸效果下火箭弹幕距离提高400"
+	"DOTA_Tooltip_ability_special_bonus_gyrocopter_8"						"俯冲轰炸自动施法火箭弹幕并刷新跟踪导弹"
 
 	//@大牛哥哥
 	"DOTA_Tooltip_ability_echo_stomp"											"回音重踏"
@@ -2070,7 +2113,7 @@
 
 
 	"DOTA_Tooltip_ability_blade_dance"									"剑舞"
-	"DOTA_Tooltip_ability_blade_dance_description"							"主宰有一定概率在攻击时触发致命一击。\n<h1><font color='#54FF9F'>1.风暴斩击</font></h1>主宰触发暴击时还会额外向前方释放一道风暴斩击对路径上的敌人造成一次普攻的伤害（不可以触发攻击特效）。"
+	"DOTA_Tooltip_ability_blade_dance_description"							"主宰有一定概率在攻击时触发致命一击。\n<h1><font color='#54FF9F'>1.风暴斩击</font></h1>普攻额外造成%agi%的敏捷系数物理伤害。"
 	"DOTA_Tooltip_ability_blade_dance_Lore"								"作为他对剑技传承的最后承诺，尤涅若立誓将使此剑技为世人所铭记。"
 	"DOTA_Tooltip_ability_blade_dance_ch"								"%暴击概率:"
 	"DOTA_Tooltip_ability_blade_dance_crit_mult"							"%暴击倍数:"
@@ -2095,7 +2138,7 @@
 
 
 	"DOTA_Tooltip_ability_omni_slash"								"无敌斩"
-	"DOTA_Tooltip_ability_omni_slash_description"							"以固定的频率对目标进行一次普攻。主宰在无敌斩期间无敌（剑刃风暴状态下无法释放）。 \n<h1><font color='#54FF9F'>1.无限斩击</font></h1>主宰使用无敌斩时被动概率提高至50%%并且每击杀一名英雄都会额外增加1秒持续时间。\n ● 当前斩击的目前死亡才会继续搜索下一个目标，搜索范围700。"
+	"DOTA_Tooltip_ability_omni_slash_description"							"以固定的频率对目标进行一次普攻。主宰在无敌斩期间无敌（剑刃风暴状态下无法释放）。 \n<h1><font color='#54FF9F'>1.无限斩击</font></h1>主宰使用无敌斩时被动概率提高至50%%并且每击杀一名英雄都会额外增加1秒持续时间。\n ● 当前斩击的目前死亡才会继续搜索下一个目标，搜索范围800。"
 	"DOTA_Tooltip_ability_omni_slash_Lore"								"自律已有成果；勤练带来力量。"
 	"DOTA_Tooltip_ability_omni_slash_Note0"								"1.无敌斩期间无法使用物品。\n2.可以对技能免疫单位施放。\n3.无敌斩在施放时对主宰施加弱驱散。"
 	"DOTA_Tooltip_ability_omni_slash_dur"								"无敌斩持续时间:"
@@ -2285,7 +2328,7 @@
 	"DOTA_Tooltip_modifier_meld_debuffstun"						"被缠绕"
 
 	"DOTA_Tooltip_ability_psi_blades"								"太妹之刃"
-	"DOTA_Tooltip_ability_psi_blades_description"					"圣堂刺客的攻击可以穿透敌人，对其正后方的敌人造成不可抗拒的伤害，并且提高攻击距离。\n<h1><font color='#54FF9F'>1.麻痹神经</font></h1>对被穿透的敌人造成麻痹效果(攻速与移速降低100%)，持续0.5秒,该效果拥有1秒CD。\n<font color='#FFFF00'>●技能设计者:小太阳</font>"
+	"DOTA_Tooltip_ability_psi_blades_description"					"圣堂刺客的攻击可以穿透敌人，对其正后方的敌人造成不可抗拒的伤害，并且提高攻击距离。\n<h1><font color='#54FF9F'>1.麻痹神经</font></h1>对被穿透的敌人造成麻痹效果(攻速与移速降低100%)，持续0.5秒。\n●技能CD为天赋陷阱传送CD\n<font color='#FFFF00'>●技能设计者:小太阳</font>"
 	"DOTA_Tooltip_ability_psi_blades_Lore"							"某女士的独特技巧，你以为时刺入了皮肤，其实是贯穿了灵魂。"
 	"DOTA_Tooltip_ability_psi_blades_Note0"							"1.飞溅伤害可以伤害隐身单位。"
 	"DOTA_Tooltip_ability_psi_blades_attrg"							"攻击距离提升:"
@@ -2314,10 +2357,18 @@
 	"DOTA_Tooltip_ability_psionic_trap_scepter_description"		"获得额外技能奥义陷阱和灵能传送"
 	"npc_dota_psionic_trap"										"陷阱"
 
+	"DOTA_Tooltip_ability_refraction_shard_description"							"遮光开始和结束时附带弱驱散"
 
-
-
-
+	"DOTA_Tooltip_ability_special_bonus_templar_assassin_1"						"-{s:value}遮光CD"
+	"DOTA_Tooltip_ability_special_bonus_templar_assassin_2"						"太妹之刃可点击陷阱传送（延迟1.5,期间被缠绕）"
+	"DOTA_Tooltip_ability_special_bonus_templar_assassin_3"						"+{s:value}%奥义陷阱暴击"
+	"DOTA_Tooltip_ability_special_bonus_templar_assassin_4"						"+0.5秒灵能陷阱眩晕时间"
+	"DOTA_Tooltip_ability_special_bonus_templar_assassin_5"						"专攻为守"
+	"DOTA_Tooltip_ability_special_bonus_templar_assassin_5_description"		    "遮光抵挡次数未用完，攻击力加成不会消失"
+	"DOTA_Tooltip_ability_special_bonus_templar_assassin_6"						"+{s:value}秒被动麻痹时间"
+	"DOTA_Tooltip_ability_special_bonus_templar_assassin_7"						"太妹之刃额外触发一次普攻"
+	"DOTA_Tooltip_ability_special_bonus_templar_assassin_8"						"匿像回击"
+	"DOTA_Tooltip_ability_special_bonus_templar_assassin_8_description"			"隐匿攻击目标在其身后创建幻象进行攻击，持续2秒"
 
 
 		//AA
@@ -2433,7 +2484,16 @@
 		"DOTA_Tooltip_modifier_enchant_buff"			"被控制"
 
 		"DOTA_Tooltip_ability_bunny_hop_shard_description"							"额外获得一个新技能跳跃。"
+		"DOTA_Tooltip_modifier_untouchable_buff"	"天赋提升移速"
 
+	"DOTA_Tooltip_ability_special_bonus_enchantress_1"						"爱的精灵每隔2秒对自身进行弱驱散"
+	"DOTA_Tooltip_ability_special_bonus_enchantress_2"						"推进没有距离上限"
+	"DOTA_Tooltip_ability_special_bonus_enchantress_3"						"-{s:value}魔晶跳跃CD"
+	"DOTA_Tooltip_ability_special_bonus_enchantress_4"						"推进命中时距离大于1000则会眩晕目标0.5秒"
+	"DOTA_Tooltip_ability_special_bonus_enchantress_5"						"触发大招击退时提升自己30%移速2秒"
+	"DOTA_Tooltip_ability_special_bonus_enchantress_6"						"魅惑的野怪无视技能免疫"
+	"DOTA_Tooltip_ability_special_bonus_enchantress_7"						"不可阻挡无法被破坏"
+	"DOTA_Tooltip_ability_special_bonus_enchantress_8"						"小鹿被击杀时全图友方英雄获得移速加成"
 
 
 
@@ -2590,7 +2650,7 @@
 
 		"DOTA_Tooltip_ability_serpent_ward"				"群蛇守卫"
 		"DOTA_Tooltip_ability_serpent_ward_Lore"			"这回合，我将召唤蛇形守卫以攻击状态放在场上！"
-		"DOTA_Tooltip_ability_serpent_ward_description"			"暗影萨满向目标地点释放5个蛇形守卫，守卫无法移动为魔免状态，并且会自动攻击附近的敌人，当守卫被攻击一定次数后将自动死亡。\n<h1><font color='#63B8FF'>1.捕猎</font></h1>守卫每隔%hunti%秒会随机从身旁%huntrd%码范围内随机抓取一名目标使其缠绕,(缠绕无法驱散)。"
+		"DOTA_Tooltip_ability_serpent_ward_description"			"暗影萨满向目标地点释放5个蛇形守卫，守卫无法移动为魔免状态，并且会自动攻击附近的敌人，当守卫被攻击一定次数后将自动死亡。\n<h1><font color='#63B8FF'>1.捕猎</font></h1>守卫每隔%hunti%秒会随机从身旁%huntrd%码范围内随机抓取一名目标使其缠绕,(缠绕无法驱散)。\n<h1><font color='#63B8FF'>2.鞭策</font></h1>如果被赋予了1技能时，额外提高%attsp%攻击速度"
 		"DOTA_Tooltip_ability_serpent_ward_Note0"			"1.守卫攻击距离650。\n2.不会捕捉魔法免疫的敌人，但是已被捕捉的无法驱散缠绕。\n3.每个守卫的抓捕都会单独计算。\n4.缠绕持续期间的单位不会在被抓捕。"
 		"DOTA_Tooltip_ability_serpent_ward_dur"				"持续时间:"
 		"DOTA_Tooltip_ability_serpent_ward_hp"				"守卫可被攻击次数:"
@@ -2604,6 +2664,7 @@
 		"npc_dota_ward_s"									"食人花"
 
 		"DOTA_Tooltip_ability_serpent_ward_shard_description"							"蛇棒增加100攻击力。"
+		"DOTA_Tooltip_ability_shock_shard_description"							"对其它目标释放1技能时自身会获得活性闪电效果。"
 
 	"DOTA_Tooltip_ability_special_bonus_shadow_shaman_1"						"+{s:value}电击单位"
 	"DOTA_Tooltip_ability_special_bonus_shadow_shaman_2"						"+{s:value}电击持续时间"
@@ -2625,14 +2686,14 @@
 
 		"DOTA_Tooltip_ability_phantom_strike"						"幻影突袭"
 		"DOTA_Tooltip_ability_phantom_strike_Lore"					"茉崔蒂的真丝面纱是她倒霉的目标临终所见之物。"
-		"DOTA_Tooltip_ability_phantom_strike_description"			"闪烁到一个单位身边，并获得攻击速度加成，如果幻影刺客自身%rdtree% 码范围内有树木时（每3秒检测一次周围树木），所有技能和物品的施法距离提高%castrgtree%。 \n<h1><font color='#54FF9F'>1.飞剑</font></h1>突袭时向目标位置随机发射%base_num%把飞剑对碰撞到的目标造成一次普攻（不会触发攻击特效） \n ● 可对任意单位使用该技能<font color='#B03060'>（英雄，建筑，树木，野怪，小兵，信使，神符等）</font>"
+		"DOTA_Tooltip_ability_phantom_strike_description"			"闪烁到一个单位身边，并获得攻击速度加成，如果幻影刺客自身%rdtree% 码范围内有树木时（每3秒检测一次周围树木），所有技能和物品的施法距离提高%castrgtree%。 \n<h1><font color='#54FF9F'>1.飞剑</font></h1>突袭时向目标位置随机发射%base_num%把飞剑对碰撞到的目标造成%agi%的敏捷系数物理伤害 \n ● 可对任意单位使用该技能<font color='#B03060'>（英雄，建筑，树木，野怪，小兵，信使，神符等）</font>"
 		"DOTA_Tooltip_ability_phantom_strike_duration"				"持续时间:"
 		"DOTA_Tooltip_ability_phantom_strike_bonus_attack_speed"	"攻速加成:"
 		"DOTA_Tooltip_ability_phantom_strike_cast"					"施法前摇:"
 		"DOTA_Tooltip_ability_phantom_strike_castrg"				"基础施法距离:"
 		"DOTA_Tooltip_modifier_phantom_strike_buff"					"攻速提升"
 		"DOTA_Tooltip_modifier_phantom_strike_tree"					"周围有树木"
-		"DOTA_Tooltip_ability_phantom_strike_scepter_description"	   	"幻影突袭额外释放一把飞剑"
+		"DOTA_Tooltip_ability_phantom_strike_scepter_description"	   	"幻影突袭双倍敏捷系数伤害"
 
 
 		"DOTA_Tooltip_ability_blur"							"魅影无形"
@@ -2676,7 +2737,7 @@
 		"DOTA_Tooltip_ability_hoof_stomp"						"马蹄践踏"
 		"DOTA_Tooltip_ability_hoof_stomp_Note0"					"1.所有类型伤害都可降低。"
 		"DOTA_Tooltip_ability_hoof_stomp_Lore"					"当战行者健壮的马蹄碰到了土壤，大地的震颤各处都能感受到。"
-		"DOTA_Tooltip_ability_hoof_stomp_description"			"半人马猛踏地面，眩晕并伤害身边的敌方单位。\n<h1><font color='#EE2C2C'>1.战行者的领域</font></h1>半人马双蹄践踏出自己的领域减少自己受到的伤害,并震荡地面使周围的目标每1秒被击飞一次,领域内每多一个敌人,都会始领域时间增加1秒。\n<font color='#FFFF00'>●技能设计者:小太阳</font> \n ● 踩踏范围支持施法距离加成，每增加100码范围眩晕时间降低0.1秒"
+		"DOTA_Tooltip_ability_hoof_stomp_description"			"半人马猛踏地面，眩晕并伤害身边的敌方单位。\n<h1><font color='#EE2C2C'>1.战行者的领域</font></h1>半人马双蹄践踏出自己的领域减少自己受到的伤害,领域内的敌方单位无法跑出圈外。\n<font color='#FFFF00'>●技能设计者:小太阳</font> \n ● 踩踏范围支持施法距离加成，每增加100码范围眩晕时间降低0.1秒"
 		"DOTA_Tooltip_ability_hoof_stomp_radius"				"范围（包括领域）:"
 		"DOTA_Tooltip_ability_hoof_stomp_stun_duration"			"眩晕时间:"
 		"DOTA_Tooltip_ability_hoof_stomp_stomp_damage"			"伤害:"
@@ -2794,7 +2855,7 @@
 		"DOTA_Tooltip_ability_frostbite"								"冰封禁制"
 		"DOTA_Tooltip_ability_frostbite_Note0"						"1.冰封禁制为缠绕效果。"
 		"DOTA_Tooltip_ability_frostbite_Lore"						"莉莱引来蓝心冰川的寒风，将敌人封禁在冰块里。"
-		"DOTA_Tooltip_ability_frostbite_description"					"操控冰霜包围目标，禁止移动和攻击，并造成伤害。\n<h1><font color='#63B8FF'>1.凝结</font></h1>当冻结时间结束或者被驱散则会随机传递给%rd%范围内的其他目标（只会对英雄传递控制效果，对魔免无效，直到没有目标为止）。害 \n<font color='#FFFF00'>●技能设计者:小太阳</font>"
+		"DOTA_Tooltip_ability_frostbite_description"					"操控冰霜包围目标，禁止移动和攻击，并造成伤害。\n<h1><font color='#63B8FF'>1.凝结</font></h1>当冻结时间结束或者被驱散则会随机传递给%rd%范围内的其他目标（只会对英雄传递控制效果，对魔免无效，直到没有目标为止）。 \n<font color='#FFFF00'>●技能设计者:小太阳</font>"
 		"DOTA_Tooltip_ability_frostbite_total_damage"						"伤害:"
 		"DOTA_Tooltip_ability_frostbite_duration"							"持续时间:"
 		"DOTA_Tooltip_modifier_frostbite_debuff"							"被冰冻"
@@ -3007,7 +3068,7 @@
 		"DOTA_Tooltip_ability_primal_spring"						"乾坤之跃"
 		"DOTA_Tooltip_ability_primal_spring_description"			"齐天大圣从树顶跃下，对着陆区域内敌人造成伤害。\n<h1><font color='#54FF9F'>1.行云流水</font></h1>该技能对敌人造成伤害时，即可刷新棒击大地CD 。\n<font color='#FFFF00'>●技能设计者:小太阳</font>"
 		"DOTA_Tooltip_ability_primal_spring_Lore"					"从浓密的树丛中跃向敌军中央，孙悟空的攻击毫不留情。"
-		"DOTA_Tooltip_ability_primal_spring_Note0"					"1.使用丛林之舞后可立即使用该技能。\n2.有0.1的前摇，并且该技能施法距离和丛林之舞一致。"
+		"DOTA_Tooltip_ability_primal_spring_Note0"					"1.该技能施法距离和丛林之舞一致。"
 		"DOTA_Tooltip_ability_primal_spring_impact_damage"			"伤害:"
 		"DOTA_Tooltip_ability_primal_spring_impact_radius"			"范围:"
 
@@ -3027,7 +3088,7 @@
 
 
 		"DOTA_Tooltip_ability_mischief"							"七十二变"
-		"DOTA_Tooltip_ability_mischief_description"				"齐天大圣以周遭事物为启发进行伪装，改变自己的外形，从而欺骗对手。受到伤害，发动攻击或使用任意物品都会失去伪装效果。变化后0.2秒内免疫伤害。\n<h1><font color='#54FF9F'>1.分身术</font></h1>变身后会在原地留下一个幻象持续7秒，幻象无法攻击，属性与本体一致 。\n<font color='#FFFF00'>●技能设计者:小太阳</font>"
+		"DOTA_Tooltip_ability_mischief_description"				"齐天大圣以周遭事物为启发进行伪装，改变自己的外形，从而欺骗对手。受到伤害，发动攻击或使用任意物品都会失去伪装效果。变化后0.2秒内免疫伤害。\n<h1><font color='#54FF9F'>1.分身术</font></h1>变身后会在原地留下一个幻象持续7秒，幻象无法攻击，属性与本体一致 。\n● 点击地面则为原版变身，不会拥有仇恨  \n● 点击目标可任意变化，建筑，英雄，小兵，等所有可点击的单位，期间可以穿越树木 \n<font color='#FFFF00'>●技能设计者:小太阳</font>"
 		"DOTA_Tooltip_ability_mischief_Lore"					"要小心那棵树。"
 		"DOTA_Tooltip_ability_mischief_Note0"					"1.变身可在树林穿梭。"
 		"DOTA_Tooltip_modifier_mischief_buff"					"72变"
@@ -3038,7 +3099,7 @@
 
 
 		"DOTA_Tooltip_ability_wukongs_command"							"斗战胜佛"
-		"DOTA_Tooltip_ability_wukongs_command_description"				"俺老孙来也！\n<h1><font color='#54FF9F'>1.筋斗云</font></h1>孙悟空跳向前方并召唤出筋斗云，在空中飞行。\n<h1><font color='#54FF9F'>2.火眼金睛</font></h1>孙悟空可以看到自身%eyes%码范围的隐身英雄。\n<h1><font color='#54FF9F'>3.三头六臂</font></h1>大招期间可以抵挡一次指向性技能。\n<font color='#FFFF00'>●技能设计者:小太阳</font>"
+		"DOTA_Tooltip_ability_wukongs_command_description"				"俺老孙来也！\n<h1><font color='#54FF9F'>1.大圣归来</font></h1>● 孙悟空跳向前方并召唤出筋斗云，在空中飞行。\n● 孙悟空可以看到自身%eyes%码范围的隐身英雄。\n● 大招期间可以抵挡一次指向性技能。\n<font color='#FFFF00'>●技能设计者:小太阳</font>"
 		"DOTA_Tooltip_ability_wukongs_command_Lore"						"我就是花果山水帘洞美猴王齐天大圣孙悟空！"
 		"DOTA_Tooltip_ability_wukongs_command_Note0"					"1.A帐效果会在跳跃结束后生效。"
 		"DOTA_Tooltip_ability_wukongs_command_dur"					"持续时间："
@@ -3047,9 +3108,32 @@
 		//"DOTA_Tooltip_ability_wukongs_command_tip2"						"2.通臂猿猴：孙悟空攻击距离提高200，持续时间与大招一致。\n"
 		//"DOTA_Tooltip_ability_wukongs_command_tip3"						"3.赤尻马猴：受到致死伤害时会变成石头持续3秒,大招期间只会触发一次。"
 		"DOTA_Tooltip_modifier_wukongs_command_buff3"					"孙 悟 空"
-		"DOTA_Tooltip_ability_wukongs_command_scepter_description"		"混世四猴：孙悟空大招期间获得其它三个猴子的力量。\n1.六耳猕猴：孙悟空额外创建一个幻象，幻象不会继承攻击力但是也不会受到额外的伤害加成。\n2.通臂猿猴：孙悟空攻击距离提高100。\n3.赤尻马猴：受到致死伤害时会变成石头持续3秒,只会触发一次。"
+		"DOTA_Tooltip_ability_wukongs_command_scepter_description"		"混世四猴：孙悟空大招期间获得其它三个猴子的力量。\n1.额外创建一个幻象，幻象不会继承攻击力但是也不会受到额外的伤害加成。\n2.攻击距离提高100。\n3.受到致死伤害时会变成石头持续3秒,只会触发一次。"
 
-		"DOTA_Tooltip_ability_boundless_strike_shard_description"							"释放棒击大地时会在目标位置创建两个幻象，幻象继承10% 的攻击力受到的伤害提高50% ，持续12秒 "
+		"DOTA_Tooltip_ability_boundless_strike_shard_description"							"释放棒击大地时会在目标位置创建1个幻象，幻象继承10% 的攻击力受到的伤害提高50% ，持续12秒 "
+
+
+
+
+
+	"DOTA_Tooltip_ability_special_bonus_monkey_king_1"						"+{s:value}%棒击大地暴击倍率"
+	"DOTA_Tooltip_ability_special_bonus_monkey_king_2"						"+{s:value}秒棒击大地眩晕"
+	"DOTA_Tooltip_ability_special_bonus_monkey_king_3"						"释放丛林之舞时获得1秒隐身"
+	"DOTA_Tooltip_ability_special_bonus_monkey_king_4"						"丛林之舞树木被摧毁不会眩晕"
+	"DOTA_Tooltip_ability_special_bonus_monkey_king_5"						"+{s:value}大招持续时间"
+	"DOTA_Tooltip_ability_special_bonus_monkey_king_6"						"+{s:value}大招真视范围"
+	"DOTA_Tooltip_ability_special_bonus_monkey_king_7"						"死亡后元神离开身体可以去任意地点"
+	"DOTA_Tooltip_ability_special_bonus_monkey_king_7_description"					"元神可以在地图中四处游荡，复活后替换位置"
+	"DOTA_Tooltip_ability_special_bonus_monkey_king_8"						"大招召唤猴阵，每隔数秒自动攻击圈内的英雄，持续6秒"
+	"DOTA_Tooltip_ability_special_bonus_monkey_king_8_description"					"不附带攻击特效"
+
+
+
+
+
+
+
+
 
 
 		//// 风行
@@ -3174,16 +3258,16 @@
 		"DOTA_Tooltip_ability_rearm"						"再装填"
 		"DOTA_Tooltip_ability_rearm_Lore"					"这儿换块新电池，那儿塞几枚火箭弹，鲍什不断改进现有的技术。 "
 		"DOTA_Tooltip_ability_rearm_description"			"持续施法 - 重置修补匠的大多数物品和技能的冷却时间。\n<h1><font color='#63B8FF'>1.无法刷新的技能列表</font></h1>1.黑皇杖，2.白皇杖，3.上帝之手，4.迈达斯之手，5.微光披风，6.红颜披风，7.冰眼，8.幻影斧，9.莲花，10.刷新球，11.知识之书，12.永恒之盘，13.奥术鞋，14.林肯法球，15.陨星锤，16.死灵书，17.支配头盔。\n ● 拥有该技能的英雄羊刀持续时间降低至1秒"
-
+		"DOTA_Tooltip_ability_rearm_shard_description"		"羊刀刷新不再受限制"
 		"DOTA_Tooltip_ability_rearm_ct"							"持续施法时间:"
-		"DOTA_Tooltip_ability_tinker_shard_description"			"额外获得一个随机技能"
+
 
 
 
 		//小黑
 		"DOTA_Tooltip_ability_frost_arrows"						"霜冻之箭"
 		"DOTA_Tooltip_ability_frost_arrows_Lore"					"覆盖着寒冰的箭矢破空而出，将敌人彻底冻结。 "
-		"DOTA_Tooltip_ability_frost_arrows_description"			"卓尔游侠在箭矢中附上冰冻效果，减缓敌人的移动速度并造成额外伤害。持续%sp%秒。\n<h1><font color='#54FF9F'>1.寒冰</font></h1>攻击命中时有%ch%% 概率使目标冻结在原地%stun% 秒。 \n ● 该被动无法被破坏"
+		"DOTA_Tooltip_ability_frost_arrows_description"			"卓尔游侠在箭矢中附上冰冻效果，减缓敌人的移动速度并造成额外伤害。持续%sp%秒。\n<h1><font color='#54FF9F'>1.寒冰</font></h1>攻击命中时有%ch%% 概率使目标冻结在原地%stun% 秒。 "
 
 		"DOTA_Tooltip_ability_frost_arrows_movement_speed"			"%减速:"
 		"DOTA_Tooltip_ability_frost_arrows_damage"			"额外伤害:"
@@ -3195,7 +3279,7 @@
 
 		"DOTA_Tooltip_ability_wave_of_silence"						"狂风"
 		"DOTA_Tooltip_ability_wave_of_silence_Lore"					"崔希丝特别中意肉搏中蕴含的静谧，因此她运用卓尔人的天赋终结敌人的魔法。"
-		"DOTA_Tooltip_ability_wave_of_silence_description"			"释放一阵狂风，沉默敌方单位并将其击退。若与目标距离大于攻击距离则将原地击退。\n<h1><font color='#54FF9F'>1.暴雨</font></h1>释放该技能时还会对路径上所有目标进行一次普攻"
+		"DOTA_Tooltip_ability_wave_of_silence_description"			"释放一阵狂风，沉默敌方单位并将其击退。若与目标距离大于攻击距离则将原地击退。\n<h1><font color='#54FF9F'>1.龙卷风</font></h1>若开启了自动施法，则会在路径中间生成旋风，敌军经过该区域会被弹飞,范围：%rd% ，持续时间：%dur%"
 
 		"DOTA_Tooltip_ability_wave_of_silence_wave_speed"			"速度:"
 		"DOTA_Tooltip_ability_wave_of_silence_wave_width"			"宽度:"
@@ -3207,7 +3291,7 @@
 
 		"DOTA_Tooltip_ability_multishot"						"数箭齐发"
 		"DOTA_Tooltip_ability_multishot_Lore"					"在游侠的童年，学习同时射出多支箭矢被视为不够专心的轻浮行为。而在遗迹的大战中，这样的技巧奇特地成为了必要。"
-		"DOTA_Tooltip_ability_multishot_description"			"卓尔游侠向目标地点随机位置发射%num%发箭矢，每发箭矢都会单独造成%rd%码的范围伤害。\n<h1><font color='#54FF9F'>1.暗箭</font></h1>数箭齐发缠绕目标%root%秒（不无视魔免）  \n<h1><font color='#54FF9F'>2.冷箭</font></h1>命中目标时，若目标处于沉默状态下会使伤害提高%dmg1%%　。 \n ● 释放时会获得目标点500码高空视野，同时箭矢飞行时也同样拥有视野"
+		"DOTA_Tooltip_ability_multishot_description"			"卓尔游侠向目标地点随机位置发射%num%发箭矢，每发箭矢都会单独造成%rd%码的范围伤害。\n<h1><font color='#54FF9F'>1.暗箭</font></h1>数箭齐发缠绕目标%root%秒（不无视魔免） \n ● 释放时会获得目标点500码高空视野，同时箭矢飞行时也同样拥有视野"
 		"DOTA_Tooltip_ability_multishot_sp"			"箭矢初速:"
 		"DOTA_Tooltip_ability_multishot_sp1"			"箭矢递增速度:"
 		"DOTA_Tooltip_ability_multishot_dmg"			"箭矢伤害:"
@@ -3215,18 +3299,18 @@
 
 		"DOTA_Tooltip_ability_marksmanship"						"射手天赋"
 		"DOTA_Tooltip_ability_marksmanship_Lore"					"卓尔游侠是弓箭手登峰造极的典型。"
-		"DOTA_Tooltip_ability_marksmanship_description"			"卓尔游侠卓尔游侠的战斗经验使她所有技能获得加强。\n<h1><font color='#54FF9F'>1.霜冻之箭</font></h1>冰冻%rd1%码范围内所有目标。\n<h1><font color='#54FF9F'>2.狂风</font></h1>攻击被狂风击中的目标会使霜冻之箭概率提高%ch1%%　\n<h1><font color='#54FF9F'>3.数箭齐发</font></h1>伤害变为纯粹，额外增加%num1%发箭矢。\n ● 该被动无法被破坏"
+		"DOTA_Tooltip_ability_marksmanship_description"			"卓尔游侠卓尔游侠的战斗经验使她所有技能获得加强。\n<h1><font color='#54FF9F'>1.连射</font></h1>每次攻击时，额外对目标身旁600范围内随机目标射出一枚箭矢可以触发攻击特效（需要霜冻之箭，不会作用于同一个目标）\n<h1><font color='#54FF9F'>2.侦察</font></h1>全图施法，主动使用向目标点发射一枚箭矢获得%rd%码高空视野，持续%dur%秒,可以检测隐身单位"
 		"DOTA_Tooltip_ability_marksmanship_agility_multiplier"			"敏捷加成:"
 		"DOTA_Tooltip_ability_marksmanship_attrg"				"攻击距离加成:"
 		"DOTA_Tooltip_ability_marksmanship_sp"					"移动速度加成:"
 		"DOTA_Tooltip_ability_wave_of_silence_shard_description"							"释放狂风时将会驱散目标所有的增益BUFF"
 		"DOTA_Tooltip_ability_frost_arrows_scepter_description"							"霜冻之箭造成250码范围伤害"
-		"DOTA_Tooltip_ability_multishot_scepter_description"							"数箭齐发额外增加卓尔游侠当前7% 攻击力的纯粹伤害，前摇降低至0.1"
+		"DOTA_Tooltip_ability_multishot_scepter_description"							"数箭齐发额外增加卓尔游侠当前5% 攻击力的物理伤害，前摇降低至0.1"
 
 	"DOTA_Tooltip_ability_special_bonus_drow_ranger_1"						"霜冻之箭的伤害无视魔免"
 	"DOTA_Tooltip_ability_special_bonus_drow_ranger_2"						"霜冻之箭的伤害变为纯粹"
 	"DOTA_Tooltip_ability_special_bonus_drow_ranger_3"						"+500数箭齐发施法范围"
-	"DOTA_Tooltip_ability_special_bonus_drow_ranger_4"						"狂风额外攻击触发攻击特效"
+	"DOTA_Tooltip_ability_special_bonus_drow_ranger_4"						"狂风额外触发一次攻击（触发特效）"
 	"DOTA_Tooltip_ability_special_bonus_drow_ranger_5"						"+{s:value}数箭齐发伤害"
 	"DOTA_Tooltip_ability_special_bonus_drow_ranger_6"						"-{s:value}秒狂风CD"
 	"DOTA_Tooltip_ability_special_bonus_drow_ranger_7"						"+{s:value}霜冻之箭伤害"
@@ -3275,10 +3359,9 @@
 
 		"DOTA_Tooltip_ability_flesh_golem"						"血肉傀儡"
 		"DOTA_Tooltip_ability_flesh_golem_Lore"					"新近死者的血肉增强了挽歌瘟疫的力量。"
-		"DOTA_Tooltip_ability_flesh_golem_description"			"不朽尸王变身为一具令人毛骨悚然的血肉傀儡。获得血量，移动速度，护甲加成，持续%dur%秒。\n<h1><font color='#EE2C2C'>1.尸骨（被动）</font></h1>释放大招时%rd%范围内友方英雄获得自身%buff%%%的血量,造成的伤害提高%godmg%%%，持续%dur2%秒。\n<h1><font color='#EE2C2C'>2.尸气（被动）</font></h1>大招期间使600码范围内敌方英雄受到的伤害提高%godmg%% "
+		"DOTA_Tooltip_ability_flesh_golem_description"			"不朽尸王变身为一具令人毛骨悚然的血肉傀儡。获得血量，移动速度，护甲加成，持续%dur%秒。\n<h1><font color='#EE2C2C'>1.尸骨（被动）</font></h1>释放大招时%rd%范围内友方英雄获得自身%buff%%%的血量，持续%dur2%秒。\n<h1><font color='#EE2C2C'>2.尸气（被动）</font></h1>大招期间使600码范围内敌方英雄受到的伤害提高%godmg%% "
 		"DOTA_Tooltip_ability_flesh_golem_hp"					"生命提高:"
 		"DOTA_Tooltip_ability_flesh_golem_ar"					"护甲提高:"
-		"DOTA_Tooltip_ability_flesh_golem_sp"					"移速提高:"
 		"DOTA_Tooltip_modifier_flesh_golem_buff"					"血肉傀儡"
 		"DOTA_Tooltip_modifier_flesh_golem_buff2"					"额外生命"
 		"DOTA_Tooltip_modifier_flesh_golem_zombie"					"丧尸围城"
@@ -3365,10 +3448,6 @@
 		"DOTA_Tooltip_modifier_guardian_angel_buff"						"魔法免疫"
 		"DOTA_Tooltip_modifier_guardian_angel_buff2"					"物理免疫"
 
-		"DOTA_Tooltip_ability_guardian_angel_scepter_description"								"大招天使范围变为全图。"
-		"DOTA_Tooltip_ability_omniknight_hammer_of_purity"								"纯洁之锤"
-		"DOTA_Tooltip_ability_omniknight_hammer_of_purity_description"					"使全能骑士的下次攻击造成%bonus_damage% + %base_damage%%%基础攻击力的额外纯粹伤害。自身将回复等同于纯粹伤害的生命。冷却时间：3"
-
 
 		"DOTA_Tooltip_ability_special_bonus_omniknight_1"						"+{s:value}洗礼伤害/治疗"
 		"DOTA_Tooltip_ability_special_bonus_omniknight_2"						"洗礼临界值变为50%"
@@ -3401,7 +3480,7 @@
 
 		"DOTA_Tooltip_ability_plague_ward"									"瘟疫守卫"
 		"DOTA_Tooltip_ability_plague_ward_Lore"								"他通过将早先的草药学天赋，和后天获得的毒素专精混合起来，创造出一个活体化瘟疫。"
-		"DOTA_Tooltip_ability_plague_ward_description"						"召唤%num%个瘟疫守卫来攻击敌方单位和建筑。守卫对魔法免疫，被攻击%hp%次后死亡。\n<h1><font color='#54FF9F'>1. 毒刺</font></h1>守卫拥有毒刺效果，但是每次攻击只会降低%less%% 的移速和魔法抗性并且没有额外伤害。\n<h1><font color='#54FF9F'>2. 急性毒素</font></h1>守卫攻击的目标如果处于瘴气效果下，守卫会获得%attsp% 点攻击速度"
+		"DOTA_Tooltip_ability_plague_ward_description"						"召唤%num%个瘟疫守卫来攻击敌方单位和建筑。守卫对魔法免疫，被攻击%hp%次后死亡。\n<h1><font color='#54FF9F'>1. 毒刺</font></h1>守卫拥有毒刺效果，但是每次攻击只会降低%less%% 的移速和魔法抗性并且没有额外伤害。\n<h1><font color='#54FF9F'>2. 急性毒素</font></h1>守卫攻击的目标如果处于瘴气效果下，守卫会获得%attsp% 点攻击速度  \n<h1><font color='#54FF9F'>3. 突刺</font></h1>当开启自动施法时会自动寻找目标释放位移突刺，将路径上的目标造成眩晕和伤害"
 		"DOTA_Tooltip_modifier_plague_ward_debuff"							"降低的百分比移动速度和魔法抗性"
 		"DOTA_Tooltip_modifier_plague_ward_buff"							"攻速加成"
 		"DOTA_Tooltip_ability_plague_ward_att"								"守卫攻击力:"
@@ -3438,9 +3517,9 @@
 
 
 	//骷髅王
-		"DOTA_Tooltip_ability_hellfire_blast"										"冥火爆击"
+		"DOTA_Tooltip_ability_hellfire_blast"										"冥火暴击"
 		"DOTA_Tooltip_ability_hellfire_blast_Lore"									"奥斯塔里昂激活他的冥魂怒意，毁灭他的敌人。"
-		"DOTA_Tooltip_ability_hellfire_blast_description"							"冥魂大帝向一个敌方单位发射冥魂火球，造成即时伤害和眩晕，并在眩晕结束后持续对目标造成减速。\n<h1><font color='#EE2C2C'>1. 持续一击</font></h1>对目标释放冥火爆击后，骷髅被动暴击倍率提高%crit%% ，持续3秒。"
+		"DOTA_Tooltip_ability_hellfire_blast_description"							"冥魂大帝向一个敌方单位发射冥魂火球，造成即时伤害和眩晕，并在眩晕结束后持续对目标造成减速。\n<h1><font color='#EE2C2C'>1. 持续一击</font></h1>对目标释放冥火爆击后，骷髅被动暴击倍率提高%crit%% ，持续%dur%秒。\n<h1><font color='#EE2C2C'>2. 范围轰爆</font></h1>对目标%rd%码范围内所有目标释放冥魂火球。"
 		"DOTA_Tooltip_modifier_hellfire_blast_debuff"								"头晕"
 		"DOTA_Tooltip_modifier_hellfire_blast_debuff2"								"跑不动"
 		"DOTA_Tooltip_ability_hellfire_blast_blast_stun_duration"					"眩晕时间:"
@@ -3451,14 +3530,14 @@
 
 		"DOTA_Tooltip_ability_vampiric_aura"										"吸血灵魂"
 		"DOTA_Tooltip_ability_vampiric_aura_Lore"									"奥斯塔里昂激活他的冥魂怒意，毁灭他的敌人。"
-		"DOTA_Tooltip_ability_vampiric_aura_description"							"冥魂大帝攻击敌人时会回复生命。\n<h1><font color='#EE2C2C'>1. 帝王重现</font></h1>冥魂大帝变成最初的样子，仪式结束后冥魂大帝的吸血效果提升至100% ，暴击概率提升15% ，持续%dur%秒，并眩晕周围%rd%码范围敌军2秒。\n● 仪式状态下无敌且无法操作。\n● 仪式持续4秒。"
+		"DOTA_Tooltip_ability_vampiric_aura_description"							"冥魂大帝攻击敌人时会回复生命。\n<h1><font color='#EE2C2C'>1. 帝王重现</font></h1>冥魂大帝变成最初的样子，仪式结束后冥魂大帝的吸血效果提升至100% ，无法被减速，持续%dur%秒，仪式开始和结束都会眩晕%rd%码范围敌军1秒。\n● 仪式状态下无敌且无法操作。\n● 仪式持续4秒。"
 		"DOTA_Tooltip_modifier_vampiric_aura"										"吸血"
 		"DOTA_Tooltip_ability_vampiric_aura_vampiric_aura"							"%吸血百分比:"
 		"DOTA_Tooltip_modifier_vampiric_aura_buff3"										"骷髅王"
 
 		"DOTA_Tooltip_ability_mortal_strike"										"本命一击"
 		"DOTA_Tooltip_ability_mortal_strike_Lore"									"单凭一击，斩敌无匹。"
-		"DOTA_Tooltip_ability_mortal_strike_description"							"冥魂大帝在攻击时有概率造成暴击。\n<h1><font color='#EE2C2C'>1. 冥魂之力</font></h1>每次暴击时，如果目标是英雄则会获得10点力量加给自身，持续%dur%秒，可无限叠加。"
+		"DOTA_Tooltip_ability_mortal_strike_description"							"冥魂大帝在攻击时有概率造成暴击,主动使用可向前方释放斩击对路径上的目标进行一次普攻（可触发特效）。\n<h1><font color='#EE2C2C'>1. 冥魂之力</font></h1>每次暴击时，如果目标是英雄则会获得15点力量加给自身，持续%dur%秒，可无限叠加。"
 		"DOTA_Tooltip_modifier_mortal_strike_buff"									"获得的力量"
 		"DOTA_Tooltip_ability_mortal_strike_ch"										"%概率:"
 		"DOTA_Tooltip_ability_mortal_strike_crit_mult"								"%暴击倍率:"
@@ -3466,7 +3545,7 @@
 
 		"DOTA_Tooltip_ability_reincarnation"										"绝冥再生"
 		"DOTA_Tooltip_ability_reincarnation_Lore"									"冥魂大帝的对头们一直很疑惑，为什么他就是不会死透。"
-		"DOTA_Tooltip_ability_reincarnation_description"							"冥魂大帝倒下后，他飞散的冥魂会重组，使他复活。每次死亡时附近%slow_radius%范围内的敌人会被减速%slow_duration%秒。\n<h1><font color='#EE2C2C'>1. 重生</font></h1>重生后会刷新-吸血灵魂-技能CD并额外获得%attsp%攻速，持续%dur2%。"
+		"DOTA_Tooltip_ability_reincarnation_description"							"冥魂大帝倒下后，他飞散的冥魂会重组，使他复活。每次死亡时附近%slow_radius%范围内的敌人会被减速%slow_duration%秒。\n<h1><font color='#EE2C2C'>1. 重生</font></h1>重生后会刷新-吸血灵魂-和-冥火暴击-技能CD并额外获得%attsp%攻速，持续%dur2%。"
 		"DOTA_Tooltip_modifier_reincarnation_sp"									"被减速"
 		"DOTA_Tooltip_ability_reincarnation_movespeed"								"%移动速度降低:"
 		"DOTA_Tooltip_ability_reincarnation_attackslow"								"攻击速度降低:"
@@ -3475,8 +3554,8 @@
 		"DOTA_Tooltip_modifier_reincarnation_description"							"30秒内死亡有效"
 		"DOTA_Tooltip_ability_reincarnation_Note0"									"1.该被动无法被破坏。"
 
-		"DOTA_Tooltip_ability_reincarnation_scepter_description"								"重生不耗蓝"
-		"DOTA_Tooltip_ability_vampiric_aura_shard_description"							"帝王重现持续时间内无法被减速"
+		"DOTA_Tooltip_ability_reincarnation_scepter_description"								"死亡会获得4秒的冥魂不死形态(血量小于等于500触发)"
+		"DOTA_Tooltip_ability_reincarnation_shard_description"							"重生不耗蓝"
 
 
 		"DOTA_Tooltip_ability_special_bonus_skeleton_king_1"						"-{s:value}秒冥火暴击CD"
@@ -3484,10 +3563,11 @@
 		"DOTA_Tooltip_ability_special_bonus_skeleton_king_3"						"+{s:value}秒冥火暴击减速"
 		"DOTA_Tooltip_ability_special_bonus_skeleton_king_4"						"冥火暴击附带一次普攻可触发攻击特效"
 		"DOTA_Tooltip_ability_special_bonus_skeleton_king_5"						"本命一击可主动使用召唤骷髅士兵"
-		"DOTA_Tooltip_ability_special_bonus_skeleton_king_5_description"					"一共3个骷髅兵"
+		"DOTA_Tooltip_ability_special_bonus_skeleton_king_5_description"					"一共6个骷髅兵"
 		"DOTA_Tooltip_ability_special_bonus_skeleton_king_6"						"绝冥重生可对友军英雄使用"
 		"DOTA_Tooltip_ability_special_bonus_skeleton_king_6_description"						"30秒内有效，只有重生效果"
-
+		"DOTA_Tooltip_ability_special_bonus_skeleton_king_7"						"吸血灵魂释放结束后血量回满"
+		"DOTA_Tooltip_ability_special_bonus_skeleton_king_8"						"+10%本命一击暴击概率"
 
 		"npc_wraith_king_skeleton_warrior"									"骷髅兵"
 
@@ -3550,7 +3630,7 @@
 		"DOTA_Tooltip_ability_activate_fire_remnant"									"激活残焰"
 		"DOTA_Tooltip_ability_activate_fire_remnant_Lore"									"燎原之火，瞬息将至！"
 		"DOTA_Tooltip_ability_activate_fire_remnant_note0"								"<font color='#FFFF00'>●技能设计者:眼睛</font>"
-		"DOTA_Tooltip_ability_activate_fire_remnant_description"								"残焰，灰烬之灵将向其冲去。"
+		"DOTA_Tooltip_ability_activate_fire_remnant_description"								"残焰，灰烬之灵将向其冲去。被暗影萨满操控时所有魂会被销毁"
 
 		"DOTA_Tooltip_ability_special_bonus_ember_spirit_1"						"+{s:value}炎阳锁伤害"
 		"DOTA_Tooltip_ability_special_bonus_ember_spirit_2"						"+{s:value}缠绕持续时间"
@@ -3617,7 +3697,7 @@
 		"DOTA_Tooltip_modifier_elder_dragon_form_debuff"									"降低攻速和移速"
 
 		"DOTA_Tooltip_ability_elder_dragon_form_shard_description"					"获得火球技能"
-		"DOTA_Tooltip_ability_elder_dragon_form_scepter_description"								"变身为黑龙，额外获得飞行能力，%mr%%% 魔抗 ，%sr%%% 状态抗性，%att%攻击力，%att%攻速，%att%攻击距离。"
+		"DOTA_Tooltip_ability_elder_dragon_form_scepter_description"								"变身为黑龙，额外获得飞行能力，%mr%%% 魔抗 ，%sr%%% 状态抗性，%att%攻速。"
 		"DOTA_Tooltip_ability_dragon_knight_fireball"							        "火球"
 		"DOTA_Tooltip_ability_dragon_knight_fireball_description"				        "点燃%radius%范围的区域，持续%duration%秒，对其中的敌人造成每秒%damage%点伤害。"
 
@@ -3722,7 +3802,7 @@
 
 		"DOTA_Tooltip_ability_feral_impulse"									"野性驱使"
 		"DOTA_Tooltip_ability_feral_impulse_Lore"								"毛骨悚然的狼嚎让敌人明白贝恩霍勒就在他们之中。"
-		"DOTA_Tooltip_ability_feral_impulse_description"								"提升狼人和周围友军的生命恢复和攻击力。\n<h1><font color='#EE2C2C'>1. 饿狼捕食</font></h1>每击杀一个中立生物或者小兵都会使狼人永久获得3点攻击力，3点移动速度加成（最高加到180）。"
+		"DOTA_Tooltip_ability_feral_impulse_description"								"提升狼人和周围友军的生命恢复和攻击力。\n<h1><font color='#EE2C2C'>1. 饿狼捕食</font></h1>每击杀一个中立生物或者小兵都会使狼人永久获得3点攻击力（最高加到180）。"
 		"DOTA_Tooltip_ability_feral_impulse_bonus_damage"							"%攻击力提升:"
 		"DOTA_Tooltip_ability_feral_impulse_bonus_hp_regen"							"额外生命恢复:"
 		"DOTA_Tooltip_modifier_feral_impulse_a"									"永久攻击力，移速"
@@ -3914,7 +3994,7 @@
 
 		"DOTA_Tooltip_ability_nethertoxin"									"幽冥剧毒"
 		"DOTA_Tooltip_ability_nethertoxin_Lore"								"三途川的剧毒让小伤也能致死，而疲乏可以送命。"
-		"DOTA_Tooltip_ability_nethertoxin_description"						"冥界亚龙向目标区域施放幽冥剧毒。范围内敌人持续受到伤害，并且使他们的被动技能无效。\n<h1><font color='#54FF9F'>1.浓硫酸</font></h1>范围内的敌方目标会被降低%mr%% 魔法抗性和%ar% 护甲，并且目标在区域施法或者使用物品都会被沉默1.5秒（沉默效果只会触发一次）。"
+		"DOTA_Tooltip_ability_nethertoxin_description"						"冥界亚龙向目标区域施放幽冥剧毒。范围内敌人持续受到伤害，并且使他们的被动技能无效。\n<h1><font color='#54FF9F'>1.浓硫酸</font></h1>范围内的敌方目标会被降低%mr%% 魔法抗性和%ar% 护甲，并且目标在区域内会被沉默（沉默与破被动对有技能免疫的单位无效）。"
 		"DOTA_Tooltip_ability_nethertoxin_duration"							"持续时间:"
 		"DOTA_Tooltip_ability_nethertoxin_radius"							"范围:"
 		"DOTA_Tooltip_ability_nethertoxin_damage"							"每秒伤害:"
@@ -4213,7 +4293,7 @@
 		"DOTA_Tooltip_ability_wave_of_terror_armor_reduction"					"护甲降低:"
 		"DOTA_Tooltip_ability_wave_of_terror_dis"							"最大距离:"
 		"DOTA_Tooltip_modifier_wave_of_terror_debuff"						"护甲降低"
-		"DOTA_Tooltip_ability_wave_of_terror_scepter_description"					"释放恐怖波动1秒延迟后，会往返自动施放一道恐怖波动，并且碰到目标会刷新该技能CD"
+		"DOTA_Tooltip_ability_wave_of_terror_scepter_description"					"释放恐怖波动1秒延迟后，会往返自动施放一道恐怖波动"
 
 
 
@@ -4299,28 +4379,213 @@
 		//屠夫
 		"DOTA_Tooltip_ability_meat_hook"									"肉钩"
 		"DOTA_Tooltip_ability_meat_hook_Lore"							  "屠夫的肉钩是噩梦的象征，锋利的倒钩暗示了他嗜血的本性。"
-		"DOTA_Tooltip_ability_meat_hook_description"					    "向一个单位或方向射出血腥的肉钩。勾住第一个遭遇的单位，并将它拖到帕吉身边，如果是敌人的话将造成伤害。\n<h1><font color='#EE2C2C'>1.绳索</font></h1>每勾中一次敌方英雄都会使钩子长度增加%hook_rg% ，钩子最长可提高到%hook_max%	\n<h1><font color='#EE2C2C'>2.附属钩</font></h1>若开启自动施法，则会额外投出4个钩子，但每个钩子只造成%dmg%%%的伤害   \n ● 钩子会穿透己方小兵秒杀1000码以内的敌方小兵	 \n ● 钩子距离支持施法距离加成"
+		"DOTA_Tooltip_ability_meat_hook_description"					    "向一个单位或方向射出血腥的肉钩。勾住第一个遭遇的单位，并将它拖到帕吉身边，如果是敌人的话将造成伤害。\n<h1><font color='#EE2C2C'>1.绳索</font></h1>每勾中一次敌方英雄都会使钩子长度增加%hook_rg% ，钩子最长可提高到%hook_max% 	\n<h1><font color='#EE2C2C'>2.多重钩</font></h1>若开启自动施法，则会额外投出2个钩子，但每个钩子只造成%dmg%%%的伤害,CD恒定至10秒（无法勾中魔免单位）   \n ● 钩子会穿透己方小兵 \n ● 钩子支持施法距离加成"
 		"DOTA_Tooltip_modifier_meat_hook_move"						    "被抓到了"
 		"DOTA_Tooltip_ability_meat_hook_damage"						     "伤害:"
 		"DOTA_Tooltip_ability_meat_hook_hook_speed"					   "钩子速度:"
+		"DOTA_Tooltip_ability_meat_hook_hook_speed1"					   "多重钩速度:"
 		"DOTA_Tooltip_ability_meat_hook_hook_distance"					  "钩子基础距离:"
 		"DOTA_Tooltip_ability_meat_hook_vision_radius"					   "钩子视野范围:"
-		"DOTA_Tooltip_modifier_meat_hook_stack"					   		"额外钩子距离"
-		"DOTA_Tooltip_ability_meat_hook_scepter_description"					"肉钩CD降低%acd%秒，并且勾中敌方英雄会恢复自身%heal%%的生命"
+		"DOTA_Tooltip_modifier_meat_hook_stack"					   "额外钩子距离"
+		"DOTA_Tooltip_ability_meat_hook_scepter_description"				   "肉钩CD降低%acd%秒，并且勾中敌方英雄会恢复自身%heal%%的生命"
+
+
+		"DOTA_Tooltip_ability_prot"						    "腐烂"
+		"DOTA_Tooltip_ability_prot_Lore"					    "从屠夫腐烂肿胀的肉体中放出的有毒气体，气味恶心的令人窒息。"
+		"DOTA_Tooltip_ability_prot_description"					    "能够造成持续伤害并减缓敌人移动速度的毒性云雾，同时对敌军和自身造成伤害。\n<h1><font color='#EE2C2C'>1.臭屁弹</font></h1>该技能每秒对敌方英雄造成伤害时，屠夫都会获得一层臭屁弹层数，当大于%maxstack%层时，会对%rd%码范围内的英雄造成自身最大生命值%hp%%% 的伤害 \n ● 关闭该技能层数会被清零"
+		"DOTA_Tooltip_ability_prot_note0"					    "1.对自身造成的为魔法伤害不继承技能增强，反伤，吸血等效果"
+		"DOTA_Tooltip_modifier_prot_debuff"					    "这屠夫好鸡儿臭"
+		"DOTA_Tooltip_modifier_prot_toggle"					    "臭屁弹层数"
+		"DOTA_Tooltip_ability_prot_rot_radius"					   "范围:"
+		"DOTA_Tooltip_ability_prot_rot_tick"					   "伤害间隔:"
+		"DOTA_Tooltip_ability_prot_rot_slow"					   "%减速:"
+		"DOTA_Tooltip_ability_prot_rot_damage"					   "伤害:"
+		"DOTA_Tooltip_ability_prot_shard_description"				   "不再对自身造成伤害"
+
+
+		"DOTA_Tooltip_ability_flesh_heap"									"腐肉堆积"
+		"DOTA_Tooltip_ability_flesh_heap_description"								"给予帕吉魔法抗性加成，并且帕吉每次杀死一个敌方英雄，或者附近有敌方英雄死亡时，帕吉将获得额外的力量。腐肉堆积在学习之前就可以积累力量，但是学习之后才能获得这部分力量。\n<h1><font color='#EE2C2C'>1.开膛手</font></h1>可以主动使用从身子里向前方投出短距离钩子，将路径上的所有目标勾到面前，但不会造成伤害 \n ● 钩子会穿透己方小兵 \n ● 该钩子无法携带单位位移"
+		"DOTA_Tooltip_ability_flesh_heap_Lore"									"屠夫赋予“肉盾”这个词新的含义。"
+		"DOTA_Tooltip_ability_flesh_heap_magic_resistance"								"%魔法抗性:"
+		"DOTA_Tooltip_ability_flesh_heap_flesh_heap_strength_buff_amount"						"每层力量加成:"
+		"DOTA_Tooltip_ability_flesh_heap_flesh_heap_range"								"获取范围:"
+		"DOTA_Tooltip_ability_flesh_heap_hook_speed"					   "钩子速度:"
+		"DOTA_Tooltip_ability_flesh_heap_hook_distance"					   "钩子距离:"
+		"DOTA_Tooltip_modifier_flesh_heap_pa"					 	  "叠加的力量层数"
+		"DOTA_Tooltip_modifier_flesh_heap_buff"					 	  "活着"
+		"DOTA_Tooltip_modifier_flesh_heap_cd"					 	  "杰森CD"
+
+		"DOTA_Tooltip_ability_dismember"									"肢解"
+		"DOTA_Tooltip_ability_dismember_description"								"持续施法 - 帕吉撕咬一个敌方单位，使其失去行动能力并受到持续伤害。帕吉将回复与伤害量相等的生命。\n<h1><font color='#EE2C2C'>1.午夜屠夫</font></h1>若持续施法没有中断则会在结束时，使屠夫额外获得%rs%%%的状态抗性和%sp%%%的移动速度，持续%duration%秒"
+		"DOTA_Tooltip_ability_dismember_Lore"									"“等我干掉这些蠢货以后，就可以把它们做成肉饼了！”"
+		"DOTA_Tooltip_ability_dismember_dismember_damage"							"伤害:"
+		"DOTA_Tooltip_ability_dismember_strength_damage"							"力量系数:"
+		"DOTA_Tooltip_ability_dismember_ticks"									"伤害间隔:"
+		"DOTA_Tooltip_ability_dismember_duration_tooltip"								"持续时间:"
+		"DOTA_Tooltip_ability_modifier_dismember_buff"		"狂徒张三"
+
+		"DOTA_Tooltip_ability_special_bonus_pudge_1"						"开膛手附带300点魔法伤害"
+		"DOTA_Tooltip_ability_special_bonus_pudge_2"						"开膛手继承A杖加血效果"
+		"DOTA_Tooltip_ability_special_bonus_pudge_3"						"腐烂效果下目标无法闪避"
+		"DOTA_Tooltip_ability_special_bonus_pudge_4"						"腐烂降低目标15%的吸血与治疗"
+		"DOTA_Tooltip_ability_special_bonus_pudge_5"						"肢解额外对目标300范围随机单位释放"
+		"DOTA_Tooltip_ability_special_bonus_pudge_6"						"肢解释放完毕后还会获得90点攻击速度"
+		"DOTA_Tooltip_ability_special_bonus_pudge_7"						"杰森"
+		"DOTA_Tooltip_ability_special_bonus_pudge_7_description"		    			"屠夫在受到伤害血量低于600时会进入伤害免疫状态（需要腐肉堆积技能，100秒内置CD）"
+		"DOTA_Tooltip_ability_special_bonus_pudge_8"						"继承者"
+		"DOTA_Tooltip_ability_special_bonus_pudge_8_description"		   			"屠夫完全死亡后会留下一个小屠夫附带肉钩技能（需要肉钩技能）"
+		"npc_butcher"	"我嫩爹"
+
+
+
+		//火女
+		"DOTA_Tooltip_ability_dragon_slave"							"龙破斩"
+		"DOTA_Tooltip_ability_dragon_slave_Lore"							"在纷争之国的荒焦之地，为了娱乐，莉娜学会了操纵沙漠龙的火焰吐息。"
+		"DOTA_Tooltip_ability_dragon_slave_description"					    	"莉娜引导龙的吐息，放出一波火焰，烧焦所有波及的敌人。\n<h1><font color='#63B8FF'>1.光</font></h1>对碰撞到的第一位英雄释放小范围的光击阵，延迟0.3秒使%array_rd%码范围内目标眩晕%array_stun%秒 "
+		"DOTA_Tooltip_ability_dragon_slave_damage"						"伤害:"
+		"DOTA_Tooltip_ability_dragon_slave_dragon_slave_distance"					"距离:"
+		"DOTA_Tooltip_ability_dragon_slave_cast"							"施法前摇:"
+		"DOTA_Tooltip_ability_dragon_slave_dragon_slave_width"					"宽度:"
+
+		"DOTA_Tooltip_ability_light_strike_array"							"光击阵"
+		"DOTA_Tooltip_ability_light_strike_array_Lore"						"莉娜的精华让她能够集中太阳的能量，随时让空气燃烧。"
+		"DOTA_Tooltip_ability_light_strike_array_description"					    	"召唤柱状火焰伤害并眩晕敌人。\n<h1><font color='#63B8FF'>1.光阵</font></h1>额外在目标周围释放%num%道光柱，并且会在中心点向四周射出激光造成%knock%秒击飞效果(仅对英雄有效)"
+		"DOTA_Tooltip_ability_light_strike_array_light_strike_array_aoe"					"范围:"
+		"DOTA_Tooltip_ability_light_strike_array_light_strike_array_stun_duration"				"眩晕时间:"
+		"DOTA_Tooltip_ability_light_strike_array_cast"						"施法前摇:"
+		"DOTA_Tooltip_ability_light_strike_array_light_strike_array_damage"				"伤害:"
+		"DOTA_Tooltip_ability_light_strike_array_wh"						"激光宽度:"
+		"DOTA_Tooltip_ability_light_strike_array_rg"						"激光长度:"
+
+
+		"DOTA_Tooltip_ability_fiery_soul"							"炽魂"
+		"DOTA_Tooltip_ability_fiery_soul_Lore"						"舞动的火焰体现了莉娜爱玩的天性，展示了她真实炙热的自我。"
+		"DOTA_Tooltip_ability_fiery_soul_description"					 "莉娜每次施法都会给她带来攻击和移动速度提升，最多叠加%fiery_soul_max_stacks%层，死亡后会清零重新计算。\n<h1><font color='#63B8FF'>1.炎鸟</font></h1>每层额外降低自身%cast_time%%%的施法前摇，主动使用时，牺牲所有层数对目标点召唤炎鸟从天而降对%rd%范围单位造成当前智力值*层数的伤害（有0.7秒延迟）。"
+		"DOTA_Tooltip_ability_fiery_soul_fiery_soul_attack_speed_bonus"			"每层攻度:"
+		"DOTA_Tooltip_ability_fiery_soul_fiery_soul_move_speed_bonus"			"%每层移速:"
+		"DOTA_Tooltip_modifier_fiery_soul_pa"						"层数"
+
+		"DOTA_Tooltip_ability_laguna_blade"							"神灭斩"
+		"DOTA_Tooltip_ability_laguna_blade_Lore"						"莉娜身边的空气变得极度炙热，产生白热的闪电来灼烧过于接近的敌人。"
+		"DOTA_Tooltip_ability_laguna_blade_description"					 "对目标射出闪电，造成大量伤害。\n<h1><font color='#63B8FF'>1.毁灭</font></h1>对目标%rd%范围内所有单位射出闪电，若击杀英雄则会立即刷新CD"
+		"DOTA_Tooltip_ability_laguna_blade_damage"					"伤害:"
+
+		"DOTA_Tooltip_ability_laguna_blade_scepter_description"			  	 "伤害变为纯粹，无视技能免疫"
+		"DOTA_Tooltip_ability_laguna_blade_shard_description"				   "CD降低40秒，额外附带当前智力的伤害"
+
+		"DOTA_Tooltip_ability_special_bonus_lina_1"						"+{s:value}炽魂层数"
+		"DOTA_Tooltip_ability_special_bonus_lina_2"						"+{s:value}光击阵伤害"
+		"DOTA_Tooltip_ability_special_bonus_lina_3"						"炽魂每层+40施法距离"
+		"DOTA_Tooltip_ability_special_bonus_lina_4"						"普攻附带40%智力魔法伤害（需要炽魂）"
+		"DOTA_Tooltip_ability_special_bonus_lina_5"						"神灭斩对主目标造成的伤害30%治疗自身"
+		"DOTA_Tooltip_ability_special_bonus_lina_6"						"+{s:value}秒光击阵击飞时间"
+		"DOTA_Tooltip_ability_special_bonus_lina_7"						"神灭斩击杀目标则不消耗魔法"
+		"DOTA_Tooltip_ability_special_bonus_lina_8"						"神灭斩无视林肯莲花"
+
+
+
+		//猛犸
+		"DOTA_Tooltip_ability_shockwave"									"震荡波"
+		"DOTA_Tooltip_ability_shockwave_Lore"							"杰尔拉克山体并不稳定，马格纳斯已经学会如何将山体里的回响引导出来。"
+		"DOTA_Tooltip_ability_shockwave_description"					   "马格纳斯放出一道能量波，对一条直线上的敌方单位造成伤害。\n<h1><font color='#EE2C2C'>1.裂缝</font></h1>震荡波击中英雄时，会额外朝随机方向再释放一道震荡波 ，但只造成%damageperc%%%的伤害。"
+		"DOTA_Tooltip_ability_shockwave_shock_damage"				   "伤害:"
+		"DOTA_Tooltip_ability_shockwave_shock_distance"				    "距离:"
+		"DOTA_Tooltip_ability_shockwave_shock_width"					"宽度:"
+		"DOTA_Tooltip_ability_shockwave_shard_description"			   "震荡波击中目标时会向自身位置牵引一小段距离"
+		"DOTA_Tooltip_ability_shockwave_scepter_description"			   	"震荡波1秒延迟后往返移动（不触发裂缝效果）"
+
+
+		"DOTA_Tooltip_ability_empower"									"授予力量"
+		"DOTA_Tooltip_ability_empower_Lore"								"随着一声怒吼，马格纳斯展示了他真正的力量。"
+		"DOTA_Tooltip_ability_empower_description"					   "给予友方单位额外攻击力并且使其获得圆形范围分裂攻击。\n<h1><font color='#EE2C2C'>1.友军之围</font></h1>对友军释放时自身也会获得相同效果，并且伤害类型由物理变为纯粹。\n ● 幻象不会触发"
+		"DOTA_Tooltip_ability_empower_empower_duration"				   "持续时间:"
+		"DOTA_Tooltip_ability_empower_bonus_damage_pct"				   "%攻击力加成:"
+		"DOTA_Tooltip_ability_empower_cleave_damage_pct"			    "%分裂伤害:"
+		"DOTA_Tooltip_ability_empower_cleave_rd"				   			"分裂范围:"
+
+		"DOTA_Tooltip_ability_skewer"									"巨角冲撞"
+		"DOTA_Tooltip_ability_skewer_Lore"								"对潜在的商人来说，半人犀牛的犀角价值与犀角能够造成的破坏成正比。"
+		"DOTA_Tooltip_ability_skewer_description"					   "马格纳斯向前冲刺，用他巨大的犀角将敌人挑起。被击中的英雄将被拽至终点，然后受到伤害。\n<h1><font color='#EE2C2C'>1.冲锋！</font></h1>开启自动施法释放时，则会一直冲刺持续%dur%秒，<font color='#EE2C2C'>鼠标右键点击地面</font>可以改变方向，但是无法携带敌方单位，0.15秒内置CD。\n ● H/S 会停止冲刺 \n ● 冲刺途中获得魔免"
+		"DOTA_Tooltip_ability_skewer_skewer_speed"				   "速度:"
+		"DOTA_Tooltip_ability_skewer_range"				  			  "冲刺距离:"
+		"DOTA_Tooltip_ability_skewer_skewer_radius"				   "碰撞范围:"
+		"DOTA_Tooltip_ability_skewer_skewer_damage"				   "伤害:"
+		"DOTA_Tooltip_modifier_skewer_buff"				   "冲刺时间"
+		"DOTA_Tooltip_modifier_skewer_buff1"				   "冲刺时间"
+
+
+
+		"DOTA_Tooltip_ability_reverse_polarity"									"两极反转"
+		"DOTA_Tooltip_ability_reverse_polarity_Lore"								"作战时愤怒的马格纳斯如同喷发的杰尔拉克山。"
+		"DOTA_Tooltip_ability_reverse_polarity_description"					   "马格纳斯改变物质的属性，将附近的敌人都拖拽到他的前方，并且以强力的震击对他们造成伤害和眩晕。\n<h1><font color='#EE2C2C'>1.冲击斩</font></h1>额外向前方释放气波，将路径上的所有单位眩晕%stun%秒 \n<h1><font color='#EE2C2C'>2.磁场</font></h1>将2000码范围所有比自身模型小的英雄单位向自身吸引%dis%码"
+		"DOTA_Tooltip_ability_reverse_polarity_pull_duration"				   	"眩晕时间:"
+		"DOTA_Tooltip_ability_reverse_polarity_pull_radius"						"范围:"
+		"DOTA_Tooltip_ability_reverse_polarity_polarity_damage"				   "伤害:"
 
 
 
 
+		"DOTA_Tooltip_ability_special_bonus_magnataur_1"						"提高震荡波的距离和速度"
+		"DOTA_Tooltip_ability_special_bonus_magnataur_2"						"授予力量友军也变为纯粹伤害"
+		"DOTA_Tooltip_ability_special_bonus_magnataur_3"						"降低巨角冲撞施法前摇"
+		"DOTA_Tooltip_ability_special_bonus_magnataur_4"						"授予力量额外提高50攻击距离"
+		"DOTA_Tooltip_ability_special_bonus_magnataur_5"						"授予力量额外提高60施法距离"
+		"DOTA_Tooltip_ability_special_bonus_magnataur_6"						"巨角冲撞途中获得30%伤害减免"
+		"DOTA_Tooltip_ability_special_bonus_magnataur_7"						"两极反转中的磁场范围提高至全图"
+		"DOTA_Tooltip_ability_special_bonus_magnataur_8"						"提高30%体型"
 
 
 
 
+		//炼金
+		"DOTA_Tooltip_ability_acid_spray"						"酸性喷雾"
+		"DOTA_Tooltip_ability_acid_spray_Lore"						"用黑酿家族的祖传化学知识，拉泽尔配出一种能溶解最坚硬金属的强酸。"
+		"DOTA_Tooltip_ability_acid_spray_description"					"向目标区域喷洒高压酸雾。穿过受污染地带的敌人每秒会受到魔法伤害，同时魔抗被削弱。\n<h1><font color='#EE2C2C'>1.生锈</font></h1>当敌方英雄站在毒物中时，敌方英雄每秒会损失（当前等级*%gold%）的金钱。"
+		"DOTA_Tooltip_ability_acid_spray_radius"				  		"伤害:"
+		"DOTA_Tooltip_ability_acid_spray_duration"				  	"持续时间:"
+		"DOTA_Tooltip_ability_acid_spray_damage"				  	"每秒伤害:"
+		"DOTA_Tooltip_ability_acid_spray_armor_reduction"				  	"%魔抗减少:"
+		"DOTA_Tooltip_modifier_acid_spray_debuff"				  	"魔抗减少"
+
+
+		"DOTA_Tooltip_ability_unstable_concoction_throw"					"不稳定化合物"
+		"DOTA_Tooltip_ability_unstable_concoction_throw_Lore"				"将整座山转变成黄金的实验失败后带来的副产品，这种易挥发的药剂有着破坏的潜力。"
+		"DOTA_Tooltip_ability_unstable_concoction_throw_description"				"向敌方英雄投掷一瓶不稳定的化合物，造成伤害并眩晕目标。\n<h1><font color='#EE2C2C'>1.化学反应</font></h1>眩晕结束后目标的所有金钱收益降低30% ，持续%dur%秒。\n<h1><font color='#EE2C2C'>2.弹射</font></h1>化合物可在目标%rd%范围内来回弹射，最多弹射%num%次 "
+		"DOTA_Tooltip_ability_unstable_concoction_throw_stun"				  "眩晕时间:"
+		"DOTA_Tooltip_ability_unstable_concoction_throw_dmg"				  "伤害:"
+		"DOTA_Tooltip_modifier_unstable_concoction_throw_stun"				  "眩晕"
+		"DOTA_Tooltip_modifier_unstable_concoction_throw_debuff"				  "穷"
+
+
+		"DOTA_Tooltip_ability_goblins_greed"					"贪魔的贪婪"
+		"DOTA_Tooltip_ability_goblins_greed_Lore"				"尽管对付不了一座山，但拉泽尔还是掌握着技术，能转化一些较小的化合物来填满他的荷包。"
+		"DOTA_Tooltip_ability_goblins_greed_description"				"杀死任意单位都会使自身额外获得%egold%金钱，拾取金钱神符获得双倍额外等级金钱。\n<h1><font color='#EE2C2C'>1.战略储备金</font></h1>每击杀一个单位都会获得4层储备金，每层使额外获得的金钱数量+2，死亡时会损失一半层数，最高可叠加%max%层。\n<h1><font color='#EE2C2C'>2.转化</font></h1>主动使用将当前%gold%%% 的金钱转化为攻击力,持续%dur%秒"
+		"DOTA_Tooltip_modifier_goblins_greed_pa"				"战略储备金层数"
+		"DOTA_Tooltip_modifier_goblins_greed_buff"				"金钱转化攻击力"
 
 
 
+		"DOTA_Tooltip_ability_chemical_rage"					"化学狂暴"
+		"DOTA_Tooltip_ability_chemical_rage_Lore"				"拉泽尔在越狱时给食人魔喝的酿造物成了激战中的有效药剂。"
+		"DOTA_Tooltip_ability_chemical_rage_description"				"炼金术士诱发他的食人魔同伴进入化学狂暴，降低攻击间隔，提高移动速度和生命恢复,普攻无视目标闪避。\n<h1><font color='#EE2C2C'>1.撒币</font></h1>每个储备金额外增加%dur%秒持续持续时间和%att%点攻击力以及%rs%%%的状态抗性 \n<h1><font color='#EE2C2C'>2.外泄</font></h1>大招持续时间内每次攻击敌方英雄都会使其损失%cost%金钱"
+		"DOTA_Tooltip_ability_chemical_rage_duration"				  "持续时间:"
+		"DOTA_Tooltip_ability_chemical_rage_base_attack_time"				  "攻击间隔:"
+		"DOTA_Tooltip_ability_chemical_rage_bonus_health_regen"				  "生命恢复:"
+		"DOTA_Tooltip_ability_chemical_rage_bonus_movespeed"				  "移动速度:"
+		"DOTA_Tooltip_modifier_chemical_rage_buff"				  "狂暴"
 
+		"DOTA_Tooltip_ability_alchemist_scepter_description"			  	 "A杖可以对友方英雄使用,每次赠送自身将获得20攻击力和5% 技能增强"
+		"DOTA_Tooltip_ability_chemical_rage_scepter_description"			  	 "主动使用可让自身500范围的友方英雄获得5秒的化学狂暴效果"
 
+		"DOTA_Tooltip_ability_special_bonus_alchemist_1"						"酸性喷雾额外造成15%减速"
+		"DOTA_Tooltip_ability_special_bonus_alchemist_2"						"不稳定化合物额外弹射1次"
+		"DOTA_Tooltip_ability_special_bonus_alchemist_3"						"提高10%符文拾取的金钱"
+		"DOTA_Tooltip_ability_special_bonus_alchemist_4"						"化学狂暴额外获得8点护甲"
+		"DOTA_Tooltip_ability_special_bonus_alchemist_5"						"化学狂暴额外获得20%状态抗性"
+		//"DOTA_Tooltip_ability_special_bonus_alchemist_6"						""
+		"DOTA_Tooltip_ability_special_bonus_alchemist_7"						"额外降低化学狂暴0.1攻击间隔"
 
+		"npc_dota_gold_box"	"小金屋"
 
 
 
@@ -4358,7 +4623,7 @@
 		"DOTA_Tooltip_ability_imba_arc_warden_flux"										"乱流"
 		"DOTA_Tooltip_ability_imba_arc_warden_flux_description"						"将不稳定的涡流能量灌注到落单敌人体内，减缓其移动速度并造成持续伤害。如目标周围有其他敌方单位 ，则效果暂时消失。\n<h1><font color='#54FF9F'>1.原初意识</font></h1>%add_search%范围内所有敌方英雄每有1层乱流，泽特和复制体获得%bonus_sp_ran%攻击速度和攻击距离。\n<h1><font color='#54FF9F'>2.永恒幽魂</font></h1>技能结束时原地产生1个短持续时间的闪光幽魂。当叠加层数大于3时原地额外产生磁场。
 		----------------------------------------------------------------------------- ● 叠加多个乱流时，伤害为基础伤害+叠加层数*%int_damage%。\n ● 乱流结束时若减速未生效则不产生闪光幽魂。"
-		"DOTA_Tooltip_ability_imba_arc_warden_flux_Note0"									"1.重复施加乱流将刷新持续时间，乱流持续时间不足0.2秒时（单位死亡等），不会产生闪光幽魂。\n2.永恒幽魂产生的闪光幽魂持续时间为10分之1。\n3.永恒幽魂产生的闪光幽魂攻击目标数为1。\n<font color='#FFFF00'> ● 作者:你收拾收拾准备出林肯吧</font>"		
+		"DOTA_Tooltip_ability_imba_arc_warden_flux_Note0"									"1.重复施加乱流将刷新持续时间，乱流持续时间不足0.2秒时（单位死亡等），不会产生闪光幽魂。\n2.永恒幽魂产生的闪光幽魂持续时间为10分之1。\n3.永恒幽魂产生的闪光幽魂攻击目标数为1。\n<font color='#FFFF00'> ● 作者:你收拾收拾准备出林肯吧</font>"
 		"DOTA_Tooltip_ability_imba_arc_warden_flux_Lore"									"囚禁遗迹之力的无穷小碎片。"
 		"DOTA_Tooltip_ability_imba_arc_warden_flux_duration"								"持续时间："
 		"DOTA_Tooltip_ability_imba_arc_warden_flux_ms_slow"									"%移动速度减缓："
@@ -4367,7 +4632,7 @@
 		"DOTA_Tooltip_modifier_imba_arc_warden_flux_mod"									"原初意识"
 		"DOTA_Tooltip_modifier_imba_arc_warden_flux_mod_description"						"攻击距离和攻击速度提高："
 		"DOTA_Tooltip_modifier_imba_arc_warden_flux"										"乱流"
-		"DOTA_Tooltip_modifier_imba_arc_warden_flux_description"							"附近没有友军时受到伤害和减少移动速度："			
+		"DOTA_Tooltip_modifier_imba_arc_warden_flux_description"							"附近没有友军时受到伤害和减少移动速度："
 
 		"DOTA_Tooltip_ability_imba_arc_warden_magnetic_field"										"磁场"
 		"DOTA_Tooltip_ability_imba_arc_warden_magnetic_field_description"							"制造一个充满磁能的圆形扭曲力场，为力场中的友方英雄及建筑提供攻击速度加成，使其闪避来自磁场外的攻击。\n<h1><font color='#54FF9F'>1.扭曲磁场</font></h1>进入磁场的敌方单位失去必中效果。守望者攻击磁场中的单位时附加单位本身一定系数倍护甲值的纯粹伤害。\n<h1><font color='#54FF9F'>2.涌动磁场</font></h1>磁场增加守望者敏捷值的作用范围。"
@@ -4394,7 +4659,7 @@
 		"DOTA_Tooltip_ability_imba_arc_warden_spark_wraith_interval"							"原始自我产生间隔:"
 
 		"DOTA_Tooltip_modifier_imba_spark_wraith_miss"										"致盲"
-		"DOTA_Tooltip_modifier_imba_spark_wraith_miss_description"							"被%interval%% 致盲。"			
+		"DOTA_Tooltip_modifier_imba_spark_wraith_miss_description"							"被%interval%% 致盲。"
 
 
 
@@ -4453,7 +4718,7 @@
 		"DOTA_Tooltip_ability_special_bonus_imba_meepo_3"										"+{s:value} 洗劫系数"
 		"DOTA_Tooltip_ability_special_bonus_imba_meepo_4"										"-{s:value}秒 地之束缚冷却"
 		"DOTA_Tooltip_ability_special_bonus_imba_meepo_5"										"{s:value} 忽悠施法延迟"
-		"DOTA_Tooltip_ability_special_bonus_imba_meepo_6"										"{s:value} 成则能分冷却"	
+		"DOTA_Tooltip_ability_special_bonus_imba_meepo_6"										"{s:value} 成则能分冷却"
 
 		//////////////////////////////////////////////////////////////////////////////////////
 		//// EarthShaker
@@ -4506,12 +4771,12 @@
 		"DOTA_Tooltip_ability_imba_earthshaker_stars_aura_stars_radius"			"星落作用范围:"
 		"DOTA_Tooltip_ability_imba_earthshaker_stars_aura_stars_cd"			"内置冷却:"
 		"DOTA_Tooltip_ability_imba_earthshaker_stars_aura_description"					"他如今与另一个世界的碎片相融合，被动减少友方施法前摇、增加敌方施法施法前摇，并且使用技能时化作流星\n<h1><font color='#EE2C2C'>1.星落</font></h1>施放技能时化作流星砸向目标地点，对最近的敌人造成眩晕，对其余敌人造成击飞。<font color='#EE2C2C'>（拥有内置冷却）</font>\n<h1><font color='#EE2C2C'>2.大地</font></h1>主动使用可切换为余震。\n ● 星落冷却时只会原地释放星落。\n ● 星落只对指定范围技能有效，无指定范围时原地释放<font color='#EE2C2C'>（此时不会触发内置冷却）</font>"
-		"DOTA_Tooltip_ability_imba_earthshaker_stars_aura_Note0"					"\n<font color='#FFFF00'> ● 作者:你收拾收拾准备出林肯吧</font>"		
-		
+		"DOTA_Tooltip_ability_imba_earthshaker_stars_aura_Note0"					"\n<font color='#FFFF00'> ● 作者:你收拾收拾准备出林肯吧</font>"
+
 		"DOTA_Tooltip_modifier_imba_earthshaker_stars_cd"							"星落内置冷却"
-		"DOTA_Tooltip_modifier_imba_earthshaker_stars_cd_description"				"星落无法触发位移"		
+		"DOTA_Tooltip_modifier_imba_earthshaker_stars_cd_description"				"星落无法触发位移"
 		"DOTA_Tooltip_modifier_imba_earthshaker_stars_aura_cast_time"										"星辰"
-		"DOTA_Tooltip_modifier_imba_earthshaker_stars_aura_cast_time_description"							"增加敌人释放前摇，减少友军施法前摇。"			
+		"DOTA_Tooltip_modifier_imba_earthshaker_stars_aura_cast_time_description"							"增加敌人释放前摇，减少友军施法前摇。"
 
 		"DOTA_Tooltip_ability_imba_earthshaker_echo_slam"								"回音击"
 		"DOTA_Tooltip_ability_imba_earthshaker_echo_slam_description"					"穿过地面的冲击波，伤害敌方单位。每个受到攻击的敌人都会引起伤害附近单位的反射波。英雄本体将引起两次反射。\n<h1><font color='#EE2C2C'>1.大地</font></h1>回音击造成混乱和麻痹。\n<h1><font color='#EE2C2C'>2.星辰</font></h1>选取范围内最近的一个敌人，所有反射波只会以这个敌人为目标。<font color='#EE2C2C'>（此时英雄只会引起一次反射波）</font>并且冷却减半\n ● 根据不同被动触发不同效果，默认触发大地。\n ● 现在反射波附加 产生反射波单位的当前%add_damage_hp%% 血量的伤害。"
@@ -4553,7 +4818,7 @@
 		"DOTA_Tooltip_ability_imba_terrorblade_reflection_range"								"作用范围："
 		"DOTA_Tooltip_modifier_imba_reflection_slow"											"倒影减速"
 		"DOTA_Tooltip_modifier_imba_reflection_slow_description"								"移动速度降低%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%。"
-		
+
 		"DOTA_Tooltip_ability_imba_terrorblade_metamorphosis"										"魔化"
 		"DOTA_Tooltip_ability_imba_terrorblade_metamorphosis_description"							"恐怖利刃变换形态，化身成可怕的恶魔并具备远程攻击能力。任何恐怖利刃的幻象在1200范围内也将魔化。\n<h1><font color='#54FF9F'>1.怒意</font></h1>魔化攻击时附加<font color='#B03060'>基于恶魔能量层数</font>的纯粹伤害。并且这部分纯粹伤害不会被减免。\n<h1><font color='#54FF9F'>2.魔能穿透</font></h1>魔化攻击时无视目标的<font color='#B03060'>基于恶魔能量层数</font>百分比总护甲。</font>\n<h1><font color='#54FF9F'>3.惑幻</font></h1>第一次学习魔化后，获得一级惑幻。"
 		"DOTA_Tooltip_ability_imba_terrorblade_metamorphosis_Lore"									"暴躁生气，渐起怒意，激变形体。见识一下恐怖利刃最为恐怖的一面吧。"
@@ -4568,9 +4833,9 @@
 		"DOTA_Tooltip_modifier_imba_cmetamorphosis_aura_description"								"让恐怖利刃和他附近的幻象变为恶魔形态。"
 		"DOTA_Tooltip_modifier_imba_metamorphosis"											"魔化"
 		"DOTA_Tooltip_modifier_imba_metamorphosis_description"									""
-		
+
 		"DOTA_Tooltip_ability_imba_terrorblade_demonic_power"									"恶魔能量"
-		"DOTA_Tooltip_ability_imba_terrorblade_demonic_power_description"						"恐怖利刃将恶魔能量笼罩全场，并注视着那些表现突出的灵魂。恶魔能量可以强化恐怖利刃的技能。\n<h1><font color='#54FF9F'>1.恐怖心潮</font></h1>主动使用时触发恐怖心潮。 
+		"DOTA_Tooltip_ability_imba_terrorblade_demonic_power_description"						"恐怖利刃将恶魔能量笼罩全场，并注视着那些表现突出的灵魂。恶魔能量可以强化恐怖利刃的技能。\n<h1><font color='#54FF9F'>1.恐怖心潮</font></h1>主动使用时触发恐怖心潮。
 		<font color='#B03060'> ( 恐怖心潮：短暂延迟后，直接对大范围内敌人施加短持续时间的恐惧效果。 ) </font>\n<h1><font color='#54FF9F'>2.荒邪之狱</font></h1>打开自动释放消耗%truekill%层恶魔能量，恐惧结束后敌人立即死亡。
 		 ● 恐怖利刃以及队友被击杀时，恶魔能量增加1层，最高%maxstack% 层。"
 		"DOTA_Tooltip_ability_imba_terrorblade_demonic_power_terror_wave_radius"			"恐怖心潮作用范围："
@@ -4579,19 +4844,19 @@
 		"DOTA_Tooltip_ability_imba_terrorblade_demonic_power_Lore"							"恐怖利刃无情地抽走敌人的灵魂，将其为己所用。"
 		"DOTA_Tooltip_ability_imba_terrorblade_demonic_power_Note0"							"<font color='#FFFF00'> ● 作者:你收拾收拾准备出林肯吧</font>"
 
-		"DOTA_Tooltip_ability_imba_terrorblade_demonic_power_scepter_description"			"主动使用获得魔化状态，如果已经处于魔化则增加持续时间。"			
-		
+		"DOTA_Tooltip_ability_imba_terrorblade_demonic_power_scepter_description"			"主动使用获得魔化状态，如果已经处于魔化则增加持续时间。"
+
 		"DOTA_Tooltip_modifier_imba_terrorblade_demonic_power_passive"								"恶魔能量"
 		"DOTA_Tooltip_modifier_imba_terrorblade_demonic_power_passive_description"					"当前恶魔能量值。"
 
-		
+
 		"DOTA_Tooltip_ability_imba_terrorblade_sunder"										"魂断"
 		"DOTA_Tooltip_ability_imba_terrorblade_sunder_description"								"隔断恐怖利刃以及目标英雄的灵魂并将双方的当前血量百分比进行互换。交换后双方英雄的生命值必定在一定<font color='#B03060'>数值</font>以上。</font>\n<h1><font color='#54FF9F'>1.魂断</font></h1>魂断无视技能免疫、法术否定、法术反射。</font>\n<h1><font color='#54FF9F'>2.恶魔祭品</font></h1>魂断后%t2_duration%秒内获得目标<font color='#B03060'>基于恶魔能量层数</font>的生命恢复，目标获得恐怖利刃<font color='#B03060'><font color='#B03060'>基于恶魔能量层数</font></font>所受伤害。"
 		"DOTA_Tooltip_ability_imba_terrorblade_sunder_Note0"							"<font color='#FFFF00'> ● 作者:你收拾收拾准备出林肯吧</font>"
 		"DOTA_Tooltip_ability_imba_terrorblade_sunder_Lore"									"你是不是不想要这条命？恶魔掠夺者偷走的正是你最为珍视的。"
 		"DOTA_Tooltip_ability_imba_terrorblade_sunder_hit_point_minimum"					"隔断后最低生命值："
 		"DOTA_Tooltip_ability_imba_terrorblade_sunder_t2_int"								"%每层恶魔能量提供生命恢复、伤害："
-		"DOTA_Tooltip_ability_imba_terrorblade_sunder_shard_description"			"对友军使用时给队友添加%metamorphosis_duration% 秒的魔化状态。这个魔化状态与恐怖利刃共享恶魔能量数量。此时魂断恒定冷却%cd%秒"	
+		"DOTA_Tooltip_ability_imba_terrorblade_sunder_shard_description"			"对友军使用时给队友添加%metamorphosis_duration% 秒的魔化状态。这个魔化状态与恐怖利刃共享恶魔能量数量。此时魂断恒定冷却%cd%秒"
 
 		"DOTA_Tooltip_modifier_imba_sunder_damage"											"魂断"
 		"DOTA_Tooltip_modifier_imba_sunder_damage_description"								"痛苦通过恐怖利刃蔓延至你。"
@@ -4606,8 +4871,8 @@
 		"DOTA_Tooltip_ability_special_bonus_imba_terrorblade_5"									"{s:value}秒 魔化冷却"
 		"DOTA_Tooltip_ability_special_bonus_imba_terrorblade_6"									"+{s:value} 魂断施法距离"
 		"DOTA_Tooltip_ability_special_bonus_imba_terrorblade_7"									"+{s:value} 恐怖心潮作用范围"
-		"DOTA_Tooltip_ability_special_bonus_imba_terrorblade_8"									"+{s:value} 恐惧持续时间"						
-	
+		"DOTA_Tooltip_ability_special_bonus_imba_terrorblade_8"									"+{s:value} 恐惧持续时间"
+
 
 
 
@@ -4726,8 +4991,8 @@
 		"DOTA_Tooltip_ability_special_bonus_shredder_5"								"+{s:value}锯齿飞轮减少主属性"
 		"DOTA_Tooltip_ability_special_bonus_shredder_6"								"{s:value}秒 锯齿飞轮冷却"
 		"DOTA_Tooltip_ability_special_bonus_shredder_7"								"+{s:value}死亡旋风作用范围"
-		"DOTA_Tooltip_ability_special_bonus_shredder_8"								"+{s:value} 锯齿飞轮飞行速度"	
-		
+		"DOTA_Tooltip_ability_special_bonus_shredder_8"								"+{s:value} 锯齿飞轮飞行速度"
+
 
 		//////////////////////////////////////////////////////////////////////////////////////
 		//// Pangolier
@@ -4766,7 +5031,7 @@
 		"DOTA_Tooltip_modifier_imba_shield_crash_jump"							"甲盾冲击"
 		"DOTA_Tooltip_modifier_imba_shield_crash_jump_description"				"睁大眼睛了吗？"
 		"DOTA_Tooltip_modifier_imba_shield_crash_miss_vision"					"燕返"
-		"DOTA_Tooltip_modifier_imba_shield_crash_miss_vision_description"		"逐渐减少视野至0"		
+		"DOTA_Tooltip_modifier_imba_shield_crash_miss_vision_description"		"逐渐减少视野至0"
 
 		"DOTA_Tooltip_ability_imba_pangolier_shield_crash_shard_description"		"甲盾冲击无视技能免疫。"
 
@@ -4815,10 +5080,10 @@
 		"DOTA_Tooltip_ability_special_bonus_imba_pangolier_5_description"					"刺出1剑继承攻击力并造成{s:value}%暴击且必定造成幸运一击"
 		"DOTA_Tooltip_ability_special_bonus_imba_pangolier_6"								"{s:value}刺剑准备消耗层数"
 		"DOTA_Tooltip_ability_special_bonus_imba_pangolier_7"								"连环刺击几率增加{s:value}%"
-		"DOTA_Tooltip_ability_special_bonus_imba_pangolier_8"								"甲盾冲击减伤增加{s:value}%"	
+		"DOTA_Tooltip_ability_special_bonus_imba_pangolier_8"								"甲盾冲击减伤增加{s:value}%"
 		//////////////////////////////////////////////////////////////////////////////////////
 		//// spirit breaker 猎魂人
-		//////////////////////////////////////////////////////////////////////////////////////	
+		//////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_imba_spirit_breaker_charge_of_darkness"						"暗影冲刺"
 		"DOTA_Tooltip_ability_imba_spirit_breaker_charge_of_darkness_description"			"裂魂人盯紧一个敌方单位，开始无视一切物体的冲刺。途中经过的所有敌方单位和目标单位都将受到巨力重击。如果目标单位在到达前死亡了，裂魂人将他的目标改为原路径上最近的一个敌方单位。\n<h1><font color='#EE2C2C'>1.冲刺</font></h1>每经过0.1秒本技能提供的移速加成就增加%per_speed%%。\n<h1><font color='#EE2C2C'>2.携程</font></h1>打开自动释放时拖拽途径过得第1个友方英雄至目标地点\n ● 被携程的英雄可下达停止或者固守原位指令来提前结束携程\n ● 携程过程中的英雄处于眩晕状态\n ● 命中目标或取消冲刺时进入冷却"
 		"DOTA_Tooltip_ability_imba_spirit_breaker_charge_of_darkness_Lore"					"巴拉森带着一股狂蛮之力从黑暗中冲出。"
@@ -4856,14 +5121,14 @@
 		"DOTA_Tooltip_ability_imba_spirit_breaker_greater_bash_speed_duration"							"加速持续时间："
 		"DOTA_Tooltip_ability_imba_spirit_breaker_greater_bash_move_da"								"%移动速度转化伤害百分比："
 		"DOTA_Tooltip_modifier_imba_spirit_breaker_greater_bash_move_speed"							"尚武"
-		"DOTA_Tooltip_modifier_imba_spirit_breaker_greater_bash_move_speed_description"				"获得移动速度"		
+		"DOTA_Tooltip_modifier_imba_spirit_breaker_greater_bash_move_speed_description"				"获得移动速度"
 
 		"DOTA_Tooltip_ability_imba_spirit_breaker_nether_strike"						"幽冥三击"
 		"DOTA_Tooltip_ability_imba_spirit_breaker_nether_strike_description" "<font color='#B03060'>裂魂人遁入幽冥领域，增加自身移动速度并从不幸的目标身旁再次出现，发动1次巨力重击浮空敌人。然后出现敌人身后继续发动1次巨力重击将敌人砸向地面。最后追击敌人继续发动1次巨力重击。</font>\n ● 发动延迟取决于猎魂人与目标的距离和自身移动速度\n ● 敌人将被击退至猎魂人背后的方向\n ● 命中前对目标进行一次驱散"
 		"DOTA_Tooltip_ability_imba_spirit_breaker_nether_strike_Lore"				"巴拉森暂时回到他原来所在的原子领域，然后带回来自两个世界的回击。"
 		"DOTA_Tooltip_ability_imba_spirit_breaker_nether_strike_Note0"				"1.本技能不可取消。\n2.如果目标死亡，冲刺目标则会转移到上一个目标4000码范围内最近的一个有效目标上。\n<font color='#FFFF00'> ● 作者:你收拾收拾准备出林肯吧</font>"
 		"DOTA_Tooltip_ability_imba_spirit_breaker_nether_strike_speed"				"增加移动速度："
-		"DOTA_Tooltip_ability_imba_spirit_breaker_nether_strike_duration"			"击退距离："	
+		"DOTA_Tooltip_ability_imba_spirit_breaker_nether_strike_duration"			"击退距离："
 
 		"DOTA_Tooltip_ability_imba_spirit_breaker_nether_strike_shard_description"				"幽冥三击造成破坏，并且降低目标%incoming%% 输出，持续%duration_debuff% 秒。"
 
@@ -4875,7 +5140,7 @@
 		"DOTA_Tooltip_ability_special_bonus_imba_spirit_breaker_5"				"+{s:value}% 巨力重击几率"
 		"DOTA_Tooltip_ability_special_bonus_imba_spirit_breaker_6"				"+{s:value} 幽冥三击移速"
 		"DOTA_Tooltip_ability_special_bonus_imba_spirit_breaker_7"				"{s:value} 秒幽冥三击冷却"
-		"DOTA_Tooltip_ability_special_bonus_imba_spirit_breaker_8"				"基础攻击间隔减少至{s:value}"										
+		"DOTA_Tooltip_ability_special_bonus_imba_spirit_breaker_8"				"基础攻击间隔减少至{s:value}"
 		//////////////////////////////////////////////////////////////////////////////////////
 		//// Void Spirit
 		//////////////////////////////////////////////////////////////////////////////////////
@@ -5025,11 +5290,11 @@
 		"DOTA_Tooltip_ability_special_bonus_imba_ogre_magi_5"								"多重施法触发1次献祭专注"
 		"DOTA_Tooltip_ability_special_bonus_imba_ogre_magi_5_description"					"只有非攻击和非2X多重施法可触发,物品也无法触发"
 
-		"DOTA_Tooltip_ability_special_bonus_imba_ogre_magi_6"								"+{s:value}火焰燃轰施法距离和搜索范围"	
-		
+		"DOTA_Tooltip_ability_special_bonus_imba_ogre_magi_6"								"+{s:value}火焰燃轰施法距离和搜索范围"
+
 		"DOTA_Tooltip_ability_special_bonus_imba_ogre_magi_7"								"献祭专注获得全部效果"
 
-		"DOTA_Tooltip_ability_special_bonus_imba_ogre_magi_8"								"火焰燃轰负面效果无法驱散"	
+		"DOTA_Tooltip_ability_special_bonus_imba_ogre_magi_8"								"火焰燃轰负面效果无法驱散"
 
 		"DOTA_Tooltip_ability_imba_ogre_magi_multicast"									"多重施法"
 		"DOTA_Tooltip_ability_imba_ogre_magi_multicast_description"							"使食人魔魔法师可以迅速施法，并提升法术的效力。有一定概率在<font color='#B03060'>施法、攻击或使用物品</font>中<font color='#B03060'>进行多次施法、攻击或使用物品</font>。\n开启后，你的非攻击的多重施法将改为对施法范围内的多个有效目标施放，而非对施法目标施放。\n<h1><font color='#63B8FF'>1.食人魔的智慧</font></h1>按比例降低所有技能和物品的冷却时间。"
@@ -5037,8 +5302,8 @@
 		"DOTA_Tooltip_ability_imba_ogre_magi_multicast_multicast_2"							"%2X几率："
 		"DOTA_Tooltip_ability_imba_ogre_magi_multicast_multicast_3"							"%3X几率："
 		"DOTA_Tooltip_ability_imba_ogre_magi_multicast_multicast_4"							"%4X几率："
-		"DOTA_Tooltip_ability_imba_ogre_magi_multicast_cdr_pct"							"%冷却时间缩短："	
-		"DOTA_Tooltip_ability_imba_ogre_magi_multicast_Note0"							"<font color='#FFFF00'> ● 作者:某饺子</font>"	
+		"DOTA_Tooltip_ability_imba_ogre_magi_multicast_cdr_pct"							"%冷却时间缩短："
+		"DOTA_Tooltip_ability_imba_ogre_magi_multicast_Note0"							"<font color='#FFFF00'> ● 作者:某饺子</font>"
 
 		//////////////////////////////////////////////////////////////////////////////////////
 		//// 噬魂鬼
@@ -5055,26 +5320,26 @@
 		"DOTA_Tooltip_modifier_imba_life_stealer_rage_enemy"					"杀戮"
 		"DOTA_Tooltip_modifier_imba_life_stealer_rage_self_description"					"获得技能免疫和移速加成"
 		"DOTA_Tooltip_modifier_imba_life_stealer_rage_enemy_description"					"获得技能免疫"
-		
+
 		//////////////////////////////////////////////////////////////////////////////////////
-		
+
 		"DOTA_Tooltip_ability_imba_life_stealer_feast"										"盛宴"
 		"DOTA_Tooltip_ability_imba_life_stealer_feast_description"				"噬魂鬼每次攻击会根据目标最大生命值增加<font color='#B03060'>攻击力</font>、回复生命并被动增加攻击速度。\n<h1><font color='#EE2C2C'>1.暴戾</font></h1>对建筑、roshan有效，但是数值降低%int%%。\n<h1><font color='#EE2C2C'>2.暴食</font></h1>回复生命数值增加%int%%。"
 		"DOTA_Tooltip_ability_imba_life_stealer_feast_Note0"					"1.回复数值和目标护甲数值无关。
 		<font color='#FFFF00'> ● 作者:你收拾收拾准备出林肯吧</font>"
 		"DOTA_Tooltip_ability_imba_life_stealer_feast_hp_leech_percent"			"目标最大生命百分比："
 		"DOTA_Tooltip_ability_imba_life_stealer_feast_as_bonus"					"增加攻击速度："
-		
+
 		//////////////////////////////////////////////////////////////////////////////////////
 
 		//////////////////////////////////////////////////////////////////////////////////////
-		
+
 		"DOTA_Tooltip_ability_imba_life_stealer_ghoul_frenzy"										"尸鬼狂怒"
 		"DOTA_Tooltip_ability_imba_life_stealer_ghoul_frenzy_description"				"被动地使噬魂鬼的攻击能极大地减缓敌人移动速度，持续%duration% 秒。提供攻击速度加成。\n<h1><font color='#EE2C2C'>1.腐烂气息</font></h1>减速目标%radius% 范围内所有敌方英雄。"
 		"DOTA_Tooltip_ability_imba_life_stealer_ghoul_frenzy_Note0"					"<font color='#FFFF00'> ● 作者:你收拾收拾准备出林肯吧</font>"
 		"DOTA_Tooltip_ability_imba_life_stealer_ghoul_frenzy_movement_slow"			"%减少移动速度："
 		"DOTA_Tooltip_ability_imba_life_stealer_ghoul_frenzy_attack_speed_bonus"			"增加攻击速度："
-		
+
 		//////////////////////////////////////////////////////////////////////////////////////
 
 		"DOTA_Tooltip_ability_imba_lifestealer_open_wounds"							"撕裂伤口"
@@ -5085,7 +5350,7 @@
 		"DOTA_Tooltip_ability_imba_lifestealer_open_wounds_Lore"					"新鲜的伤口和鲜血的芳香通常能引来那些嗜血的清道夫。"
 		"DOTA_Tooltip_ability_imba_lifestealer_open_wounds_duration"				"持续时间："
 		"DOTA_Tooltip_ability_imba_lifestealer_open_wounds_heal_percent"			"%生命吸取："
-		"DOTA_Tooltip_ability_imba_lifestealer_open_wounds_slow_tooltip"			"%最大移动速度减缓："	
+		"DOTA_Tooltip_ability_imba_lifestealer_open_wounds_slow_tooltip"			"%最大移动速度减缓："
 		"DOTA_Tooltip_ability_imba_lifestealer_open_wounds_range"					"施法距离："
 		//////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_imba_life_stealer_control"							"感染"
@@ -5093,15 +5358,15 @@
 		"DOTA_Tooltip_ability_imba_life_stealer_control_Lore"					"奈克斯通过寄生吞噬宿主的生命之血，回复他的不洁之力"
 		"DOTA_Tooltip_ability_imba_life_stealer_control_base_regen"				"%自身每秒生命恢复："
 		"DOTA_Tooltip_ability_imba_life_stealer_control_speed_bonus"			"%目标移动速度加成："
-		"DOTA_Tooltip_ability_imba_life_stealer_control_damage"			"伤害："		
-		"DOTA_Tooltip_ability_imba_life_stealer_control_radius"			"伤害范围："	
+		"DOTA_Tooltip_ability_imba_life_stealer_control_damage"			"伤害："
+		"DOTA_Tooltip_ability_imba_life_stealer_control_radius"			"伤害范围："
 		"DOTA_Tooltip_ability_imba_life_stealer_control_add_feast"			"%盛宴增加："
 		"DOTA_Tooltip_ability_imba_life_stealer_control_max_hp"		"目标最大生命加成："
-		"DOTA_Tooltip_ability_imba_life_stealer_control_Note0"					"<font color='#FFFF00'> ● 作者:你收拾收拾准备出林肯吧</font>"		
+		"DOTA_Tooltip_ability_imba_life_stealer_control_Note0"					"<font color='#FFFF00'> ● 作者:你收拾收拾准备出林肯吧</font>"
 
-		"DOTA_Tooltip_ability_imba_life_stealer_control_scepter_description"				"提升感染施法距离，噬魂鬼可在感染时释放技能和第一格物品，并且在释放狂暴时被感染者视为噬魂鬼本人、敌人不获得技能免疫，替换盛宴为体外寄生。"			
+		"DOTA_Tooltip_ability_imba_life_stealer_control_scepter_description"				"提升感染施法距离，噬魂鬼可在感染时释放技能和第一格物品，并且在释放狂暴时被感染者视为噬魂鬼本人、敌人不获得技能免疫，替换盛宴为体外寄生。"
 		"DOTA_Tooltip_ability_imba_life_stealer_control_Note0"				"1.装备法术圣剑和交换物品位置时被锁闭，持续至钻出宿主为止。
-		<font color='#FFFF00'> ● 作者:你收拾收拾准备出林肯吧</font>"	
+		<font color='#FFFF00'> ● 作者:你收拾收拾准备出林肯吧</font>"
 		"DOTA_Tooltip_modifier_imba_life_stealer_selfbuff"					"狂宴"
 		"DOTA_Tooltip_modifier_imba_life_stealer_selfbuff_description"		"增加盛宴技能数值"
 		"DOTA_Tooltip_modifier_imba_life_stealer_buff"						"你正在感染一个宿主"
@@ -5110,7 +5375,7 @@
 		"DOTA_Tooltip_modifier_imba_life_stealer_parasite_description"		"代替宿主承受一定比例伤害"
 
 		"DOTA_Tooltip_ability_imba_life_stealer_parasite"							"体外寄生"
-		"DOTA_Tooltip_ability_imba_life_stealer_parasite_description"				"宿主获得减伤，噬魂鬼保护宿主承受伤害。可致死。"		
+		"DOTA_Tooltip_ability_imba_life_stealer_parasite_description"				"宿主获得减伤，噬魂鬼保护宿主承受伤害。可致死。"
 
 		"DOTA_Tooltip_ability_imba_life_stealer_parasite_Lore"					"奈克斯暂时钻出宿主体外，形成血肉盔甲。"
 		"DOTA_Tooltip_ability_imba_life_stealer_parasite_duration"				"持续时间："
@@ -5118,7 +5383,7 @@
 		"DOTA_Tooltip_ability_imba_life_stealer_parasite_add_damage"				"%噬魂鬼自身承受伤害："
 
 		"DOTA_Tooltip_ability_imba_life_stealer_assimilate_eject"							"吞噬"
-		"DOTA_Tooltip_ability_imba_life_stealer_assimilate_eject_description"				"噬魂鬼从宿主身体内部吃掉宿主，同时突然现身"		
+		"DOTA_Tooltip_ability_imba_life_stealer_assimilate_eject_description"				"噬魂鬼从宿主身体内部吃掉宿主，同时突然现身"
 		//////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_special_bonus_imba_life_stealer_8"								"+{s:value}撕裂伤口持续时间"
 		"DOTA_Tooltip_ability_special_bonus_imba_life_stealer_7"								"双重撕裂伤口"
@@ -5127,9 +5392,9 @@
 		"DOTA_Tooltip_ability_special_bonus_imba_life_stealer_5"								"+{s:value}秒狂暴持续时间"
 		"DOTA_Tooltip_ability_special_bonus_imba_life_stealer_4"								"协同狂暴持续时间不再减少"
 		"DOTA_Tooltip_ability_special_bonus_imba_life_stealer_3"								"感染对自身释放冷却为{s:value}秒"
-		"DOTA_Tooltip_ability_special_bonus_imba_life_stealer_2"								"撕裂伤口不可驱散"  
+		"DOTA_Tooltip_ability_special_bonus_imba_life_stealer_2"								"撕裂伤口不可驱散"
 		"DOTA_Tooltip_ability_special_bonus_imba_life_stealer_1"								"感染恐惧对敌方英雄有效"
-		"DOTA_Tooltip_ability_special_bonus_imba_life_stealer_1_description"					"恐惧持续时间移速加成减半"		
+		"DOTA_Tooltip_ability_special_bonus_imba_life_stealer_1_description"					"恐惧持续时间移速加成减半"
 		//////////////////////////////////////////////////////////////////////////////////////
 		//// SNAPFIRE  电炎绝手
 		//////////////////////////////////////////////////////////////////////////////////////
@@ -5141,7 +5406,7 @@
 		"DOTA_Tooltip_ability_imba_snapfire_scatterblast_point_blank_range"	"平射距离："
 		"DOTA_Tooltip_ability_imba_snapfire_scatterblast_movement_slow_pct"	"%移动速度减缓："
 		"DOTA_Tooltip_ability_imba_snapfire_scatterblast_Note0"		"<font color='#FFFF00'> ● 作者:神秘玩家</font>"
-		
+
 		"DOTA_Tooltip_modifier_imba_snapfire_scatterblast_debuff"					"电光石火减速效果"
 		"DOTA_Tooltip_modifier_imba_snapfire_scatterblast_debuff_description"		"移动速度减缓%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%"
 		"DOTA_Tooltip_modifier_imba_snapfire_scatterblast_disarm"				"电光石火缴械"
@@ -5241,7 +5506,7 @@
 		"DOTA_Tooltip_ability_imba_batrider_sticky_napalm_slow_stack"	"%每层移动速度减缓："
 		"DOTA_Tooltip_ability_imba_batrider_sticky_napalm_turn_rate_slow"	"%转身速度减缓："
 		"DOTA_Tooltip_ability_imba_batrider_sticky_napalm_Note0"		"<font color='#FFFF00'> ● 作者:你收拾收拾准备出林肯吧</font>"
-		
+
 		"DOTA_Tooltip_modifier_imba_sticky_napalm_debuff"					"粘性燃油"
 		"DOTA_Tooltip_modifier_imba_sticky_napalm_debuff_description"		"被攻击时受到额外伤害，移动速度减缓%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%，转身速度降低%dMODIFIER_PROPERTY_TURN_RATE_PERCENTAGE%%%"
 
@@ -5312,14 +5577,14 @@
 		"DOTA_Tooltip_ability_imba_drow_ranger_frost_arrows_freeze_duration"	"深度冻结持续时间："
 		"DOTA_Tooltip_ability_imba_drow_ranger_frost_arrows_at_sp_slow"			"%攻击速度减缓："
 		"DOTA_Tooltip_ability_imba_drow_ranger_frost_arrows_Note0"		"<font color='#FFFF00'> ● 作者:你收拾收拾准备出林肯吧</font>"
-		
+
 		"DOTA_Tooltip_modifier_imba_frost_arrows_slow_stacks"								"寒冰之箭"
 		"DOTA_Tooltip_modifier_imba_frost_arrows_slow_stacks_description"					"被寒冰之箭减速，积累了足够的叠加次数后将被冻在原地。"
 
 		"DOTA_Tooltip_modifier_imba_frost_arrows_frozen"									"深度冻结"
 		"DOTA_Tooltip_modifier_imba_frost_arrows_frozen_description"						"被寒冰之箭缠绕。"
 
-		
+
 		"DOTA_Tooltip_ability_imba_drow_ranger_frost_arrows_shard_description"		"霜冻之箭对敌方英雄施加一个低温效果，每次叠加都会降低%shard_hp% % 恢复。持续%shard_st% 秒。敌方英雄在低温效果下阵亡时会爆炸，每层叠加效果都会对%shard_range% 范围内敌人造成%shard_damage% 点魔法伤害，以及附加1层深度冻结效果。最大叠加次数：%shard_st% "
 		//////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_imba_drow_ranger_gust"										"狂风"
@@ -5359,14 +5624,14 @@
 		"DOTA_Tooltip_ability_imba_drow_ranger_marksmanship_pure_chance"					"%高效箭矢几率："
 		"DOTA_Tooltip_ability_imba_drow_ranger_marksmanship_pure_pct"						"高效箭矢伤害："
 		"DOTA_Tooltip_ability_imba_drow_ranger_marksmanship_trueshot_ranged_damage"			"%敏捷转换攻击力比例："
-		
+
 		"DOTA_Tooltip_ability_imba_drow_ranger_marksmanship_damage_reduction_scepter"		"%分裂伤害衰减："
-		
+
 		"DOTA_Tooltip_ability_imba_drow_ranger_marksmanship_scepter_description"			"使你的攻击可以分裂，对攻击范围内的%count% 个敌人进行伤害，分裂造成较低的伤害。"
-		
-		
+
+
 		"DOTA_Tooltip_modifier_imba_trueshot_damage_stack"				"射手天赋"
-		"DOTA_Tooltip_modifier_imba_trueshot_damage_stack_description"	"由于卓尔游侠的教导而获得额外攻击力。"				
+		"DOTA_Tooltip_modifier_imba_trueshot_damage_stack_description"	"由于卓尔游侠的教导而获得额外攻击力。"
 		//////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_special_bonus_imba_drow_ranger_1"		"疾风骤雨穿透敌人"
 		"DOTA_Tooltip_ability_special_bonus_imba_drow_ranger_2"		"射手天赋不会失效"
@@ -5389,14 +5654,14 @@
 		"DOTA_Tooltip_ability_imba_wisp_tether_slow"			"%链条移动速度减缓："
 		"DOTA_Tooltip_ability_imba_wisp_tether_stun_duration"	"链条眩晕时间："
 		"DOTA_Tooltip_ability_imba_wisp_tether_Note0"		"<font color='#FFFF00'> ● 作者:你收拾收拾准备出林肯吧</font>"
-		
+
 		"DOTA_Tooltip_modifier_imba_wisp_tether_target"								"羁绊"
 		"DOTA_Tooltip_modifier_imba_wisp_tether_target_description"					"你正连接一个单位。"
 
 		"DOTA_Tooltip_modifier_imba_wisp_tether"									"羁绊"
 		"DOTA_Tooltip_modifier_imba_wisp_tether_description"						"你被艾欧连接了。"
 
-		"DOTA_Tooltip_ability_imba_wisp_tether_scepter_description"		"羁绊连接的友军获得神杖效果并且攻击、施法距离增加%att_add% 。"	
+		"DOTA_Tooltip_ability_imba_wisp_tether_scepter_description"		"羁绊连接的友军获得神杖效果并且攻击、施法距离增加%att_add% 。"
 		//////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_imba_wisp_tether_break"					"断开连接"
 		"DOTA_Tooltip_ability_imba_wisp_tether_break_description"		"断开连接"
@@ -5430,7 +5695,7 @@
 		"DOTA_Tooltip_modifier_imba_wisp_overcharge_description"	"友军获得生命回复速度、魔法回复速度、攻击速度加成、减伤，敌军则相反。"
 
 		"DOTA_Tooltip_ability_imba_wisp_overcharge_shard_description"		"超载提供%shard_add% 弹道速度加成，%shard_sp%% 转身速度加成，%shard_sp%% 施法速度加成。"
-			
+
 
 		//////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_imba_wisp_element_territory"								"原子领域"
@@ -5441,10 +5706,10 @@
 		"DOTA_Tooltip_ability_imba_wisp_element_territory_duration"			"原子领域持续时间："
 		"DOTA_Tooltip_ability_imba_wisp_element_territory_cd"					"闪烁移动内置冷却："
 
-	
+
 
 		"DOTA_Tooltip_modifier_imba_wisp_element_territory_tethered"				"原子领域"
-		"DOTA_Tooltip_modifier_imba_wisp_element_territory_tethered_description"	"你被原子领域束缚，并且无法逃出原子领域。"				
+		"DOTA_Tooltip_modifier_imba_wisp_element_territory_tethered_description"	"你被原子领域束缚，并且无法逃出原子领域。"
 		//////////////////////////////////////////////////////////////////////////////////////
 		//////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_imba_wisp_relocate"								"降临"
@@ -5453,9 +5718,9 @@
 		"DOTA_Tooltip_ability_imba_wisp_relocate_Lore"							"艾欧本身就是宇宙奥义的体现。"
 		"DOTA_Tooltip_ability_imba_wisp_relocate_return_time"					"降临持续时间："
 		"DOTA_Tooltip_ability_imba_wisp_relocate_duration"						"虫洞持续时间："
-	
+
 		"DOTA_Tooltip_modifier_imba_wisp_relocate"				"降临"
-		"DOTA_Tooltip_modifier_imba_wisp_relocate_description"	"即将返回原来的位置。"				
+		"DOTA_Tooltip_modifier_imba_wisp_relocate_description"	"即将返回原来的位置。"
 		//////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_special_bonus_imba_wisp_1"		"{s:value}秒 羁绊冷却"
 		"DOTA_Tooltip_ability_special_bonus_imba_wisp_2"		"+{s:value} 幽魂最大距离"
@@ -5465,7 +5730,7 @@
 		"DOTA_Tooltip_ability_special_bonus_imba_wisp_5"		"{s:value}秒 原子领域冷却"
 		"DOTA_Tooltip_ability_special_bonus_imba_wisp_6"		"攻击羁绊友军的目标"
 		"DOTA_Tooltip_ability_special_bonus_imba_wisp_7"		"+{s:value} 羁绊伤害倍数"
-		"DOTA_Tooltip_ability_special_bonus_imba_wisp_8"		"+{s:value} 羁绊断裂距离"		
+		"DOTA_Tooltip_ability_special_bonus_imba_wisp_8"		"+{s:value} 羁绊断裂距离"
 		//////////////////////////////////////////////////////////////////////////////////////
 		//// AntiMage 敌法师
 		//////////////////////////////////////////////////////////////////////////////////////
@@ -5488,10 +5753,10 @@
 		"DOTA_Tooltip_ability_imba_antimage_blink_range"								"星隐之能宽度："
 
 		"DOTA_Tooltip_modifier_imba_antimage_passive_range"							"星隐之能"
-		"DOTA_Tooltip_modifier_imba_antimage_passive_range_description"					"技能增强降低%dMODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE%"	
+		"DOTA_Tooltip_modifier_imba_antimage_passive_range_description"					"技能增强降低%dMODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE%"
 
 		"DOTA_Tooltip_modifier_imba_antimage_spell_shield_active"							"抗魔意志"
-		"DOTA_Tooltip_modifier_imba_antimage_spell_shield_active_description"					"法术护盾的魔法抗性加成翻倍，否定一切指向性技能"		
+		"DOTA_Tooltip_modifier_imba_antimage_spell_shield_active_description"					"法术护盾的魔法抗性加成翻倍，否定一切指向性技能"
 
 
 		"DOTA_Tooltip_ability_imba_antimage_spell_shield"									"法术反制"
@@ -5499,7 +5764,7 @@
 		//"DOTA_Tooltip_ability_imba_antimage_spell_shield_Note0"							"<font color='#FFFF00'> ● 作者:你收拾收拾准备出林肯吧</font>"
 		"DOTA_Tooltip_ability_imba_antimage_spell_shield_Lore"								"敌法师对魔法的憎恨化成了熊熊烈火，使他对大多数效果免疫，而且在邪术身旁他的力量也会提升。"
 		"DOTA_Tooltip_ability_imba_antimage_spell_shield_magic_resistance"					"%魔法抗性："
-		"DOTA_Tooltip_ability_imba_antimage_spell_shield_active_duration"						"抗魔意志持续时间：" 
+		"DOTA_Tooltip_ability_imba_antimage_spell_shield_active_duration"						"抗魔意志持续时间："
 		"DOTA_Tooltip_ability_imba_antimage_spell_shield_chance_pct"						"%弧一闪几率："
 
 		"DOTA_Tooltip_modifier_imba_antimage_spell_shield_active"							"抗魔意志"
@@ -5525,7 +5790,7 @@
 		"DOTA_Tooltip_ability_imba_antimage_mana_void_mana_void_stun_scepter"					"神杖升级眩晕时间："
 		"DOTA_Tooltip_ability_imba_antimage_mana_void_cooldown_increase_scepter"				"神杖升级冷却时间增加："
 
-		"DOTA_Tooltip_ability_imba_antimage_mana_void_scepter_description"	   	"法力虚空造成的伤害将取决于作用范围内所有敌人丢失的魔法总量。提高法力虚空的眩晕时间，被法力虚空击杀的主目标英雄的冷却时间最长的技能还会在英雄复活后额外增加冷却时间。"		
+		"DOTA_Tooltip_ability_imba_antimage_mana_void_scepter_description"	   	"法力虚空造成的伤害将取决于作用范围内所有敌人丢失的魔法总量。提高法力虚空的眩晕时间，被法力虚空击杀的主目标英雄的冷却时间最长的技能还会在英雄复活后额外增加冷却时间。"
 
 		"DOTA_Tooltip_modifier_imba_mana_void_debuff"									"法力虚空冷却锁定"
 		"DOTA_Tooltip_modifier_imba_mana_void_debuff_description"						"本技能的冷却时间被锁定。"
@@ -5565,8 +5830,8 @@
 		"DOTA_Tooltip_ability_imba_hoodwink_bushwhack_bonus_range"								"施法距离："
 
 		"DOTA_Tooltip_modifier_imba_hoodwink_bushwhack"							"野地奇袭"
-		"DOTA_Tooltip_modifier_imba_hoodwink_bushwhack_description"					"被眩晕，并且视野降低至0"	
-	
+		"DOTA_Tooltip_modifier_imba_hoodwink_bushwhack_description"					"被眩晕，并且视野降低至0"
+
 
 
 		"DOTA_Tooltip_ability_imba_hoodwink_scurry"									"密林奔走"
@@ -5584,7 +5849,7 @@
 		"DOTA_Tooltip_modifier_imba_hoodwink_scurry_passive_description"				"身旁有树木时进入隐身状态。"
 
 		"DOTA_Tooltip_modifier_imba_hoodwink_scurry"							"密林奔走"
-		"DOTA_Tooltip_modifier_imba_hoodwink_scurry_description"				"暂时判断为在树木旁，如果已经在树木旁，则所有加成增加100%"		
+		"DOTA_Tooltip_modifier_imba_hoodwink_scurry_description"				"暂时判断为在树木旁，如果已经在树木旁，则所有加成增加100%"
 
 
 		"DOTA_Tooltip_ability_imba_hoodwink_sharpshooter"											"一箭穿心"
@@ -5598,7 +5863,7 @@
 		"DOTA_Tooltip_ability_imba_hoodwink_sharpshooter_max_slow_debuff_duration"					"负面状态最大持续时间："
 
 		"DOTA_Tooltip_modifier_imba_hoodwink_sharpshooter"							"一箭穿心"
-		"DOTA_Tooltip_modifier_imba_hoodwink_sharpshooter_description"				"马上他们就要倒霉了。"			
+		"DOTA_Tooltip_modifier_imba_hoodwink_sharpshooter_description"				"马上他们就要倒霉了。"
 
 		"DOTA_Tooltip_modifier_imba_hoodwink_sharpshooter_debuff"							"一箭穿心"
 		"DOTA_Tooltip_modifier_imba_hoodwink_sharpshooter_debuff_description"				"被破坏。"
@@ -5618,7 +5883,7 @@
 		"DOTA_Tooltip_ability_imba_hoodwink_decoy_Lore"										"智商！检测！"
 		"DOTA_Tooltip_ability_imba_hoodwink_decoy_duration"								"幻象持续时间："
 		"DOTA_Tooltip_ability_imba_hoodwink_decoy_decoy_stun_duration"					"眩晕时间："
-		"DOTA_Tooltip_ability_imba_hoodwink_decoy_tree_duration"						"树木持续时间："	
+		"DOTA_Tooltip_ability_imba_hoodwink_decoy_tree_duration"						"树木持续时间："
 
 
 		"DOTA_Tooltip_Ability_special_bonus_imba_hoodwink_1"									"{s:value}秒 野地奇袭冷却"
@@ -5627,8 +5892,8 @@
 		"DOTA_Tooltip_Ability_special_bonus_imba_hoodwink_4"									"+{s:value} 野地奇袭范围"
 		"DOTA_Tooltip_Ability_special_bonus_imba_hoodwink_5"									"{s:value}秒 一箭穿心冷却"
 		"DOTA_Tooltip_Ability_special_bonus_imba_hoodwink_6"									"身旁有树木则可以看到攻击范围内的敌人"
-		"DOTA_Tooltip_Ability_special_bonus_imba_hoodwink_7"									"一箭穿心纯粹伤害并且无视技能免疫"
-		"DOTA_Tooltip_Ability_special_bonus_imba_hoodwink_8"									"+{s:value} 野地奇袭速度"	
+		"DOTA_Tooltip_Ability_special_bonus_imba_hoodwink_7"									"一箭穿心无视技能免疫伤害变为纯粹"
+		"DOTA_Tooltip_Ability_special_bonus_imba_hoodwink_8"									"+{s:value} 野地奇袭速度"
 
 		//////////////////////////////////////////////////////////////////////////////////////
 		//// phantom lancer 幻影长矛手
@@ -5646,7 +5911,7 @@
 
 
 		"DOTA_Tooltip_modifier_imba_spirit_lance_slow"							"灵魂之矛"
-		"DOTA_Tooltip_modifier_imba_spirit_lance_slow_description"				"移动速度减少%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%% 。"		
+		"DOTA_Tooltip_modifier_imba_spirit_lance_slow_description"				"移动速度减少%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%% 。"
 
 		"DOTA_Tooltip_ability_imba_phantom_lancer_doppelwalk"										"神行百变"
 		"DOTA_Tooltip_ability_imba_phantom_lancer_doppelwalk_description"								"幻影长矛手暂时从战场上消失。经过%delay% 秒，幻影长矛手和附近的所有幻象都会出现在目标地点的随机位置。原地留下1个幻象。\n<h1><font color='#54FF9F'>1.灵魂交换</font></h1>对自身进行1次强驱散，并且消失后原地产生1个幻象，这个幻象承受伤害为0% ，继承伤害为0% 。\n<h1><font color='#54FF9F'>2.百变</font></h1>消失后可以手动右键选择落地点。\n ● 不选择落点则出现在原地。\n ● 眩晕时可以使用。被沉默、束缚、缠绕不可使用。"
@@ -5658,9 +5923,9 @@
 		"DOTA_Tooltip_ability_imba_phantom_lancer_doppelwalk_cast_range"								"施法距离："
 
 		"DOTA_Tooltip_modifier_imba_doppelwalk_delay"							"神行百变"
-		"DOTA_Tooltip_modifier_imba_doppelwalk_delay_description"				"暂时消失。"		
+		"DOTA_Tooltip_modifier_imba_doppelwalk_delay_description"				"暂时消失。"
 
-	
+
 
 
 		"DOTA_Tooltip_ability_imba_phantom_lancer_phantom_edge"									"幻影冲锋"
@@ -5681,7 +5946,7 @@
 
 		"DOTA_Tooltip_modifier_imba_phantom_edge_debuff"							"幻影冲锋"
 		"DOTA_Tooltip_modifier_imba_phantom_edge_debuff_description"				"造成的伤害减低%dMODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE%%% 。"
-		
+
 
 
 
@@ -5695,14 +5960,14 @@
 		"DOTA_Tooltip_ability_imba_phantom_lancer_juxtapose_magic_resistance"					"%增加魔法抗性："
 
 		"DOTA_Tooltip_modifier_imba_juxtapose_illusion"							"灵魂并列"
-		"DOTA_Tooltip_modifier_imba_juxtapose_illusion_description"				"生命值总是等于幻影长矛手。"			
+		"DOTA_Tooltip_modifier_imba_juxtapose_illusion_description"				"生命值总是等于幻影长矛手。"
 
 
 
 
 
 		"DOTA_Tooltip_ability_imba_phantom_lancer_juxtapose_scepter_description"						"减少并列%cd_sce%秒冷却。"
-		"DOTA_Tooltip_ability_imba_phantom_lancer_spirit_lance_shard_description"	   	"灵魂之矛无视技能免疫。"	
+		"DOTA_Tooltip_ability_imba_phantom_lancer_spirit_lance_shard_description"	   	"灵魂之矛无视技能免疫。"
 
 		"DOTA_Tooltip_Ability_special_bonus_imba_phantom_lancer_1"									"+{s:value} 冲锋最大距离"
 		"DOTA_Tooltip_Ability_special_bonus_imba_phantom_lancer_2"									"+{s:value} 灵魂之矛幻象攻击次数"
@@ -5726,7 +5991,7 @@
 
 
 		"DOTA_Tooltip_modifier_imba_bloodrage"							"血怒"
-		"DOTA_Tooltip_modifier_imba_bloodrage_description"				"攻击速度增加%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%%% 。技能增强增加%dMODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE%%%。"		
+		"DOTA_Tooltip_modifier_imba_bloodrage_description"				"攻击速度增加%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%%% 。技能增强增加%dMODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE%%%。"
 
 		"DOTA_Tooltip_ability_imba_bloodseeker_blood_bath"										"血祭"
 		"DOTA_Tooltip_ability_imba_bloodseeker_blood_bath_description"								"嗜血狂魔用圣血为一片区域洗礼。区域范围内所有敌人都会受到伤害，并被沉默。\n<h1><font color='#54FF9F'>1.双子血祭</font></h1>产生多次仪式，每次范围逐渐扩大。\n<h1><font color='#54FF9F'>2.动态视觉</font></h1>额外附加敌人移动速度%move_shard%% 伤害。"
@@ -5740,9 +6005,9 @@
 		"DOTA_Tooltip_ability_imba_bloodseeker_blood_bath_radius_int"							"每次扩大范围："
 
 		"DOTA_Tooltip_modifier_imba_blood_bath"							"血祭"
-		"DOTA_Tooltip_modifier_imba_blood_bath_description"				"被沉默。"		
+		"DOTA_Tooltip_modifier_imba_blood_bath_description"				"被沉默。"
 
-	
+
 
 
 		"DOTA_Tooltip_ability_imba_bloodseeker_thirst"									"焦渴"
@@ -5772,14 +6037,14 @@
 		"DOTA_Tooltip_ability_imba_bloodseeker_rupture_cast_range_1"					"施法距离："
 
 		"DOTA_Tooltip_modifier_imba_rupture"							"割裂"
-		"DOTA_Tooltip_modifier_imba_rupture_description"				"层数归0意味着死亡。"			
+		"DOTA_Tooltip_modifier_imba_rupture_description"				"层数归0意味着死亡。"
 
 
 
 
 
 		"DOTA_Tooltip_ability_imba_bloodseeker_rupture_scepter_description"						"获得两次充能"
-		"DOTA_Tooltip_ability_imba_bloodseeker_bloodrage_shard_description"	   	"血怒的攻击会对目标造成其%damage_shard%% 最大生命值和敌人移动速度%move_shard%% 的纯粹伤害，并且自身回复相同数值。"	
+		"DOTA_Tooltip_ability_imba_bloodseeker_bloodrage_shard_description"	   	"血怒的攻击会对目标造成其%damage_shard%% 最大生命值和敌人移动速度%move_shard%% 的纯粹伤害，并且自身回复相同数值。"
 
 		"DOTA_Tooltip_Ability_special_bonus_imba_bloodseeker_1"									"+{s:value} 血怒攻击速度"
 		"DOTA_Tooltip_Ability_special_bonus_imba_bloodseeker_2"									"+{s:value} 血祭伤害"
@@ -5788,7 +6053,7 @@
 		"DOTA_Tooltip_Ability_special_bonus_imba_bloodseeker_5"									"+{s:value}% 血怒技能增强"
 		"DOTA_Tooltip_Ability_special_bonus_imba_bloodseeker_6"									"+{s:value} 血祭产生次数"
 		"DOTA_Tooltip_Ability_special_bonus_imba_bloodseeker_7"									"+{s:value}% 焦渴获得敌人视野百分比"
-		"DOTA_Tooltip_Ability_special_bonus_imba_bloodseeker_8"									"割裂前{s:value}秒 造成禁疗"	
+		"DOTA_Tooltip_Ability_special_bonus_imba_bloodseeker_8"									"割裂前{s:value}秒 造成禁疗"
 		//////////////////////////////////////////////////////////////////////////////////////
 		//// dawnbreaker 破晓辰星
 		//////////////////////////////////////////////////////////////////////////////////////
@@ -5804,7 +6069,7 @@
 		"DOTA_Tooltip_ability_imba_dawnbreaker_fire_wreath_smash_stun_duration"						"眩晕时间："
 		"DOTA_Tooltip_ability_imba_dawnbreaker_fire_wreath_duration"						"基础持续时间："
 
-	
+
 
 		"DOTA_Tooltip_ability_imba_dawnbreaker_celestial_hammer"										"上界重锤"
 		"DOTA_Tooltip_ability_imba_dawnbreaker_celestial_hammer_description"								"破晓辰星向一个目标扔出她武器的<font color='#EE2C2C'>幻象</font>，对目标地点范围敌人造成伤害。战锤会在目的地停留%duration% 秒，减缓敌人的移动速度。破晓辰星可以随时召回战锤，将自身瞬移到战锤位置，再次造成伤害。\n<h1><font color='#EE2C2C'>1.光明之锤</font></h1>战锤停留期间减缓附近敌人的移动速度。\n<h1><font color='#EE2C2C'>2.破晓战锤</font></h1>召回战锤后延长附近敌人光明之锤的减速时间。\n ● 战锤持续时间结束虽然不会位移但是也会触发破晓战锤。"
@@ -5817,9 +6082,9 @@
 		"DOTA_Tooltip_ability_imba_dawnbreaker_celestial_hammer_slow_time"							"延长减速时间："
 
 		"DOTA_Tooltip_modifier_imba_dawnbreaker_hammer_slow"							"上界重锤"
-		"DOTA_Tooltip_modifier_imba_dawnbreaker_hammer_slow_description"				"移动速度减缓%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%。"		
+		"DOTA_Tooltip_modifier_imba_dawnbreaker_hammer_slow_description"				"移动速度减缓%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%。"
 
-	
+
 
 
 		"DOTA_Tooltip_ability_imba_dawnbreaker_luminosity"									"熠熠生辉"
@@ -5853,7 +6118,7 @@
 
 
 		"DOTA_Tooltip_ability_imba_dawnbreaker_luminosity_scepter_description"						"熠熠生辉的混沌秩序效果敌我双方同时生效。"
-		"DOTA_Tooltip_ability_imba_dawnbreaker_fire_wreath_shard_description"	   	"星破天惊冷却-%agh_cd%秒，眩晕时间+%agh_duration%秒。"	
+		"DOTA_Tooltip_ability_imba_dawnbreaker_fire_wreath_shard_description"	   	"星破天惊冷却-%agh_cd%秒，眩晕时间+%agh_duration%秒。"
 
 		"DOTA_Tooltip_Ability_special_bonus_imba_dawnbreaker_1"									"+{s:value} 星破天惊充能"
 		"DOTA_Tooltip_Ability_special_bonus_imba_dawnbreaker_2"									"+{s:value} 星破天惊增加攻击"
@@ -5862,7 +6127,7 @@
 		"DOTA_Tooltip_Ability_special_bonus_imba_dawnbreaker_6"									"+{s:value}% 熠熠生辉致命一击"
 		"DOTA_Tooltip_Ability_special_bonus_imba_dawnbreaker_5"									"+{s:value} 熠熠生辉作用范围"
 		"DOTA_Tooltip_Ability_special_bonus_imba_dawnbreaker_7"									"+{s:value} 天光现世作用范围"
-		"DOTA_Tooltip_Ability_special_bonus_imba_dawnbreaker_8"									"-{s:value}秒 天光现世冷却"		
+		"DOTA_Tooltip_Ability_special_bonus_imba_dawnbreaker_8"									"-{s:value}秒 天光现世冷却"
 		//////////////////////////////////////////////////////////////////////////////////////
 		//////shadow demon 暗影恶魔 毒狗
 		//////////////////////////////////////////////////////////////////////////////////////
@@ -5871,7 +6136,7 @@
 		"DOTA_Tooltip_ability_imba_shadow_demon_disruption_Lore"				"欺骗的痛苦不是在其发生之时，而是在其被揭露之时。"
 		"DOTA_Tooltip_ability_imba_shadow_demon_disruption_disruption_duration"	"禁锢持续时间："
 		"DOTA_Tooltip_ability_imba_shadow_demon_disruption_Note0"		"<font color='#FFFF00'> ● 作者:你收拾收拾准备出林肯吧</font>"
-		
+
 		"DOTA_Tooltip_modifier_imba_disruption"					"崩裂禁锢"
 		"DOTA_Tooltip_modifier_imba_disruption_description"		"欺骗的痛苦不是在其发生之时，而是在其被揭露之时。"
 
@@ -5911,7 +6176,7 @@
 		"DOTA_Tooltip_ability_imba_shadow_demon_demonic_purge_max_slow"	"%最大减速："
 		"DOTA_Tooltip_ability_imba_shadow_demon_demonic_purge_purge_damage"			"净化伤害："
 		"DOTA_Tooltip_ability_imba_shadow_demon_demonic_purge_min_slow"		"%最小减速："
-	
+
 
 		"DOTA_Tooltip_ability_imba_shadow_demon_demonic_purge_scepter_description"		"拥有%max_charges%次充能。另外邪恶净化还将在生效时间内破坏目标的被动技能。"
 
@@ -5932,18 +6197,18 @@
 		"DOTA_Tooltip_ability_imba_shadow_demon_shadow_energy_shard_description"		"裂魂术可以主动释放产生一个灵魂球，并且使灵魂球拥有视野。"
 
 		"DOTA_Tooltip_modifier_imba_shadow_energy_debuff"				"裂魂术"
-		"DOTA_Tooltip_modifier_imba_shadow_energy_debuff_description"	"视野降低%dMODIFIER_PROPERTY_BONUS_VISION_PERCENTAGE%%%，造成的伤害降低%dMODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE%%%。"			
+		"DOTA_Tooltip_modifier_imba_shadow_energy_debuff_description"	"视野降低%dMODIFIER_PROPERTY_BONUS_VISION_PERCENTAGE%%%，造成的伤害降低%dMODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE%%%。"
 		//////////////////////////////////////////////////////////////////////////////////////
-		"DOTA_Tooltip_ability_special_bonus_imba_shadow_demon_1"		"+{s:value} 崩裂禁锢充能"			
-		"DOTA_Tooltip_ability_special_bonus_imba_shadow_demon_2"		"+{s:value}秒 崩裂禁锢持续时间"	
-		"DOTA_Tooltip_ability_special_bonus_imba_shadow_demon_3"		"+{s:value}% 裂魂术产生几率"		
-		"DOTA_Tooltip_ability_special_bonus_imba_shadow_demon_4"		"+{s:value} 崩裂禁锢幻象数量"	
-		"DOTA_Tooltip_ability_special_bonus_imba_shadow_demon_4_description"		"并且这两个幻象互相攻击"		
-		"DOTA_Tooltip_ability_special_bonus_imba_shadow_demon_5"		"+{s:value} 暗影剧毒前进速度"		
+		"DOTA_Tooltip_ability_special_bonus_imba_shadow_demon_1"		"+{s:value} 崩裂禁锢充能"
+		"DOTA_Tooltip_ability_special_bonus_imba_shadow_demon_2"		"+{s:value}秒 崩裂禁锢持续时间"
+		"DOTA_Tooltip_ability_special_bonus_imba_shadow_demon_3"		"+{s:value}% 裂魂术产生几率"
+		"DOTA_Tooltip_ability_special_bonus_imba_shadow_demon_4"		"+{s:value} 崩裂禁锢幻象数量"
+		"DOTA_Tooltip_ability_special_bonus_imba_shadow_demon_4_description"		"并且这两个幻象互相攻击"
+		"DOTA_Tooltip_ability_special_bonus_imba_shadow_demon_5"		"+{s:value} 暗影剧毒前进速度"
 		"DOTA_Tooltip_ability_special_bonus_imba_shadow_demon_6"		"{s:value}% 施法前摇"
-		"DOTA_Tooltip_ability_special_bonus_imba_shadow_demon_6_description"		"需要学习崩裂禁锢"		
-		"DOTA_Tooltip_ability_special_bonus_imba_shadow_demon_7"		"+{s:value} 暗影剧毒重复次数"		
-		"DOTA_Tooltip_ability_special_bonus_imba_shadow_demon_8"		"{s:value}秒 邪恶净化冷却"		
+		"DOTA_Tooltip_ability_special_bonus_imba_shadow_demon_6_description"		"需要学习崩裂禁锢"
+		"DOTA_Tooltip_ability_special_bonus_imba_shadow_demon_7"		"+{s:value} 暗影剧毒重复次数"
+		"DOTA_Tooltip_ability_special_bonus_imba_shadow_demon_8"		"{s:value}秒 邪恶净化冷却"
 		//////////////////////////////////////////////////////////////////////////////////////
 
 		//////////////////////////////////////////////////////////////////////////////////////
@@ -5956,11 +6221,11 @@
 		"DOTA_Tooltip_ability_imba_clinkz_strafe_searing_arrows_attack_speed_bonus_pct"	"被动增加攻击速度："
 		"DOTA_Tooltip_ability_imba_clinkz_strafe_searing_arrows_damage_bonus"	"灼热之箭伤害："
 		"DOTA_Tooltip_ability_imba_clinkz_strafe_searing_arrows_Note0"		"<font color='#FFFF00'> ● 作者:你收拾收拾准备出林肯吧</font>"
-		
+
 		"DOTA_Tooltip_modifier_imba_strafe_active"								"灼热扫射"
 		"DOTA_Tooltip_modifier_imba_strafe_active_description"					"增加攻击速度，灼热之箭伤害翻倍。"
 
-	
+
 		//////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_imba_clinkz_burning_army"										"燃烧之将"
 		"DOTA_Tooltip_ability_imba_clinkz_burning_army_description"							"<font color='#54FF9F'>克林克兹头顶召唤1个烈焰骷髅将军，与克林克兹拥有相同攻击距离和属性，继承%reduce_damage%% 伤害，跟随克林克兹一同攻击敌人。</font>\n ● 可以触发攻击特效，但是和克林克兹共享内置冷却。\n ● 会随着克林克兹一同隐身。"
@@ -5989,7 +6254,7 @@
 		"DOTA_Tooltip_ability_imba_clinkz_death_pact_duration"					"持续时间："
 		"DOTA_Tooltip_ability_imba_clinkz_death_pact_health_gain_pct"			"%生命值加成最大生命值系数："
 		"DOTA_Tooltip_ability_imba_clinkz_death_pact_damage_gain_pct"					"%攻击力增加最大生命值系数："
-		
+
 		"DOTA_Tooltip_modifier_imba_death_pact_caster"				"死亡契约"
 		"DOTA_Tooltip_modifier_imba_death_pact_caster_description"	"最大生命增加%dMODIFIER_PROPERTY_HEALTH_BONUS% ，攻击力增加%dMODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE% "
 
@@ -6001,9 +6266,9 @@
 		"DOTA_Tooltip_modifier_imba_death_pact_int_description"	"对智力英雄造成的伤害增加 "
 
 		"DOTA_Tooltip_modifier_imba_death_pact_vision"				"死亡契约"
-		"DOTA_Tooltip_modifier_imba_death_pact_vision_description"	"克林克兹获得了你的视野"		
+		"DOTA_Tooltip_modifier_imba_death_pact_vision_description"	"克林克兹获得了你的视野"
 
-		"DOTA_Tooltip_ability_imba_clinkz_wind_walk_shard_description"		"打破骨隐步产生%shard%秒燃烧之将。\n ● 多个燃烧之将可同时存在。"				"DOTA_Tooltip_ability_imba_clinkz_burning_army_scepter_description"			"燃烧之将持续时间内每击杀1个敌方英雄就增加%scepter%秒持续时间。"		
+		"DOTA_Tooltip_ability_imba_clinkz_wind_walk_shard_description"		"打破骨隐步产生%shard%秒燃烧之将。\n ● 多个燃烧之将可同时存在。"				"DOTA_Tooltip_ability_imba_clinkz_burning_army_scepter_description"			"燃烧之将持续时间内每击杀1个敌方英雄就增加%scepter%秒持续时间。"
 		//////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_special_bonus_imba_clinkz_1"		"灼热之箭齐发"
 		"DOTA_Tooltip_ability_special_bonus_imba_clinkz_2"		"+{s:value}秒 燃烧之将持续时间"
@@ -6044,7 +6309,7 @@
 		"DOTA_Tooltip_ability_imba_broodmother_spin_web_bonus_movespeed"							"%移动速度提高："
 		"DOTA_Tooltip_ability_imba_broodmother_spin_web_max_charges_scepter"						"神杖蛛网最大充能："
 		"DOTA_Tooltip_ability_imba_broodmother_spin_web_scepter_description"						"提高蛛网的最大充能。"
-		
+
 		"DOTA_Tooltip_modifier_imba_spin_web_buff"													"织网"
 		"DOTA_Tooltip_modifier_imba_spin_web_buff_Description"										"处于自己的蛛网之中，移动速度提高%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%，生命回复速度提高%fMODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT%。"
 
@@ -6099,8 +6364,8 @@
 		"DOTA_Tooltip_Ability_special_bonus_imba_broodmother_4"										"+{s:value} 育母突袭攻速"
 		"DOTA_Tooltip_Ability_special_bonus_imba_broodmother_5"										"{s:value}秒 缠绕之网停留时间"
 		"DOTA_Tooltip_Ability_special_bonus_imba_broodmother_6"										"+{s:value} 狩猎大师范围"
-		"DOTA_Tooltip_Ability_special_bonus_imba_broodmother_7"										"+{s:value} 育母突袭持续时间"	
-		"DOTA_Tooltip_Ability_special_bonus_imba_broodmother_8"										"+{s:value} 麻痹之咬攻击缠绕攻速"	
+		"DOTA_Tooltip_Ability_special_bonus_imba_broodmother_7"										"+{s:value} 育母突袭持续时间"
+		"DOTA_Tooltip_Ability_special_bonus_imba_broodmother_8"										"+{s:value} 麻痹之咬攻击缠绕攻速"
 
 		//////////////////////////////////////////////////////////////////////////////////////
 		//// Grimstroke
@@ -6161,11 +6426,11 @@
 		"DOTA_Tooltip_ability_imba_grimstroke_soul_chain_duration_bonus"				"幻影之缚持续时间："
 
 		"DOTA_Tooltip_modifier_imba_soul_chain_stack"												"幻影之缚"
-		"DOTA_Tooltip_modifier_imba_soul_chain_stack_Description"									"增加自身施法距离、命运之笔距离、墨涌作用范围。"	
+		"DOTA_Tooltip_modifier_imba_soul_chain_stack_Description"									"增加自身施法距离、命运之笔距离、墨涌作用范围。"
 		"DOTA_Tooltip_modifier_imba_soul_chain"												"缚魂"
 		"DOTA_Tooltip_modifier_imba_soul_chain_Description"									"与另一个单位相连，并被束缚。"
 		"DOTA_Tooltip_modifier_imba_soul_chain_slow"										"缚魂"
-		"DOTA_Tooltip_modifier_imba_soul_chain_slow_Description"							"移动速度降低%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%。"	
+		"DOTA_Tooltip_modifier_imba_soul_chain_slow_Description"							"移动速度降低%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%。"
 
 
 		"DOTA_Tooltip_ability_imba_grimstroke_dark_portrait"									"暗绘"
@@ -6179,15 +6444,15 @@
 
 		"DOTA_Tooltip_ability_imba_grimstroke_dark_portrait_scepter_description"    			"提供一个新技能，暗绘。制造目标敌方英雄的墨迹幻象。"
 		"DOTA_Tooltip_ability_imba_grimstroke_dark_artistry_shard_description"					"命运之笔每前进%shard_range%距离，对英雄的基础伤害就提升%shard_dam%% 。翰墨不享受加成。"
-		
+
 		"DOTA_Tooltip_ability_special_bonus_imba_grimstroke_1"								"+{s:value} 命运之笔施法距离"
 		"DOTA_Tooltip_ability_special_bonus_imba_grimstroke_2"								"+{s:value}秒 命运之笔眩晕"
 		"DOTA_Tooltip_ability_special_bonus_imba_grimstroke_3"								"+{s:value} 墨涌范围"
 		"DOTA_Tooltip_ability_special_bonus_imba_grimstroke_4"								"+{s:value}秒 缚魂持续时间"
 		"DOTA_Tooltip_ability_special_bonus_imba_grimstroke_5"								"墨涌对敌人释放改为减速"
 		"DOTA_Tooltip_ability_special_bonus_imba_grimstroke_6"								"墨涌对友军释放时进行1次强驱散"
-		"DOTA_Tooltip_ability_special_bonus_imba_grimstroke_7"								"墨涌对敌军释放时进行1次强驱散"	
-		"DOTA_Tooltip_ability_special_bonus_imba_grimstroke_8"								"+{s:value} 缚魂撕裂伤害"	
+		"DOTA_Tooltip_ability_special_bonus_imba_grimstroke_7"								"墨涌对敌军释放时进行1次强驱散"
+		"DOTA_Tooltip_ability_special_bonus_imba_grimstroke_8"								"+{s:value} 缚魂撕裂伤害"
 
 
 		//////////////////////////////////////////////////////////////////////////////////////
@@ -6219,8 +6484,8 @@
 		"DOTA_Tooltip_ability_imba_spectre_desolate_charge_restore_time"						"充能时间："
 
 		"DOTA_Tooltip_modifier_imba_desolate_buff"												"荒芜"
-		"DOTA_Tooltip_modifier_imba_desolate_buff_Description"									"荒芜减少搜索范围。"		
-		
+		"DOTA_Tooltip_modifier_imba_desolate_buff_Description"									"荒芜减少搜索范围。"
+
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_imba_spectre_dispersion"									"折射"
 		"DOTA_Tooltip_ability_imba_spectre_dispersion_Description"						"幽鬼将受到的伤害折射给敌人，降低她受到的伤害。距离越远，效果越小。\n<h1><font color='#54FF9F'>1.折射之匕</font></h1>一次性受到大于幽鬼最大生命%hp_int%% 伤害时，触发咒之铠的匕首，对攻击者造成此次幽鬼承受伤害数值的纯粹伤害。\n<h1><font color='#54FF9F'>2.荒芜之铠</font></h1>幽鬼承受纯粹的伤害提高%add_pure%%。\n ● 折射伤害属于生命移除，不会触发任何受到伤害时效果。\n ● 折射伤害会保持原伤害的伤害类型与伤害性质。"
@@ -6240,13 +6505,13 @@
 		"DOTA_Tooltip_ability_imba_spectre_haunt_Note0"								"<font color='#FFFF00'> ● 作者:你收拾收拾准备出林肯吧</font>"
 		"DOTA_Tooltip_ability_imba_spectre_haunt_duration"						"持续时间："
 		"DOTA_Tooltip_ability_imba_spectre_haunt_radius"						"作用范围："
-	
+
 
 		"DOTA_Tooltip_modifier_imba_haunt"												"鬼刃重重"
 		"DOTA_Tooltip_modifier_imba_haunt_Description"									"释放所有匕首攻击敌人。"
 
 		"DOTA_Tooltip_modifier_imba_haunt_debuff"										"鬼刃重重"
-		"DOTA_Tooltip_modifier_imba_haunt_debuff_Description"							"幽鬼只要看见你就可以随时降临到你身旁。"		
+		"DOTA_Tooltip_modifier_imba_haunt_debuff_Description"							"幽鬼只要看见你就可以随时降临到你身旁。"
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_imba_spectre_splitting_dagger"										"咒之铠的匕首"
 		"DOTA_Tooltip_ability_imba_spectre_splitting_dagger_description"							"召唤4个咒之铠的匕首围绕在幽鬼的身后，可被幽鬼其他技能触发额外效果。\n<h1><font color='#54FF9F'>1.恶念之影</font></h1>匕首每次攻击敌人时附加1层恶念之影效果，叠加到%stack%层时暴露敌人自身视野，并且<font color='#54FF9F'>否定</font>全部来自敌人的队友和其自身的指定向技能。\n<h1><font color='#54FF9F'>1.暗影凝聚</font></h1>恶念之影叠加满层后还会增加敌人受到的纯粹伤害。\n ● 没有匕首在身后时，其他技能无法触发效果。"
@@ -6275,8 +6540,8 @@
 		"DOTA_Tooltip_Ability_special_bonus_imba_spectre_5"										"+{s:value} 荒芜伤害"
 		"DOTA_Tooltip_Ability_special_bonus_imba_spectre_6"										"免疫生命移除和反弹伤害"
 		"DOTA_Tooltip_Ability_special_bonus_imba_spectre_6_Description"							"需要学习折射"
-		"DOTA_Tooltip_Ability_special_bonus_imba_spectre_7"										"+{s:value}秒 恶念之影被否定技能额外冷却"	
-		"DOTA_Tooltip_Ability_special_bonus_imba_spectre_8"										"+{s:value}秒 恶念之影持续时间"	
+		"DOTA_Tooltip_Ability_special_bonus_imba_spectre_7"										"+{s:value}秒 恶念之影被否定技能额外冷却"
+		"DOTA_Tooltip_Ability_special_bonus_imba_spectre_8"										"+{s:value}秒 恶念之影持续时间"
 		//////////////////////////////////////////////////////////////////////////////////////
 		//// weaver 编织着 蚂蚁
 		//////////////////////////////////////////////////////////////////////////////////////
@@ -6305,10 +6570,10 @@
 		"DOTA_Tooltip_ability_imba_weaver_shukuchi_duration"									"持续时间："
 
 		"DOTA_Tooltip_modifier_imba_shukuchi_buff"												"缩地"
-		"DOTA_Tooltip_modifier_imba_shukuchi_buff_Description"									"编织者进入隐身，获得高移动速度，对附近敌方单位时造成伤害。"		
+		"DOTA_Tooltip_modifier_imba_shukuchi_buff_Description"									"编织者进入隐身，获得高移动速度，对附近敌方单位时造成伤害。"
 
 		"DOTA_Tooltip_modifier_imba_shukuchi_debuff"												"时空锁链"
-		"DOTA_Tooltip_modifier_imba_shukuchi_debuff_Description"									"极大的减缓行动速度。"		
+		"DOTA_Tooltip_modifier_imba_shukuchi_debuff_Description"									"极大的减缓行动速度。"
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_imba_weaver_geminate_attack"									"时空连击"
 		"DOTA_Tooltip_ability_imba_weaver_geminate_attack_Description"						"允许编织者立刻发动两次攻击。\n<h1><font color='#54FF9F'>1.平行编制</font></h1>被动:多个世界的编织者会互相影响，另一个世界的编织者拥有更低的伤害，并且有延迟的复制命令进行行动。\n<h1><font color='#54FF9F'>2.不稳定性</font></h1>另一个世界的编织者在主体受到眩晕、变形、缴械时消失，经过一定延迟后重新出现。\n ● 平行编制不继承攻击特效。"
@@ -6348,13 +6613,13 @@
 
 		"DOTA_Tooltip_Ability_special_bonus_imba_weaver_6"										"缩地不消耗魔法"
 
-		"DOTA_Tooltip_Ability_special_bonus_imba_weaver_7"										"虫群不可驱散"	
+		"DOTA_Tooltip_Ability_special_bonus_imba_weaver_7"										"虫群不可驱散"
 
 		"DOTA_Tooltip_Ability_special_bonus_imba_weaver_8"										"+{s:value}% 平行编制继承伤害"
 
 		//=================================================================================================================
 		// 林肯的英雄 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-		//=================================================================================================================	
+		//=================================================================================================================
 
 
 
@@ -6436,6 +6701,10 @@
 		"DOTA_Tooltip_ability_aghsfort_mars_spear_shard_description"						"战神逊矛带火焰路径，持续%trail_duration%秒"
 		"DOTA_Tooltip_ability_aghsfort_mars_spear_Description"       			"玛尔斯以致命的精准掷出他强大的战矛，对击中的每个敌方单位造成伤害。击中的第一个敌方英雄将被战矛刺穿，并被击退。若战矛击中树木、建筑或悬崖，目标将会被钉在上面，并受到眩晕.\n<h1><font color='#EE2C2C'>1.马尔斯烤串</font></h1>马尔斯等级超过7级后，战矛将额外影响%skewer_count%个目标.\n<h1><font color='#EE2C2C'>2.烤串熟了</font></h1> 马尔斯等级超过11级后，战矛会发生爆炸，造成%explosion_damage%伤害."
 
+
+   "DOTA_Tooltip_ability_mars_bulwark_scepter_description"		    "开启护身甲盾后玛尔斯的前方产生无敌的士兵。士兵会随着玛尔斯前进，继承全额攻击力并拥有300点攻击力加成，也能触发攻击特效。士兵的攻击附带30%减速，持续1秒。敌人在同一时间只会被1名士兵攻击。"
+		"DOTA_Tooltip_modifier_mars_bulwark_soldier_thinker"				"护身甲盾士兵"
+		"DOTA_Tooltip_modifier_mars_bulwark_soldier_thinker_Description"	"士兵继承全额攻击力+300点，并且可以触发攻击特效。攻击造成30%%减速，持续1秒。每个敌人同一时间只能被一个士兵攻击。"
 /////////////////////////////////////////
 
 
@@ -7356,11 +7625,11 @@
 
 		"DOTA_Tooltip_ability_special_bonus_imba_puck_1"										"{s:value}倍 幻象法球距离与速度"
 		"DOTA_Tooltip_ability_special_bonus_imba_puck_2"										"{s:value}秒 新月之痕冷却时间"
-		"DOTA_Tooltip_ability_special_bonus_imba_puck_3"										"释放幻象法球时攻击随机1个英雄2次"
+		"DOTA_Tooltip_ability_special_bonus_imba_puck_3"										"释放幻象法球时攻击随机1个英雄1次"
 		"DOTA_Tooltip_ability_special_bonus_imba_puck_3_description"							"需要学习梦境缠绕"
-		"DOTA_Tooltip_ability_special_bonus_imba_puck_4"										"释放新月之痕时攻击随机1个英雄2次"
+		"DOTA_Tooltip_ability_special_bonus_imba_puck_4"										"释放新月之痕时攻击随机1个英雄1次"
 		"DOTA_Tooltip_ability_special_bonus_imba_puck_4_description"							"需要学习梦境缠绕"
-		"DOTA_Tooltip_ability_special_bonus_imba_puck_5"										"释放相位转移时攻击随机1个英雄2次"
+		"DOTA_Tooltip_ability_special_bonus_imba_puck_5"										"释放相位转移时攻击随机1个英雄1次"
 		"DOTA_Tooltip_ability_special_bonus_imba_puck_5_description"							"需要学习梦境缠绕"
 		"DOTA_Tooltip_ability_special_bonus_imba_puck_6"										"相位转移对自身进行一次弱驱散"
 		"DOTA_Tooltip_ability_special_bonus_imba_puck_7"										"攻击时附加敌人技能增强{s:value}倍的魔法伤害"
@@ -7368,11 +7637,11 @@
 		"DOTA_Tooltip_ability_special_bonus_imba_puck_8"										"释放幻象发球时获得{s:value}秒相位转移效果"
 
 
-//////////////////////////////////////////////////////////////////////////////////////
+		//////////////////////////////////////////////////////////////////////////////////////
 		//// Lich
 		//////////////////////////////////////////////////////////////////////////////////////
-		"DOTA_Tooltip_ability_imba_lich_frost_nova"										"冰霜新星"
-		"DOTA_Tooltip_ability_imba_lich_frost_nova_description"								"对敌人造成一次冰暴，伤害并且减速他与他附近的敌人。\n<h1><font color='#63B8FF'>1.极寒冻结</font></h1>会根据目标当前移动速度和基础移动速度的比值额外造成最多%damage_per%倍智力的伤害和1s的冻结效果。"
+		"DOTA_Tooltip_ability_imba_lich_frost_nova"										"冰锥术"
+		"DOTA_Tooltip_ability_imba_lich_frost_nova_description"								"向目标方向释放一个冰锥，命中目标后炸开，减速并伤害附近敌人，主目标会额外受到伤害。\n<h1><font color='#63B8FF'>1.极寒冻结</font></h1>会根据目标当前移动速度和基础移动速度的比值额外造成最多%damage_per%倍智力的伤害和1s的冻结效果。"
 		"DOTA_Tooltip_ability_imba_lich_frost_nova_Lore"									"冰霜法师艾斯瑞恩不死的身躯被极度寒气污染。太过靠近的敌人会立刻后悔，随着他们的神智和身体遭到侵蚀，夏天和温暖变成了遥远的记忆。"
 		"DOTA_Tooltip_ability_imba_lich_frost_nova_target_damage"							"主目标额外伤害："
 		"DOTA_Tooltip_ability_imba_lich_frost_nova_aoe_damage"								"爆发范围伤害："
@@ -7381,11 +7650,9 @@
 		"DOTA_Tooltip_modifier_imba_frost_nova_slow"										"寒霜爆发"
 		"DOTA_Tooltip_modifier_imba_frost_nova_slow_description"							"攻击和移动速度降低。"
 
-		"DOTA_Tooltip_modifier_imba_frost_nova_aura"										"寒霜光环"
-		"DOTA_Tooltip_modifier_imba_frost_nova_aura_description"							"移动速度降低，脚下可能会出现寒霜爆发。"
 
 		"DOTA_Tooltip_ability_imba_lich_frost_armor"										"冰霜魔盾"
-		"DOTA_Tooltip_ability_imba_lich_frost_armor_description"							"为一个友方单位或建筑物制造一层寒冰护甲，增加护甲值。\n<h1><font color='#63B8FF'>1.寒冰反制</font></h1>持续期间受到来自%blast_radius%距离内英雄的攻击后护甲会被激活，间断性的减速并且伤害附近%blast_radius%范围内的敌人。\n<h1><font color='#63B8FF'>2.冻结</font></h1>敌人被冰甲减速时无法转身。"
+		"DOTA_Tooltip_ability_imba_lich_frost_armor_description"							"为一个友方单位或建筑物制造一层寒冰护甲，增加护甲值。\n<h1><font color='#63B8FF'>1.寒冰反制</font></h1>持续期间受到来自%blast_radius%距离内英雄的攻击后护甲会被激活，间断性的减速并且伤害附近%blast_radius%范围内的敌人。\n<h1><font color='#63B8FF'>2.冰枷</font></h1>冰盾会格挡%damage_re%% 受到的物理伤害。"
 		"DOTA_Tooltip_ability_imba_lich_frost_armor_Note0"									"可以对建筑物和防御塔施放。"
 		"DOTA_Tooltip_ability_imba_lich_frost_armor_Lore"									"原本是为了在中埋伏自卫时打造的，巫妖能够为他人施加一个强力的冰霜护体魔咒。"
 		"DOTA_Tooltip_ability_imba_lich_frost_armor_armor_bonus"							"护甲提高："
@@ -7393,6 +7660,8 @@
 		"DOTA_Tooltip_ability_imba_lich_frost_armor_slow_movement_speed"					"%移动速度减缓："
 		"DOTA_Tooltip_ability_imba_lich_frost_armor_slow_attack_speed"						"攻击速度降低："
 		"DOTA_Tooltip_ability_imba_lich_frost_armor_blast_damage"							"爆发伤害："
+		"DOTA_Tooltip_ability_imba_lich_frost_armor_blast_duration"							"爆发次数："
+
 
 		"DOTA_Tooltip_modifier_imba_frost_armor"											"冰霜魔盾"
 		"DOTA_Tooltip_modifier_imba_frost_armor_description"								"护甲提高%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%，受到英雄攻击后将爆发出冰霜魔法。"
@@ -7401,24 +7670,26 @@
 		"DOTA_Tooltip_modifier_imba_frost_armor_slow_description"							"移动速度降低%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%，攻击速度降低%MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%。"
 
 		"DOTA_Tooltip_ability_imba_lich_sinister_gaze"										"阴邪凝视"
-		"DOTA_Tooltip_ability_imba_lich_sinister_gaze_description"							"持续施法 - 使一个敌方单位着魔，缓慢向巫妖位置移动。\n<h1><font color='#63B8FF'>1.霜冻深渊</font></h1>如果对非英雄非远古单位施放了完整的阴邪凝视，会将其秒杀并且恢复他最大生命值一定比例的生命和魔法。\n<h1><font color='#63B8FF'>2.结冰深渊</font></h1>施法结束后目标会受到冰甲的减速效果。"
+		"DOTA_Tooltip_ability_imba_lich_sinister_gaze_description"							"持续施法 - 使一个敌方单位着魔，缓慢向巫妖位置移动。\n<h1><font color='#63B8FF'>1.低温幻觉</font></h1>如果开启自动施法，则会控制敌人向其%radius%码内最近的被连环霜冻减速的单位或者冰柱移动，且移动速度变为两倍。\n<h1><font color='#63B8FF'>2.结冰深渊</font></h1>施法结束后目标会受到%finish_duration%秒麻痹效果。"
 		"DOTA_Tooltip_ability_imba_lich_sinister_gaze_Lore"									"当心寒意……"
 		"DOTA_Tooltip_ability_imba_lich_sinister_gaze_duration"								"持续时间："
 		"DOTA_Tooltip_ability_imba_lich_sinister_gaze_destination"							"移动速度："
 		"DOTA_Tooltip_ability_imba_lich_sinister_gaze_cast_range"							"施法距离："
-		"DOTA_Tooltip_ability_imba_lich_sinister_gaze_mana_hp"								"转化比率："
 
 
-		"DOTA_Tooltip_modifier_imba_sinister_gaze_target"									"阴邪凝视"
-		"DOTA_Tooltip_modifier_imba_sinister_gaze_target_description"						"我傻了，你呢？"
+
+		"DOTA_Tooltip_modifier_imba_sinister_gaze_target"									"听话！让我康康！"
+
 
 
 		"DOTA_Tooltip_ability_imba_lich_chain_frost"											"连环霜冻"
-		"DOTA_Tooltip_ability_imba_lich_chain_frost_description"								"释放一个在敌人间弹跳的霜冻之球，每次击中敌人后都会造成伤害和减速效果。第一个目标会受到短暂眩晕。\n<h1><font color='#63B8FF'>1.永久冻结</font></h1>优先弹跳最近的单位，优先以英雄为目标，无弹跳次数限制。\n<h1><font color='#63B8FF'>2.强化冻结</font></h1>连环霜冻每次弹跳都会增加其飞行速度。\n<h1><font color='#63B8FF'>3.深空冻结</font></h1>冰球声音变小了。\n"
+		"DOTA_Tooltip_ability_imba_lich_chain_frost_description"								"释放一个在敌人间弹跳的霜冻之球，每次击中敌人后都会造成伤害和减速效果。第一个目标会受到短暂眩晕。\n<h1><font color='#63B8FF'>1.永久冻结</font></h1>优先弹跳最近的单位，优先以英雄为目标，每次弹跳伤害都会增加。\n<h1><font color='#63B8FF'>2.强化冻结</font></h1>连环霜冻每次弹跳都会增加其飞行速度。\n<h1><font color='#63B8FF'>3.深空冻结</font></h1>冰球声音变小了。\n"
 		"DOTA_Tooltip_ability_imba_lich_chain_frost_Note0"										"会弹跳至视野内最近的敌方英雄。如果附近没有英雄，会弹跳至随机的敌方单位。"
 		"DOTA_Tooltip_ability_imba_lich_chain_frost_Note1"										"霜冻之球进入泉水后速度会降低。"
 		"DOTA_Tooltip_ability_imba_lich_chain_frost_Lore"										"几乎所有人都认为是冰霜法术中的终极咒语，艾斯瑞安的霜死之珠能用恐惧击打那些胆敢站出来反对他的人们。"
 		"DOTA_Tooltip_ability_imba_lich_chain_frost_damage"										"伤害："
+		"DOTA_Tooltip_ability_imba_lich_chain_frost_bounces_dmg"								"每次弹跳伤害增加："
+		"DOTA_Tooltip_ability_imba_lich_chain_frost_bounces"									"弹跳次数："
 		"DOTA_Tooltip_ability_imba_lich_chain_frost_damage_scepter"								"神杖升级伤害："
 		"DOTA_Tooltip_ability_imba_lich_chain_frost_slow_movement_speed"						"%移动速度减缓："
 		"DOTA_Tooltip_ability_imba_lich_chain_frost_slow_attack_speed"							"攻击速度降低："
@@ -7438,14 +7709,17 @@
 		"DOTA_Tooltip_ability_special_bonus_imba_lich_2"									"+{s:value}秒 连环霜冻造成麻痹"
 
 		"DOTA_Tooltip_ability_special_bonus_imba_lich_3"									"降低寒霜魔盾{s:value}秒的cd"
-		"DOTA_Tooltip_ability_special_bonus_imba_lich_4"									"增加阴邪凝视{s:value}最大持续时间"
+		"DOTA_Tooltip_ability_special_bonus_imba_lich_4"									"强化阴邪凝视"
+		"DOTA_Tooltip_ability_special_bonus_imba_lich_4_description"						"阴邪凝视不需要持续施法,但是期间巫妖被沉默敲晕都会打断康人效果"
 		"DOTA_Tooltip_ability_special_bonus_imba_lich_5"									"冰甲额外降低{s:value}攻击速度"
-		"DOTA_Tooltip_ability_special_bonus_imba_lich_6"									"冰霜新星cd降低{s:value}秒"
+		"DOTA_Tooltip_ability_special_bonus_imba_lich_6"									"连环霜冻弹射次数+{s:value}"
+		"DOTA_Tooltip_ability_special_bonus_imba_lich_7"									"冰锥术前摇降低至{s:value}"
+		"DOTA_Tooltip_ability_special_bonus_imba_lich_8"									"冰柱在释放时会自带被激活的寒霜魔盾"
 
-		"DOTA_Tooltip_ability_lich_ice_spire"						"寒冰尖柱"
-		"DOTA_Tooltip_ability_lich_ice_spire_description"			"在目标地点创造一根冰柱，持续%duration%秒，减缓%aura_radius%范围内敌人%bonus_movespeed%%%移动速度。<br>连环霜冻在范围内没有其他敌人时可以弹跳至冰柱上。<br>可以对其施放冰霜魔盾。"
-		"DOTA_Tooltip_ability_lich_ice_spire_impact_damage"			"冲击伤害："
-		"DOTA_Tooltip_ability_lich_ice_spire_impact_radius"			"冲击作用范围："
+
+		"DOTA_Tooltip_ability_imba_lich_ice_spire"						"寒冰尖柱"
+		"DOTA_Tooltip_ability_imba_lich_ice_spire_description"			"在目标地点创造一根冰柱，持续%duration%秒，减缓%aura_radius%范围内敌人%bonus_movespeed%%%移动速度。\n<h1><font color='#63B8FF'>1.冰冻生命体</font></h1>拥有和巫妖等量的护甲与生命，连环霜冻在范围内没有其他敌人时可以弹跳至冰柱上。 \n<h1><font color='#63B8FF'>2.冰晶</font></h1>冰柱上的冰霜魔盾会自动激活。 "
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -7924,7 +8198,7 @@
 		"DOTA_Tooltip_ability_imba_brewmaster_primal_split_Note2"	"狂风●龙卷风 每道龙卷风效果都可以叠加."
 		"DOTA_Tooltip_ability_imba_brewmaster_primal_split_Note3"	"烈火●烈火拳 永久献祭每0.5s生效一次."
 		"DOTA_Tooltip_ability_imba_brewmaster_primal_split_Note4"	"虚无●太虚斩 开始施法时进入0.5s虚化."
-		"DOTA_Tooltip_ability_imba_brewmaster_primal_split_Note5"	"狂风/烈火战士 元素分离冷却只需要一半."
+		"DOTA_Tooltip_ability_imba_brewmaster_primal_split_Note5"	"狂风/烈火战士 元素分离冷却缩减%cooldown_pct%%%."
 
 		"DOTA_Tooltip_ability_imba_brewmaster_primal_split_duration"	"分离持续时间："
 		"DOTA_Tooltip_ability_imba_brewmaster_primal_split_debuff_duration"		"眩晕持续时间："
@@ -7932,7 +8206,7 @@
 
 		"DOTA_Tooltip_ability_imba_brewmaster_primal_split_scepter_description"			"元素分离现在可以分离虚无战士."
 
-		"DOTA_Tooltip_ability_imba_brewmaster_primal_split_shard_description"			"元素分离现在会额外拥有灵体脉冲技能，作用于500范围内敌人。施加20/30/40%减速和缴械效果，持续2秒。"
+		"DOTA_Tooltip_ability_imba_brewmaster_primal_split_shard_description"			"元素分离现在会额外拥有元素共鸣技能,不同的战士拥有不同的效果。"
 
 		"DOTA_Tooltip_modifier_imba_brewmaster_primal_split_switch"			"切换战士"
 		"DOTA_Tooltip_modifier_imba_brewmaster_primal_split_switch_description"			"酒仙会根据大地→狂风→烈火→虚无(神杖)的顺序选择分离."
@@ -7984,8 +8258,19 @@
 		"DOTA_Tooltip_modifier_imba_primal_drunken_brawler_caster"							"醉拳连击"
 		"DOTA_Tooltip_modifier_imba_primal_drunken_brawler_caster_Description"				"连续组合拳"
 		//////////////////////////////////////////////////////////////////////////////////////
-		"DOTA_Tooltip_ability_brewmaster_void_astral_pulse"									"灵体脉冲"
-		"DOTA_Tooltip_ability_brewmaster_void_astral_pulse_Description"				"作用于500范围内敌人。施加20/30/40%减速和缴械效果，持续2秒。"
+		"DOTA_Tooltip_ability_imba_brewmaster_primal_resonant"									"元素共鸣"
+		"DOTA_Tooltip_ability_imba_brewmaster_primal_resonant_Description"				"酒仙获取分离战士的元素技能效果.</font>\n<h1><font color='#EE2C2C'>1.大地●技能免疫</font></h1> 对魔法免疫%duration%秒.\n<h1><font color='#EE2C2C'>2.狂风●疾风步</font></h1> 暂时进入隐身状态.隐身时有移动速度和攻击伤害加成.\n<h1><font color='#EE2C2C'>3.烈火●烈火冲拳</font></h1> 对前方%radius%码直线距离攻击一次,触发攻击特效.\n<h1><font color='#EE2C2C'>4.虚无●灵体脉冲</font></h1> 作用于%radius%范围内敌人,附加一次普通攻击(不触发攻击特效),施加%slow%%%减速和缴械效果，持续%duration%秒."
+
+		"DOTA_Tooltip_ability_imba_brewmaster_primal_resonant_wind_walk_duration"				"疾风步持续时间："
+		"DOTA_Tooltip_ability_imba_brewmaster_primal_resonant_bonus_damage"						"破影一击伤害："
+		"DOTA_Tooltip_ability_imba_brewmaster_primal_resonant_bonus_movement_speeed"			"%疾风步移速加成："
+
+		"DOTA_Tooltip_ability_imba_brewmaster_primal_resonant_Note0"	"<font color='#FFFF00'> ● 作者:神秘玩家</font>."
+		"DOTA_Tooltip_ability_imba_brewmaster_primal_resonant_Note1"	"烈火●烈火冲拳 攻击宽度为250码."
+		"DOTA_Tooltip_ability_imba_brewmaster_primal_resonant_Note2"	"狂风●疾风步 有破影一击效果."
+
+		"DOTA_Tooltip_modifier_imba_brewmaster_earth_spell_immunity"							"技能免疫"
+		"DOTA_Tooltip_modifier_imba_brewmaster_earth_spell_immunity_Description"				"对魔法免疫"
 		//////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_special_bonus_imba_brewmaster_1"								"+{s:value}雷霆一击跳跃距离"
 		"DOTA_Tooltip_ability_special_bonus_imba_brewmaster_2"								"{s:value}秒 元素分离冷却"
@@ -8672,7 +8957,7 @@
 		//// Riki
 		//////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_imba_riki_smoke_screen"										"烟幕"
-		"DOTA_Tooltip_ability_imba_riki_smoke_screen_Description"							"丢下一个烟雾弹，沉默其中的敌人，同时使他们的攻击落空。\n<h1><font color='#EE2C2C'>1.刀舞</font></h1>力丸在烟雾内%miss_rate%%%几率躲避弹道.\n<h1><font color='#54FF9F'>2.刺杀</font></h1>力丸在烟雾内无法被真视发现,攻击后背刺渐隐时间缩短至0.5s.\n<h1><font color='#63B8FF'>3.毒伤</font></h1>立即造成%poisoned_damage%魔法伤害,持续时间内在烟雾力的敌人每秒附加背刺毒伤效果.\n ● 毒伤模式下作用范围支持施法距离物品道具加成."
+		"DOTA_Tooltip_ability_imba_riki_smoke_screen_Description"							"丢下一个烟雾弹，沉默其中的敌人，同时使他们的攻击落空。\n<h1><font color='#EE2C2C'>1.刀舞</font></h1>力丸在烟雾内%miss_rate%%%几率躲避弹道.\n<h1><font color='#54FF9F'>2.刺杀</font></h1>力丸在烟雾内无法被真视发现,攻击后背刺渐隐时间缩短至0.5s.\n<h1><font color='#63B8FF'>3.毒伤</font></h1>立即造成%poisoned_damage%魔法伤害,持续时间内在烟雾内的敌人每秒附加1倍敏捷背刺毒伤效果."
 		"DOTA_Tooltip_ability_imba_riki_smoke_screen_Lore"									"自从他在背叛之夜逃脱后，力丸就发掘出这能迷惑对手的简单烟幕的价值。"
 		"DOTA_Tooltip_ability_imba_riki_smoke_screen_Note0"									"不能阻止使用物品。"
 		"DOTA_Tooltip_ability_imba_riki_smoke_screen_Note1"									"<font color='#FFFF00'> ● 作者:神秘玩家</font>."
@@ -8684,7 +8969,7 @@
 		"DOTA_Tooltip_modifier_imba_smoke_screen_aura_debuff_Description"					"沉默，攻击落空."
 		//////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_imba_riki_blink_strike"										"闪烁突袭"
-		"DOTA_Tooltip_ability_imba_riki_blink_strike_Description"							"传送到一个目标背后，如果是敌人则对其造成额外伤害。\n<h1><font color='#EE2C2C'>1.刀舞</font></h1>对沿途的敌人攻击一次.\n<h1><font color='#54FF9F'>2.刺杀</font></h1>对目标造成%strike_crit_mult%%%致命一击,原地召唤一个幻象,持续%illusion_duration%秒,右键幻象可以传送到幻象背后,幻象受到伤害为0.\n<h1><font color='#63B8FF'>3.毒伤</font></h1>对目标%poisoned_radius%码范围内的敌人造成额外伤害,附加一次背刺毒伤效果."
+		"DOTA_Tooltip_ability_imba_riki_blink_strike_Description"							"传送到一个目标背后，如果是敌人则对其造成额外伤害。\n<font color='#54FF9F'>原地召唤一个隐身的幻象,持续%illusion_duration%秒,右键幻象可以和幻象交换位置,幻象受到伤害为20%.</font>\n<h1><font color='#EE2C2C'>1.刀舞</font></h1>对沿途的敌人攻击一次.\n<h1><font color='#54FF9F'>2.刺杀</font></h1>对目标造成%strike_crit_mult%%%致命一击.\n<h1><font color='#63B8FF'>3.毒伤</font></h1>对目标%poisoned_radius%码范围内的敌人造成额外伤害,附加一次背刺毒伤效果."
 		"DOTA_Tooltip_ability_imba_riki_blink_strike_Lore"									"隐形刺客迅捷的动作让他的目标几乎不可能逃脱。"
 		"DOTA_Tooltip_ability_imba_riki_blink_strike_Note0"									"力丸对敌人使用闪烁突袭后首次攻击将触发背刺。"
 		"DOTA_Tooltip_ability_imba_riki_blink_strike_Note1"									"闪烁突袭的伤害在下次攻击前生效。"
@@ -8697,7 +8982,7 @@
 		"DOTA_Tooltip_modifier_imba_riki_back_to_back_Description"					"持续时间内无法转身."
 		//////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_imba_riki_tricks_of_the_trade"										"绝杀秘技"
-		"DOTA_Tooltip_ability_imba_riki_tricks_of_the_trade_Description"							"持续施法 - 转移出现实位面，每隔一定时间从背后<font color='#54FF9F'>攻击范围内的随机敌方单位，优先英雄</font>。\n\n<font color='#54FF9F'>允许对友方英雄使用，使绝杀秘技的中心跟随目标英雄移动。</font>\n<h1><font color='#EE2C2C'>1.刀舞</font></h1>攻击目标提升至%target_count%,触发背刺效果.\n<h1><font color='#54FF9F'>2.刺杀</font></h1>攻击频率加快,越靠近位面中心的敌人越容易受到攻击,触发背刺效果.\n<h1><font color='#63B8FF'>3.毒伤</font></h1>攻击敌方单位时,背刺毒伤会传染范围内的所有敌方单位,对自己施法强驱散.\n● 刺杀模式下最后一击一定触发背刺效果.\n● 毒伤模式下施法结束会返回施法前位置."
+		"DOTA_Tooltip_ability_imba_riki_tricks_of_the_trade_Description"							"持续施法 - 转移出现实位面，每隔一定时间从背后<font color='#54FF9F'>攻击范围内的随机敌方单位，优先英雄</font>。\n<font color='#54FF9F'>允许对友方英雄使用，使绝杀秘技的中心跟随目标英雄移动。</font>\n<h1><font color='#EE2C2C'>1.刀舞</font></h1>攻击目标提升至%target_count%,触发背刺效果.\n<h1><font color='#54FF9F'>2.刺杀</font></h1>攻击频率加快,越靠近位面中心的敌人越容易受到攻击,触发背刺效果.\n<h1><font color='#63B8FF'>3.毒伤</font></h1>攻击敌方单位时,背刺毒伤会传染范围内的所有敌方单位,对自己施法强驱散.\n● 毒伤模式下施法结束会返回施法前位置."
 		"DOTA_Tooltip_ability_imba_riki_tricks_of_the_trade_Lore"									"隐形刺客从不忌讳使用肮脏的战斗手法，尤其擅长从对手的背后发动攻击。"
 		"DOTA_Tooltip_ability_imba_riki_tricks_of_the_trade_Note0"								"施放后移动将中止技能效果。"
 		"DOTA_Tooltip_ability_imba_riki_tricks_of_the_trade_Note1"			"<font color='#FFFF00'> ● 作者:神秘玩家</font>."
@@ -8740,7 +9025,7 @@
 		//////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_Ability_special_bonus_imba_riki_1"	"+{s:value} 烟幕范围"
 		"DOTA_Tooltip_ability_special_bonus_imba_riki_2"	"+{s:value} 背刺系数"
-		"DOTA_Tooltip_ability_special_bonus_imba_riki_3"	"+{s:value} 闪烁突袭施法距离"
+		"DOTA_Tooltip_ability_special_bonus_imba_riki_3"	"{s:value} 闪烁突袭冷却"
 		"DOTA_Tooltip_ability_special_bonus_imba_riki_4"	"便携烟幕"
 		"DOTA_Tooltip_ability_special_bonus_imba_riki_4_Description"	"允许对友方英雄使用，使烟幕的中心跟随目标英雄移动."
 		"DOTA_Tooltip_Ability_special_bonus_imba_riki_5"	"+{s:value} 绝杀秘技范围"
@@ -8748,24 +9033,120 @@
 		"DOTA_Tooltip_Ability_special_bonus_imba_riki_6_Description"	"1.刀舞 持续时间内目标无法转身 2.刺杀 短暂获得攻击不显隐效果 3.毒伤 +{s:value_radius} AOE范围"
 		//////////////////////////////////////////////////////////////////////////////////////
 		//////////////////////////////////////////////////////////////////////////////////////
-
-		//////////////////////////////////////////////////////////////////////////////////////
 		//// Faceless Void
 		//////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_imba_faceless_void_time_walk"									"时间漫游"
-		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_Description"						"冲到目标位置，并取消最近%damage_time%秒内受到的任何伤害。\n<h1><font color='#54FF9F'>1.时间撕裂</font></h1>沿途打开时间的裂隙，对途经的敌人造成短暂眩晕并窃取他们的时间，减速敌人并提高自身的攻击和移动速度."
+		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_Description"						"冲到目标位置，并取消最近%damage_time%秒内受到的任何伤害。\n<h1><font color='#54FF9F'>1.时间撕裂</font></h1>沿途打开时间的裂隙，对途经的敌人造成短暂眩晕并窃取他们的时间，减速和降低敌人攻速并提高自身的移速和攻击速度,每影响一个英雄，该增益效果提升1秒."
 		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_scepter_description"				"在落地点对所有单位施加一次时间锁定的触发."
 		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_Lore"							"暗惧者将时间撕出一个洞，穿过超维视界并瞬间重现出来。"
 		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_Note0"							"只能从敌方英雄处获得额外移动/攻击速度。"
 		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_Note1"							"所有负面效果均对技能免疫无效，虚空假面也不会从技能免疫的敌人处获取速度。"
 		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_Note2"							"远见的作用机制为治疗，因此有若干方式阻止远见生效。"
 		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_Note3"
-		"<font color='#FFFF00'> ● 作者:某饺子/整理:神秘玩家</font>"
+		"<font color='#FFFF00'> ● 作者:神秘玩家</font>"
 		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_range"							"最大距离："
 		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_chrono_radius"					"裂隙范围："
-		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_slow"							"%敌人移速减少："
-		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_move_bonus"						"%每个英雄移速加成："
-		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_attack_speed_bonus"				"每个英雄攻速加成："
+		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_slow"							"%移速减少/提升："
+		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_attack_speed_bonus"				"攻速减少/提升："
+		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_duration"						"效果持续时间："
+		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_radius_scepter"					"神杖升级时间锁定作用范围："
+
+		"DOTA_Tooltip_modifier_imba_time_walk_slow"											"时间漫游"
+		"DOTA_Tooltip_modifier_imba_time_walk_slow_Description"								"降低移动速度。"
+
+		"DOTA_Tooltip_modifier_imba_time_walk_buff"											"时间漫游"
+		"DOTA_Tooltip_modifier_imba_time_walk_buff_Description"								"提高移动和攻击速度。"
+		//////////////////////////////////////////////////////////////////////////////////////
+		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_reverse"							"反时间漫游"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_reverse_Description"				"落地后1.5秒内时间漫游替换为反时间漫游。在此期间施放的话，自身将逆转时间漫游，回到上一个施放地点。不会影响生命值或触发神杖效果。"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_shard_description"				"落地后1.5秒内时间漫游替换为反时间漫游。在此期间施放的话，自身将逆转时间漫游，回到上一个施放地点.不会影响生命值或触发神杖效果.时间漫游的施法距离提升200."
+		//////////////////////////////////////////////////////////////////////////////////////
+		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation"								"时间窃取"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_Description"					"虚空假面将附近所有敌人困在一个时间膨胀场中，持续%cooldown_increase%秒，技能的冷却将会延长，每延长一个技能冷却,敌人的移动和攻击速度就会降低%move_slow%%%。根据冷却中技能的数量造成每秒伤害和提升虚空假面的移动速度和攻击速度.\n<h1><font color='#54FF9F'>1.时间冻结</font></h1>每个<font color='#54FF9F'>不在冷却</font>的技能会短暂地进入%cooldown_start%秒的冷却，不过不会对拥有者造成减速以及增益虚空假面。"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_Lore"							"时间只是暗惧者掌握的另一货币，而且他不屑拥有。"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_Note0"						"对技能免疫单位无效。"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_Note1"						"不会影响物品技能的冷却时间。"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_Note2"
+		"<font color='#FFFF00'> ● 作者:神秘玩家</font>"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_cooldown_increase"			"效果持续时间："
+		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_radius"						"作用范围："
+		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_move_slow"					"%移动速度减缓："
+		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_attack_slow"					"攻击速度减缓："
+		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_move_bonus"					"%移动速度加成："
+		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_attack_bonus"					"攻击速度加成："
+		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_damage_per_stack"			"每个冷却技能造成伤害："
+
+		"DOTA_Tooltip_modifier_imba_time_dilation_slow"									"时间窃取"
+		"DOTA_Tooltip_modifier_imba_time_dilation_slow_Description"							"降低移动和攻击速度。"
+
+		"DOTA_Tooltip_modifier_imba_time_dilation_buff"									"时间窃取"
+		"DOTA_Tooltip_modifier_imba_time_dilation_buff_Description"							"提高降低移动和攻击速度。"
+		//////////////////////////////////////////////////////////////////////////////////////
+		"DOTA_Tooltip_ability_imba_faceless_void_time_lock"									"时间锁定"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_lock_Description"						"攻击有一定概率将一个敌方目标锁定在时间中,再次发动攻击,造成眩晕及额外伤害。\n<h1><font color='#54FF9F'>1.维度变换</font></h1>不在冷却时，时间锁定会创造小型的时间结界,但是在%reduce_duration%秒内每次触发时间锁定都会使维度变换的范围降低%radius_reduce%，最低降低至%radius_min%.并对受时间结界影响的单位造成额外伤害.\n<h1><font color='#54FF9F'>2.时间领主：</font></h1>触发时间锁定还会增加目标所有<font color='#54FF9F'>正在冷却</font>技能的冷却%cooldown_increase%秒."
+		"DOTA_Tooltip_ability_imba_faceless_void_time_lock_Lore"							"虚空假面的突袭伴随着维度转移之力。"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_lock_Note0"							"时间锁定的小型时间结界不会影响友军。"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_lock_Note1"							"幻象不会触发重击。"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_lock_Note2"
+		"<font color='#FFFF00'> ● 作者:神秘玩家</font>"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_lock_Note3"							"在第8次攻击后范围降低至最低。"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_lock_bash_chance"						"%触发几率："
+		"DOTA_Tooltip_ability_imba_faceless_void_time_lock_bash_damage"						"伤害："
+		"DOTA_Tooltip_ability_imba_faceless_void_time_lock_bash_duration"					"持续时间："
+		"DOTA_Tooltip_ability_imba_faceless_void_time_lock_bash_radius"						"维度变换范围："
+		"DOTA_Tooltip_ability_imba_faceless_void_timelord_cooldown_increase"					"冷却时间增加："
+
+		"DOTA_Tooltip_modifier_imba_faceless_void_time_lock_reduce"						"维度虚弱"
+		"DOTA_Tooltip_modifier_imba_faceless_void_time_lock_reduce_Description"				"由时间锁定创造的时间结界的范围降低。"
+		//////////////////////////////////////////////////////////////////////////////////////
+		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere"								"时间结界"
+		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_Description"					"在时空中创造一个泡状遮罩，将所有位于其中的单位定住，并使虚空假面在其内部来去自如。只有虚空假面和他控制的单位不受影响。在其中的隐形敌人会显形。\n<h1><font color='#54FF9F'>1.时间戳记</font></h1>每成功定住一个敌人将会叠加一层时间戳,每层时间戳将会提升%bonus_as%时间结界范围和时间结界内攻速提升效果.时间结界范围提升最多%max_radius_stack%层,时间结界内攻速提升无上限.\n<h1><font color='#54FF9F'>2.∞ </font></h1>虚空假面耗尽几乎所有魔力在时间结界内获得突破攻速上限效果.\n\n<font color='#54FF9F'>可用阿哈利姆神杖升级。</font>"
+		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_Lore"							"当超维视界的裂隙突现之时，所有不幸被其困住的可怜灵魂都将万劫不复。"
+		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_Note0"						"作用范围内所有隐身单位都会显形。"
+		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_Note1"						"施法者拥有的单位也能享受时间结界的加成效果."
+		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_Note2"						"时间戳记堆叠计算只会发生在施法的一瞬间."
+		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_Note3"
+		"<font color='#FFFF00'> %2 几率 ????</font>"
+		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_Note4"
+		"<font color='#FFFF00'> ● 作者:神秘玩家</font>"
+		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_base_radius"					"基础范围："
+		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_base_duration"				"持续时间："
+		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_scepter_description"			"允许盟友在时间结界内缓慢行动。"
+
+		"DOTA_Tooltip_modifier_imba_faceless_void_chronosphere_debuff"						"时间结界"
+		"DOTA_Tooltip_modifier_imba_faceless_void_chronosphere_debuff_Description"			"处于时间领主创造的时间结界中。"
+
+		"DOTA_Tooltip_modifier_imba_faceless_void_chronosphere_stamps"						"时间戳记"
+		"DOTA_Tooltip_modifier_imba_faceless_void_chronosphere_stamps_Description"			"提升时间结界范围和时间结界内攻速提升."
+		//////////////////////////////////////////////////////////////////////////////////////
+		"DOTA_Tooltip_ability_special_bonus_imba_faceless_void_1"	"施放时间结界后返还{s:value}魔法"
+		"DOTA_Tooltip_ability_special_bonus_imba_faceless_void_2"	"+{s:value} 时间锁定伤害"
+		"DOTA_Tooltip_ability_special_bonus_imba_faceless_void_3"	"+{s:value} 时间漫游距离"
+		"DOTA_Tooltip_ability_special_bonus_imba_faceless_void_4"	"{s:value}秒 时间漫游冷却"
+		"DOTA_Tooltip_ability_special_bonus_imba_faceless_void_5"	"超维视界"
+		"DOTA_Tooltip_ability_special_bonus_imba_faceless_void_5_Description"	"时间锁定不再虚弱"
+		"DOTA_Tooltip_ability_special_bonus_imba_faceless_void_6"	"时间跃迁"
+		"DOTA_Tooltip_ability_special_bonus_imba_faceless_void_6_Description"	"虚空假面攻速可以突破极限至{s:value}."
+		"DOTA_Tooltip_ability_special_bonus_imba_faceless_void_7"	"+{s:value}s 时间漫游回溯有效时间"
+		"DOTA_Tooltip_ability_special_bonus_imba_faceless_void_8"	"+{s:value} 时间膨胀冷却技能每秒伤害"
+		//////////////////////////////////////////////////////////////////////////////////////
+
+		//////////////////////////////////////////////////////////////////////////////////////
+		//// Faceless Void
+		//////////////////////////////////////////////////////////////////////////////////////
+		"DOTA_Tooltip_ability_imba_faceless_void_time_walk"									"时间漫游"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_Description"						"冲到目标位置，并取消最近%damage_time%秒内受到的任何伤害。\n<h1><font color='#54FF9F'>1.时间撕裂</font></h1>沿途打开时间的裂隙，对途经的敌人造成短暂眩晕并窃取他们的时间，减速和降低敌人攻速并提高自身的移速和攻击速度,每影响一个英雄，该增益效果提升1秒."
+		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_scepter_description"				"在落地点对所有单位施加一次时间锁定的触发."
+		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_Lore"							"暗惧者将时间撕出一个洞，穿过超维视界并瞬间重现出来。"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_Note0"							"只能从敌方英雄处获得额外移动/攻击速度。"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_Note1"							"所有负面效果均对技能免疫无效，虚空假面也不会从技能免疫的敌人处获取速度。"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_Note2"							"远见的作用机制为治疗，因此有若干方式阻止远见生效。"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_Note3"
+		"<font color='#FFFF00'> ● 作者:神秘玩家</font>"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_range"							"最大距离："
+		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_chrono_radius"					"裂隙范围："
+		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_slow"							"%移速减少/提升："
+		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_attack_speed_bonus"				"攻速减少/提升："
 		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_duration"						"效果持续时间："
 		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_radius_scepter"					"神杖升级时间锁定作用范围："
 
@@ -8780,18 +9161,19 @@
 		"DOTA_Tooltip_ability_imba_faceless_void_time_walk_shard_description"				"时间漫游的施法距离提升200。"
 		//////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation"								"时间窃取"
-		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_Description"					"窃取周围英雄即将发生的未来，降低他们的移动速度和攻击速度，延长技能冷却时间。\n每个<font color='#54FF9F'>正在冷却</font>的技能都会增加%cooldown_increase%秒冷却时间，并且使拥有者减速，而虚空假面的移动速度和攻击速度增加。\n每个<font color='#54FF9F'>不在冷却</font>的技能会短暂地进入%cooldown_start%秒的冷却，不过不会对拥有者造成减速以及加强虚空假面。"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_Description"					"虚空假面将附近所有敌人困在一个时间膨胀场中，持续%cooldown_increase%秒，技能的冷却将会延长，每延长一个技能冷却,敌人的移动和攻击速度就会降低%move_slow%%%。根据冷却中技能的数量造成每秒伤害和提升虚空假面的移动速度和攻击速度.\n<h1><font color='#54FF9F'>1.时间冻结</font></h1>每个<font color='#54FF9F'>不在冷却</font>的技能会短暂地进入%cooldown_start%秒的冷却，不过不会对拥有者造成减速以及增益虚空假面。"
 		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_Lore"							"时间只是暗惧者掌握的另一货币，而且他不屑拥有。"
 		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_Note0"						"对技能免疫单位无效。"
 		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_Note1"						"不会影响物品技能的冷却时间。"
 		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_Note2"
-		"<font color='#FFFF00'> ● 作者:某饺子/整理:神秘玩家</font>"
-		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_cooldown_increase"				"效果持续时间："
+		"<font color='#FFFF00'> ● 作者:神秘玩家</font>"
+		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_cooldown_increase"			"效果持续时间："
 		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_radius"						"作用范围："
 		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_move_slow"					"%移动速度减缓："
 		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_attack_slow"					"攻击速度减缓："
 		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_move_bonus"					"%移动速度加成："
 		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_attack_bonus"					"攻击速度加成："
+		"DOTA_Tooltip_ability_imba_faceless_void_time_dilation_damage_per_stack"			"每个冷却技能造成伤害："
 
 		"DOTA_Tooltip_modifier_imba_time_dilation_slow"									"时间窃取"
 		"DOTA_Tooltip_modifier_imba_time_dilation_slow_Description"							"降低移动和攻击速度。"
@@ -8805,7 +9187,7 @@
 		"DOTA_Tooltip_ability_imba_faceless_void_time_lock_Note0"							"时间锁定的小型时间结界不会影响友军。"
 		"DOTA_Tooltip_ability_imba_faceless_void_time_lock_Note1"							"幻象不会触发重击。"
 		"DOTA_Tooltip_ability_imba_faceless_void_time_lock_Note2"
-		"<font color='#FFFF00'> ● 作者:某饺子/整理:神秘玩家</font>"
+		"<font color='#FFFF00'> ● 作者:神秘玩家</font>"
 		"DOTA_Tooltip_ability_imba_faceless_void_time_lock_Note3"							"在第8次攻击后范围降低至最低。"
 		"DOTA_Tooltip_ability_imba_faceless_void_time_lock_bash_chance"						"%触发几率："
 		"DOTA_Tooltip_ability_imba_faceless_void_time_lock_bash_damage"						"伤害："
@@ -8817,25 +9199,35 @@
 		"DOTA_Tooltip_modifier_imba_faceless_void_time_lock_reduce_Description"				"由时间锁定创造的时间结界的范围降低。"
 		//////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere"								"时间结界"
-		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_Description"					"<font color='#54FF9F'>使用所有的魔法创造出时间结界，将所有单位笼罩其中，消耗的魔法越多，创造的结界越大，最少需要200魔法施放。</font>施法者在时间结界中获得超高移动速度和相位状态。\n<h1><font color='#54FF9F'>1.快进</font></h1>在时间结界中每次攻击处于时间结界中的敌人都会使你获得%bonus_as%攻击速度。\n\n<font color='#54FF9F'>可用阿哈利姆神杖升级。</font>"
+		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_Description"					"在时空中创造一个泡状遮罩，将所有位于其中的单位定住，并使虚空假面在其内部来去自如。只有虚空假面和他控制的单位不受影响。在其中的隐形敌人会显形。\n<h1><font color='#54FF9F'>1.时间戳记</font></h1>每成功施法一次时间结界将会叠加一层时间戳,每层时间戳将会提升%bonus_as%时间结界范围和时间结界内攻速提升效果.时间结界范围提升最多%max_radius_stack%层,时间结界内攻速提升无上限.\n<h1><font color='#54FF9F'>2.∞ </font></h1>虚空假面耗尽几乎所有魔力在时间结界内获得突破攻速上限效果.\n\n<font color='#54FF9F'>可用阿哈利姆神杖升级。</font>"
 		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_Lore"							"当超维视界的裂隙突现之时，所有不幸被其困住的可怜灵魂都将万劫不复。"
 		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_Note0"						"作用范围内所有隐身单位都会显形。"
 		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_Note1"						"施法者拥有的单位也能享受时间结界的加成效果。"
 		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_Note2"
-		"<font color='#FFFF00'> ● 作者:某饺子/整理:神秘玩家</font>"
+		"<font color='#FFFF00'> %2 几率 ????</font>"
+		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_Note3"
+		"<font color='#FFFF00'> ● 作者:神秘玩家</font>"
 		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_base_radius"					"基础范围："
-		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_base_duration"					"持续时间："
-		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_bonus_as"						"快进攻击速度加成："
+		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_base_duration"				"持续时间："
 		"DOTA_Tooltip_ability_imba_faceless_void_chronosphere_scepter_description"			"允许盟友在时间结界内缓慢行动。"
 
 		"DOTA_Tooltip_modifier_imba_faceless_void_chronosphere_debuff"						"时间结界"
 		"DOTA_Tooltip_modifier_imba_faceless_void_chronosphere_debuff_Description"			"处于时间领主创造的时间结界中。"
+
+		"DOTA_Tooltip_modifier_imba_faceless_void_chronosphere_stamps"						"时间戳记"
+		"DOTA_Tooltip_modifier_imba_faceless_void_chronosphere_stamps_Description"			"提升时间结界范围和时间结界内攻速提升."
 		//////////////////////////////////////////////////////////////////////////////////////
 		"DOTA_Tooltip_ability_special_bonus_imba_faceless_void_1"	"施放时间结界后返还{s:value}魔法"
 		"DOTA_Tooltip_ability_special_bonus_imba_faceless_void_2"	"+{s:value} 时间锁定伤害"
 		"DOTA_Tooltip_ability_special_bonus_imba_faceless_void_3"	"+{s:value} 时间漫游距离"
 		"DOTA_Tooltip_ability_special_bonus_imba_faceless_void_4"	"{s:value}秒 时间漫游冷却"
-		"DOTA_Tooltip_ability_special_bonus_imba_faceless_void_5"	"时间锁定不再虚弱"
+		"DOTA_Tooltip_ability_special_bonus_imba_faceless_void_5"	"超维视界"
+		"DOTA_Tooltip_ability_special_bonus_imba_faceless_void_5_Description"	"时间锁定不再虚弱"
+		"DOTA_Tooltip_ability_special_bonus_imba_faceless_void_6"	"时间跃迁"
+		"DOTA_Tooltip_ability_special_bonus_imba_faceless_void_6_Description"	"虚空假面攻速可以突破极限至{s:value}."
+		"DOTA_Tooltip_ability_special_bonus_imba_faceless_void_7"	"+{s:value}s 时间漫游回溯有效时间"
+		"DOTA_Tooltip_ability_special_bonus_imba_faceless_void_8"	"+{s:value} 时间膨胀冷却技能每秒伤害"
+		//////////////////////////////////////////////////////////////////////////////////////
 		//////////////////////////////////////////////////////////////////////////////////////
 		//////////////////////////////////////////////////////////////////////////////////////
 		//// Nyx Assassin
@@ -9367,7 +9759,7 @@
 
 
 
-		//////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////
 		//// 大树
 		//////////////////////////////////////////////////////////////////////////////////////
 		//////////////////////////////////////////////////////////////////////////////////////
@@ -9380,14 +9772,15 @@
 		"DOTA_Tooltip_ability_special_bonus_imba_treant_3_description"						"自然蔽护攻击造成{s:value}秒缠绕"
 		"DOTA_Tooltip_ability_special_bonus_imba_treant_4"									"{s:value}范围活体护甲"
 		"DOTA_Tooltip_ability_special_bonus_imba_treant_5"									"自然蔽护攻击眩晕时间增加{s:value}"
-		"DOTA_Tooltip_ability_special_bonus_imba_treant_6"									"丛林之眼上限增加{s:value}"
+		"DOTA_Tooltip_ability_special_bonus_imba_treant_6"									"深度寄生"
+		"DOTA_Tooltip_ability_special_bonus_imba_treant_6_description"									"寄生种子无法被驱散,当敌人处于魔免状态时，debuff不会减少时间"
 		"DOTA_Tooltip_ability_special_bonus_imba_treant_7"									"丛林之眼作用范围增加{s:value}"
 		"DOTA_Tooltip_ability_special_bonus_imba_treant_8"									"丛林探险家"
 		"DOTA_Tooltip_ability_special_bonus_imba_treant_8_description"						"自然蔽护下获得{s:value}范围高空视野"
 
 
 		"DOTA_Tooltip_ability_imba_treant_natures_grasp"									"自然卷握"
-		"DOTA_Tooltip_ability_imba_treant_natures_grasp_description"							"朝目标方向制造藤蔓，藤蔓对穿过的敌人造成伤害和减速，如果藤蔓碰到了树木，将会造成%damage_ex%倍伤害。\n<h1><font color='#EE2C2C'>1.爬山虎</font></h1>当树精卫士在藤蔓上时，所有被藤蔓影响的敌人都会被缠绕，持续到树精卫士离开藤蔓或者藤蔓消失。\n<font color='#FFFF00'>●技能设计者:小太阳</font>"
+		"DOTA_Tooltip_ability_imba_treant_natures_grasp_description"							"朝目标方向制造藤蔓，藤蔓对穿过的敌人造成伤害和减速，如果藤蔓碰到了树木，将会造成%damage_ex%倍伤害。\n<h1><font color='#EE2C2C'>1.爬山虎</font></h1>藤曼上的敌人还会被束缚。\n<font color='#FFFF00'>●技能设计者:小太阳</font>"
 		"DOTA_Tooltip_ability_imba_treant_natures_grasp_Note0"								"当藤蔓完全出现后才会开始造成伤害和减速。"
 		"DOTA_Tooltip_ability_imba_treant_natures_grasp_Lore"								"藤卷"
 		"DOTA_Tooltip_ability_imba_treant_natures_grasp_range"							"藤蔓长度："
@@ -9452,9 +9845,12 @@
 		"DOTA_Tooltip_ability_imba_treant_overgrowth_duration"								"缠绕持续时间："
 		"DOTA_Tooltip_modifier_imba_treant_overgrowth_root"								"我被大树捆绑了救我"
 		"DOTA_Tooltip_modifier_imba_treant_overgrowth_pa"								"让我看看是谁偷了我的苹果"
+		"DOTA_Tooltip_modifier_imba_treant_overgrowth_pa_Description"								"可以无视攻击距离攻击被疯狂生长影响的敌人"
 
 
 		"DOTA_Tooltip_ability_imba_treant_natures_guise_shard_description"	"新的技能：可以在丛林里藏匿"
+
+		"DOTA_Tooltip_ability_imba_treant_natures_grasp_scepter_description" "当大树在藤曼上时，敌人会受到疯狂生长的缠绕。"
 
 	//////////////////////////////////////////////////////////////////////////////////////
 		////WITCH_DOCTOR
@@ -9622,7 +10018,7 @@
 		"DOTA_Tooltip_modifier_spray_stack_description"					"身中生化剧毒"
 
 		"DOTA_Tooltip_ability_imba_bristleback_bristleback"									"钢毛后背"
-		"DOTA_Tooltip_ability_imba_bristleback_bristleback_description"							"钢背兽的后背会吸收部分来自侧面或者背面的伤害，吸收到一定值时会施放一次针刺扫射。\n<h1><font color='#EE2C2C'>1.荣誉治安官</font></h1>钢背兽学会了谨慎的对待敌人，主动开启立刻改变钢背兽的朝向并且允许倒着走路，但是移动速度会减少%ass_slow%%。\n<h1><font color='#EE2C2C'>2.钢针栓塞</font></h1>后退走路的钢背施法攻击均不用转身。\n     <font color='#FFFF00'>●作者:excited</font>"
+		"DOTA_Tooltip_ability_imba_bristleback_bristleback_description"							"钢背兽的后背会吸收部分来自侧面或者背面的伤害，吸收到一定值时会施放一次针刺扫射。\n<h1><font color='#EE2C2C'>1.荣誉治安官</font></h1>钢背兽学会了谨慎的对待敌人，主动开启立刻改变钢背兽的朝向并且允许倒着走路，但是移动速度会减少%ass_slow%% ，并且移动速度上限变为300。\n<h1><font color='#EE2C2C'>2.钢针栓塞</font></h1>后退走路的钢背施法攻击均不用转身。\n     <font color='#FFFF00'>●作者:excited</font>"
 		"DOTA_Tooltip_ability_imba_bristleback_bristleback_Note0"								"0.1秒射一次刺"
 		"DOTA_Tooltip_ability_imba_bristleback_bristleback_Lore"								"钢背兽没有枪，所以总是用背指着敌人"
 		"DOTA_Tooltip_ability_imba_bristleback_bristleback_side_damage_reduction"				"%侧面伤害减少："
@@ -9643,7 +10039,7 @@
 		"DOTA_Tooltip_modifier_warpath_taunt"								"不服来打我"
 
 		"DOTA_Tooltip_ability_imba_bristleback_hairball"									"尖刺毛球"
-		"DOTA_Tooltip_ability_imba_bristleback_hairball_description"							"钢背兽咳出一个毛球至目标地点，到达目标点后毛球会炸开对附近敌人释放一次鼻涕和数次针刺扫射。\n<h1><font color='#EE2C2C'>1.储备弹药</font></h1>拥有3点充能。\n<h1><font color='#EE2C2C'>2.大鼻涕</font></h1>炸开后缠绕附近%root_radius%范围敌人%root%秒。\n"
+		"DOTA_Tooltip_ability_imba_bristleback_hairball_description"							"钢背兽咳出一个毛球至目标地点，到达目标点后毛球会炸开对附近敌人释放一次鼻涕和数次针刺扫射。\n<h1><font color='#EE2C2C'>1.大鼻涕</font></h1>炸开后缠绕附近%root_radius%范围敌人%root%秒。\n"
 		"DOTA_Tooltip_ability_imba_bristleback_hairball_quill_stack"							"触发的针刺次数："
 		"DOTA_Tooltip_ability_imba_bristleback_hairball_goo_stack"							"触发的鼻涕次数："
 		"DOTA_Tooltip_ability_imba_bristleback_hairball_Lore"								"钢背治安官没有枪，但是却有子弹"
@@ -9652,7 +10048,6 @@
 		"DOTA_Tooltip_ability_imba_bristleback_viscous_nasal_goo_scepter_description"			"鼻涕变为范围无目标技能，并且右键可以开启自动释放,且范围增加300。"
 
 		"DOTA_Tooltip_ability_imba_bristleback_hairball_shard_description"	"一个恶心的新技能"
-
 	//////////////////////////////////////////////////////////////////////////////////////
 		//// Huskar
 		//////////////////////////////////////////////////////////////////////////////////////
@@ -9680,8 +10075,8 @@
 		"DOTA_Tooltip_ability_imba_huskar_burning_spear"	"虚无之矛"
 		"DOTA_Tooltip_modifier_imba_huskar_black"	"牺牲奥义"
 		"DOTA_Tooltip_modifier_imba_huskar_black_description"	"哈斯卡的牺牲获得了回报"
-		"DOTA_Tooltip_ability_imba_huskar_burning_spear_Description"	"每次攻击都会消耗部分当前生命造成相当于力量百分比的直接伤害。\n<h1><font color='#EE2C2C'>1.邪恶激情</font></h1>拥有<font color='#e8e64f'>莫尔迪基安的臂章</font>后可以主动使用，消耗20%当前血量，随后哈斯卡的射程会降低150，并且变为近战英雄，再次释放将会变为远程英雄。\n<h1><font color='#EE2C2C'>2.虚无生命</font></h1>近战下的哈斯卡在消耗生命的时候会额外增加自己的生命上限，但是该技能不会造成额外伤害。\n"
-		"DOTA_Tooltip_ability_imba_huskar_burning_spear_Note0"	"该技能现在是被动技能，无法关闭，不会被沉默，但是会被破坏。臂章扔在背包也会生效。\n"
+		"DOTA_Tooltip_ability_imba_huskar_burning_spear_Description"	"每次攻击都会消耗部分当前生命造成相当于力量百分比的直接伤害。\n<h1><font color='#EE2C2C'>1.邪恶激情</font></h1>拥有<font color='#e8e64f'>莫尔迪基安的臂章</font>可以主动使用，消耗部分生命将自己在近战和远程之间切换，会影响攻击距离。\n<h1><font color='#EE2C2C'>2.虚无生命</font></h1>近战下的哈斯卡在消耗生命的时候会额外增加自己的生命上限，但是该技能不会造成额外伤害。\n"
+		"DOTA_Tooltip_ability_imba_huskar_burning_spear_Note0"	"该被动效果不会被沉默，但是会被破坏。臂章扔在背包也会生效。\n远程英雄使用该技能时会将攻击距离改变至300，近战不变。\n原本是近战切不切依然是近战。\n"
 		"DOTA_Tooltip_ability_imba_huskar_burning_spear_Note1"	"切换至远程后将损失所有额外生命\n"
 		"DOTA_Tooltip_ability_imba_huskar_burning_spear_Lore"	"虚无的牺牲"
 		"DOTA_Tooltip_ability_imba_huskar_burning_spear_health_cost"	"%当前生命值消耗："
@@ -9721,8 +10116,6 @@
 
 		"DOTA_Tooltip_ability_imba_huskar_berserkers_blood_shard_description"	"每个在读秒的英雄都会被视为单车损失了5%生命值。"
 		"DOTA_Tooltip_ability_imba_huskar_life_break_scepter_description"	"牺牲可以对魔免单位释放，施法距离变为%range_scepter%，并且嘲讽缴械目标%taunt_dur%秒。"
-
-
 //////////////////////////////////////////////////////////////////////////////////////
 	//// Dazzle
 		//////////////////////////////////////////////////////////////////////////////////////

@@ -428,7 +428,11 @@ function modifier_imba_ass:IsHidden() 			return false end
 function modifier_imba_ass:IsPurgable() 		return false end
 function modifier_imba_ass:IsPurgeException() 	return false end
 function modifier_imba_ass:RemoveOnDeath() 	return true end
-function modifier_imba_ass:DeclareFunctions() return {MODIFIER_PROPERTY_IGNORE_CAST_ANGLE,MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,MODIFIER_PROPERTY_DISABLE_TURNING} end
+function modifier_imba_ass:DeclareFunctions() return {MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE, MODIFIER_PROPERTY_MOVESPEED_LIMIT, MODIFIER_PROPERTY_MOVESPEED_MAX,MODIFIER_PROPERTY_IGNORE_CAST_ANGLE,MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,MODIFIER_PROPERTY_DISABLE_TURNING} end
+
+--function modifier_imba_ass:GetModifierMoveSpeed_Absolute() return 350 end
+function modifier_imba_ass:GetModifierMoveSpeed_Limit() return 300 end
+--function modifier_imba_ass:GetModifierMoveSpeed_Max() return 350 end
 function modifier_imba_ass:GetModifierMoveSpeedBonus_Percentage() return self.slow end
 function modifier_imba_ass:GetModifierDisableTurning() 
     return 1
@@ -437,9 +441,9 @@ function modifier_imba_ass:GetModifierIgnoreCastAngle()
     return 1
 end
 function modifier_imba_ass:OnCreated() 
+	self.slow = self:GetAbility():GetSpecialValueFor("ass_slow")*-1
     if not IsServer() then return end
 	self.parent = self:GetParent()
-	self.slow = self:GetAbility():GetSpecialValueFor("ass_slow")*-1
 	self.parent:SetForwardVector(Vector(self.parent:GetForwardVector()[1]*-1, self.parent:GetForwardVector()[2]*-1, 0))	
 end
 function modifier_imba_ass:OnDestroy()

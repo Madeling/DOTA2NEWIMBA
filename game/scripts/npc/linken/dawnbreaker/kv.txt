@@ -410,12 +410,12 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"base"					"10 11 12"
+				"base"					"8 9 10"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"base_damage_heal"		"15 16 17"
+				"base_damage_heal"				"7 9 11"
 			}
 			"06"
 			{

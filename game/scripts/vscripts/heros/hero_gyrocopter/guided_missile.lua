@@ -35,10 +35,25 @@ function guided_missile:OnSpellStart()
     if  target:TG_TriggerSpellAbsorb(self)   then
 		return
     end
-    local enemies = FindUnitsInRadius(caster:GetTeamNumber(), target:GetAbsOrigin(), nil, 700, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
-    if #enemies>0 then
-        for _,target in pairs(enemies) do
-            local missile = CreateUnitByName(
+     if caster:TG_HasTalent("special_bonus_gyrocopter_3") then
+            local enemies = FindUnitsInRadius(caster:GetTeamNumber(), target:GetAbsOrigin(), nil, 500, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
+            if #enemies>0 then
+                for _,tar in pairs(enemies) do
+                    local missile = CreateUnitByName(
+                        "npc_dota_gyrocopter_homing_missile",
+                        pos,
+                        true,
+                        nil,
+                        nil,
+                        caster:GetTeamNumber())
+                        missile:SetBaseMoveSpeed(self:GetSpecialValueFor( "sp" ))
+                        missile:SetAbsAngles(angles.x,angles.y,angles.z)
+                        EmitSoundOn("Hero_Gyrocopter.HomingMissile", missile)
+                        missile:AddNewModifier(caster, self, "modifier_guided_missile", {target=tar:entindex()})
+                end
+            end
+    else
+                local missile = CreateUnitByName(
                 "npc_dota_gyrocopter_homing_missile",
                 pos,
                 true,
@@ -49,12 +64,10 @@ function guided_missile:OnSpellStart()
                 missile:SetAbsAngles(angles.x,angles.y,angles.z)
                 EmitSoundOn("Hero_Gyrocopter.HomingMissile", missile)
                 missile:AddNewModifier(caster, self, "modifier_guided_missile", {target=target:entindex()})
-        end
     end
-
+    caster:EmitSound("Hero_Gyrocopter.CallDown.Fire")
     Timers:CreateTimer(0, function()
-        caster:EmitSound("Hero_Gyrocopter.CallDown.Fire")
-        local pos1=target:GetAbsOrigin()+RandomVector(330)
+        local pos1=target:GetAbsOrigin()+RandomVector(315)
         local pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_gyrocopter/gyro_calldown_first.vpcf", PATTACH_CUSTOMORIGIN, nil)
         ParticleManager:SetParticleControl(pfx, 0, caster:GetAbsOrigin())
         ParticleManager:SetParticleControl(pfx, 1, pos1)

@@ -59,7 +59,7 @@ function phantom_strike:OnSpellStart()
             iUnitTargetTeam = DOTA_UNIT_TARGET_TEAM_ENEMY,
             iUnitTargetFlags = DOTA_UNIT_TARGET_FLAG_NONE,
             iUnitTargetType = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
-            vVelocity = dir * 1200,
+            vVelocity = dir * 2000,
         }
         ProjectileManager:CreateLinearProjectile(P)
         num=num+1
@@ -77,7 +77,18 @@ function phantom_strike:OnProjectileHit_ExtraData(target, location,kv)
 	if not target then
 		return
     end
-    caster:PerformAttack(target, false, false, true, false, true, false, false)
+        local agi=self:GetSpecialValueFor("agi")
+        if caster:HasScepter() then
+            agi=agi*2
+        end
+        local damageTable = {
+                        victim = target,
+                        attacker = caster,
+                        damage =caster:GetAgility()*agi,
+                        damage_type =DAMAGE_TYPE_PHYSICAL,
+                        ability = self,
+                        }
+                    ApplyDamage(damageTable)
 end
 
 function phantom_strike:GetIntrinsicModifierName()

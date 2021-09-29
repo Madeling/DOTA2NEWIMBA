@@ -1,34 +1,34 @@
 mischief=class({})
 LinkLuaModifier("modifier_mischief_buff", "heros/hero_monkey_king/mischief.lua", LUA_MODIFIER_MOTION_BOTH)
 LinkLuaModifier("modifier_mischief_buff2", "heros/hero_monkey_king/mischief.lua", LUA_MODIFIER_MOTION_BOTH)
-function mischief:IsHiddenWhenStolen() 
-    return false 
+function mischief:IsHiddenWhenStolen()
+    return false
 end
 
-function mischief:IsStealable() 
-    return true 
+function mischief:IsStealable()
+    return true
 end
 
-function mischief:IsRefreshable() 			
-    return true 
+function mischief:IsRefreshable()
+    return true
 end
 
-function mischief:Set_InitialUpgrade(tg) 			
-    return {LV=1} 
+function mischief:Set_InitialUpgrade(tg)
+    return {LV=1}
 end
 
-function mischief:GetAssociatedSecondaryAbilities() 
-    return "untransform" 
+function mischief:GetAssociatedSecondaryAbilities()
+    return "untransform"
 end
 
 function mischief:OnSpellStart()
     local caster=self:GetCaster()
     local target=self:GetCursorTarget()
 
-    if caster:HasAbility("untransform") then 
+    if caster:HasAbility("untransform") then
         caster:EmitSound("Hero_MonkeyKing.Transform.On")
         caster:SwapAbilities( "mischief", "untransform", false, true )
-    end 
+    end
     if  caster.wukongsMOD~=nil and #caster.wukongsMOD>0 and caster:HasModifier("modifier_wukongs_command_buff") and not caster:HasModifier("modifier_mischief_buff") then
         caster:RemoveModifierByName("modifier_wukongs_command_buff")
     end
@@ -69,7 +69,7 @@ function mischief:OnSpellStart()
         "models/props_structures/barrel_fish.vmdl",
         "models/props_gameplay/red_box.vmdl",
         "models/props_gameplay/neutral_box_model.vmdl"
-    }   
+    }
 end
     if  caster.mischief2==nil then
         caster.mischief2={
@@ -95,77 +95,77 @@ end
         outgoing_damage_structure=0,
         outgoing_damage_roshan=0,
     }
-        local illusions=CreateIllusions(caster, caster, modifier, 1, 0, true, true)
+        local illusions=CreateIllusions(caster, caster, modifier, 1, 150, false, true)
         illusions[1]:AddNewModifier(caster, self, "modifier_kill", {duration=5})
         illusions[1]:AddNewModifier(caster, self, "modifier_mischief_buff2", {duration=5})
       --  illusions[1]:AddNewModifier(caster, self, "modifier_monkey_king_fur_army_soldier_inactive", {duration=5})
-      if target==nil then 
+      if target==nil then
         caster:AddNewModifier(caster, self, "modifier_monkey_king_transform", {})
       else
         caster:AddNewModifier(caster, self, "modifier_mischief_buff", {tar=target and target:entindex() or nil})
-      end      
+      end
 end
 
 
 modifier_mischief_buff=class({})
-function modifier_mischief_buff:IsDebuff() 	
-	return false 
+function modifier_mischief_buff:IsDebuff()
+	return false
 end
 
-function modifier_mischief_buff:IsHidden() 			
-	return false 
+function modifier_mischief_buff:IsHidden()
+	return false
 end
 
-function modifier_mischief_buff:IsPurgable() 		
-	return false 
+function modifier_mischief_buff:IsPurgable()
+	return false
 end
 
-function modifier_mischief_buff:IsPurgeException() 	
-	return false 
+function modifier_mischief_buff:IsPurgeException()
+	return false
 end
 
-function modifier_mischief_buff:DeclareFunctions() 
-    return 
+function modifier_mischief_buff:DeclareFunctions()
+    return
     {
         MODIFIER_EVENT_ON_ATTACK,
         MODIFIER_EVENT_ON_TAKEDAMAGE,
         MODIFIER_EVENT_ON_ABILITY_START,
         MODIFIER_PROPERTY_MODEL_CHANGE,
-        MODIFIER_PROPERTY_DISABLE_AUTOATTACK 
-    } 
+        MODIFIER_PROPERTY_DISABLE_AUTOATTACK
+    }
 end
 
 
 
 function modifier_mischief_buff:GetModifierModelChange(tg)
    return self.MODEL
-end 
+end
 
 function modifier_mischief_buff:GetDisableAutoAttack()
     return 1
- end 
+ end
 
 
 function modifier_mischief_buff:OnAttack(tg)
     if not IsServer() then
         return
-    end   
+    end
     if tg.attacker==self:GetParent()  then
       self:Destroy()
-    end  
-end 
+    end
+end
 
 
 function modifier_mischief_buff:OnTakeDamage(tg)
     if not IsServer() then
         return
-    end   
+    end
     if tg.unit==self:GetParent() and (tg.attacker:IsRealHero()or tg.attacker:IsBoss() ) then
       self:Destroy()
-    end  
-end 
+    end
+end
 
-function modifier_mischief_buff:OnAbilityStart(tg) 
+function modifier_mischief_buff:OnAbilityStart(tg)
     if not IsServer() then
         return
     end
@@ -179,37 +179,37 @@ end
 function modifier_mischief_buff:OnCreated(tg)
     if not IsServer() then
         return
-    end 
+    end
     local tar=tg.tar and EntIndexToHScript(tg.tar) or nil
     local caster=self:GetCaster()
-    if tar~=nil then 
+    if tar~=nil then
         self.MODEL=tar:GetModelName()
     else
           self.MODEL=caster.mischief[RandomInt(1,#caster.mischief)]
     end
     local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_monkey_king/monkey_king_disguise.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
     ParticleManager:ReleaseParticleIndex(particle)
-end 
+end
 
 function modifier_mischief_buff:OnDestroy(tg)
     self.MODEL=nil
     if not IsServer() then
         return
-    end    
+    end
     local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_monkey_king/monkey_king_disguise.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
     ParticleManager:ReleaseParticleIndex(particle)
     local caster=self:GetCaster()
     if caster:HasModifier("modifier_wukongs_command_buff3") then
         local dur=caster:FindModifierByName("modifier_wukongs_command_buff3"):GetRemainingTime()
-        if caster:HasAbility("wukongs_command") then 
+        if caster:HasAbility("wukongs_command") then
             local ab=caster:FindAbilityByName("wukongs_command")
         end
         caster:AddNewModifier(caster, ab or self:GetAbility(), "modifier_wukongs_command_buff", {duration=dur})
     end
-    if self:GetParent():HasAbility("mischief") then 
+    if self:GetParent():HasAbility("mischief") then
         self:GetParent():SwapAbilities( "mischief", "untransform", true, false )
-    end 
-end 
+    end
+end
 
 function modifier_mischief_buff:CheckState()
 	return
@@ -217,26 +217,26 @@ function modifier_mischief_buff:CheckState()
         [MODIFIER_STATE_NOT_ON_MINIMAP_FOR_ENEMIES] = true,
         [MODIFIER_STATE_NO_HEALTH_BAR] = true,
         [MODIFIER_STATE_LOW_ATTACK_PRIORITY] = true,
-        [MODIFIER_STATE_ALLOW_PATHING_THROUGH_TREES] = true,          
+        [MODIFIER_STATE_ALLOW_PATHING_THROUGH_TREES] = true,
 	}
 end
 
 
 modifier_mischief_buff2=class({})
-function modifier_mischief_buff2:IsDebuff() 	
-	return false 
+function modifier_mischief_buff2:IsDebuff()
+	return false
 end
 
-function modifier_mischief_buff2:IsHidden() 			
-	return true 
+function modifier_mischief_buff2:IsHidden()
+	return true
 end
 
-function modifier_mischief_buff2:IsPurgable() 		
-	return false 
+function modifier_mischief_buff2:IsPurgable()
+	return false
 end
 
-function modifier_mischief_buff2:IsPurgeException() 	
-	return false 
+function modifier_mischief_buff2:IsPurgeException()
+	return false
 end
 
 function modifier_mischief_buff2:CheckState()
