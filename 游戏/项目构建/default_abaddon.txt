@@ -106,7 +106,7 @@
 			"item"		"item_laojie"
 			"item"		"item_imba_thirst"
 			"item"		"item_imba_mist_relics"
-			//"item"		"item_skadi_v2"
+			"item"		"item_skadi_v2"
 		}
 	}
 }
