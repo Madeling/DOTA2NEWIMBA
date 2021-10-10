@@ -151,7 +151,9 @@ function imba_phantom_lancer_spirit_lance:OnProjectileHit_ExtraData(target, pos,
 			caster.illusions[i]:AddNewModifier(caster, self, "modifier_kill", {duration = 15})
 			caster.illusions[i]:AddNewModifier(caster, self, "modifier_phased", {duration = 15})
 			caster.illusions[i]:AddNewModifier(caster, self, "modifier_imba_spirit_lance_att", {duration = 15, target_entindex = target:entindex()})
-			caster.illusions[i]:AddNewModifier(caster, ability, "modifier_imba_phantom_edge_move", {duration = 15})
+			if ability and ability:IsTrained() then
+				caster.illusions[i]:AddNewModifier(caster, ability, "modifier_imba_phantom_edge_move", {duration = 15})
+			end
 		end
 	end
 	local enemy = FindUnitsInRadius(caster:GetTeamNumber(), pos, nil, 400, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NO_INVIS, FIND_ANY_ORDER, false)

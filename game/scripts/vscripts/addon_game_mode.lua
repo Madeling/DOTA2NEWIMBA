@@ -612,7 +612,19 @@ function L_TG:OrderFilter(keys)
 			ability.range = 0
 		end
 	end
-
+	------------------------------------------------------------------------------------
+	-- 原始咆哮施法距离判断
+	------------------------------------------------------------------------------------
+	if keys.order_type == DOTA_UNIT_ORDER_CAST_TARGET and EntIndexToHScript(keys.entindex_ability):GetName() == "imba_beastmaster_primal_roar" then
+		local ability = EntIndexToHScript(keys.entindex_ability)
+		local target = EntIndexToHScript(keys.entindex_target)
+		local stack = ability:GetSpecialValueFor("stack")	
+		if target:HasModifier("modifier_imba_call_of_the_wild_debuff") and target:FindModifierByName("modifier_imba_call_of_the_wild_debuff"):GetStackCount() >= stack then
+			ability.range_porcupine = 50000
+		else
+			ability.range_porcupine = 0
+		end
+	end
 ----------------------------------------------------------------------------------------------------
 
 	--[[

@@ -26,6 +26,7 @@
 #base linken/grimstroke/kv.txt
 #base linken/spectre/kv.txt
 #base linken/weaver/kv.txt
+#base linken/beastmaster/kv.txt
 //////////////////////////////////////
 
 #base mb/brewmaster/kv.txt

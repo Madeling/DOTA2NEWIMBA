@@ -23,6 +23,7 @@
 #base linken/grimstroke/hero.txt
 #base linken/spectre/hero.txt
 #base linken/weaver/hero.txt
+#base linken/beastmaster/hero.txt
 /////////////////////////////////////
 
 #base mb/brewmaster/hero.txt
