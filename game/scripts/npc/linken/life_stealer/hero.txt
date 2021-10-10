@@ -1,0 +1,27 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: 噬魂鬼
+	//=================================================================================================================
+	"npc_dota_hero_life_stealer"
+	{
+		
+		"Ability1"		"imba_life_stealer_rage"
+		"Ability2"		"imba_life_stealer_feast"
+		"Ability3"		"imba_lifestealer_open_wounds"
+		"Ability4"		"imba_life_stealer_ghoul_frenzy"
+		"Ability5"		"generic_hidden"
+		"Ability6"		"imba_life_stealer_control"
+		"Ability7"		"imba_life_stealer_assimilate_eject"
+		"Ability8"		"imba_life_stealer_parasite"
+		
+		"Ability10"		"special_bonus_imba_life_stealer_1"
+		"Ability11"		"special_bonus_imba_life_stealer_8"
+		"Ability12"		"special_bonus_imba_life_stealer_2"
+		"Ability13"		"special_bonus_imba_life_stealer_7"
+		"Ability14"		"special_bonus_imba_life_stealer_6"
+		"Ability15"		"special_bonus_imba_life_stealer_5"
+		"Ability16"		"special_bonus_imba_life_stealer_3"
+		"Ability17"		"special_bonus_imba_life_stealer_4"
+	}
+}

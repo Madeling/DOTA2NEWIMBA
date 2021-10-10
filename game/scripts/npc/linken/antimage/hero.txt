@@ -1,0 +1,25 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: antimage
+	//=================================================================================================================
+	"npc_dota_hero_antimage"
+	{
+		"Ability1"	"imba_antimage_mana_break"
+		"Ability2"	"imba_antimage_blink"
+		"Ability3"	"imba_antimage_spell_shield"
+		"Ability4"	"imba_antimage_mana_overload"
+		"Ability5"	"generic_hidden"
+		"Ability6"	"imba_antimage_mana_void"
+
+		"Ability10"	"special_bonus_imba_antimage_5"
+		"Ability11"	"special_bonus_armor_10"
+		"Ability12"	"special_bonus_imba_antimage_8"
+		"Ability13"	"special_bonus_imba_antimage_6"
+		"Ability14"	"special_bonus_imba_antimage_3"
+		"Ability15"	"special_bonus_imba_antimage_4"
+		"Ability16"	"special_bonus_imba_antimage_2"
+		"Ability17"	"special_bonus_imba_antimage_1"
+		"Ability18"	"antimage_counterspell"
+	}
+}			

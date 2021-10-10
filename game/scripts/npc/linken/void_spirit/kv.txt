@@ -1,0 +1,631 @@
+"DOTAAbilities"
+{
+	// =================================================================================================================
+	// Void Spirit: Aether Remnant
+	// =================================================================================================================
+	"imba_void_spirit_aether_remnant"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"void_spirit_aether_remnant"
+		"ScriptFile"	"linken/hero_void_spirit"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"	"1"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0.0"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"17.0 15.0 13.0 11.0"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"85 90 95 100"
+		"AbilityCastRange"	"1000"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_void_spirit.vsndevts"
+			"particle"	"particles/units/heroes/hero_void_spirit/aether_remnant/void_spirit_aether_remnant_run.vpcf"
+			"particle"	"particles/heros/void_spirit/void_spirit_aether_remnant_watch_8.vpcf"
+			"particle"	"particles/heros/void_spirit/void_spirit_aether_remnant_pull.vpcf"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"start_radius"	"90"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"end_radius"	"90"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"300"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"projectile_speed"	"900"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"remnant_watch_distance"	"350"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"remnant_watch_radius"	"130"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"watch_path_vision_radius"	"200"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"activation_delay"	"0.4"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"impact_damage"	"200 250 300 350"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"pull_duration"	"1.2 1.4 1.6 1.8"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"pull_destination"	"44 50 56 62"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"20.0"
+			}
+			"13"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"think_interval"	"0.1"
+			}
+			"14"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"extra_pull_targets"	"0 1 2 3"
+				"LinkedSpecialBonus"	"special_bonus_imba_void_spirit_8"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_YES"
+		"AbilitySound"	"Hero_VoidSpirit.AetherRemnant.Cast"
+		"AbilityCastGestureSlot"	"DEFAULT"
+	}
+	// 增加个数
+	"special_bonus_imba_void_spirit_8"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"2"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_void_spirit_aether_remnant"
+		}
+	}
+	// =================================================================================================================
+	// Void Spirit: Dissimilate
+	// =================================================================================================================
+	"imba_void_spirit_dissimilate"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"void_spirit_dissimilate"
+		"ScriptFile"	"linken/hero_void_spirit"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"	"1"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0.2"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"13"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"100 110 120 130"
+		"AbilityCastRange"	"1440"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_void_spirit.vsndevts"
+			"particle"	"particles/units/heroes/hero_void_spirit/dissimilate/void_spirit_dissimilate.vpcf"
+			"particle"	"particles/units/heroes/hero_void_spirit/dissimilate/void_spirit_dissimilate_dmg.vpcf"
+			"particle"	"particles/units/heroes/hero_void_spirit/dissimilate/void_spirit_dissimilate_exit.vpcf"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"phase_duration"	"1.3"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				// proportional to distance_offset
+				"destination_fx_radius"	"260"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"portals_per_ring"	"8"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"angle_per_ring_portal"	"45"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"first_ring_distance_offset"	"880"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				// proportional to distance_offset
+				"radius"	"480"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"ability_damage"	"100 200 300 400"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_YES"
+		"AbilitySound"	"Hero_VoidSpirit.Dissimilate.Cast"
+	}
+
+	// =================================================================================================================
+	// Ability: Void Spirit Pulse
+	// =================================================================================================================
+	"imba_void_spirit_resonant_pulse"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"void_spirit_resonant_pulse"
+		"ScriptFile"	"linken/hero_void_spirit"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"	"1"
+		"AbilityCastPoint"	"0.0"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"16"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"100 110 120 130"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"500"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_void_spirit.vsndevts"
+			"particle"	"particles/units/heroes/hero_void_spirit/pulse/void_spirit_pulse.vpcf"
+			"particle"	"particles/units/heroes/hero_pangolier/pangolier_luckyshot_silence_debuff.vpcf"
+			"particle"	"particles/status_fx/status_effect_void_spirit_pulse_buff.vpcf"
+			"particle"	"particles/units/heroes/hero_void_spirit/pulse/void_spirit_pulse_shield.vpcf"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"500"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"speed"	"1200"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"150 200 250 300"
+				"LinkedSpecialBonus"	"special_bonus_imba_void_spirit_4"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"buff_duration"	"10.0"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_absorb_amount"	"100 140 180 220"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"absorb_per_hero_hit"	"70 90 110 130"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"return_projectile_speed"	"900"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"absorb_per_hero_int"	"10 15 20 25"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"sce_duration"	"2"
+			}			
+		}
+		"HasScepterUpgrade"	"1"
+		"SpellDispellableType"	"SPELL_DISPELLABLE_YES"
+		"AbilitySound"	"Hero_VoidSpirit.Pulse.Cast"
+		"AbilityCastGestureSlot"	"DEFAULT"
+	}
+
+	// =================================================================================================================
+	// Void Spirit: Astral Step
+	// =================================================================================================================
+	"imba_void_spirit_astral_step"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"void_spirit_astral_step"
+		"ScriptFile"	"linken/hero_void_spirit"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"FightRecapLevel"	"1"
+		// "AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0.2"
+		"AbilityCooldown"				"15"
+		//"AbilityCharges"				"4"
+		//"AbilityChargeRestoreTime"			"15"	
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"100"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_void_spirit.vsndevts"
+			"particle"	"particles/units/heroes/hero_void_spirit/astral_step/void_spirit_astral_step.vpcf"
+			"particle"	"particles/units/heroes/hero_void_spirit/astral_step/void_spirit_astral_step_impact.vpcf"
+			"particle"	"particles/units/heroes/hero_void_spirit/astral_step/void_spirit_astral_step_dmg.vpcf"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"170"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"max_charges"	"4"
+			}			
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"charge_restore_time"	"15"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"min_travel_distance"	"200"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"max_travel_distance"	"700 900 1100"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"pop_damage_delay"	"1.75"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_pop"	"200 280 360"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movement_slow_pct"	"40 60 80"
+			}
+		}
+		"AbilitySound"	"Hero_VoidSpirit.AstralStep.Start"
+	}
+
+	// =================================================================================================================
+	// Void Spirit Void Cut
+	// =================================================================================================================
+	"imba_void_spirit_void_cut"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"void_spirit_void_cut"
+		"ScriptFile"	"linken/hero_void_spirit"
+		"AbilityCastPoint"	"0.2"
+		"AbilityCooldown"				"20 19 18"		
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
+		"MaxLevel"	"3"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_void_spirit.vsndevts"
+			"soundfile"	"soundevents/imba_soundevents.vsndevts"
+			"particle"	"particles/units/heroes/hero_void_spirit/astral_step/void_spirit_astral_step.vpcf"
+			"particle"	"particles/units/heroes/hero_void_spirit/astral_step/void_spirit_astral_step_impact.vpcf"
+			"particle"	"particles/units/heroes/hero_void_spirit/astral_step/void_spirit_astral_step_dmg.vpcf"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cut_damage"	"25"
+				"LinkedSpecialBonus"	"special_bonus_imba_void_spirit_2"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cut_duration"	"1.0 1.5 2.0"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bouns_voidification"	"12"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"300"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"max_travel_distance"	"700 900 1100"
+			}						
+		}
+		"HasShardUpgrade"               "1"
+		"HasScepterUpgrade"	"1"
+		"SpellDispellableType"	"SPELL_DISPELLABLE_NO"
+	}
+
+	// void cut cause 1s stuned
+	"special_bonus_imba_void_spirit_1"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"0.2"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_void_spirit_void_cut"
+		}
+	}
+
+	// +20% void cut damage bouns
+	"special_bonus_imba_void_spirit_2"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"10"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_void_spirit_void_cut"
+		}
+	}
+
+	// 增加充能
+	"special_bonus_imba_void_spirit_3"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"5"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_void_spirit_astral_step"
+		}
+	}
+
+	// +200 resonant_pulse damage
+	"special_bonus_imba_void_spirit_4"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"75"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_void_spirit_resonant_pulse"
+		}
+	}
+
+	// 35% chance cast multiple void cut after cast finish
+	"special_bonus_imba_void_spirit_5"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"20"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_void_spirit_void_cut"
+		}
+	}
+
+	// 300% crit astral step
+	"special_bonus_imba_void_spirit_6"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"260"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_void_spirit_astral_step"
+		}
+	}
+
+	// 1.5s stun
+	"special_bonus_imba_void_spirit_7"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"0.7"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_void_spirit_dissimilate"
+		}
+	}
+}	

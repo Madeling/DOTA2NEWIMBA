@@ -1,0 +1,525 @@
+
+//////////////////////////////
+
+CreateTalents("npc_dota_hero_skywrath_mage")
+
+//////////////////////////////
+
+"npc_dota_hero_skywrath_mage"
+	{
+        "special_bonus_oldsky_10r"{}
+         "special_bonus_oldsky_10l"{}
+          "special_bonus_oldsky_15r"{}
+           "special_bonus_oldsky_15l"{}
+            "special_bonus_oldsky_20r"{}
+             "special_bonus_oldsky_20l"{}
+              "special_bonus_oldsky_25r"{}
+               "special_bonus_oldsky_25l"{}
+	}
+
+/////////////////////////////////
+
+"npc_dota_hero_skywrath_mage"
+	{
+		"Ability1"	"oldsky_abolt"
+		"Ability2"	"oldsky_cshot"
+		"Ability3"	"oldsky_aseal"
+		"Ability4"	"generic_hidden"
+		"Ability5"	"generic_hidden"
+		"Ability6"	"oldsky_mflare"
+		"Ability10"	"special_bonus_intelligence_15"                    //10r
+		"Ability11"	"special_bonus_movement_speed_30"            //10l
+		"Ability12"	"special_bonus_oldsky_15r"          //15r减上古封印cd
+		"Ability13"	"special_bonus_oldsky_15l"           //15l加上古封印减魔抗
+		"Ability14"	"special_bonus_cast_range_100"               //20r
+		"Ability15"	"special_bonus_spell_lifesteal_20"       //20l
+		"Ability16"	"special_bonus_oldsky_25r"          //25r加1个C
+		"Ability17"	"special_bonus_oldsky_25l"        //25l范围震荡光蛋
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+	}
+
+/////////////////////////////////////
+
+////////////////////////////////////
+//OLDSKY 天怒法师 ↓
+////////////////////////////////////
+        "DOTA_Tooltip_ability_special_bonus_oldsky_15r"	"{s:value} 上古封印冷却"
+		"DOTA_Tooltip_ability_special_bonus_oldsky_15l"	"+{s:value} 上古封印魔法伤害加深"
+		"DOTA_Tooltip_ability_special_bonus_oldsky_25r"	"+1 奥法鹰隼"
+		"DOTA_Tooltip_ability_special_bonus_oldsky_25l"	"范围震荡光蛋"
+
+		"DOTA_Tooltip_ability_oldsky_abolt_shard_description"						"奥法鹰隼飞行速度加300"
+        "DOTA_Tooltip_ability_oldsky_abolt_scepter_description"						"喜加一"
+		"DOTA_Tooltip_ability_oldsky_abolt"	"奥法鹰隼"
+		"DOTA_Tooltip_ability_oldsky_abolt_Description" "天怒法师施放出缓慢移动的奥术鹰群，对敌方单位造成基于天怒法师智力值的伤害。\n<h1><font color='#63B8FF'>奥术之怒</font></h1>每次奥法鹰隼成功击中目标都会叠加一层奥术之怒效果，提升天怒法师的智力和奥法鹰隼智力伤害系数。"
+		"DOTA_Tooltip_ability_oldsky_abolt_abolt_stackdur"  "奥数之怒持续时间："
+		"DOTA_Tooltip_ability_oldsky_abolt_abolt_intco"  "智力伤害系数："
+		"DOTA_Tooltip_ability_oldsky_abolt_abolt_intco_stack"  	"每层奥数之怒增加智力伤害系数："
+		"DOTA_Tooltip_ability_oldsky_abolt_abolt_stackint"  "每层奥数之怒增加智力："
+		"DOTA_Tooltip_ability_oldsky_abolt_abolt_damage"  	"基础伤害："
+		"DOTA_Tooltip_ability_oldsky_abolt_Lore"			"面对苍白之巢内无穷的诡计，只有沉稳的聪明人才能幸存。"
+		"DOTA_Tooltip_ability_oldsky_abolt_Note0"			"奥法鹰隼速度900，带有半径200的视野\n\n同时具有A杖和25级天赋后，当敌人只有2个时，依旧会释放3个奥数鹰隼打击到2个单位身上。若有3个及以上单位则会分开打击"
+		"DOTA_Tooltip_modifier_oldsky_abolt_stack"	"奥数之怒"
+		"DOTA_Tooltip_modifier_oldsky_abolt_stack_description"	"提高智力和智力伤害系数"
+
+        "DOTA_Tooltip_ability_oldsky_cshot_scepter_description"						"喜加一"
+        "DOTA_Tooltip_ability_oldsky_cshot"	"震荡光蛋"
+		"DOTA_Tooltip_ability_oldsky_cshot_Description" "天怒法师释放一个光蛋，打击%cshot_radius%范围内最近的英雄。被击中后英雄造成范围伤害和减速。\n<h1><font color='#63B8FF'>苍白脉冲</font></h1>光蛋成功击中将创造一个持续%cshot_slowdur%秒的法阵，法阵内每个敌方英雄每隔%cshot_interval%秒都会向附近其他敌方英雄释放一个光蛋。"
+		"DOTA_Tooltip_ability_oldsky_cshot_cshot_dmgrad"  "伤害范围："
+		"DOTA_Tooltip_ability_oldsky_cshot_cshot_slowdur"  "减速持续时间："
+		"DOTA_Tooltip_ability_oldsky_cshot_cshot_damage"  	"技能伤害："
+		"DOTA_Tooltip_ability_oldsky_cshot_cshot_slowpercent"  "%移速减缓："
+		"DOTA_Tooltip_ability_oldsky_cshot_Lore"			"侍奉苍白之巢王庭就会对身边的暗流涌动不加关注。必须要时刻明白周围最近的危险所在。"
+		"DOTA_Tooltip_ability_oldsky_cshot_Note0"			"光蛋速度为%cshot_speed%，拥有半径400的视野。\n法阵触发的光蛋不会再创造法阵"
+		"DOTA_Tooltip_modifier_oldsky_cshot_slow"	"震荡光蛋"
+		"DOTA_Tooltip_modifier_oldsky_cshot_slow_description"	"震得你走不动路"
+
+        "DOTA_Tooltip_ability_oldsky_aseal_scepter_description"						"喜加一"
+        "DOTA_Tooltip_ability_oldsky_aseal"	"上古封印"
+		"DOTA_Tooltip_ability_oldsky_aseal_Description" "天怒法师利用上古符文将目标单位封印，目标单位将被沉默，受到法术伤害时将承担额外伤害。\n<h1><font color='#63B8FF'>永恒封印</font></h1>奥法鹰隼与震荡光弹的伤害将使上古封印的剩余时间延长%aseal_abolt%秒，神秘之耀每次伤害使上古封印的剩余时间延长%aseal_mflare%秒。"
+		"DOTA_Tooltip_ability_oldsky_aseal_aseal_duration"  "持续时间："
+		"DOTA_Tooltip_ability_oldsky_aseal_aseal_magicred"  "%魔法伤害加深："
+		"DOTA_Tooltip_ability_oldsky_aseal_aseal_cd"  	"冷却时间："
+		"DOTA_Tooltip_ability_oldsky_aseal_Lore"			"一个神圣的咒语，无论是谁，只要被丝奎奥克的符印所包围就必然在无声的忏悔中受难。"
+		//"DOTA_Tooltip_ability_oldsky_aseal_Note0"			"即便站位重合，也只会受到一把斧头的伤害"
+		"DOTA_Tooltip_modifier_oldsky_aseal_debuff"	"上古封印"
+		"DOTA_Tooltip_modifier_oldsky_aseal_debuff_description"	"心里有苦说不出"
+
+        "DOTA_Tooltip_ability_oldsky_mflare_shard_description"						"释放神秘之耀将给予天怒法师%mflare_shardur%秒的高级相位移动状态"
+		"DOTA_Tooltip_ability_oldsky_mflare_scepter_description"						"喜加一"
+        "DOTA_Tooltip_ability_oldsky_mflare"	"神秘之耀"
+		"DOTA_Tooltip_ability_oldsky_mflare_Description" "天怒法师运用终极魔法技能，召唤精准致命的奥术力场毁灭对手。\n<h1><font color='#63B8FF'>神秘新星</font></h1>神秘之耀结束后会出现爆炸，对附近的敌人造成基于天怒法师智力值的伤害，爆炸范围也基于天怒法师的智力值而增加。"
+		"DOTA_Tooltip_ability_oldsky_mflare_mflare_radius"  "作用范围："
+		"DOTA_Tooltip_ability_oldsky_mflare_mflare_duration"  "持续时间："
+		"DOTA_Tooltip_ability_oldsky_mflare_mflare_damage"  	"总伤害："
+		"DOTA_Tooltip_ability_oldsky_mflare_mflare_intco_exdam"  "爆炸伤害智力系数："
+		"DOTA_Tooltip_ability_oldsky_mflare_mflare_mflare_intco_exrad"  	"爆炸半径扩大智力系数："
+		"DOTA_Tooltip_ability_oldsky_mflare_Lore"			"天怒一族中只有勤加修炼的法师才能将苍天塑造成这样的风暴。"
+		"DOTA_Tooltip_ability_oldsky_mflare_Note0"			"爆炸伤害和范围跟老版天怒基本一样，不过换了一种说法。"
+
+///////////////////////////////////
+
+////////////////////////////////
+//OLDSKY 老天怒 ↓
+//////////////////////////////
+
+"oldsky_abolt"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"skywrath_mage_arcane_bolt"
+		"ScriptFile"	"dl/oldsky/oldsky_abolt/oldsky_abolt.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_NONE"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"	"1"
+		"AbilityCastPoint"	"0.1"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"SpellDispellableType"	"SPELL_DISPELLABLE_YES"
+		"HasScepterUpgrade"				"1"
+		//"HasShardUpgrade"				"1"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"5.0 4.0 3.0 2.0"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"120"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"700 800 900 1000"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_skywrath_mage/skywrath_mage_arcane_bolt.vpcf"
+			"particle"	"particles/dlparticles/oldsky_abolt/green_p_skywrath_mage_arcane_bolt.vpcf"	//自改
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_skywrath_mage.vsndevts"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"abolt_speed"	"900"	//投射物速度
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"abolt_visionrad"	"200"	//投射物视野半径
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"abolt_visiondur"	"1.5"	//投射物视野持续时间
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"abolt_range"	"700 800 900 1000"	//施法距离（A杖获取第二目标用）
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"abolt_stackdur"	"7.0"	//叠层持续时间
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"abolt_intco"	"1.2"	//总智力伤害系数
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"abolt_intco_stack"	"0.2"	//每层总智力伤害系数增加
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"abolt_damage"	"40 60 80 100"	//基础伤害
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"abolt_stackint"	"2 3 4 5"	//每层增加智力
+			}
+		}
+	}
+
+	"special_bonus_oldsky_25r"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"		"1"		//判定值，并非额外C的数量
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"oldsky_abolt"
+		}
+	}
+
+	///////////////////////
+
+	"oldsky_cshot"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"skywrath_mage_concussive_shot"
+		"ScriptFile"	"dl/oldsky/oldsky_cshot/oldsky_cshot.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS | DOTA_UNIT_TARGET_FLAG_NO_INVIS | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"	"1"
+		"AbilityCastPoint"	"0"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
+		"SpellDispellableType"	"SPELL_DISPELLABLE_YES"
+		"HasScepterUpgrade"				"1"
+		//"HasShardUpgrade"				"1"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"18.0 16.0 14.0 12.0"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"95"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"1700 1800 1900 2000"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_skywrath_mage.vsndevts"
+			"particle"	"particles/units/heroes/hero_skywrath_mage/skywrath_mage_concussive_shot.vpcf"
+			"particle"	"particles/units/heroes/hero_skywrath_mage/skywrath_mage_concussive_shot_slow_debuff.vpcf"
+			"particle"	"particles/dlparticles/oldsky_cshot/green_p_skywrath_mage_concussive_shot.vpcf"	//自改
+			"particle"	"particles/dlparticles/oldsky_cshot/slow_meepo_divining_rod_poof_end_explosion_ring.vpcf"	//自改
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cshot_radius"	"1700 1800 1900 2000"	//索敌半径
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cshot_speed"	"750 800 850 900"	//投掷物速度
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cshot_visionrad"	"400"	//投射物视野半径
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cshot_dmgrad"	"350"	//伤害半径,同时也是发射环半径
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cshot_slowdur"	"4.0"	//减速持续时间，同时也是发射环持续时间
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cshot_damage"	"60 120 180 240"	//技能伤害
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cshot_slowpercent"	"30 35 40 45"	//百分比减速
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cshot_interval"	"1.0"	//发射环触发间隔
+			}
+		}
+	}
+
+	"special_bonus_oldsky_25l"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"		"1"		//判定值，并非额外光蛋的数量
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"oldsky_cshot"
+		}
+	}
+
+/////////////////////////
+
+	"oldsky_aseal"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"skywrath_mage_ancient_seal"
+		"ScriptFile"	"dl/oldsky/oldsky_aseal/oldsky_aseal.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"	"1"
+		"AbilityCastPoint"	"0.1"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
+		"SpellDispellableType"	"SPELL_DISPELLABLE_YES"
+		"HasScepterUpgrade"				"1"
+		"HasShardUpgrade"				"1"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		//"AbilityCooldown"	"14"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"80 90 100 110"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"900"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_skywrath_mage/skywrath_mage_ancient_seal_debuff.vpcf"
+			"particle"	"particles/dlparticles/oldsky_aseal/green_p_skywrath_mage_ancient_seal_debuff.vpcf"	//自改
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_skywrath_mage.vsndevts"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"aseal_duration"	"3.0 4.0 5.0 6.0"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"aseal_range"	"900"	//施法距离，供A杖索敌用
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"aseal_magicred"	"30 35 40 45"	//魔抗百分比减少
+				"LinkedSpecialBonus"	"special_bonus_oldsky_15l"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"aseal_abolt"	"0.5"	//被12技能击中延长时间，魔晶
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"aseal_mflare"	"0.1"	//被4技能击中延长时间，魔晶
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"aseal_cd"	"14.0"	//冷却时间，供天赋显示用
+				"LinkedSpecialBonus"	"special_bonus_oldsky_15r"
+
+			}
+		}
+	}
+
+	"special_bonus_oldsky_15r"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"		"-8.0"		//减CD
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"oldsky_aseal"
+		}
+	}
+
+	"special_bonus_oldsky_15l"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"		"15"		//减魔抗增加
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"oldsky_aseal"
+		}
+	}
+
+	/////////////////////////////////
+
+	"oldsky_mflare"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"skywrath_mage_mystic_flare"
+		"ScriptFile"	"dl/oldsky/oldsky_mflare/oldsky_mflare.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"	"2"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"HasScepterUpgrade"				"1"
+		//"HasShardUpgrade"				"1"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0.1"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"60 40 20"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"350 575 800"
+		"AbilityCastRange"	"1000"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_skywrath_mage.vsndevts"
+			"particle"	"particles/units/heroes/hero_skywrath_mage/skywrath_mage_mystic_flare_ambient.vpcf"
+			"particle"	"particles/econ/items/rubick/rubick_arcana/rbck_arc_skywrath_mage_mystic_flare_ambient.vpcf"    //拉比克
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mflare_radius"		"170"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"mflare_duration"		"2.4"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mflare_range"		"1000"	//A杖索敌范围
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mflare_damage"		"600 1000 1400"	//满额总伤害
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"mflare_intco_exdam"		"2.0"	//爆炸伤害总智力系数
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"mflare_intco_exrad"		"1.0"	//爆炸扩大半径总智力系数
+			}
+		}
+	}

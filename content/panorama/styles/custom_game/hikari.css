@@ -1,0 +1,22 @@
+.HikariROOT {
+    width: 100px;
+    height: 100px;
+    margin-left: 1415px;
+    margin-top: 1002px;
+}
+
+#Hikari_ID {
+    width: 90px;
+    height: 90px;
+    background-image: url("s2r://panorama/images/hud/reborn/right_flare_bg_psd.vtex");
+    background-size: 100% 100%;
+}
+
+#Hikari_ABID {
+    width: 40px;
+    height: 40px;
+    margin-left: 4px;
+    margin-top: 27px;
+    box-shadow: #2c2c2cc4 0px 0px 10px 0px;
+    border: 2px solid#000000bd;
+}

@@ -1,0 +1,516 @@
+"DOTAAbilities"
+{
+	// =================================================================================================================
+	// 霜冻之箭
+	// =================================================================================================================
+	"imba_drow_ranger_frost_arrows"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"linken/hero_drow_ranger"		
+		"AbilityTextureName"	"drow_ranger_frost_arrows"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastPoint"	"0.0"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"1"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"0"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts"
+			"particle"	"particles/units/heroes/hero_drow/drow_frost_arrow.vpcf"
+			"particle"	"particles/econ/items/drow/drow_bow_monarch/drow_frost_arrow_monarch.vpcf"
+			"particle"	"particles/generic_gameplay/generic_slowed_cold.vpcf"
+			"particle"	"particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
+			"particle"	"particles/units/heroes/hero_drow/drow_hypothermia_counter_stack.vpcf"
+			"particle"	"particles/status_fx/status_effect_frost.vpcf"
+			"particle"	"particles/units/heroes/hero_drow/drow_marksmanship_frost_arrow.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_drowranger.vsndevts"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"frost_arrows_slow"	"20 25 30 35"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"frost_arrows_hero_duration"	"1.75"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stacks_to_freeze"	"4"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"freeze_duration"	"1.75"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"bonus_damage"	"20 25 30 35"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"at_sp_slow"	"20 30 40 50"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"shard_range"	"650"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"shard_damage"	"40"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"shard_st"	"7"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"shard_hp"	"10"
+			}																								
+		}
+		"HasShardUpgrade"               "1"
+	}
+	//-霜冻之箭层数
+	"special_bonus_imba_drow_ranger_3"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"-1.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_drow_ranger_frost_arrows"
+		}
+	}	
+	// =================================================================================================================
+	// 狂风
+	// =================================================================================================================
+	"imba_drow_ranger_gust"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"drow_ranger_wave_of_silence"
+		"ScriptFile"	"linken/hero_drow_ranger"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"	"1"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0.1"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"13"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"90"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_drowranger.vsndevts"
+			"particle"	"particles/units/heroes/hero_drow/drow_silence_wave.vpcf"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wave_speed"	"2000.0"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"wave_width"	"250"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attack_slow"	"20"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"move_slow"	"20"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"silence_duration"	"3 4 5 6"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"knockback_duration"	"0.9"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"knockback_height"	"30"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"self_knockback_duration"	"0.3"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"50"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"distance"	"1150"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"max"	"3"
+				"LinkedSpecialBonus"	"special_bonus_imba_drow_ranger_6"
+			}						
+		}
+	}
+	//狂风致盲
+	"special_bonus_imba_drow_ranger_4"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"50.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_drow_ranger_gust"
+		}
+	}
+	//狂风次数
+	"special_bonus_imba_drow_ranger_6"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"2.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_drow_ranger_gust"
+		}
+	}		
+	// =================================================================================================================
+	// 疾风骤雨
+	// =================================================================================================================
+	"imba_drow_ranger_multishot"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"drow_ranger_multishot"
+		"ScriptFile"	"linken/hero_drow_ranger"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityCastPoint"	"0"
+		"AbilityCooldown"	"0.0"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_drowranger.vsndevts"
+			"particle"	"particles/units/heroes/hero_drow/drow_multishot_proj_linear_proj.vpcf"
+		}		
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"0"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"attack_interval"	"0.15"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"maxcharges"	"20"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_at"	"80 100 120 140"
+				"LinkedSpecialBonus"	"special_bonus_imba_drow_ranger_7"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attack_range"	"2"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"chargetime"	"3.5"
+				"LinkedSpecialBonus"	"special_bonus_imba_drow_ranger_5"
+			}						
+		}
+	}	
+	//疾风骤雨基础装填速度
+	"special_bonus_imba_drow_ranger_5"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"-0.5"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_drow_ranger_multishot"
+		}
+	}
+	//疾风骤雨攻击力
+	"special_bonus_imba_drow_ranger_7"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"30.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_drow_ranger_multishot"
+		}
+	}
+	//疾风骤雨穿透
+	"special_bonus_imba_drow_ranger_1"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_drow_ranger_multishot"
+		}
+	}				
+	// =================================================================================================================
+	// 射手天赋
+	// =================================================================================================================
+	"imba_drow_ranger_marksmanship"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"drow_ranger_marksmanship"
+		"ScriptFile"	"linken/hero_drow_ranger"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_drow/drow_marksmanship.vpcf"
+			"particle"	"particles/units/heroes/hero_drow/drow_marksmanship_frost_arrow.vpcf"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movement_speed_bonus"	"10"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"range_bonus"	"50 75 100"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"night_vision_bonus"	"1000"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"300"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"pure_chance"	"20 30 40"
+				"LinkedSpecialBonus"	"special_bonus_imba_drow_ranger_8"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"pure_pct"	"70 80 90"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_reduction_scepter"	"70"
+				"RequiresScepter"	"1"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"trueshot_ranged_damage"	"15 20 25"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"aura_radius"	"1200"
+			}	
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"agility_bonus"	"30 50 70"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"count"	"2"
+			}												
+		}
+		"HasScepterUpgrade"	"1"
+	}
+	//射手天赋不会失效
+	"special_bonus_imba_drow_ranger_2"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"1"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_drow_ranger_marksmanship"
+		}
+	}
+	//射手天赋几率
+	"special_bonus_imba_drow_ranger_8"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"12.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_drow_ranger_marksmanship"
+		}
+	}	
+}							

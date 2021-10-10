@@ -1,0 +1,24 @@
+.ROOT {
+      width: 100%;
+      height: 100%;
+}
+
+#TIP {
+      width: 250px;
+      height: 30px;
+      horizontal-align: left;
+      box-shadow: #00000085 0px 0px 5px 1px;
+      margin-top: 110px;
+      margin-left: -20px;
+      visibility: collapse;
+}
+
+.tip_css {
+      color: #fbfbfb;
+      text-shadow: 1px 1px 0px 2.5 #000000;
+      font-size: 20px;
+      vertical-align: center;
+      horizontal-align: center;
+      text-overflow: clip;
+      font-family: Radiance, FZKai-Z03, TH Sarabun New, YDYGO 540;
+}

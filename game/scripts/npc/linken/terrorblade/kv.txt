@@ -1,0 +1,473 @@
+"DOTAAbilities"
+{
+	// =================================================================================================================
+	//  恶魔能量
+	// =================================================================================================================
+	"imba_terrorblade_demonic_power"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"terrorblade_terror_wave"
+		"ScriptFile"	"linken/hero_terrorblade"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"	"4"
+		"AbilityCastPoint"	"0.15"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCooldown"	"90 80 70 60"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
+			"soundfile"	"soundevents/imba_soundevents.vsndevts"
+			"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_scepter.vpcf"
+			"particle"	"particles/econ/items/monkey_king/arcana/water/monkey_king_spring_arcana_water.vpcf"
+			"particle"	"particles/heros/terrorblade/terrorblade_demonic_power_truekill.vpcf"
+			"particle"	"particles/heros/terrorblade/terrorblade_demonic_power_truekill_tga.vpcf"
+		}		
+		"AbilitySpecial"
+		{
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"terror_wave_radius"	"700"
+				"LinkedSpecialBonus"	"special_bonus_imba_terrorblade_7"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"truekill"	"40"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"maxstack"	"50"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wave_radius_duration"	"1.4"
+				"LinkedSpecialBonus"	"special_bonus_imba_terrorblade_8"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"metamorphosis_duration"	"25.0"
+				"RequiresScepter"	"1"
+			}			
+		}
+		"HasScepterUpgrade"	"1"
+	}
+
+
+
+	// 	+500 terror wave radius
+	"special_bonus_imba_terrorblade_7"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"500.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_terrorblade_demonic_power"
+		}
+	}
+
+	// 	+1.6s terror wave duration
+	"special_bonus_imba_terrorblade_8"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1.6"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_terrorblade_demonic_power"
+		}
+	}
+
+	"special_bonus_imba_terrorblade_3"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"50.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_terrorblade_demonic_power"
+		}
+	}	
+
+	// =================================================================================================================
+	// Terrorblade: 倒影
+	// =================================================================================================================
+	"imba_terrorblade_reflection"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"terrorblade_reflection"
+		"ScriptFile"	"linken/hero_terrorblade.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+		"FightRecapLevel"	"1"
+		"MaxLevel"	"4"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0.3"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"22 20 18 16"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
+			"particle"	"particles/heros/chaos_knight/chaos_knight_phantasm_attack.vpcf"
+			"particle"	"particles/units/heroes/hero_skeletonking/wraith_king_vampiric_aura_lifesteal.vpcf"
+			"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_reflection_slow.vpcf"
+			"particle"	"particles/status_fx/status_effect_terrorblade_reflection.vpcf"
+		}		
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"50"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"illusion_duration"	"4 5 6 7"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"illusion_outgoing"	"100"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"move_slow"	"35"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"range"	"575"
+				"LinkedSpecialBonus"	"special_bonus_imba_terrorblade_4"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"lifesteal"	"2"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"distance"	"700"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_YES"
+		"AbilitySound"	"Hero_Terrorblade.Reflection"
+	}
+
+	// -5 Reflection cd
+	"special_bonus_imba_terrorblade_1"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"-5"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_terrorblade_reflection"
+		}
+	}
+
+	// +20% Reflection range
+	"special_bonus_imba_terrorblade_4"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"150"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_terrorblade_reflection"
+		}
+	}	
+
+	// =================================================================================================================
+	// Terrorblade: 魔化
+	// =================================================================================================================
+	"imba_terrorblade_metamorphosis"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"terrorblade_metamorphosis"
+		"ScriptFile"	"linken/hero_terrorblade.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"	"4"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0.0"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"110"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"100"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"transformation_time"	"0.35"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"base_attack_time"	"1.5"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_range"	"400"
+				"LinkedSpecialBonus"	"special_bonus_imba_terrorblade_2"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_damage"	"40 60 80 100"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"metamorph_aura_radius"	"1200"
+			}
+
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"40 44 48 52"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"armor"	"1"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"t1_damage"	"3"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"t1_radius"	"300"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_NO"
+		"AbilitySound"	"Hero_Terrorblade.Metamorphosis"
+	}
+
+	// +200 Metamorphosis Attack Range
+	"special_bonus_imba_terrorblade_2"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"200"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_terrorblade_metamorphosis"
+		}
+	}
+
+	// -30 Metamorphosis cd
+	"special_bonus_imba_terrorblade_5"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"-30"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_terrorblade_metamorphosis"
+		}
+	}
+
+	// =================================================================================================================
+	// Terrorblade: 魂断
+	// =================================================================================================================
+	"imba_terrorblade_sunder"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"terrorblade_sunder"
+		"ScriptFile"	"linken/hero_terrorblade.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"	"2"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"MaxLevel"	"3"
+		"AbilityCastPoint"	"0.15"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
+		"AnimationPlaybackRate"	"2"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
+			"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_sunder.vpcf"
+		}		
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"80.0 60.0 40.0"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"100 50 0"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"475"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hit_point_minimum"	"200 100 1"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"t2_duration"	"5.0"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"t2_int"	"2.0"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cast_range"	"475"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"metamorphosis_duration"	"12.0"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cd"	"30.0"
+			}									
+		}
+		"HasShardUpgrade"               "1"
+		"AbilitySound"	"Hero_Terrorblade.Sunder.Target"
+	}
+	// 	-0.3s terror wave delay
+	"special_bonus_imba_terrorblade_6"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"200.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_terrorblade_sunder"
+		}
+	}		
+}	

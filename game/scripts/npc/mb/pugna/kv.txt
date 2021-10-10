@@ -1,0 +1,538 @@
+"DOTAAbilities"
+{
+	// =================================================================================================================
+	// Pugna's Nether Blast
+	// =================================================================================================================
+	"imba_pugna_nether_blast"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_lua"
+		"AbilityTextureName"	"pugna_nether_blast"
+		"ScriptFile"			"mb/hero_pugna.lua"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"	"1"
+		"AbilityCastPoint"	"0.2"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"5.0"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"85 105 125 145"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"550"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
+			"particle"	"particles/units/heroes/hero_pugna/pugna_netherblast_pre.vpcf"
+			"particle"	"particles/hero/pugna/nether_blast_debuff.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"80 120 160 200"
+				"LinkedSpecialBonus"	"special_bonus_imba_pugna_5"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"secondary_damage"	"30 40 50 60"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"secondary_delay"	"0.9"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"275 325 375 425"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"6"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"secondary_blasts"	"3 4 5 6"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"center_radius"	"30"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"magic_amp_tooltip"	"15"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"slow_tooltip"	"10"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"building_pct"	"25"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_YES"
+	}
+
+	// =================================================================================================================
+	// Pugna's Decrepify
+	// =================================================================================================================
+	"imba_pugna_decrepify"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"pugna_decrepify"
+		"ScriptFile"	"mb/hero_pugna.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastPoint"	"0"
+
+		"HasShardUpgrade"               "1"
+
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"12 10 8 6"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"60"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"700"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+			"particle"	"particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
+			"particle"	"particles/units/heroes/hero_pugna/pugna_netherblast_pre.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"magic_amp"	"30 40 50 60"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"slow"	"30 40 50 60"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"3.5"
+				"LinkedSpecialBonus"	"special_bonus_imba_pugna_4"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"blast_damage"	"30 35 40 45"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"structure_damage"	"15"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"blast_delay"	"0.9"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"blast_radius"	"500"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"shard_count"	"2"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_YES"
+	}
+
+	// =================================================================================================================
+	// Pugna's Nether Ward
+	// =================================================================================================================
+	"imba_pugna_nether_ward"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"pugna_nether_ward"
+		"ScriptFile"	"mb/hero_pugna.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
+		"FightRecapLevel"	"1"
+		"AbilityCastPoint"	"0.2"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"60.0 50.0 40.0 30.0"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"80"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"500"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_pugna/pugna_ward_ambient.vpcf"
+			"particle"	"particles/econ/items/pugna/pugna_ward_ti5/pugna_ward_attack_heavy_ti_5.vpcf"
+			"particle"	"particles/econ/items/pugna/pugna_ward_ti5/pugna_ward_attack_medium_ti_5.vpcf"
+			"particle"	"particles/econ/items/pugna/pugna_ward_ti5/pugna_ward_attack_light_ti_5.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+			"model"	"models/heroes/pugna/pugna_ward.vmdl"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"1600"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"mana_multiplier"	"1.25 1.5 1.75 2.0"
+				"LinkedSpecialBonus"	"special_bonus_imba_pugna_5"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"ward_health"	"20 24 28 32"
+				"LinkedSpecialBonus"	"special_bonus_imba_pugna_2"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"spell_damage"	"4"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"35"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mana_regen_tooltip"	"1"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_NO"
+	}
+
+	//=================================================================================================================
+	// Pugna: Nether Ward
+	//=================================================================================================================
+	"pugna_nether_ward"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"					"5188"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"		
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"				"1"
+		"AbilitySound"					"Hero_Pugna.NetherWard"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.2 0.2 0.2 0.2"
+		"AbilityCastRange"				"150"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"35.0 35.0 35.0 35.0"
+		"AbilityDuration"				"18 22 26 30"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"80 80 80 80"		
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"1600"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"base_damage"				"50 75 100 125"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"mana_multiplier"			"1.5 1.8 2.1 2.4"
+				"LinkedSpecialBonus"		"special_bonus_unique_pugna_3"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"mana_regen"				"-1.5 -1.75 -2.0 -2.25"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"attacks_to_destroy_tooltip"				"4 4 4 4"
+				"LinkedSpecialBonus"		"special_bonus_unique_pugna_6"
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+	}
+
+	// =================================================================================================================
+	// Pugna's Life Drain
+	// =================================================================================================================
+	"imba_pugna_life_drain"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"pugna_life_drain"
+		"ScriptFile"	"mb/hero_pugna.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE | DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
+		"CastFilterRejectCaster"	"1"
+		"FightRecapLevel"	"1"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityCastPoint"	"0"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"22.0"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"125 175 225"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"900"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_pugna/pugna_life_drain.vpcf"
+			"particle"	"particles/units/heroes/hero_pugna/pugna_life_give.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"health_drain"	"200 280 360"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"health_drain_scepter"	"5"
+				"RequiresScepter"	"1"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"break_range"	"1000 1100 1200"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"tick_rate"	"0.5"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cooldown"	"22.0"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_NO"
+		"HasScepterUpgrade"	"1"
+	}
+
+	// =================================================================================================================
+	// Pugna's Life Drain Cancel
+	// =================================================================================================================
+	"imba_pugna_life_drain_end"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"pugna_life_drain_end"
+		"ScriptFile"	"mb/hero_pugna.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ALLIES_YES"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"	"1"
+		"AbilityCastPoint"	"0.0"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"0.5"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"0"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"0"
+	}
+
+	// NO VISION NEED FOR LIFE DRAIN
+	"special_bonus_imba_pugna_1"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"1"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_pugna_life_drain"
+		}
+	}
+
+	// +{s:value} pugna nether ward health
+	"special_bonus_imba_pugna_2"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"4"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_pugna_nether_ward"
+		}
+	}
+
+	// +{s:value}% pugna life drain health recovery
+	"special_bonus_imba_pugna_3"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"35"
+			}
+		}
+	}
+
+
+	// +{s:value}%  pugna decrepify duration
+	"special_bonus_imba_pugna_4"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1.5"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_pugna_decrepify"
+		}
+	}
+
+	// +{s:value}% pugna nether blast damage
+	"special_bonus_imba_pugna_5"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"160"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_pugna_nether_blast"
+		}
+	}
+}		

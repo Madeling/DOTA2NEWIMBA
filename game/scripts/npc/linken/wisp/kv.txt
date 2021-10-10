@@ -1,0 +1,551 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// 小精灵: 羁绊
+	//=================================================================================================================
+	"imba_wisp_tether"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"linken/hero_wisp.lua"
+		"AbilityTextureName"			"wisp_tether"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ALLIES_YES"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"AbilityCooldown"				"12.0"
+		"AbilityManaCost"				"0"
+		"AbilityCastRange"				"1800"
+
+		"precache"
+		{
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_wisp.vsndevts"
+			"particle"					"particles/units/heroes/hero_wisp/wisp_tether.vpcf"
+			"particle"					"particles/units/heroes/hero_wisp/wisp_tether_hit.vpcf"
+			"particle"					"particles/units/heroes/hero_wisp/wisp_tether_slow.vpcf"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"900"
+				"LinkedSpecialBonus"	"special_bonus_imba_wisp_8"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"movespeed"					"12 16 20 24"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"latch_distance"			"700"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"latch_speed"				"1000"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"tether_heal_amp"			"0.6 0.9 1.2 1.5"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"slow"						"-100"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"stun_duration"				"0.75"
+			}
+			"08"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"destroy_tree_radius"		"350"
+			}
+			"09"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"tether_heal_damage"		"1.0"
+				"LinkedSpecialBonus"	"special_bonus_imba_wisp_7"
+			}
+			"10"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"att_add"					"120.0"
+				"LinkedSpecialBonus"	"special_bonus_imba_wisp_7"
+			}						
+		}
+		"HasScepterUpgrade"	"1"
+	}
+	//-羁绊冷却
+	"special_bonus_imba_wisp_1"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"-5.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_wisp_tether"
+		}
+	}	
+	//-羁绊攻击
+	"special_bonus_imba_wisp_6"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_wisp_tether"
+		}
+	}
+	//-羁绊伤害
+	"special_bonus_imba_wisp_7"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"0.3"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_wisp_tether"
+		}
+	}
+
+	//+羁绊断裂距离
+	"special_bonus_imba_wisp_8"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"500.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_wisp_tether"
+		}
+	}
+
+	//=================================================================================================================
+	// 电荷幽魂
+	//=================================================================================================================
+	"imba_wisp_spirits"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"linken/hero_wisp.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"AbilitySound"					"Hero_Wisp.Spirits.Cast"
+		"AbilityTextureName"			"wisp_spirits"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0"
+  		"AbilityCastAnimation"			"ACT_INVALID"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"26.0 24.0 22.0 20.0"
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"120 130 140 150"
+		
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_wisp.vsndevts"
+			"particle"					"particles/units/heroes/hero_wisp/wisp_guardian_.vpcf"
+			"particle"                  "particles/units/heroes/hero_wisp/wisp_guardian_disarm.vpcf"
+			"particle"                  "particles/units/heroes/hero_wisp/wisp_guardian_silence.vpcf"
+			"particle"					"particles/units/heroes/hero_wisp/wisp_guardian_explosion.vpcf"
+			"particle"					"particles/units/heroes/hero_wisp/wisp_guardian_explosion_small.vpcf"
+		}
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage"					"50 75 100 125"
+				"LinkedSpecialBonus"	"special_bonus_imba_wisp_3"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"duration"					"8 9 10 11"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"dis_duration"				"0.5"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"major_axis"				"800.0"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"minor_axis"				"150.0"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"spirits_radius"				"100.0"
+			}									
+		}
+	}	
+	//幽魂最大距离
+	"special_bonus_imba_wisp_2"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"300.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_wisp_spirits"
+		}
+	}
+	//幽魂伤害
+	"special_bonus_imba_wisp_3"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"50.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_wisp_spirits"
+		}
+	}	
+	//=================================================================================================================
+	// 超载
+	//=================================================================================================================
+	"imba_wisp_overcharge"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"linken/hero_wisp.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AbilityTextureName"			"wisp_overcharge"
+		"HasScepterUpgrade"				"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0 0 0 0"
+   		"AbilityCastAnimation"			"ACT_INVALID"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"22 20 18 16"
+
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_wisp.vsndevts"
+			"particle"					"particles/units/heroes/hero_wisp/wisp_overcharge.vpcf"
+		}
+
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"heal"						"0.8 1.0 1.2 1.4"
+
+			}
+			"02"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"mana"						"1.4 1.6 1.8 2.0"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"reduce_damage"				"15 20 25 30"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"att_sp"					"50 80 110 140"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"duration"					"8"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"shard_add"					"800"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"shard_sp"					"80"
+			}												
+		}
+		"HasShardUpgrade"               "1"
+		
+	}
+	//=================================================================================================================
+	// 元素领域
+	//=================================================================================================================
+	"imba_wisp_element_territory"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"linken/hero_wisp.lua"
+		"AbilityTextureName"			"wisp_spirits_in"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"AbilityCooldown"				"90"
+		"AbilityManaCost"				"200 300 400"
+		"AbilityCastRange"				"400"
+
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"600 700 800"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"duration"					"8 10 12"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"cd"						"0.8 0.7 0.6"
+			}							
+		}
+	}		
+	//-冷却
+	"special_bonus_imba_wisp_5"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"-30.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_wisp_element_territory"
+		}
+	}
+
+	//=================================================================================================================
+	// 降临
+	//=================================================================================================================
+	"imba_wisp_relocate"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"linken/hero_wisp.lua"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"FightRecapLevel"				"1"
+		"AbilitySound"					"Hero_Wisp.Relocate"
+		"AbilityTextureName"			"wisp_relocate"
+		"AbilityCooldown"				"90 80 70"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.8"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"175"
+		
+		
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_wisp.vsndevts"
+			"particle"					"particles/units/heroes/hero_wisp/wisp_relocate_channel.vpcf"
+			"particle"					"particles/units/heroes/hero_wisp/wisp_relocate_marker.vpcf"
+			"particle"					"particles/units/heroes/hero_wisp/wisp_relocate_marker_endpoint.vpcf"
+			"particle"					"particles/units/heroes/hero_wisp/wisp_relocate_teleport.vpcf"
+			"particle"					"particles/units/heroes/hero_wisp/wisp_relocate_timer.vpcf"
+		}
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"02"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"return_time"				"12.0"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"destroy_tree_radius"		"350"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"trigger_duration"			"3"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"duration"					"30"
+			}			
+		}
+	}
+	//-冷却
+	"special_bonus_imba_wisp_4"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"-20.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_wisp_relocate"
+		}
+	}
+
+
+	//=================================================================================================================
+	// Wisp: Tether
+	//=================================================================================================================
+	"imba_wisp_tether_break"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"linken/hero_wisp.lua"
+		"AbilityTextureName"			"wisp_tether_break"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"						"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0 0 0 0"
+ 		"AbilityCastAnimation"			"ACT_INVALID"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"1.0"
+	}
+}	

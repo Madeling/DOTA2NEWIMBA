@@ -1,0 +1,100 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/player.js" />
+		<include src="file://{resources}/scripts/custom_game/utils.js" />
+		<include src="file://{resources}/scripts/custom_game/util.js" />
+	</scripts>
+        <styles>
+                <include src="file://{resources}/styles/custom_game/player.css"/>
+        </styles>
+    <Panel class="Player_ROOT" hittest="false">
+
+        <Panel id="Custom_B_ROOT" hittest="false">
+                   <Panel  class="B_ROOT" hittest="false">
+                            <Button id="RDSK_BG" class="B_Data" hittest="true" onactivate="OnRDSK();"/>
+                            <Label class="desc"  text="随机技能列表"/>
+                    </Panel>
+                    <Panel  class="B_ROOT"  hittest="false">
+                            <Button id="Player_BG" class="B_Data" hittest="true" onactivate="SendMSG();" onmouseover="GetPlayerData(true);" onmouseout="GetPlayerData(false);"/>
+                            <Label class="desc"  text="#VDATA"/>
+                    </Panel>
+                   <Panel  class="B_ROOT" hittest="false">
+                            <Button id="Veteran_BG" class="B_Data" hittest="true" onactivate="OnVeteran();"/>
+                           <Label class="desc"  text="#VReward"/>
+                    </Panel>
+        </Panel>
+
+
+                    <Panel id="veteran_data_ROOT" hittest="false" >
+                            <Button class="close_Veteran" hittest="true" onactivate="HideVeteran(false);" />
+                    <Panel id="veteran_top_Button" hittest="false" >
+                            <Button  id="button_Veteran0"  class="button_Veteran_class button_Veteran_class1" hittest="true" onactivate="ButtonVeteran(0);" >
+                            <Label class="button_Veteran_text"  text="基础奖励"/>
+                            </Button>
+                            <Button  id="button_Veteran1"  class="button_Veteran_class" hittest="true"  onactivate="ButtonVeteran(1);">
+                             <Label class="button_Veteran_text"  text="光环特效（暂无）"/>
+                            </Button>
+                            <Button  id="button_Veteran2"  class="button_Veteran_class" hittest="true" onactivate="ButtonVeteran(2);" >
+                             <Label class="button_Veteran_text"  text="物品特效（暂无）"/>
+                            </Button>
+                            <Button  id="button_Veteran3"  class="button_Veteran_class" hittest="true" onactivate="ButtonVeteran(3);" >
+                             <Label class="button_Veteran_text"  text="特殊奖励（暂无）"/>
+                            </Button>
+                     </Panel>
+                    <Panel id="veteran0" class="veteran_bgc" hittest="false" >
+                            <Panel  class="veteran0_1_bgc" >
+                                <Label class="veteran_text"  text="#breward"/>
+                            </Panel>
+                    </Panel>
+                    <Panel id="veteran1" class="veteran_bgc" hittest="false" >
+
+
+                     </Panel>
+                    <Panel id="veteran2" class="veteran_bgc"  hittest="false" >
+
+                     </Panel>
+                    <Panel id="veteran3" class="veteran_bgc"  hittest="false" >
+
+                     </Panel>
+                    </Panel>
+
+
+
+
+            <Panel id="player_data_ROOT"   hittest="false" >
+                        <Panel id="data_ROOT"   hittest="false" >
+                                <Image id="player_LV_BG" >
+                                                <Image id="player_LV" />
+                                </Image>
+                                    <DOTAAvatarImage  class="steamAvatar" steamid="local" />
+                                    <DOTAUserName    class="data_TEXT data_TEXT2" steamid="local"/>
+                                    <Label class="data_TEXT" id="data0" text="#VLV"/>
+                                    <Label class="data_TEXT" id="data1" text="加载中！等会再看"/>
+                                    <Label class="data_TEXT" id="data2" text="加载中！等会再看"/>
+                                    <Label class="data_TEXT" id="data3" text="加载中！等会再看"/>
+                                    <Label class="data_TEXT" id="data4" text="加载中！等会再看"/>
+                                    <Label class="data_TEXT" id="data5" text="加载中！等会再看"/>
+                                    <Label class="data_TEXT" id="data6" text="加载中！等会再看"/>
+                                    <Label class="data_TEXT" id="data7" text="加载中！等会再看"/>
+                                    <Label class="data_TEXT" id="data8" text="加载中！等会再看"/>
+                                    <Label class="data_TEXT" id="data9" text="加载中！等会再看"/>
+                                    <Label class="data_TEXT1 data_TEXT"  text="#LV_TIP"/>
+                          </Panel>
+            </Panel>
+        <!--///-->
+
+
+            <Panel id="random_skills_ROOT"  hittest="false" >
+                        <Button class="close_rd" hittest="true" onactivate="HideRDSK();" />
+                         <Label id="T1"  class="skills_title_TEXT"  text="普通英雄随机技能池(滑动查看)" hittest="false" />
+                          <Label id="T2" class="skills_title_TEXT"  text="技能>=6的英雄随机技能池(滑动查看)" hittest="false" />
+                          <Panel id="random_skills_BG"  hittest="false" >
+                                <Panel id="random_skills_1" class="skills" hittest="false" >
+                                </Panel>
+                                <Panel id="random_skills_2" class="skills"  hittest="false" >
+                                </Panel>
+                         </Panel>
+            </Panel>
+
+    </Panel>
+</root>

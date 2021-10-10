@@ -1,0 +1,25 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: 小精灵
+	//=================================================================================================================
+	"npc_dota_hero_wisp"
+	{
+		"Ability1"		"imba_wisp_tether"
+		"Ability2"		"imba_wisp_spirits"
+		"Ability3"		"imba_wisp_overcharge"		
+		"Ability4"		"imba_wisp_element_territory"
+		"Ability5"		"generic_hidden"
+		"Ability6"		"imba_wisp_relocate"
+		"Ability7"		"imba_wisp_tether_break"
+		
+		"Ability10"		"special_bonus_imba_wisp_1"
+		"Ability11"		"special_bonus_imba_wisp_2"
+		"Ability12"		"special_bonus_imba_wisp_3"
+		"Ability13"		"special_bonus_imba_wisp_7"
+		"Ability14"		"special_bonus_imba_wisp_5"
+		"Ability15"		"special_bonus_imba_wisp_8"
+		"Ability16"		"special_bonus_imba_wisp_6"
+		"Ability17"		"special_bonus_imba_wisp_4"
+	}
+}			

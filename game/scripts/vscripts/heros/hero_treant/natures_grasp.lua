@@ -1,0 +1,2 @@
+natures_grasp=class({})
+

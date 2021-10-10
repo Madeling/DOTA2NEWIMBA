@@ -1,0 +1,637 @@
+
+//////////////////
+
+CreateTalents("npc_dota_hero_mars")
+
+///////////////////////////
+
+"npc_dota_hero_mars"
+	{
+        "special_bonus_dlmars_10r"{}
+         "special_bonus_dlmars_10l"{}
+          "special_bonus_dlmars_15r"{}
+           "special_bonus_dlmars_15l"{}
+            "special_bonus_dlmars_20r"{}
+             "special_bonus_dlmars_20l"{}
+              "special_bonus_dlmars_25r"{}
+               "special_bonus_dlmars_25l"{}
+	}
+
+/////////////////////////
+
+"npc_dota_hero_mars"
+	{
+		"Ability1"		"aghsfort_mars_spear"
+		"Ability2"		"dlmars_rebuke"
+		"Ability3"		"dlmars_bulwark"
+		"Ability4"		"generic_hidden"
+		"Ability5"		"generic_hidden"
+		"Ability6"		"mars_arena_of_blood"
+		"Ability10"		"special_bonus_strength_20"					//10r
+		"Ability11"		"special_bonus_armor_10"					//10l
+		"Ability12"		"special_bonus_dlmars_15r"			//15r360冲击盾 距离
+		"Ability13"		"special_bonus_dlmars_15l"								//15l360度环形炖鸡
+		"Ability14"		"special_bonus_dlmars_20r"		//20r流弹附加基础力量值的纯粹伤害
+		"Ability15"		"special_bonus_dlmars_20l"		//20l+1流弹目标
+		"Ability16"		"special_bonus_attack_damage_120"	//25r
+		"Ability17"		"special_bonus_unique_mars_arena_of_blood_hp_regen"	//25l原版天赋大招回血
+
+		"Ability18"		"mars_bulwark"	//里技能
+
+		"Ability19"	"aghsfort_special_mars_spear_multiskewer"	//迷宫矛
+		"Ability20"	"aghsfort_special_mars_spear_impale_explosion"
+		"Ability21"	"aghsfort_special_mars_spear_burning_trail"
+
+		"Ability25" "dlmars_controller"	//控制器学习迷宫矛
+	}
+
+/////////////////////////
+
+///////////////////////////////
+// MARS ↓
+//////////////////////////////
+
+"dlmars_bulwark"    //护身甲盾，龟壳流弹
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"dl/dlmars/dlmars_bulwark/dlmars_bulwark.lua"
+		"AbilityTextureName"			"mars_bulwark"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+		"precache"
+		{
+			//"particle"	"particles/units/heroes/hero_mars/mars_shield_of_mars.vpcf"
+			//"particle"	"particles/units/heroes/hero_mars/mars_shield_of_mars_small.vpcf"
+		}
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
+
+		// Special
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"	//表技能数据，只对流弹角度判断有用，反弹角度为这个值的两倍。原版里技能数值去override改
+				"bangbangangle"					"80"
+			}
+			"02"	//反弹概率	唯一有用的
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bangbangchance"					"100 100 100 100"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bangbangspeed"					"2000"	//投射物速度
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bangbangradius"					"2000"	//反弹索敌半径
+			}
+            "05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"physical_damage_reduction"		"40 50 60 70"	//tooltip，单纯显示用，实际数值去override里调
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"physical_damage_reduction_side"	"15 25 35 45"	//tooltip，单纯显示用，实际数值去override里调
+			}
+		}
+	}
+
+	"special_bonus_dlmars_20r"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"		"1"		//流弹附加力量值纯粹伤害，此值无用
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"dlmars_bulwark"
+		}
+	}
+
+	"special_bonus_dlmars_20l"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"		"1"		//+1流弹目标，此值无用
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"dlmars_bulwark"
+		}
+	}
+
+	////////////////////////////////////////
+
+	"dlmars_rebuke"     //神之遣戒，盾击滑行
+	{
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"dl/dlmars/dlmars_rebuke/dlmars_rebuke.lua"
+		"AbilityTextureName"			"mars_gods_rebuke"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_mars.vsndevts"
+			"particle"	"particles/units/heroes/hero_mars/mars_shield_bash.vpcf"
+			"particle"	"particles/units/heroes/hero_mars/mars_shield_bash_crit.vpcf"
+			"particle"	"particles/units/heroes/hero_magnataur/magnataur_skewer.vpcf"
+		}
+
+		// Ability General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+
+		// Ability Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.2"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+
+		// Ability Resource
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"16 14 12 10"
+		"AbilityManaCost"				"55 60 65 70"
+
+		// Damage
+		//-------------------------------------------------------------------------------------------------------------
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"rebuke_radius"					"500"	//打击半径
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"rebuke_angle"						"140"	//打击角度，左右共140
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"rebuke_damage"					"35 50 75 100"	//额外攻击力
+			}
+			"06"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"rebuke_crit"				"150 200 250 300"		//暴击倍率
+			}
+			"07"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"rebuke_rushspeed"			"1000"		//冲击盾 速度
+			}
+			"08"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"rebuke_rushrange"			"360 420 480 540"	//冲击盾 距离
+			}
+			"09"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"rebuke_tree"				"200"		//沿途破树半径
+			}
+			"10"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"rebuke_kbdis"				"150"		//击退距离
+			}
+			"11"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"rebuke_kbdur"				"0.2"				//击飞时间
+			}
+			"12"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"rebuke_debuffdur"			"2.4"		//减速持续时间，强制面向时间为此值一半
+			}
+		}
+	}
+
+	"special_bonus_dlmars_15r"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"		"1"		//360冲击盾 距离，此值无用
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"dlmars_rebuke"
+		}
+	}
+
+	"special_bonus_dlmars_15l"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"		"1"		//360环形炖鸡，此值无用
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"dlmars_rebuke"
+		}
+	}
+
+	////////////////////////////////
+
+	"aghsfort_mars_spear"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityTextureName"            "mars_spear"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+        "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"
+        "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
+        "SpellDispellableType"          "SPELL_DISPELLABLE_YES_STRONG"
+        "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "FightRecapLevel"               "1"
+        "AbilitySound"                  "Hero_Mars.Spear.Cast"
+		"HasShardUpgrade"               "1"
+
+        // Casting
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCastPoint"              "0.25"
+
+        // Time
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"               "14.0"
+
+        // Cost
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityManaCost"               "100"
+
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "damage"                "100 175 250 325"
+                "LinkedSpecialBonus"    "special_bonus_unique_mars_spear_bonus_damage"
+            }
+            "02"
+            {
+                "var_type"          "FIELD_FLOAT"
+                "spear_speed"       "1400"
+            }
+            "03"
+            {
+                "var_type"          "FIELD_INTEGER"
+                "spear_width"       "125"
+            }
+            "04"
+            {
+                "var_type"          "FIELD_INTEGER"
+                "spear_vision"      "300"
+            }
+            "05"
+            {
+                "var_type"          "FIELD_INTEGER"
+                "spear_range"       "900 1000 1100 1200"
+            }
+            "06"
+            {
+                "var_type"              "FIELD_FLOAT"
+                "activity_duration"     "1.7"
+            }
+            "07"
+            {
+                "var_type"          "FIELD_FLOAT"
+                "stun_duration"     "1.6 2.0 2.4 2.8"
+                "LinkedSpecialBonus"    "special_bonus_unique_mars_spear_stun_duration"
+            }
+            "08"
+            {
+                "var_type"              "FIELD_FLOAT"
+                "knockback_duration"    "0.25"
+            }
+            "09"
+            {
+                "var_type"              "FIELD_FLOAT"
+                "knockback_distance"    "75"
+            }
+			"10"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "skewer_count"          "7"			//tooltip显示用
+            }
+             "11"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "explosion_damage"      "400"		//tooltip显示用
+            }
+			"12"
+            {
+                "var_type"              "FIELD_FLOAT"
+                "trail_duration"                  "4"	//tooltip显示用
+            }
+        }
+        "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_5"
+    }
+
+	"aghsfort_special_mars_spear_multiskewer"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "mars_spear"
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "value"                  "7"
+            }
+        }
+	}
+
+	"aghsfort_special_mars_spear_impale_explosion"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "mars_spear"
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "value"                  "400"
+            }
+        }
+    }
+
+	"aghsfort_special_mars_spear_burning_trail"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "mars_spear"
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"              "FIELD_FLOAT"
+                "trail_duration"                  "4"
+            }
+            "02"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "damage_pct"                  "15"
+            }
+            "03"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "path_radius"                  "150"
+            }
+              "04"
+            {
+                "var_type"              "FIELD_FLOAT"
+                "linger_duration"                  "0.2"
+            }
+            "05"
+            {
+                "var_type"              "FIELD_FLOAT"
+                "burn_interval"                  "0.5"
+            }
+        }
+    }
+
+	"dlmars_controller"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"book_of_intelligence"
+		"ScriptFile"	"dl/dlmars/dlmars_controller/dlmars_controller.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN"	//DOTA_ABILITY_BEHAVIOR_HIDDEN
+		"MaxLevel"	"1"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+
+		}
+	}
+
+
+/////////////////////////////////
+
+
+
+
+/////////////////////////////
+//	里技能KV覆盖override
+///////////////////////////////
+"mars_bulwark"
+	{
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_HIDDEN"		//隐藏里技能
+        "HasScepterUpgrade"			"1"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"physical_damage_reduction"		"40 50 60 70"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"forward_angle"					"160"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"physical_damage_reduction_side"	"15 25 35 45"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"side_angle"					"240"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"redirect_chance"				"100"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"redirect_range"				"800"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"redirect_speed_penatly"				"20"
+			}
+
+			// Scepter here
+            "08"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "soldier_count"                  "5" //经测试，低于5不生效，高于5多出的兵不生效，只能等于5
+            }
+            "09"
+            {
+                "var_type"              "FIELD_INTEGER"
+                "soldier_offset"                  "500"
+            }
+		}
+	}
+
+///////////////////////////
+
+//////////////////////////
+		//DLMARS 马尔斯
+		//////////////////////////
+
+		"DOTA_Tooltip_ability_special_bonus_dlmars_15r"	"+360冲击盾距离"
+		"DOTA_Tooltip_ability_special_bonus_dlmars_15l"	"360度环形盾击"
+		"DOTA_Tooltip_ability_special_bonus_dlmars_20r"	"流弹附加基础力量值的纯粹伤害"
+		"DOTA_Tooltip_ability_special_bonus_dlmars_20l"	"+1流弹打击目标"
+		"DOTA_Tooltip_ability_special_bonus_dlmars_20l_Description"	"当范围内只有一个目标则不会打出两发流弹"
+
+        "DOTA_Tooltip_ability_dlmars_rebuke"                   			"神之谴戒"
+		"DOTA_Tooltip_ability_dlmars_rebuke_Description"       			"玛尔斯举起它的战盾粉碎前方的敌人，将他们击退并且基于自身攻击力造成致命一击伤害。攻击时基础攻击力有所提升,具有克敌机先效果\n<font color='#FF7800'>直视我，崽种！：</font>被盾击的敌人会强制短暂地面向马尔斯，之后大幅降低转身和移动速度，速度降低持续%rebuke_debuffdur%秒.
+		<font color='#FF7800'>冲击盾：</font>开启自动施法后，马尔斯会向目标点冲刺最远%rebuke_rushrange%码，将路径上的敌人吸在盾牌上，然后发动毁灭一击."
+		"DOTA_Tooltip_ability_dlmars_rebuke_Lore"							"出其不意，吓人一跳"
+		"DOTA_Tooltip_ability_dlmars_rebuke_Note1"			"<font color='#FFFF00'> ● 技能设计者:毒瘤无所谓输赢</font>"
+		"DOTA_Tooltip_ability_dlmars_rebuke_Note0"						"此技能打击角度%rebuke_angle%，会造成打断。但魔法免疫单位只会受到伤害和击退，不受打断等其他特效影响。\n 冲击盾无法释放环形盾击，不享受此技能给予的攻击力和暴击加成，冲击距离不受施法距离加成"
+        "DOTA_Tooltip_ability_dlmars_rebuke_rebuke_radius"					"打击范围："
+		"DOTA_Tooltip_ability_dlmars_rebuke_rebuke_crit"					"%暴击倍率："
+		"DOTA_Tooltip_ability_dlmars_rebuke_rebuke_damage"		"额外攻击力："
+        "DOTA_Tooltip_modifier_dlmars_rebuke_lookatme"					"直视我，崽种！"
+		"DOTA_Tooltip_modifier_dlmars_rebuke_lookatme_Description"		"动弹不得"
+        "DOTA_Tooltip_modifier_dlmars_rebuke_slow"					"直视我，崽种！"
+		"DOTA_Tooltip_modifier_dlmars_rebuke_slow_Description"		"腿都吓软了"
+
+        "DOTA_Tooltip_ability_dlmars_bulwark"                   				"护身甲盾"
+		"DOTA_Tooltip_ability_dlmars_bulwark_Description"       				"每当受到正面和侧面的攻击时，马尔斯运用他巨大的战盾来格挡部分伤害，当主动使用技能时，还有100%几率吸引本该飞向友军的远程攻击\n
+        <font color='#FF7800'>流弹：</font>当主动使用此技能时，马尔斯会运用他娴熟的持盾技巧，将所有<font color='#FF7800'>来自正面的远程攻击（正面160°）</font>弹向视野内距马尔斯最近的敌方单位，造成此攻击<font color='#FF7800'>未经减免的物理伤害</font>"
+		"DOTA_Tooltip_ability_dlmars_bulwark_Lore"								"马尔斯非常持盾"
+		"DOTA_Tooltip_ability_dlmars_bulwark_Note2"			"<font color='#FFFF00'> ● 技能设计者:毒瘤无所谓输赢</font>"
+		"DOTA_Tooltip_ability_dlmars_bulwark_Note0"							"反弹并不会使攻击无效化，马尔斯依旧会受到攻击的伤害和效果"
+		"DOTA_Tooltip_ability_dlmars_bulwark_Note1"							"流弹并不附带攻击的任何攻击特效和法球效果，也不计算攻击附带的魔法和纯粹伤害，单纯计算因攻击力造成的物理伤害.\n流弹伤害会被攻击者的大炮放大，但并不会因马尔斯护甲降低而提升"
+		"DOTA_Tooltip_ability_dlmars_bulwark_physical_damage_reduction"		"%正面伤害减免："
+		"DOTA_Tooltip_ability_dlmars_bulwark_physical_damage_reduction_side"	"%侧面伤害减免："
+		"DOTA_Tooltip_ability_dlmars_bulwark_bangbangradius"				"流弹反弹范围："
+		"DOTA_Tooltip_modifier_dlmars_bulwark_mars"					"流弹"
+		"DOTA_Tooltip_modifier_dlmars_bulwark_mars_Description"		"弹弹弹"
+
+		"DOTA_Tooltip_ability_aghsfort_mars_spear"                   			"战神逊矛"
+		"DOTA_Tooltip_ability_aghsfort_mars_spear_shard_description"						"战神逊矛带火焰路径，持续%trail_duration%秒"
+		"DOTA_Tooltip_ability_aghsfort_mars_spear_Description"       			"玛尔斯以致命的精准掷出他强大的战矛，对击中的每个敌方单位造成伤害。击中的第一个敌方英雄将被战矛刺穿，并被击退。若战矛击中树木、建筑或悬崖，目标将会被钉在上面，并受到眩晕.
+		<font color='#63B8FF'>玛尔斯烤串 Lv1</font>: 马尔斯等级超过7级后，战矛将额外影响%skewer_count%个目标.
+		<font color='#63B8FF'>烤串熟了 Lv2</font>: 马尔斯等级超过11级后，战矛会发生爆炸，造成%explosion_damage%伤害."
+
+/////////////////////////////////////////
+
+// 英文说明
+//////////////////////////
+		//DLMARS 马尔斯
+		//////////////////////////
+
+		"DOTA_Tooltip_ability_special_bonus_dlmars_15r"	"+360 Assault Shield range "
+		"DOTA_Tooltip_ability_special_bonus_dlmars_15l"	"360 degree GOD'S REBUKE"
+		"DOTA_Tooltip_ability_special_bonus_dlmars_20r"	"Stray Bullet deal extra mars' base str pure damage"
+		"DOTA_Tooltip_ability_special_bonus_dlmars_20l"	"+1 Stray Bullet target"
+		"DOTA_Tooltip_ability_special_bonus_dlmars_20l_Description"	"Won't attack same target twice when only one target in range "
+
+        "DOTA_Tooltip_ability_dlmars_rebuke"                   			"GOD'S REBUKE"
+		"DOTA_Tooltip_ability_dlmars_rebuke_Description"       			"Mars smashes.Mars has damage and crit bonus when smash. GOD'S REBUKE doesn't miss \n<font color='#FF7800'>LOOK AT ME！：</font>Hitted target is forced to face towards Mars,then movespeed and turnrate get massively slowed, last %rebuke_debuffdur% seconds.
+		<font color='#FF7800'>Assault Shield ：</font>WHEN AUTO CAST IS ON，MARS RUSH TO TARGET POINT, MAX RANGE %rebuke_rushrange%，GORING ENEMIES ON HIS SHEILD, THEN SMASH."
+		"DOTA_Tooltip_ability_dlmars_rebuke_Lore"							"出其不意，吓人一跳"
+		"DOTA_Tooltip_ability_dlmars_rebuke_Note0"						"attack angle %rebuke_angle%，interrupts channeling。can hit spell immunity units, but won't slow them。\n Assault Shield doesn't cast 360degree attack，dosen't has damage and crit bonus，rush range is not affected by cast range bonus"
+        "DOTA_Tooltip_ability_dlmars_rebuke_rebuke_radius"					"radius："
+		"DOTA_Tooltip_ability_dlmars_rebuke_rebuke_crit"					"%crit："
+		"DOTA_Tooltip_ability_dlmars_rebuke_rebuke_damage"		"damage bonus："
+        "DOTA_Tooltip_modifier_dlmars_rebuke_lookatme"					"LOOK AT ME！"
+		"DOTA_Tooltip_modifier_dlmars_rebuke_lookatme_Description"		"动弹不得"
+        "DOTA_Tooltip_modifier_dlmars_rebuke_slow"					"直视我，崽种！"
+		"DOTA_Tooltip_modifier_dlmars_rebuke_slow_Description"		"腿都吓软了"
+
+        "DOTA_Tooltip_ability_dlmars_bulwark"                   				"BULWARK"
+		"DOTA_Tooltip_ability_dlmars_bulwark_Description"       				"每当受到正面和侧面的攻击时，马尔斯运用他巨大的战盾来格挡部分伤害，当主动使用技能时，还有100%几率吸引本该飞向友军的远程攻击\n
+        <font color='#FF7800'>Stray Bullet ：</font>WHEN TOGGLE IS ON ,<font color='#FF7800'>MARS REFLECTS ALL RANGED ATTACK FROM FRONT（FRONT 160°）</font>TO THE CLOSEST ENEMY IN VISION，DEALS <font color='#FF7800'>ORINGNAL DAMAGE OF THIS RANGED ATTACK</font>"
+		"DOTA_Tooltip_ability_dlmars_bulwark_Lore"								"马尔斯非常持盾"
+		"DOTA_Tooltip_ability_dlmars_bulwark_Note0"							"Stray Bullet doesn't cancel ranged attack, Mars still get attacked and damage"
+		"DOTA_Tooltip_ability_dlmars_bulwark_Note1"							"Stray Bullet has no orbs, no modifiers，no magical or pure damage that within attack, only calculate attack damage .\nStray Bullet damage can be increased by attacker's daedalus, but doesn't increase when Mars armor is reduced"
+		"DOTA_Tooltip_ability_dlmars_bulwark_physical_damage_reduction"		"%FRONT_REDUCTION："
+		"DOTA_Tooltip_ability_dlmars_bulwark_physical_damage_reduction_side"	"%SIDE_REDUCTION："
+		"DOTA_Tooltip_ability_dlmars_bulwark_bangbangradius"				"Stray Bullet radius："
+		"DOTA_Tooltip_modifier_dlmars_bulwark_mars"					"Stray Bullet "
+		"DOTA_Tooltip_modifier_dlmars_bulwark_mars_Description"		"弹弹弹"
+
+		"DOTA_Tooltip_ability_aghsfort_mars_spear"                   			"SPEAR OF MARS "
+		"DOTA_Tooltip_ability_aghsfort_mars_spear_shard_description"						"SPEAR OF MARS has flaming trail，last %trail_duration% seconds"
+		"DOTA_Tooltip_ability_aghsfort_mars_spear_Description"       			"玛尔斯以致命的精准掷出他强大的战矛，对击中的每个敌方单位造成伤害。击中的第一个敌方英雄将被战矛刺穿，并被击退。若战矛击中树木、建筑或悬崖，目标将会被钉在上面，并受到眩晕.
+		<font color='#63B8FF'>玛尔斯烤串 Lv1</font>: WHEN MARS LEVEL OVER 7，SPEAR MULTISKEWER %skewer_count% TARGETS.
+		<font color='#63B8FF'>烤串熟了 Lv2</font>: WHEN MARS LEVEL OVER 11，SPEAR EXPLODES，DEAL %explosion_damage% DAMAGE."
