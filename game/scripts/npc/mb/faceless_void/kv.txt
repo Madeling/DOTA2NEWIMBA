@@ -1,0 +1,597 @@
+"DOTAAbilities"
+{
+	// =================================================================================================================
+	// Faceless Void's Time Walk
+	// =================================================================================================================
+	"imba_faceless_void_time_walk"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"faceless_void_time_walk"
+		"ScriptFile"	"mb/hero_faceless_void/faceless_void_time_walk"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"HasScepterUpgrade"			"1"
+
+		"HasShardUpgrade"               "1"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"24 18 12 6"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"0"
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.3"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_faceless_void.vsndevts"
+			"particle"	"particles/units/heroes/hero_faceless_void/faceless_void_time_walk.vpcf"
+			"particle"	"particles/units/heroes/hero_faceless_void/faceless_void_time_walk_preimage.vpcf"
+			"particle"	"particles/units/heroes/hero_faceless_void/faceless_void_time_walk_slow.vpcf"
+			"particle"	"particles/units/heroes/hero_faceless_void/faceless_void_time_walk_debuff.vpcf"
+			"particle"	"particles/units/heroes/hero_faceless_void/faceless_void_chrono_speed.vpcf"
+			"particle"	"particles/units/heroes/hero_faceless_void/faceless_void_chronosphere.vpcf"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"speed"	"3000"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"chrono_radius"	"130"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"3.0"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"range"	"675"
+				"LinkedSpecialBonus"	"special_bonus_imba_faceless_void_3"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"slow"	"20 30 40 50"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"move_bonus"	"10"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attack_speed_bonus"	"70 80 90 100"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"chrono_linger"	"0.2"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_time"	"2"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius_scepter"	"300"
+				"RequiresScepter"	"1"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"range_shard"	"200"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_YES"
+	}
+
+	//=================================================================================================================
+	// Faceless Void: Time Walk Reverse (Shard)
+	//=================================================================================================================
+	"imba_faceless_void_time_walk_reverse"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"faceless_void_time_walk_reverse"
+		"ScriptFile"	"mb/hero_faceless_void/faceless_void_time_walk"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ALLIES_YES"
+		"AbilitySound"					"Hero_FacelessVoid.TimeWalk"
+		"MaxLevel"						"1"
+		"IsGrantedByShard"				"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0.5"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityModifierSupportValue"	"0.25"	// mostly about the blink
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"speed"	"3000"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"chrono_radius"	"130"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"3.0"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"range"	"675"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"slow"	"20 30 40 50"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"move_bonus"	"10"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attack_speed_bonus"	"10 15 20 25"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"chrono_linger"	"0.2"
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
+	}
+
+	// =================================================================================================================
+	// Faceless Void's Time Dilation
+	// =================================================================================================================
+	"imba_faceless_void_time_dilation"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"faceless_void_time_dilation"
+		"ScriptFile"	"mb/hero_faceless_void/faceless_void_time_dilation"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0.1"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"28 24 20 16"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"0"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_faceless_void.vsndevts"
+			"particle"	"particles/units/heroes/hero_faceless_void/faceless_void_backtrack.vpcf"
+			"particle"	"particles/units/heroes/hero_faceless_void/faceless_void_timedialate.vpcf"
+			"particle"	"particles/units/heroes/hero_faceless_void/faceless_void_dialatedebuf.vpcf"
+			"particle"	"particles/units/heroes/hero_faceless_void/faceless_void_chrono_speed.vpcf"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cooldown_increase"	"8 10 12 14"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cooldown_start"	"1"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"775"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"move_slow"	"10"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attack_slow"	"20"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"move_bonus"	"5"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attack_bonus"	"5 10 15 20"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_per_stack"		"15 20 25 30"
+				"LinkedSpecialBonus" 	"special_bonus_imba_faceless_void_8"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_YES"
+	}
+
+	// =================================================================================================================
+	// Faceless Void's Time Lock
+	// =================================================================================================================
+	"imba_faceless_void_time_lock"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"faceless_void_time_lock"
+		"ScriptFile"	"mb/hero_faceless_void/faceless_void_time_lock"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityCooldown"	"1.5"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_faceless_void.vsndevts"
+			"particle"	"particles/status_fx/status_effect_faceless_chronosphere.vpcf"
+			"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bash_chance"	"10 15 20 25"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bash_damage"	"20 30 40 50"
+				"LinkedSpecialBonus"	"special_bonus_imba_faceless_void_2"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"bash_duration"	"0.65"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bash_radius"	"250"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius_reduce"	"25"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius_min"	"50"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"reduce_duration"	"5"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cooldown_increase"	"0.2 0.3 0.4 0.5"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_NO"
+	}
+
+	
+	// =================================================================================================================
+	// Faceless Void's Chronosphere
+	// =================================================================================================================
+	"imba_faceless_void_chronosphere"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"faceless_void_chronosphere"
+		"ScriptFile"	"mb/hero_faceless_void/faceless_void_chronosphere"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
+		"FightRecapLevel"	"2"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityCastPoint"	"0.3"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"100.0"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"150 225 300"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"600"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_faceless_void.vsndevts"
+			"soundfile"	"soundevents/imba_soundevents.vsndevts"
+			"particle"	"particles/status_fx/status_effect_faceless_chronosphere.vpcf"
+			"particle"	"particles/units/heroes/hero_faceless_void/faceless_void_chronosphere.vpcf"
+			"particle"	"particles/units/heroes/hero_faceless_void/faceless_void_chrono_speed.vpcf"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_radius"	"500"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"base_duration"	"4.0 4.5 5.0"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"extra_radius"	"5"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_as"	"5"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"slow_scepter"	"70"
+				"RequiresScepter"	"1"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"chrono_ms"	"1000"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"max_radius_stack"	"41"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_NO"
+		"HasScepterUpgrade"	"1"
+	}
+
+	// Gain {s:value} mana after casting Chronosphere
+	"special_bonus_imba_faceless_void_1"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"150"
+			}
+		}
+	}
+
+	// +{s:value} Time Lock Damage
+	"special_bonus_imba_faceless_void_2"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"55"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_faceless_void_time_lock"
+		}
+	}
+
+	// +{s:value} Time Walk Range
+	"special_bonus_imba_faceless_void_3"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"250"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_faceless_void_time_walk"
+		}
+	}
+
+	// -{s:value}s Time Walk Cooldown
+	"special_bonus_imba_faceless_void_4"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"-1.5"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_faceless_void_time_walk"
+		}
+	}
+
+	// Time Lock Doesn't Reduce Radius
+	"special_bonus_imba_faceless_void_5"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1"
+			}
+		}
+	}
+
+	// Time Lord
+	"special_bonus_imba_faceless_void_6"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"		"800"
+			}
+		}
+	}
+
+	// +{s:value} Time Walk Backtrack Duration
+	"special_bonus_imba_faceless_void_7"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"		"0.5"
+			}
+		}
+	}
+
+	// +{s:value} Time Dilation DPS per cooldown
+	"special_bonus_imba_faceless_void_8"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"		"15"
+			}
+		}
+	}
+}		

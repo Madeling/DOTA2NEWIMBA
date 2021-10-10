@@ -1,0 +1,674 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Hoodwink: Acorn Shot 爆栗出击
+	//=================================================================================================================
+	"imba_hoodwink_acorn_shot"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"hoodwink_acorn_shot"
+		"ScriptFile"	"linken/hero_hoodwink.lua" 		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_hoodwink.vsndevts"
+			"particle"	"particles/units/heroes/hero_hoodwink/hoodwink_acorn_shot_tracking.vpcf"
+			"particle"	"particles/units/heroes/hero_hoodwink/hoodwink_acorn_shot_impact.vpcf"
+			"particle"	"particles/units/heroes/hero_hoodwink/hoodwink_acorn_shot_tree.vpcf"
+			"model"		"models/props_tree/frostivus_tree.vmdl"
+		}
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0"
+		"AbilityCharges"				"2"
+		"AbilityChargeRestoreTime"		"10 9 8 7"		
+		"AbilityCastRange"				"575"
+		"AbilityCastPoint"				"0.15"
+		"AbilityManaCost"				"50"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{		
+			"01"
+			{	
+				"var_type"				"FIELD_INTEGER"
+				"bonus_range"			"100"
+			}
+			"02"
+			{	
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"20 40 60 80"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"projectile_speed"			"1500"
+			}
+			"04"
+			{	
+				"var_type"				"FIELD_INTEGER"
+				"bounce_count"			"1"
+			}
+			"05"
+			{	
+				"var_type"				"FIELD_INTEGER"
+				"bounce_range"			"400"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"debuff_duration"			"0.25"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bounce_delay"			"0.0"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bounce_random"			"40.0"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"tree_duration"			"5.0"
+			}												
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
+	}
+
+	//=================================================================================================================
+	// Hoodwink: Bushwhack 野地奇袭
+	//=================================================================================================================
+	"imba_hoodwink_bushwhack"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"hoodwink_bushwhack"
+		"ScriptFile"	"linken/hero_hoodwink.lua" 		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES_STRONG"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_hoodwink.vsndevts"
+			"particle"	"particles/units/heroes/hero_hoodwink/hoodwink_bushwhack_projectile.vpcf"
+			"particle"	"particles/units/heroes/hero_hoodwink/hoodwink_bushwhack.vpcf"
+			"particle"	"particles/units/heroes/hero_hoodwink/hoodwink_bushwhack_target.vpcf"
+			"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
+		}
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.2"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"11"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"90 100 110 120"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"trap_radius"		"275"
+				"LinkedSpecialBonus"	"special_bonus_imba_hoodwink_4"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"debuff_duration"		"1"
+				"LinkedSpecialBonus"	"special_bonus_imba_hoodwink_2"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"projectile_speed"	"1000"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"total_damage"		"90 180 270 360"
+			}
+			"05"
+			{	
+				"var_type"				"FIELD_INTEGER"
+				"bonus_range"			"400 500 600 700"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"tree_duration"			"5.0"
+			}						
+		}
+	}
+	// -野地奇袭冷却
+	"special_bonus_imba_hoodwink_1"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"-3.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_hoodwink_bushwhack"
+		}
+	}
+	// +野地奇袭debuff时间
+	"special_bonus_imba_hoodwink_2"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"0.5"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_hoodwink_bushwhack"
+		}
+	}			
+	// +野地奇袭范围
+	"special_bonus_imba_hoodwink_4"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"100.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_hoodwink_bushwhack"
+		}
+	}
+	// +野地奇袭速度
+	"special_bonus_imba_hoodwink_8"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1000.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_hoodwink_bushwhack"
+		}
+	}	
+	//=================================================================================================================
+	// Hoodwink: Scurry密林奔走
+	//=================================================================================================================
+	"imba_hoodwink_scurry"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"hoodwink_scurry"
+		"ScriptFile"	"linken/hero_hoodwink.lua" 		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.0"
+		"AbilityCastRange"				"325"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0.0"
+		"AbilityCharges"				"2"
+		"AbilityChargeRestoreTime"		"18 16 14 12"
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"35"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_hoodwink.vsndevts"
+			"particle"	"particles/units/heroes/hero_hoodwink/hoodwink_scurry_aura.vpcf"
+		}		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"325"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"movement_speed_pct"			"10 15 20 25"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"duration"						"4.0"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"evasion"						"10 15 20 25"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"attack_range"					"100 125 150 175"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"invisible_dtime"				"2.0 1.9 1.8 1.7"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"movement_speed_pct_s"			"2.0 3.0 4.0 5.0"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"evasion_s"						"2.0 3.0 4.0 5.0"
+			}
+			"09"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"attack_range_s"				"20.0 25.0 30.0 35.0"
+			}															
+		}
+		"HasScepterUpgrade"	"1"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+	}
+	// 密林奔走1.5攻击间隔
+	"special_bonus_imba_hoodwink_3"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1.5"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_hoodwink_scurry"
+		}
+	}
+	// 身旁有树木则可以看到攻击范围内的敌人
+	"special_bonus_imba_hoodwink_6"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"0.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_hoodwink_scurry"
+		}
+	}	
+	//=================================================================================================================
+	// Hoodwink: jump 鼯
+	//=================================================================================================================
+	"imba_hoodwink_jump"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"MaxLevel"	"1"
+		"AbilityTextureName"	"imba_hoodwink_jump"
+		"ScriptFile"	"linken/hero_hoodwink.lua" 		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"precache"
+		{
+			"particle"	"particles/econ/items/natures_prophet/natures_prophet_weapon_sufferwood/furion_teleport_end_team_sufferwood.vpcf"
+			"particle"	"particles/units/heroes/hero_techies/techies_remote_mines_detonate.vpcf"
+
+		}		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.1"
+		"AbilityCastAnimation"			"ACT_DOTA_FORCESTAFF_STATUE"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"25"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"100"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"0.6"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"boom"					"0.5"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"range_search"			"450.0"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage_max"				"15.0"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"range"					"450.0"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage_min"				"50.0"
+			}																		
+		}
+		"IsGrantedByScepter"	"1"
+		//"IsGrantedByShard"			"1"
+	}
+
+	//=================================================================================================================
+	// Hoodwink: Sharpshooter 一箭穿心
+	//=================================================================================================================
+	"imba_hoodwink_sharpshooter"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"hoodwink_sharpshooter"
+		"ScriptFile"	"linken/hero_hoodwink.lua" 
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"FightRecapLevel"				"1"
+		"AbilitySound"					"Hero_Mirana.ArrowCast"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_hoodwink.vsndevts"
+			"particle"	"particles/units/heroes/hero_hoodwink/hoodwink_sharpshooter_impact.vpcf"
+			"particle"	"particles/units/heroes/hero_hoodwink/hoodwink_sharpshooter_timer.vpcf"
+			"particle"	"particles/basic_ambient/generic_range_display.vpcf"
+			"particle"	"particles/generic_gameplay/generic_break.vpcf"
+			"particle"	"particles/units/heroes/hero_hoodwink/hoodwink_sharpshooter.vpcf"
+		}
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"3000"
+		"AbilityCastPoint"				"0.0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"45"
+
+
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"arrow_speed"		"3000"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"arrow_width"		"175"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"arrow_range"		"3000"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"arrow_vision"		"350"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"max_charge_time"			"3.0"
+			}			
+			"06"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"max_damage"				"600 900 1200"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"recoil_distance"			"350"
+			}
+			"08"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"recoil_height"				"75"
+			}
+			"09"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"recoil_duration"			"0.4"
+			}
+			"10"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"max_slow_debuff_duration"	"4.0"
+			}
+			"11"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"misfire_time"				"5.0"
+			}
+			"12"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"slow_move_pct"				"50"
+			}
+			"13"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"special_duration"			"10"
+			}
+			"14"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"special_range"			"800.0"
+			}						
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CHANNEL_ABILITY_6"
+	}
+	// 一箭穿心冷却"
+	"special_bonus_imba_hoodwink_5"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"-15.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_hoodwink_sharpshooter"
+		}
+	}
+	// 一箭穿心纯粹伤害并且无视技能免疫
+	"special_bonus_imba_hoodwink_7"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"0.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_hoodwink_sharpshooter"
+		}
+	}
+	//=================================================================================================================
+	// Hoodwink: 诱饵
+	//=================================================================================================================
+	"imba_hoodwink_decoy"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"hoodwink_decoy"
+		"ScriptFile"	"linken/hero_hoodwink.lua" 
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+
+		"IsGrantedByShard"			"1"
+		//"HasShardUpgrade"				"1"
+		"MaxLevel"						"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"25.0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"50"
+		
+		// Cast Range
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"0"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"10.0"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"decoy_stun_duration"		"2.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"tree_duration"			"5.0"
+			}			
+		}
+		//"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+	}
+}	

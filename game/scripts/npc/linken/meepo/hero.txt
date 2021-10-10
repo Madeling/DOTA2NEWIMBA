@@ -1,0 +1,25 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: 米波
+	//=================================================================================================================
+	"npc_dota_hero_meepo"
+	{
+		"Ability1"	"imba_meepo_earthbind"
+		"Ability2"	"imba_meepo_Poof"
+		"Ability3"	"imba_meepo_ransack"
+		"Ability4"	"generic_hidden"
+		"Ability5"	"imba_meepo_stand_we_divided"
+		"Ability6"	"meepo_divided_we_stand"
+
+
+		"Ability10"		""
+		"Ability11"		""
+		"Ability12"		""
+		"Ability13"		""
+		"Ability14"		""
+		"Ability15"		""
+		"Ability16"		""
+		"Ability17"		""
+	}
+}			

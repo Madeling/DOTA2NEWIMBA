@@ -1,0 +1,24 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: dawnbreaker
+	//=================================================================================================================
+	"npc_dota_hero_dawnbreaker"
+	{
+		"Ability1"		"imba_dawnbreaker_fire_wreath"
+		"Ability2"		"imba_dawnbreaker_celestial_hammer"
+		"Ability3"		"imba_dawnbreaker_luminosity"
+		"Ability4"		"generic_hidden"
+		"Ability5"		"generic_hidden"
+		"Ability6"		"imba_dawnbreaker_solar_guardian"
+
+		"Ability10"	"special_bonus_imba_dawnbreaker_2"
+		"Ability11"	"special_bonus_imba_dawnbreaker_4"
+		"Ability12"	"special_bonus_imba_dawnbreaker_1"
+		"Ability13"	"special_bonus_imba_dawnbreaker_6"
+		"Ability14"	"special_bonus_imba_dawnbreaker_7"
+		"Ability15"	"special_bonus_imba_dawnbreaker_8"
+		"Ability16"	"special_bonus_imba_dawnbreaker_5"
+		"Ability17"	"special_bonus_imba_dawnbreaker_3"
+	}
+}			

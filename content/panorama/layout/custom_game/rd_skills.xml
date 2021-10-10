@@ -1,0 +1,32 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/rd_skills.vjs_c" />
+        <include src="file://{resources}/scripts/custom_game/util.vjs_c" />
+	</scripts>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/rd_skills.vcss_c"/>
+    </styles>
+    <Panel class="ROOT" hittest="false"  >
+        <Panel id="SKILLS_ID"   onload="skillstart();" >
+			<Image id="SKILLS_BG" />
+            <Label id="SKILLS_T" text="#RD_SKILLS"/>
+             <Panel id="SKILLS"  hittest="false" >
+                    <Button id="SKILLS1" class="SKC" hittest="true" onactivate="skill(1);"  onmouseover="skillshow(true, 1);" onmouseout="skillshow(false, 1);" >
+                    <DOTAAbilityImage id="1" />
+                    </Button>
+                    <Button id="SKILLS2" class="SKC" hittest="true" onactivate="skill(2);" onmouseover="skillshow(true, 2);" onmouseout="skillshow(false, 2);" >
+                    <DOTAAbilityImage id="2" />
+                    </Button>
+                    <Button id="SKILLS3" class="SKC" hittest="true" onactivate="skill(3);" onmouseover="skillshow(true, 3);" onmouseout="skillshow(false, 3);"  >
+                    <DOTAAbilityImage id="3"  />
+                    </Button>
+                </Panel>
+            <Panel id="AG_ID">
+                <Button id="AG"  hittest="true" >
+                    <Label id="AG_T" text="ROLL" />
+                </Button>
+            </Panel>
+        </Panel>
+
+    </Panel>
+</root>

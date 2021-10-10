@@ -1,0 +1,115 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf23:version{636cefcd-6551-40ad-801c-6085f7e67e27} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 200
+	m_flConstantLifespan = 0.1
+	m_bShouldSort = false
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_flDepthBias = -8.0
+			m_ColorScale = [ 255, 255, 255 ]
+			m_bSaturateColorPreAlphaBlend = false
+			m_bAdditive = true
+			m_hTexture = resource:"materials/particle/particle_glow_04.vtex"
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_SnapshotRigidSkinToBones"
+			m_nControlPointNumber = 5
+		},
+		{
+			_class = "C_OP_OscillateScalar"
+			m_RateMax = 750.0
+			m_FrequencyMax = 100.0
+			m_nField = "3"
+			m_flEndTime_min = 10000000000.0
+			m_flEndTime_max = 10000000000.0
+			m_flOscMult = 3.5
+			m_RateMin = 250.0
+		},
+		{
+			_class = "C_OP_ClampScalar"
+			m_flOutputMax = 6.0
+			m_flOutputMin = 2.0
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_InitSkinnedPositionFromCPSnapshot"
+			m_nSnapshotControlPointNumber = 6
+			m_nControlPointNumber = 5
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMax = [ 250, 41, 9, 255 ]
+			m_ColorMin = [ 255, 0, 0, 255 ]
+		},
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMax = 6.0
+			m_flRadiusMin = 6.0
+		},
+		{
+			_class = "C_INIT_InitFloat"
+			m_InputValue = 
+			{
+				m_nType = "PF_TYPE_CONTROL_POINT_COMPONENT"
+				m_nMapType = "PF_MAP_TYPE_DIRECT"
+				m_flLiteralValue = 0.0
+				m_nControlPoint = 2
+				m_nScalarAttribute = 3
+				m_nVectorAttribute = 6
+				m_nVectorComponent = 0
+				m_flRandomMin = 0.0
+				m_flRandomMax = 1.0
+				m_nRandomMode = "PF_RANDOM_MODE_CONSTANT"
+				m_flMultFactor = 1.0
+				m_flInput0 = 0.0
+				m_flInput1 = 1.0
+				m_flOutput0 = 0.0
+				m_flOutput1 = 1.0
+				m_nBiasType = "PF_BIAS_TYPE_STANDARD"
+				m_flBiasParameter = 0.0
+				m_Curve = 
+				{
+					m_spline = [  ]
+					m_tangents = [  ]
+					m_vDomainMins = [ 0.0, 0.0 ]
+					m_vDomainMaxs = [ 0.0, 0.0 ]
+				}
+			}
+			m_nOutputField = "1"
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nSnapshotControlPoint = 6
+			m_nParticlesToEmit = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 24.0
+			}
+		},
+	]
+	m_nBehaviorVersion = 10
+	m_nFirstMultipleOverride_BackwardCompat = 5
+	m_nSnapshotControlPoint = 6
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+		},
+	]
+	m_hSnapshot = resource:"particles/models/items/mars/mars_ti9_immortal_weapon/mars_ti9_immortal_bolts_fx.vsnap"
+}

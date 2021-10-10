@@ -1,0 +1,54 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf27:version{36c3961f-02a4-4c52-bf8f-6e3147d7d142} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 12
+	m_BoundingBoxMin = [ -512.0, -512.0, -32.0 ]
+	m_BoundingBoxMax = [ 512.0, 512.0, 32.0 ]
+	m_flConstantRadius = 32.0
+	m_ConstantColor = [ 0, 0, 0, 255 ]
+	m_bShouldSort = false
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/generic_gameplay/rune_generic.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heros/shadow_shaman/shock_pa1.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/generic_gameplay/rune_doubledamage_arcs.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/generic_gameplay/rune_doubledamage_light.vpcf"
+		},
+	]
+	m_PreEmissionOperators = 
+	[
+		{
+			_class = "C_OP_SetControlPointPositions"
+			m_flOpStartFadeOutTime = 0.1
+			m_flOpEndFadeOutTime = 0.1
+			m_vecCP1Pos = [ 45.0, 65.0, 255.0 ]
+			m_nCP3 = 2
+			m_nCP4 = 2
+			m_bUseWorldLocation = true
+		},
+	]
+	m_nBehaviorVersion = 10
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+}

@@ -1,0 +1,17 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/net.vjs_c" />
+	</scripts>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/net.vcss_c"/>
+    </styles>
+    <Panel class="ROOT">
+        <Panel id="BAN_ID">
+			<Image id="BAN_BG" />
+            <Label id="BAN_T" text="你已违规被封禁，有任何疑问请加入QQ群反馈"/>
+            <Panel id="BANQQ" onactivate="ExternalBrowserGoToURL('https://jq.qq.com/?_wv=1027&amp;k=ztdcb5l6')">
+                    <Label id="BANQQ_T" text=">>>加入QQ"/>
+            </Panel>
+        </Panel>
+    </Panel>
+</root>

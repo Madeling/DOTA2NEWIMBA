@@ -1,0 +1,207 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf35:version{ec5bfcca-b89d-4591-9ef4-c8679487d623} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 80
+	m_ConstantColor = [ 0, 0, 0, 255 ]
+	m_bShouldBatch = true
+	m_flAggregateRadius = 128.0
+	m_nBehaviorVersion = 4
+	m_nFirstMultipleOverride_BackwardCompat = 8
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 62
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_ContinuousEmitter"
+			m_flEmitRate = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 64.0
+			}
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomRotation"
+		},
+		{
+			_class = "C_INIT_RandomSequence"
+			m_nSequenceMin = 3
+		},
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMin = 32.0
+			m_flRadiusMax = 32.0
+		},
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMin = 0.5
+			m_fLifetimeMax = 1.1
+		},
+		{
+			_class = "C_INIT_CreateFromParentParticles"
+		},
+		{
+			_class = "C_INIT_RandomAlpha"
+			m_nAlphaMin = 155
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMin = [ 68, 0, 0 ]
+			m_ColorMax = [ 98, 0, 0 ]
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMax = [ 0.0, 0.0, 320.0 ]
+		},
+		{
+			_class = "C_INIT_PositionPlaceOnGround"
+			m_flOffset = 4.0
+			m_flMaxTraceLength = 512.0
+			m_CollisionGroupName = "DEBRIS"
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMin = [ 255, 0, 0 ]
+			m_ColorMax = [ 101, 30, 30 ]
+			m_flOpStrength = 
+			{
+				m_nType = "PF_TYPE_CONTROL_POINT_COMPONENT"
+				m_nControlPoint = 61
+				m_nVectorComponent = 0
+				m_nMapType = "PF_MAP_TYPE_REMAP"
+				m_flInput0 = 0.0
+				m_flInput1 = 1.0
+				m_flOutput0 = 0.0
+				m_flOutput1 = 1.0
+			}
+			m_bDisableOperator = true
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_BasicMovement"
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flStartScale = 0.0
+			m_flBias = 0.85
+			m_flEndTime = 0.1
+			m_flEndScale = 10.0
+		},
+		{
+			_class = "C_OP_RampScalarLinearSimple"
+			m_nOpEndCapState = "PARTICLE_ENDCAP_ENDCAP_ON"
+			m_Rate = -150.0
+			m_flEndTime = 99999.0
+		},
+		{
+			_class = "C_OP_RampScalarLinearSimple"
+			m_nOpEndCapState = "PARTICLE_ENDCAP_ENDCAP_ON"
+			m_nField = 16
+			m_Rate = -0.1
+			m_flEndTime = 9999.0
+		},
+		{
+			_class = "C_OP_PositionLock"
+		},
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 0.5
+			m_nOpEndCapState = "PARTICLE_ENDCAP_ENDCAP_OFF"
+		},
+		{
+			_class = "C_OP_AlphaDecay"
+			m_nOpEndCapState = "PARTICLE_ENDCAP_ENDCAP_ON"
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flEndScale = 0.0
+			m_flStartTime = 0.8
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_ColorInterpolate"
+			m_ColorFade = [ 118, 53, 199, 255 ]
+			m_flFadeEndTime = 0.5
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_ColorInterpolate"
+			m_ColorFade = [ 212, 0, 255, 255 ]
+			m_flFadeEndTime = 0.5
+			m_flOpStrength = 
+			{
+				m_nType = "PF_TYPE_CONTROL_POINT_COMPONENT"
+				m_nControlPoint = 61
+				m_nVectorComponent = 0
+				m_nMapType = "PF_MAP_TYPE_REMAP"
+				m_flInput0 = 0.0
+				m_flInput1 = 1.0
+				m_flOutput0 = 0.0
+				m_flOutput1 = 1.0
+			}
+			m_bDisableOperator = true
+		},
+	]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_flStartFadeSize = 0.675
+			m_flEndFadeSize = 0.75
+			m_flMaxSize = 0.85
+			m_flOverbrightFactor = 0.5
+			m_bBlendFramesSeq0 = false
+			m_flAnimationRate = 1.0
+			m_nOrientationType = "PARTICLE_ORIENTATION_WORLD_Z_ALIGNED"
+			m_nHSVShiftControlPoint = 62
+			m_vecTexturesInput = 
+			[
+				{
+					m_hTexture = resource:"materials/particle/spray1/spray1.vtex"
+				},
+			]
+		},
+		{
+			_class = "C_OP_RenderSprites"
+			m_flStartFadeSize = 0.675
+			m_flEndFadeSize = 0.75
+			m_flMaxSize = 0.85
+			m_flOverbrightFactor = 0.5
+			m_bBlendFramesSeq0 = false
+			m_nOrientationType = "PARTICLE_ORIENTATION_SCREEN_Z_ALIGNED"
+			m_flAnimationRate = 1.0
+			m_nHSVShiftControlPoint = 62
+			m_vecTexturesInput = 
+			[
+				{
+					m_hTexture = resource:"materials/particle/spray1/spray1.vtex"
+				},
+			]
+		},
+	]
+}

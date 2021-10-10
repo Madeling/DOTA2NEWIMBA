@@ -1,0 +1,131 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf27:version{36c3961f-02a4-4c52-bf8f-6e3147d7d142} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 1
+	m_BoundingBoxMin = [ -90.0, -90.0, -10.0 ]
+	m_BoundingBoxMax = [ 90.0, 90.0, 10.0 ]
+	m_flConstantRadius = 120.0
+	m_ConstantColor = [ 255, 255, 255, 150 ]
+	m_nGroupID = 3
+	m_flMaxDrawDistance = 2000.0
+	m_bShouldSort = false
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
+			m_bAdditive = true
+			m_hTexture = resource:"materials/particle/legion/legion_ti7_immortal_rune01.vtex"
+			m_nOrientationType = 2
+			m_OutlineColor = [ 0, 0, 0, 255 ]
+			m_flOutlineStart0 = 2.0
+			m_flOutlineStart1 = 2.0
+			m_flOutlineEnd0 = 2.0
+			m_flOutlineEnd1 = 2.0
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_Decay"
+			m_nOpEndCapState = 1
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_CreateWithinSphere"
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 1.0
+			}
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_templar_assassin/templar_assassin_trap_core_crystal.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_templar_assassin/templar_assassin_trap_core.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_templar_assassin/templar_assassin_trap_rings.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_templar_assassin/templar_assassin_trap_rings_inner.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_templar_assassin/templar_assassin_trap_bits.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_templar_assassin/templar_assassin_trap_core_rocks.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_templar_assassin/templar_assassin_trap_core_glow.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_templar_assassin/templar_assassin_trap_core_rays.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heros/templar_assassin/templar_assassin_trap_core_ring.vpcf"
+		},
+	]
+	m_PreEmissionOperators = 
+	[
+		{
+			_class = "C_OP_SetSingleControlPointPosition"
+			m_vecCP1Pos = [ 0.0, 0.0, 75.0 ]
+		},
+		{
+			_class = "C_OP_SetParentControlPointsToChildCP"
+			m_bSetOrientation = true
+			m_nFirstSourcePoint = 1
+		},
+	]
+	m_nBehaviorVersion = 10
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 60
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 255.0, 255.0, 255.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 61
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 62
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+}

@@ -1,0 +1,15 @@
+<root> 
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/option.vjs_c" />
+	</scripts>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/option.vcss_c"/>
+    </styles>
+  <!--  <Panel class="OptionROOT" >
+     <Panel id="Option_ID" >  
+			<Image id="Option_BG"   onactivate="optionhide(true);" onmouseout="optionhide(false);"/>
+            <Image id="Option_BG2" />  
+        </Panel>
+
+    </Panel>-->
+</root>

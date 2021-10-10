@@ -1,0 +1,445 @@
+"DOTAAbilities"
+{
+	// =================================================================================================================
+	// 猎魂人: 暗影冲刺
+	// =================================================================================================================
+	"imba_spirit_breaker_charge_of_darkness"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"linken/hero_spirit_breaker.lua"
+		"AbilityTextureName"	"spirit_breaker_charge_of_darkness"
+		"FightRecapLevel"				"2"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastPoint"	"0.3"
+		"AbilityCastAnimation"	"ACT_DOTA_RUN_STATUE"
+		"AbilityManaCost"	"70 80 90 100"
+		"AbilityCooldown"	"17 15 13 11"
+		// Data driven
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_spirit_breaker.vsndevts"
+			"particle"	"particles/units/heroes/hero_spirit_breaker/spirit_breaker_charge_target.vpcf"
+			"particle"	"particles/status_fx/status_effect_charge_of_darkness.vpcf"
+			"particle"	"particles/units/heroes/hero_spirit_breaker/spirit_breaker_charge.vpcf"
+			"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"300.0"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"tree_radius"	"150.0"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_duration"	"1.2 1.6 2.0 2.4"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"speed"		"300.0 325.0 350.0 375.0"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"sce_cooldown"		"-5.0"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"sce_speed"		"175.0"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT" 
+				"per_speed"		"1.0"
+			}															
+		}
+		"HasScepterUpgrade"	"1"
+	}		
+	// 增加冲刺数据
+	"special_bonus_imba_spirit_breaker_1"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"2"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_spirit_breaker_charge_of_darkness"
+		}
+	}		
+	// =================================================================================================================
+	// 猎魂人: 威吓
+	// =================================================================================================================
+	"imba_spirit_breaker_bulldoze"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"linken/hero_spirit_breaker.lua"
+		"FightRecapLevel"				"2"
+		"AbilityTextureName"	"spirit_breaker_bulldoze"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastPoint"	"0.0"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityManaCost"	"30 40 50 60"
+		"AbilityCooldown"	"22 20 18 16"
+		// Data driven
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_spirit_breaker.vsndevts"
+			"particle"	"particles/units/heroes/hero_spirit_breaker/spirit_breaker_haste_owner.vpcf"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"300"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"8"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"resistance"	"34 46 58 70"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"move_speed"	"12 18 24 30"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"attack_bonus"	"8 9 10 11"
+				"LinkedSpecialBonus"	"special_bonus_imba_spirit_breaker_3"
+			}
+		}
+	}
+	// 减少威吓冷却
+	"special_bonus_imba_spirit_breaker_2"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"-5.5"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_spirit_breaker_bulldoze"
+		}
+	}
+	// 增加神行太保数据
+	"special_bonus_imba_spirit_breaker_3"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"8"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_spirit_breaker_bulldoze"
+		}
+	}							
+	// =================================================================================================================
+	// 猎魂人: 巨力重击
+	// =================================================================================================================
+	"imba_spirit_breaker_greater_bash"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"linken/hero_spirit_breaker.lua"
+		"AbilityTextureName"	"spirit_breaker_greater_bash"
+		"FightRecapLevel"				"2"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityCooldown"	"1.5"
+		// Data driven
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_spirit_breaker.vsndevts"
+			"particle"	"particles/units/heroes/hero_spirit_breaker/spirit_breaker_greater_bash.vpcf"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"chance_pct"	"17"
+				"LinkedSpecialBonus"	"special_bonus_imba_spirit_breaker_5"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_duration"	"1.2"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"move_speed"	"15"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"bash_range"	"143 152 158 162"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"bash_duration"	"0.5"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"300"
+			}	
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"speed_duration"	"3" 
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"move_da"	"14 20 26 32"
+				"LinkedSpecialBonus"	"special_bonus_imba_spirit_breaker_4"
+			}															
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_NO"
+	}
+	// 增加巨力重击数据
+	"special_bonus_imba_spirit_breaker_4"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"12"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_spirit_breaker_greater_bash"
+		}
+	}
+	// 增加巨力重击几率
+	"special_bonus_imba_spirit_breaker_5"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"20"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_spirit_breaker_greater_bash"
+		}
+	}								
+	// =================================================================================================================
+	// 猎魂人: 幽冥一击
+	// =================================================================================================================
+	"imba_spirit_breaker_nether_strike"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"linken/hero_spirit_breaker.lua"
+		"AbilityTextureName"	"spirit_breaker_nether_strike"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"FightRecapLevel"				"2"
+		"AbilityType"				"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastPoint"	"0.0"
+		"AbilityCastAnimation"	"ACT_DOTA_RUN_STATUE"
+		"AbilityManaCost"	"125 150 175"
+		"AbilityCooldown"	"80 70 60"
+		// Data driven
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_spirit_breaker.vsndevts"
+			"particle"	"particles/units/heroes/hero_spirit_breaker/spirit_breaker_charge_target.vpcf"
+			"particle"	"particles/status_fx/status_effect_charge_of_darkness.vpcf"
+			"particle"	"particles/units/heroes/hero_spirit_breaker/spirit_breaker_charge.vpcf"
+			"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"speed"	"500.0"
+				"LinkedSpecialBonus"	"special_bonus_imba_spirit_breaker_6"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"700.0"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"incoming"	"50.0"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration_debuff"	"4.5"
+			}						
+		}
+		"HasShardUpgrade"               "1"
+	}
+	// 增加幽冥一击数据
+	"special_bonus_imba_spirit_breaker_6"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"500"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_spirit_breaker_nether_strike"
+		}
+	}	
+	// 减少幽冥一击冷却
+	"special_bonus_imba_spirit_breaker_7"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"-20"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_spirit_breaker_nether_strike"
+		}
+	}
+	// 减少攻击间隔
+	"special_bonus_imba_spirit_breaker_8"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1.7"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_spirit_breaker_nether_strike"
+		}
+	}
+}				

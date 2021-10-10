@@ -1,0 +1,563 @@
+"DOTAAbilities"
+{
+	// =================================================================================================================
+	// Riki: Smoke Screen
+	// =================================================================================================================
+	"imba_riki_smoke_screen"
+	{
+		// General
+		// ----------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"riki_smoke_screen"
+		"ScriptFile"	"mb/hero_riki/riki_smoke_screen.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"AbilitySound"					"Hero_Riki.Smoke_Screen"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"500"
+		"AbilityCastPoint"				"0.2"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"19"
+		"AbilityDuration"				"6"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"75"
+
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"300 350 400 450"
+				"LinkedSpecialBonus"	"special_bonus_imba_riki_1"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"6"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"miss_rate"	"20 35 50 65"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movement_slow"	"20 35 50 65"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"poisoned_damage"	"100 150 200 250"
+			}
+		}
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+	}
+
+	// =================================================================================================================
+	// Riki: Blink Strike
+	// =================================================================================================================
+	"imba_riki_blink_strike"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"riki_blink_strike"
+		"ScriptFile"	"mb/hero_riki/riki_blink_strike.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilitySound"	"Hero_Riki.Blink_Strike"
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"600 700 800 900"
+		"AbilityCastPoint"				"0.3"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"25 20 15 10"
+		//"AbilityCharges"				"1"
+		//"AbilityChargeRestoreTime"		"25 20 15 10"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"50"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"abilitycastrange"					""
+				//"LinkedSpecialBonus"		"special_bonus_imba_riki_3"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_damage"	"25 50 75 100"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movement_slow"	"20 35 50 65"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"back_duration"	"2.5"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"illusion_duration"	"5.0"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"strike_crit_mult"	"120 135 150 165"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"AbilityChargeRestoreTime"		""
+				"LinkedSpecialBonus"			"special_bonus_imba_riki_3"
+				"LinkedSpecialBonusOperation"	"SPECIAL_BONUS_SUBTRACT"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"poisoned_radius"	"400"
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+	}
+
+	//=================================================================================================================
+	// Riki: Tricks of the Trade
+	//=================================================================================================================
+	"imba_riki_tricks_of_the_trade"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"riki_tricks_of_the_trade"
+		"ScriptFile"	"mb/hero_riki/riki_tricks_of_the_trade.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"HasScepterUpgrade"				"1"
+		"AbilitySound"					"Hero_Riki.TricksOfTheTrade.Cast"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"400"
+		"AbilityCastPoint"				"0.3"
+		"AbilityChannelTime"			"2.0"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityChannelAnimation"		"ACT_DOTA_CHANNEL_ABILITY_4"
+
+		// Ability Data
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"21 18 15 12"
+		"AbilityManaCost"				"50"
+
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"						"450 475 500 525"
+				"LinkedSpecialBonus"			"special_bonus_imba_riki_5"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"attack_count"	"4"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage_pct"	"70 80 90 100"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"scepter_duration"				"3"
+				"RequiresScepter"		"1"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"scepter_attacks"				"6"
+				"RequiresScepter"		"1"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"scepter_cast_range"				"700"
+				"RequiresScepter"		"1"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"channel_duration"				"2"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"target_count"				"2"
+			}
+		}
+	}
+
+	// =================================================================================================================
+	// Riki: Backstab
+	// =================================================================================================================
+	"imba_riki_backstab"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"riki_permanent_invisibility"
+		"ScriptFile"	"mb/hero_riki/riki_backstab.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage_multiplier"	"1.4 1.8 2.2"
+				"LinkedSpecialBonus"	"special_bonus_imba_riki_2"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"backstab_angle"	"105 105 105"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"fade_time"	"0.0 0.0 0.0 0.0"	
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"fade_delay"	"4 3 2"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_ms"	"6"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_agi"	"6"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"max_bouns_stack"	"7 8 9"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"bouns_duration"	"15"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"poisoned_damage_multiplier"	"0.8 1 1.2"
+				"LinkedSpecialBonus"	"special_bonus_imba_riki_2"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"assassination_kill_agi"	"2"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"assassination_kill_radius"	"800"
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+	}
+
+	//=================================================================================================================
+	// Riki: Sleeping Dart ( shard ability )
+	//=================================================================================================================
+	"imba_riki_poison_dart"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"riki_poison_dart"
+		"ScriptFile"	"mb/hero_riki/riki_poison_dart.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"MaxLevel"						"1"
+		"FightRecapLevel"				"1"
+		"IsGrantedByShard"              "1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"1200"
+		"AbilityCastPoint"				"0.2"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_5"
+		
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"12"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"85"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"			"2.0"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"movement_slow"		"40"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"debuff_duration"		"4"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"projectile_speed"		"1600"
+			}
+			"05"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"			"80"
+			}
+			"06"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"poison_dart_count"		"4"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Riki: Mode Switch
+	//=================================================================================================================
+	"imba_riki_mode_switch"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"AbilityTextureName"			"riki/riki_mode_switch1"
+		"ScriptFile"					"mb/hero_riki/riki_mode_switch.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityCastAnimation"			"ACT_INVALID"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"MaxLevel"						"1"
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+		"AbilityCastPoint"				"0.0"
+
+		// Time
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"15"
+	}
+
+	// default talent to add smoke radius
+	"special_bonus_imba_riki_1"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"100"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_riki_smoke_screen"
+		}
+	}
+
+	// default talent to add 0.5 damage multiplier
+	"special_bonus_imba_riki_2"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"0.5"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_riki_backstab"
+		}
+	}
+
+	// default talent to add blink castrange 475
+	// now reduce cooldown 4s
+	"special_bonus_imba_riki_3"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"-4"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_riki_blink_strike"
+		}
+	}
+
+	// Portable Smoke Screen
+	"special_bonus_imba_riki_4"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1"
+			}
+		}
+	}
+
+	// +aoe tricks of the trade
+	"special_bonus_imba_riki_5"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"300"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_riki_tricks_of_the_trade"
+		}
+	}
+
+	// blink charge 
+	"special_bonus_imba_riki_6"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"		"1"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value_count"	"1"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value_radius"	"200"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_riki_blink_strike"
+		}
+	}
+}		

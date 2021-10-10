@@ -1,0 +1,786 @@
+"DOTAAbilities"
+{
+	// =================================================================================================================
+	// Shadow Fiend's Shadowraze #1  old imba abi
+	// =================================================================================================================
+	"imba_nevermore_shadowraze"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"nevermore_shadowraze3"
+		"ScriptFile"	"mb/hero_nevermore.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"	"1"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0.5"
+		"AbilityCastAnimation"	"ACT_DOTA_RAZE_1"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"90"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_nevermore/nevermore_shadowraze.vpcf"
+			"particle"	"particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_shadowraze.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"250"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"combo_modifier_duration"	"6"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"raze_damage"	"100 175 250 325"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"combo_dmg_bonus"	"40 60 80 100"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"max_charges"	"3"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"length"	"800"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"charge_time"	"3.3"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_NO"
+	}
+
+	// =================================================================================================================
+	// Shadow Fiend's Shadowraze #1
+	// =================================================================================================================
+	"imba_nevermore_shadowraze1"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"nevermore_shadowraze1"
+		"ScriptFile"	"mb/hero_nevermore.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"	"1"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0.55"
+		"AbilityCastAnimation"	"ACT_DOTA_RAZE_1"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"75 80 85 90"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_nevermore/nevermore_shadowraze.vpcf"
+			"particle"	"particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_shadowraze.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"300"
+				"LinkedSpecialBonus"	"special_bonus_imba_nevermore_3"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"combo_modifier_duration"	"6"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"raze_damage"	"90 160 230 300"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"combo_dmg_bonus"	"50 60 70 80"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"max_charges"	"3"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"length"	"300"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"charge_time"	"7.0"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"autocast_length"	"800"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"hit_time"	"1.0"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_NO"
+	}
+
+	// =================================================================================================================
+	// Shadow Fiend's Shadowraze #2
+	// =================================================================================================================
+	"imba_nevermore_shadowraze2"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"nevermore_shadowraze2"
+		"ScriptFile"	"mb/hero_nevermore.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE "
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"	"1"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0.55"
+		"AbilityCastAnimation"	"ACT_DOTA_RAZE_2"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"75 80 85 90"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_nevermore/nevermore_shadowraze.vpcf"
+			"particle"	"particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_shadowraze.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"250"
+				"LinkedSpecialBonus"	"special_bonus_imba_nevermore_3"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"combo_modifier_duration"	"6"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"raze_damage"	"90 160 230 300"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"combo_dmg_bonus"	"50 60 70 80"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"max_charges"	"3"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"length"	"450"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"charge_time"	"7.0"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"autocast_length"	"800"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"hit_time"	"1.0"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_NO"
+	}
+
+	// =================================================================================================================
+	// Shadow Fiend's Shadowraze #3
+	// =================================================================================================================
+	"imba_nevermore_shadowraze3"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"nevermore_shadowraze3"
+		"ScriptFile"	"mb/hero_nevermore.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE "
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"	"1"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0.55"
+		"AbilityCastAnimation"	"ACT_DOTA_RAZE_3"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"75 80 85 90"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_nevermore/nevermore_shadowraze.vpcf"
+			"particle"	"particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_shadowraze.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"250"
+				"LinkedSpecialBonus"	"special_bonus_imba_nevermore_3"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"combo_modifier_duration"	"6"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"raze_damage"	"90 160 230 300"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"combo_dmg_bonus"	"50 60 70 80"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"max_charges"	"3"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"length"	"700"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"charge_time"	"7.0"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"autocast_length"	"800"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"hit_time"	"1.0"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_NO"
+	}
+
+	// =================================================================================================================
+	// Shadow Fiend's Necromastery
+	// =================================================================================================================
+	"imba_nevermore_necromastery"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"nevermore_necromastery"
+		"ScriptFile"	"mb/hero_nevermore.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
+
+		"HasShardUpgrade"           "1"
+		
+		//TIME ------------------------------------------------------
+		"AbilityCooldown"	"35.0 40.0 45.0 50.0"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"	"particles/hero/nevermore/nevermore_soul_projectile.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_per_soul"	"1 2 3 4"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"max_souls"	"11 14 17 20"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"soul_release"	"0.5"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"creep_kill_souls"	"1"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hero_kill_souls"	"6"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"temp_soul_duration"	"10 15 20 25"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hero_attack_souls"	"1"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"soul_projectile_speed"	"1500"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"harvest_levels_per_soul"	"15"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"max_temp_soul"	"16 22 28 34"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attack_range"	"50 100 150 200"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"attack_time"	"1.5 1.4 1.3 1.2"
+			}
+			"13"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attack_count"	"3"
+			}
+			"14"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cast_time_pct"	"100"
+			}
+			"15"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"lord_power_duration"	"6.0"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_NO"
+		"HasScepterUpgrade"	"1"
+	}
+
+	// =================================================================================================================
+	// Shadow Fiend's Presence of the Dark Lord
+	// =================================================================================================================
+	"imba_nevermore_dark_lord"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"nevermore_dark_lord"
+		"ScriptFile"	"mb/hero_nevermore.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA "
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"armor_reduction"	"2 6 8 10"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"800"
+				"LinkedSpecialBonus"	"special_bonus_imba_nevermore_2"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"soul_tick_time"	"1.0"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"souls_per_tick"	"1"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_NO"
+	}
+
+	// +2000 Dark Lord radius
+	"special_bonus_imba_nevermore_2"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"2000"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_nevermore_dark_lord"
+		}
+	}
+
+	// =================================================================================================================
+	// Shadow Fiend's Requiem of Souls
+	// =================================================================================================================
+	"imba_nevermore_requiem"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"nevermore_requiem"
+		"ScriptFile"	"mb/hero_nevermore.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"1.67"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_6"
+		"AbilityCooldown"	"120.0 110.0 100.0"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"150 175 200"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
+			// Particle for shadows below caster on cast. Not sure when a or b are used, CP0 and CP2 should be origin, CP1 should be number of lines
+			"particle"	"particles/units/heroes/hero_nevermore/nevermore_requiemofsouls_a.vpcf"
+			"particle"	"particles/units/heroes/hero_nevermore/nevermore_requiemofsouls_b.vpcf"
+			// Line particles, CP0 is start point, CP1 is velocity
+			"particle"	"particles/units/heroes/hero_nevermore/nevermore_requiemofsouls_line.vpcf"
+			// More particles for caster origin when finished casting, CP0 is starting point and CP1 is number of lines
+			"particle"	"particles/units/heroes/hero_nevermore/nevermore_requiemofsouls.vpcf"
+			"particle"	"particles/hero/nevermore/screen_requiem_indicator.vpcf"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cast_time_tooltip"	"1.67"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"1000"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"reduction_ms"	"25 30 35"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"reduction_damage"	"50"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"slow_duration"	"6"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				// number of souls per line
+				"soul_conversion"	"1.0"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"line_width_start"	"125"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"line_width_end"	"325"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"line_speed"	"700"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"death_pct"	"50"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				//"line_damage"	//"50 75 100"
+				"line_damage"	"80 120 160"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"screen_black_duration"	"4"
+			}
+			"13"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"max_atk_gain"	"100"
+			}
+			"14"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"min_atk_gain"	"0"
+			}
+			"15"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"atk_duration"	"6.0"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_YES"
+		"HasScepterUpgrade"	"1"
+	}
+
+	// =================================================================================================================
+	// Shadow Fiend's Shadowraze Omg
+	// =================================================================================================================
+	"imba_nevermore_shadowraze_omg"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"nevermore_shadowraze2"
+		"ScriptFile"	"mb/hero_nevermore.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_AUTOCAST "
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"	"1"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0.55"
+		"AbilityCastAnimation"	"ACT_DOTA_RAZE_2"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"75 80 85 90"
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0.1"
+		"AbilityCharges"				"1 2 3"
+		"AbilityChargeRestoreTime"		"10.0 9.0 8.0 7.0"
+		// Precache
+		// -------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_nevermore/nevermore_shadowraze.vpcf"
+			"particle"	"particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_shadowraze.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"250"
+				"LinkedSpecialBonus"	"special_bonus_imba_nevermore_3"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"combo_modifier_duration"	"6"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"raze_damage"	"90 160 230 300"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"combo_dmg_bonus"	"50 60 70 80"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"length"	"450"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"autocast_length"	"800"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"hit_time"	"1.0"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_NO"
+	}
+
+	// Point-cast Ult
+	"special_bonus_imba_nevermore_1"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_nevermore_requiem"
+		}
+	}
+
+	// +100 radius raze
+	"special_bonus_imba_nevermore_3"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"100"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_nevermore_shadowraze1"
+			"02"	"imba_nevermore_shadowraze2"
+			"03"	"imba_nevermore_shadowraze3"
+		}
+	}
+
+	// small requiem
+	"special_bonus_imba_nevermore_4"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"35"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_nevermore_shadowraze1"
+		}
+	}
+}		

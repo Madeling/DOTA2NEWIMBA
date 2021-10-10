@@ -1,0 +1,83 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/tips.vjs_c" />
+	</scripts>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/custom_loading_screen.vcss_c" />
+		<include src="file://{resources}/styles/hudstyles.vcss_c" />
+		<include src="file://{resources}/styles/hud/hud_reborn.vcss_c" />
+		<include src="file://{resources}/styles/hud/dota_hud_scoreboard.vcss_c" />
+	</styles>
+	<Panel class="DotaLoadingRoot">
+
+	<Image class="DotaLoadingIcon"/>
+	<Panel id="DOTA2IMBA">
+		<Image id="DOTA2IMBA_Image"/>
+		<Label id="DOTA2IMBA_Text" text="#addon_game_name"/>
+	</Panel>
+
+	<Panel id="DOTA2IMBA_OP" >
+	    <Panel id="DOTA2IMBA_OP0" >
+				<Image id="DOTA2IMBA_OP_DESC_BG"/>
+				<Image id="DOTA2IMBA_OP_FLAG" />
+				<Label id="DOTA2IMBA_OP_TITLE" text="#TIP"/>
+				<Panel id="DOTA2IMBA_DESC" onload="SET_DESC()">
+						<Label id="DOTA2IMBA_DESC_INFO"/>
+				</Panel>
+		</Panel>
+
+		<Panel id="DOTA2IMBA_OP1"  onactivate="ExternalBrowserGoToURL('https://jq.qq.com/?_wv=1027&amp;k=yVTMdHwg')">
+				<Image class="DOTA2IMBA_OP_BG" src="file://{images}/custom_game/hud/cm.png" >
+				<Label class="DOTA2IMBA_OP_TEXT" text="#QQ"/>
+				</Image>
+		</Panel>
+
+		<Panel id="DOTA2IMBA_OP2"   onactivate="ExternalBrowserGoToURL('https://unknowncreator.top')">
+				<Image class="DOTA2IMBA_OP_BG" src="file://{images}/custom_game/hud/wr.png" >
+				<Label class="DOTA2IMBA_OP_TEXT" text="#TB"/>
+				</Image>
+		</Panel>
+
+		<Panel id="DOTA2IMBA_OP3"   onactivate="ExternalBrowserGoToURL('https://discord.gg/2t4tScyDGG')">
+				<Image class="DOTA2IMBA_OP_BG" src="file://{images}/custom_game/hud/dr.png" >
+				<Label class="DOTA2IMBA_OP_TEXT" text="#DIS"/>
+				</Image>
+		</Panel>
+
+		<Panel id="DOTA2IMBA_OP4"   onactivate="ExternalBrowserGoToURL('https://space.bilibili.com/290693724')">
+				<Image class="DOTA2IMBA_OP_BG" src="file://{images}/custom_game/hud/lina.png" >
+				<Label class="DOTA2IMBA_OP_TEXT" text="#BILIBLI"/>
+				</Image>
+		</Panel>
+
+	</Panel>
+
+
+            <Panel id="tip_data_ROOT"  hittest="false"  >
+                    <Image id="tip_image" />
+                    <Label id="tip_text" html="true" text="#tip_game1"/>
+                    <Button id="back_tip" class="btip"  onmouseactivate="Set_TIP_Data(0);" />
+                    <Button id="next_tip" class="btip" onmouseactivate="Set_TIP_Data(1);" />
+            </Panel>
+
+			<!--
+		<Panel id="DOTA2IMBA_OP5"  onactivate="ExternalBrowserGoToURL('https://space.bilibili.com/290693724')">
+				<Image />
+				<Label class="DOTA2IMBA_OP_TEXT1" text="#BILIBLI"/>
+		</Panel>
+
+		<Panel id="DOTA2IMBA_OP6"  onactivate="ExternalBrowserGoToURL('https://live.bilibili.com/359222')">
+				<Image />
+				<Label class="DOTA2IMBA_OP_TEXT1" text="#TV"/>
+		</Panel>
+
+			<Panel id="TVPanel">
+            <DOTAHTMLPanel id="TV" url="https://live.bilibili.com/9196015"/>
+         	  <Button id="TVEND" class="CloseButton" onactivate="" />
+       		</Panel>
+	 -->
+	</Panel>
+
+
+</root>

@@ -1,0 +1,49 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf36:version{d15c9157-10e0-47bc-9333-1ac81da07b8d} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_nMaxParticles = 0
+	m_nBehaviorVersion = 12
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 1
+					m_iAttachType = "PATTACH_POINT_FOLLOW"
+					m_attachmentName = "attach_hitloc"
+					m_entityName = "self"
+				},
+			]
+			m_previewState = 
+			{
+				m_previewModel = "models/creeps/neutral_creeps/n_creep_centaur_lrg/n_creep_centaur_lrg.vmdl"
+				m_sequenceName = "idle"
+				m_hitboxSetName = "default"
+			}
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/items/titan_hammer/titan_3.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/titan_hammer/titan_4.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/titan_hammer/titan_5.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/titan_hammer/hammer_buff_ring.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/items/titan_hammer/titan_6.vpcf"
+		},
+	]
+}

@@ -1,0 +1,69 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf27:version{36c3961f-02a4-4c52-bf8f-6e3147d7d142} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 30
+	m_ConstantColor = [ 111, 98, 255, 150 ]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/heros/phoenix/phoenix_sunray_solar_forge_beam_refract.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heros/phoenix/phoenix_sunray_solar_forge_beam_body.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heros/phoenix/phoenix_sunray_solar_forge_beam_core.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heros/phoenix/phoenix_sunray_solar_forge_beam_wave.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heros/phoenix/phoenix_sunray_solar_forge_beam_spiral.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/heros/phoenix/phoenix_sunray_solar_forge_beam_spiral_dark.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/phoenix/phoenix_solar_forge/phoenix_sunray_solar_forge_beam_fire.vpcf"
+		},
+	]
+	m_flConstantRadius = 200.0
+	m_nBehaviorVersion = 10
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 1
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 3
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 4
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+}

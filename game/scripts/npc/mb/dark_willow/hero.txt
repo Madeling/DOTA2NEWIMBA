@@ -1,0 +1,26 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Dark Willow
+	//=================================================================================================================
+	"npc_dota_hero_dark_willow"
+	{
+		"Ability1"	"imba_dark_willow_bramble_maze"
+		"Ability2"	"imba_dark_willow_shadow_realm"
+		"Ability3"	"imba_dark_willow_cursed_crown"
+		"Ability4"	"imba_dark_willow_bedlam"
+		"Ability5"	"generic_hidden"
+		"Ability6"	"imba_dark_willow_terrorize"
+		"Ability10"	"special_bonus_attack_damage_30"
+		"Ability11"	"special_bonus_cast_range_100"
+		"Ability12"	"special_bonus_gold_income_150"
+		"Ability13"	"special_bonus_movement_speed_40"
+		"Ability14"	"special_bonus_attack_speed_60"
+		"Ability15"	"special_bonus_imba_dark_willow_4"
+		"Ability16"	"special_bonus_attack_range_100"
+		"Ability17"	"special_bonus_imba_dark_willow_2"
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+	}
+}			

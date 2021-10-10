@@ -1,0 +1,614 @@
+"DOTAAbilities"
+{
+	// =================================================================================================================
+	// Grimstroke: Stroke of Fate
+	// =================================================================================================================
+	"imba_grimstroke_dark_artistry"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"grimstroke_dark_artistry"
+		"ScriptFile"	"linken/hero_grimstroke.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"	"1"
+		"MaxLevel"	"4"
+		"AbilityCastPoint"	"0.5"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
+		"AbilityCooldown"	"11 9 7 5"
+		"AbilityManaCost"	"100 110 120 130"
+		"HasShardUpgrade"               "1"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"start_radius"	"120"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"end_radius"	"160"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"projectile_speed"	"2400"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"120 180 240 300"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_damage_per_target"	"20 40 60 80"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movement_slow_pct"	"80"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"slow_duration"	"1.5"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"bonus_duration_per_target"	"0.5"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"vision_duration"	"2.0"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cast_range"	"2000.0"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"shard_dam"	"100.0"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"shard_range"	"1000.0"
+			}									
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_YES"
+		// Stats
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityModifierSupportValue"	"0.5"
+	}
+
+	// +1000 Stroke of Fate cast range and speed
+	"special_bonus_imba_grimstroke_1"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"1000"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_grimstroke_dark_artistry"
+		}
+	}
+
+	// +1.3 Stroke of Fate Stun
+	"special_bonus_imba_grimstroke_2"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1.3"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_grimstroke_dark_artistry"
+		}
+	}
+
+	// =================================================================================================================
+	// Grimstroke: Phantom's Embrace
+	// =================================================================================================================
+	"imba_grimstroke_ink_creature"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"grimstroke_ink_creature"
+		"ScriptFile"	"linken/hero_grimstroke.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"	"1"
+		"MaxLevel"	"4"
+		"AbilityCastPoint"	"0.0"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastAnimation"	"ACT_DOTA_GS_INK_CREATURE"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"32 28 24 20"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"110 120 130 140"
+		"AbilityCastRange"	"900"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"speed"	"750"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"latch_duration"	"5"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"destroy_attacks"	"2"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_per_sec"	"20 40 60 80"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"infection_search_radius"	"1000"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"pop_damage"	"150 200 250 300"
+				"LinkedSpecialBonus"	"special_bonus_imba_grimstroke_8"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"return_projectile_speed"	"1500"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"latched_unit_offset"	"130"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bounce_range"	"600"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_YES"
+		"AbilityCastGestureSlot"	"DEFAULT"
+		"AbilityModifierSupportValue"	"0.5"
+	}
+	// 撕裂伤害
+	"special_bonus_imba_grimstroke_8"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"100"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_grimstroke_ink_creature"
+		}
+	}
+	// =================================================================================================================
+	// Grimstroke: Ink Swell 墨涌
+	// =================================================================================================================
+	"imba_grimstroke_spirit_walk"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"grimstroke_spirit_walk"
+		"ScriptFile"	"linken/hero_grimstroke.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"	"1"
+		"MaxLevel"	"4"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0.15"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"24 20 16 12"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"120"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cast_range"	"500 600 700 800"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"buff_duration"	"3.0"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movespeed_bonus_pct"	"18 22 26 30"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"400"
+				"LinkedSpecialBonus"	"special_bonus_imba_grimstroke_3"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"max_damage"	"100 200 300 400"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"max_stun"	"2.2 2.8 3.4 4.0"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"tick_rate"	"0.2"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_per_sec"	"30 50 70 90"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_YES"
+		"AbilitySound"	"Hero_ObsidianDestroyer.AstralImprisonment"
+		// Stats
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityModifierSupportValue"	"0.75"
+		"AbilityCastGestureSlot"	"DEFAULT"
+	}
+
+	// +200 Ink Swell Radius
+	"special_bonus_imba_grimstroke_3"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"200"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_grimstroke_spirit_walk"
+		}
+	}
+	// 造成减速
+	"special_bonus_imba_grimstroke_5"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_grimstroke_spirit_walk"
+		}
+	}	
+	// 驱散
+	"special_bonus_imba_grimstroke_6"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_grimstroke_spirit_walk"
+		}
+	}
+	// 驱散
+	"special_bonus_imba_grimstroke_7"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_grimstroke_spirit_walk"
+		}
+	}	
+	// =================================================================================================================
+	// Grimstroke: Soulbind
+	// =================================================================================================================
+	"imba_grimstroke_soul_chain"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"grimstroke_soul_chain"
+		"ScriptFile"	"linken/hero_grimstroke.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
+		"FightRecapLevel"	"1"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"MaxLevel"	"3"
+		"AbilityCastPoint"	"0.15"
+		// Stats
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastAnimation"	"ACT_DOTA_GS_SOUL_CHAIN"
+		"AbilityCooldown"	"100 90 80"
+		"AbilityManaCost"	"150 200 250"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"chain_duration"	"6.0 8.0 10.0"
+				"LinkedSpecialBonus"	"special_bonus_imba_grimstroke_4"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"chain_latch_radius"	"550"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"chain_break_distance"	"650"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"no_sec_slow"	"70"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cast_range"	"700 800 900"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cast_bonus"			"150"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"art_bonus"				"150"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"walk_bonus"				"50"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"cd"					"0.5"
+			}
+			"10"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration_bonus"		"10"
+			}
+			"11"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"max_stack"				"5"
+			}						
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_NO"
+		"HasScepterUpgrade"	"1"
+		"AbilityCastGestureSlot"	"DEFAULT"
+		"AbilityModifierSupportValue"	"0.75"
+	}
+
+	// +2 Soulbind Duration
+	"special_bonus_imba_grimstroke_4"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"2.0"
+			}
+		}
+		"LinkedAbility"
+		{
+			"01"	"imba_grimstroke_soul_chain"
+		}
+	}
+	//=================================================================================================================
+	// Grimstroke: Dark Portrait (Scepter)
+	//=================================================================================================================
+	"imba_grimstroke_dark_portrait"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"grimstroke_dark_portrait"
+		"ScriptFile"	"linken/hero_grimstroke.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"	
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"1"
+		"IsGrantedByScepter"			"1"
+        "HasScepterUpgrade"			"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastAnimation"			"ACT_DOTA_GS_INK_CREATURE"
+		"AbilityCastGestureSlot"		"DEFAULT"
+		"AbilityCastRange"				"1200"
+		"AbilityCastPoint"				"0.0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"50"
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"200"
+
+		"AbilityModifierSupportValue"	"0.5"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"illusion_duration"			"20"
+				"RequiresScepter"			"1"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"images_do_damage_percent"			"350"
+				"RequiresScepter"			"1"
+			}	
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"images_take_damage_percent"	"150"
+				"RequiresScepter"			"1"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"images_movespeed_bonus"			"30"
+				"RequiresScepter"			"1"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"time"					"5"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"range"					"300"
+			}																									
+		}
+	}	
+}	
