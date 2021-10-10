@@ -11,6 +11,8 @@ function  player:First_Player_Spawned(npc)
 --------------------------------------- 基础配置 -------------------------------------
 
 	local id=npc:GetPlayerOwnerID()
+	local player=PlayerResource:GetPlayer(id)
+	local hero_name=npc:GetName()
 	if npc:IS_TrueHero_TG() and npc.IS_FirstSpawned == nil   then
 		npc.IS_FirstSpawned = true
 		local num=id+1
@@ -31,7 +33,6 @@ function  player:First_Player_Spawned(npc)
 			useGameTime = false,
 			endTime = SPAWN_TIME,
 			callback = function()
-			local hero_name=npc:GetName()
 			if hero_name=="npc_dota_hero_invoker" then
 				npc:AddNewModifier(npc, nil, "modifier_invoker_up",{} )
 			end
@@ -42,12 +43,9 @@ function  player:First_Player_Spawned(npc)
 			if tp then
 				tp:EndCooldown()
 			end
-				npc:AddItemByName("item_magic_wand")
 				npc:AddExperience(GetXPNeededToReachNextLevel(4), DOTA_ModifyXP_Unspecified, false, false)
-				if GetMapName() ~="6v6v6" then
-					npc:AddNewModifier(npc, nil, "modifier_gold", {})
-				end
 				npc:AddNewModifier(npc, nil, "modifier_player",{})
+				npc:AddItemByName("item_magic_wand")
 		end})
 		Timers:CreateTimer({
 			useGameTime = false,
@@ -89,7 +87,6 @@ function  player:Player_Spawned(npc)
 								end
 							end
 ---------------------------------------------------------------------------------------------------------------
-		if   npc.IS_FirstSpawned ~= nil then
 							if string.find(AB_NAME, "special_bonus") and AB_LV>0 then
 								local modifier_name="modifier_"..AB_NAME
 								local name=npc:GetName()
@@ -113,7 +110,6 @@ function  player:Player_Spawned(npc)
 							end
 						end
 					end
-		end
 		end})
 
 

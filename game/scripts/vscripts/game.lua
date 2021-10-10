@@ -59,6 +59,14 @@ if BOT_BAD==nil  then
 	BOT_BAD = {}
 end
 
+
+--额外工资
+ExtraGold=7
+
+--人头
+KILLSNUM=GetMapName() =="6v6v6" and 200 or 304
+
+
 --老将眼奖励
 Veteran_WARD = 1000
 
@@ -110,15 +118,11 @@ if CDOTA_PlayerResource.Projectile==nil  then
 	  CDOTA_PlayerResource.Projectile = {}
 end
 
---死亡
-if CDOTA_PlayerResource.IMBA_PLAYER_DEATH_STREAK == nil then
-	  CDOTA_PlayerResource.IMBA_PLAYER_DEATH_STREAK = {}
-end
 
---击杀
-if CDOTA_PlayerResource.IMBA_PLAYER_KILL_STREAK == nil then
-	  CDOTA_PlayerResource.IMBA_PLAYER_KILL_STREAK = {}
-end
+--秒退
+CDOTA_PlayerResource.ABANDONED_GOOD = 0
+CDOTA_PlayerResource.ABANDONED_BAD = 0
+
 
 
 --数据
@@ -303,9 +307,9 @@ RandomAbility=
   "imba_queenofpain_sonic_wave","imba_huskar_inner_fire","imba_huskar_burning_spear","imba_huskar_berserkers_blood","polymerization","forbid","deception",
   "mother_love", "tp_tp", "assembly","imba_witch_doctor_voodoo_switcheroo","imba_witch_doctor_voodoo_restoration","brain_sap","enfeeble","nightmare",
   "imba_tiny_grow","imba_tiny_avalanche","imba_treant_natures_grasp","imba_light_radiant_bind","imba_light_blinding_light","imba_luna_lucent_beam",
-  "imba_luna_lunar_blessing", "imba_spectre_desolate","imba_phantom_lancer_spirit_lance","prot","flesh_heap","dismember","mountain","shockwave","skewer",
+  "imba_luna_lunar_blessing", "imba_spectre_desolate","imba_phantom_lancer_spirit_lance","prot","flesh_heap","dismember","mountain","shockwave",
   "imba_phantom_lancer_doppelwalk","imba_phantom_lancer_phantom_edge","imba_bristleback_viscous_nasal_goo","imba_bristleback_quill_spray","empower",
-  "unstable_concoction_throw",
+  "unstable_concoction_throw","winters_curse","cold_embrace","splinter_blast",
 --"droiyan","traitor","truce","flak_cannon","seer_vacuum"
   "pangolier_swashbuckle","tidehunter_anchor_smash","rattletrap_hookshot", "earthshaker_aftershock","warlock_rain_of_chaos","pudge_meat_hook","queenofpain_blink",
   "shadow_shaman_voodoo",  "faceless_void_time_walk","dark_troll_warlord_ensnare","polar_furbolg_ursa_warrior_thunder_clap","centaur_khan_war_stomp","roshan_spell_block",
@@ -461,7 +465,9 @@ NOT_RS_ITEM_TK=
   "item_manta_v2",
   "item_glimmer_cape",
   "item_imba_orb",
-    "item_laojie"
+  "item_laojie",
+  "item_imba_seer_of_disk",
+  "item_imba_relic_chip",
 }
 
 

@@ -5,7 +5,7 @@
     <styles>
         <include src="file://{resources}/styles/custom_game/test_tools.css"/>
     </styles>
-    <Panel class="ROOT">
+    <Panel class="ROOT" hittest="false">
         <Panel id="TOOLS_ID" >
             <Button id="T1" class="TOOLS_P" hittest="true" onactivate="toolsA(1)">
 			  <Label class="TOOLS_T" text="升满级"/>

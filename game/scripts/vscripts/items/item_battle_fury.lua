@@ -6,8 +6,31 @@ function item_battle_fury:GetIntrinsicModifierName()return "modifier_item_battle
 end
 
 function item_battle_fury:OnSpellStart()
+    local caster=self:GetCaster()
     local pos=self:GetCursorPosition()
-    GridNav:DestroyTreesAroundPoint(pos,350,false)
+    local team=caster:GetTeamNumber()
+    local id=caster:GetPlayerOwnerID()
+    GridNav:DestroyTreesAroundPoint(pos,300,false)
+        local targets = FindUnitsInRadius(
+		team,
+		pos,
+		nil,
+		300,
+		DOTA_UNIT_TARGET_TEAM_ENEMY,
+		DOTA_UNIT_TARGET_OTHER,
+		DOTA_UNIT_TARGET_FLAG_INVULNERABLE + DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
+		FIND_ANY_ORDER,
+        false)
+
+        for _, target in pairs(targets) do
+            local name=target:GetName()
+            if name~=nil and (name=="npc_dota_ward_base_truesight" or name=="npc_dota_ward_base") then
+                if CDOTA_PlayerResource.TG_HERO[id + 1].des_ward then
+                        CDOTA_PlayerResource.TG_HERO[id + 1].des_ward=CDOTA_PlayerResource.TG_HERO[id+ 1].des_ward+1
+                end
+                target:Kill( nil, caster )
+            end
+        end
 end
 
 modifier_item_battle_fury_pa = class({})

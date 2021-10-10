@@ -1,11 +1,11 @@
 <root>
 	<styles>
-		<include src="s2r://panorama/styles/custom_game/top_scoreboard.vcss_c" />
+		<include src="s2r://panorama/styles/custom_game/top_scoreboard.css" />
 	</styles>
 	<scripts>
-		<include src="file://{resources}/scripts/custom_game/utils.vjs_c" />
-		<include src="file://{resources}/scripts/custom_game/util.vjs_c" />
-		<include src="file://{resources}/scripts/custom_game/top_scoreboard.vjs_c" />
+		<include src="file://{resources}/scripts/custom_game/utils.js" />
+		<include src="file://{resources}/scripts/custom_game/util.js" />
+		<include src="file://{resources}/scripts/custom_game/top_scoreboard.js" />
 	</scripts>
 	<snippets>
 		<snippet name="DotaTeamBar">
@@ -49,9 +49,9 @@
 			<DOTAHeroImage id="NightstalkerNight" class="TimeOfDayIcon" heroname="npc_dota_hero_night_stalker" heroimagestyle="icon" />
 			<!-- <Image id="CurrentWeatherIcon" onactivate="ToggleWeatherParticles()" /> -->
 			<Label id="GameTime" text="{s:time_of_day}"/>
+			<Panel id="DayGlow" hittest="false" />
+			<Panel id="NightGlow" hittest="false" />
 		</Panel>
-		<Panel id="DayGlow" hittest="false" />
-		<Panel id="NightGlow" hittest="false" />
 		<Label id="TimeUntil" text="#DOTA_HUD_TimeUntil" hittest="false"/>
 		<!-- <Label id="WeatherTime" text="#weather_current_status" hittest="false"/> -->
 

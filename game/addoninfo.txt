@@ -4,10 +4,14 @@
 	"PenaltiesEnabled"		"0"
 	"EnablePickRules"		"1"
 	"CheckAFKPlayers"		"0"
-	"maps"      			"dota"
+	"maps"      			"dota 6v6v6"
 	"IsPlayable"  			"1"
 	"dota"
 	{
 		"MaxPlayers"        "20"
+	}
+	"6v6v6"
+	{
+		"MaxPlayers"        "18"
 	}	
 }

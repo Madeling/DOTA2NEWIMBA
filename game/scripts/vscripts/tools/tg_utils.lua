@@ -5,6 +5,20 @@
 
 
 --[[
+★所有玩家
+--]]
+function GetAllHero(method)
+      for num=1,#CDOTA_PlayerResource.TG_HERO do
+            local hero=CDOTA_PlayerResource.TG_HERO[num]
+            if hero then
+                  if method then
+                        method(hero)
+                  end
+            end
+      end
+end
+
+--[[
 ★判断是否吃了魔晶
 --]]
 function CDOTA_BaseNPC:Has_Aghanims_Shard()

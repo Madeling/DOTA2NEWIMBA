@@ -23,7 +23,6 @@
 #base linken/grimstroke/hero.txt
 #base linken/spectre/hero.txt
 #base linken/weaver/hero.txt
-#base linken/beastmaster/hero.txt
 /////////////////////////////////////
 
 #base mb/brewmaster/hero.txt
@@ -48,6 +47,24 @@
 "DOTAHeroes"
 {
 	"Version"		"1"
+
+	"npc_dota_hero_winter_wyvern"
+	{
+		"Ability1"		"arctic_burn"
+		"Ability2"		"splinter_blast"
+		"Ability3"		"cold_embrace"
+		"Ability4"		"generic_hidden"
+		"Ability5"		"generic_hidden"
+		"Ability6"		"winters_curse"
+		"Ability10"		"special_bonus_winter_wyvern_1"
+		"Ability11"		"special_bonus_winter_wyvern_2"
+		"Ability12"		"special_bonus_winter_wyvern_3"
+		"Ability13"		"special_bonus_winter_wyvern_4"
+		"Ability14"		"special_bonus_winter_wyvern_5"
+		"Ability15"		"special_bonus_winter_wyvern_6"
+		"Ability16"		"special_bonus_winter_wyvern_7"
+		"Ability17"		"special_bonus_winter_wyvern_8"
+	}
 
 	"npc_dota_hero_alchemist"
 	{

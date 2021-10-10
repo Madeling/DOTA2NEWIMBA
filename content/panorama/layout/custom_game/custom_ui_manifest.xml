@@ -51,12 +51,13 @@
 	</script>
 
 	<Panel>
-		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/rd_skills.xml" />
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/tip666.xml" />
     		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/barebones_notifications.xml" />
-		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/top_scoreboard.xml" />
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/option.xml" />
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/top_scoreboard.xml" />
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/rd_skills.xml" />
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/player.xml" />
-		<!--<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/skills_select.xml" />-->
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/skills_select.xml" />
 		<CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/team_select.xml" />
 		<CustomUIElement type="HeroSelection" layoutfile="file://{resources}/layout/custom_game/multiteam_hero_select_overlay.xml" />
 		<CustomUIElement type="FlyoutScoreboard" layoutfile="file://{resources}/layout/custom_game/multiteam_flyout_scoreboard.xml" />

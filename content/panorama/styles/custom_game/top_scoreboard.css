@@ -62,8 +62,7 @@
     margin-left: 80px;
 }
 
-.AspectRatio16x9 #TopBarLeftTeams,
-.AspectRatio16x9 #TopBarRightTeams {
+.AspectRatio16x9 #TopBarLeftTeams, .AspectRatio16x9 #TopBarRightTeams {
     width: 850px;
 }
 
@@ -71,8 +70,7 @@
     margin-left: 50px;
 }
 
-.AspectRatio16x10 #TopBarLeftTeams,
-.AspectRatio16x10 #TopBarRightTeams {
+.AspectRatio16x10 #TopBarLeftTeams, .AspectRatio16x10 #TopBarRightTeams {
     width: 795px;
 }
 
@@ -238,7 +236,6 @@
 
 #TopBarRightPlayers #TopBarPlayersContainer .SlantedContainer {
     opacity-mask: url('file://{images}/custom_game/hud/topbar_heroslant_right_psd.png');
-    //url("s2r://panorama/images/masks/topbar_heroslant_right_psd.vtex");
 }
 
 #TopBarRightPlayers #TopBarPlayersContainer .TopBarPlayerSlot {
@@ -276,7 +273,12 @@
 }
 
 #TopBarRightPlayers #TeamScorePlayersMainFlow {
+    overflow: noclip;
     flow-children: left;
+}
+
+#TopBarRightPlayers #TopBarPlayersContainer {
+    flow-children: right;
 }
 
 #TopBarLeftPlayers {
@@ -288,8 +290,7 @@
 }
 
 #TopBarLeftPlayers #TopBarPlayersContainer .SlantedContainer {
-    opacity-mask: url('file://{images}/custom_game/hud/topbar_heroslant_left_psd.png');
-    //url("s2r://panorama/images/masks/topbar_heroslant_left_psd.vtex");
+    opacity-mask: url('file://{images}/custom_game/hud/topbar_heroslant_left_psd.png'); //url("s2r://panorama/images/masks/topbar_heroslant_left_psd.vtex");
 }
 
 #TopBarLeftPlayers #TopBarPlayersContainer .TopBarPlayerSlot {
@@ -336,8 +337,7 @@
 }
 
 #BuybackIcon {
-    background-image: url('file://{images}/custom_game/hud/buyback_topbar_alive_psd.png');
-    //url("s2r://panorama/images/hud/reborn/buyback_topbar_alive_psd.vtex");
+    background-image: url('file://{images}/custom_game/hud/buyback_topbar_alive_psd.png'); //url("s2r://panorama/images/hud/reborn/buyback_topbar_alive_psd.vtex");
     background-size: 100%;
     background-repeat: no-repeat;
     width: 100%;
@@ -364,8 +364,7 @@
     transform: translateY(11px);
 }
 
-.AltPressed #TimeUntil,
-.AltPressed #WeatherTime {
+.AltPressed #TimeUntil, .AltPressed #WeatherTime {
     opacity: 1;
     transform: translateY(0);
 }
@@ -385,13 +384,12 @@
 
 #TopBarPlayersContainer {
     height: 100%;
-    z-index: 2;
+    z-index: 3;
     min-width: 200px;
 }
 
 .TopBarBackground {
-    background-image: url('file://{images}/custom_game/hud/top_bar_team_bg_psd.png');
-    //url("s2r://panorama/images/hud/reborn/top_bar_team_bg_psd.vtex");
+    background-image: url('file://{images}/custom_game/hud/top_bar_team_bg_psd.png'); //url("s2r://panorama/images/hud/reborn/top_bar_team_bg_psd.vtex");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     width: 98%;
@@ -502,8 +500,7 @@
     width: 90px;
     height: 46px;
     vertical-align: top;
-    background-image: url('file://{images}/custom_game/hud/glow_day_psd.png');
-    //url("s2r://panorama/images/hud/reborn/glow_day_psd.vtex");
+    background-image: url('file://{images}/custom_game/hud/glow_day_psd.png'); //url("s2r://panorama/images/hud/reborn/glow_day_psd.vtex");
     background-repeat: no-repeat;
     background-size: cover;
     visibility: collapse;
@@ -519,8 +516,7 @@
     width: 90px;
     height: 46px;
     vertical-align: top;
-    background-image:url('file://{images}/custom_game/hud/glow_night_psd.png');
-    // url("s2r://panorama/images/hud/reborn/glow_night_psd.vtex");
+    background-image:url('file://{images}/custom_game/hud/glow_night_psd.png'); // url("s2r://panorama/images/hud/reborn/glow_night_psd.vtex");
     background-repeat: no-repeat;
     background-size: cover;
     visibility: collapse;
@@ -568,16 +564,13 @@
 }
 
 .DayIcon {
-    background-image: url('file://{images}/custom_game/hud/icon_sun_psd.png');
-    //url("s2r://panorama/images/hud/reborn/icon_sun_psd.vtex");
+    background-image: url('file://{images}/custom_game/hud/icon_sun_psd.png'); //url("s2r://panorama/images/hud/reborn/icon_sun_psd.vtex");
 }
 
 .NightIcon {
-    background-image:url('file://{images}/custom_game/hud/icon_moon_psd.png');
-    //url("s2r://panorama/images/hud/reborn/icon_moon_psd.vtex");
+    background-image:url('file://{images}/custom_game/hud/icon_moon_psd.png'); //url("s2r://panorama/images/hud/reborn/icon_moon_psd.vtex");
     transform: scaleX(-1);
 }
-
 
 /* #CurrentWeatherIcon {
 	z-index: 50;
@@ -628,8 +621,7 @@
 
 .BuybackReady #RespawnTimer {
     width: 100%;
-    background-image: url('file://{images}/custom_game/hud/topbar_buyback_psd.png');
-    //url("s2r://panorama/images/hud/reborn/top_bar_buyback_bg_psd.vtex");
+    background-image: url('file://{images}/custom_game/hud/topbar_buyback_psd.png'); //url("s2r://panorama/images/hud/reborn/top_bar_buyback_bg_psd.vtex");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -641,8 +633,7 @@
 #AliveBuybackStatus {
     width: 100%;
     height: 100%;
-    background-image: url('file://{images}/custom_game/hud/topbar_buyback_psd.png');
-    //url("s2r://panorama/images/hud/reborn/topbar_buyback_psd.vtex");
+    background-image: url('file://{images}/custom_game/hud/topbar_buyback_psd.png'); //url("s2r://panorama/images/hud/reborn/topbar_buyback_psd.vtex");
     background-repeat: no-repeat;
     background-size: 100%;
     opacity: 0;
@@ -654,8 +645,7 @@
 #TopBarBuybackStatus {
     width: 100%;
     height: 100%;
-    background-image: url('file://{images}/custom_game/hud/topbar_buyback_psd.png');
-    //url("s2r://panorama/images/hud/reborn/topbar_buyback_psd.vtex");
+    background-image: url('file://{images}/custom_game/hud/topbar_buyback_psd.png'); //url("s2r://panorama/images/hud/reborn/topbar_buyback_psd.vtex");
     background-repeat: no-repeat;
     background-size: 100%;
     opacity: 0;
@@ -705,8 +695,7 @@
     height: 30px;
     margin-top: 4px;
     vertical-align: bottom;
-    background-image: url('file://{images}/custom_game/hud/icon_gold_psd.png');
-    //url("s2r://panorama/images/hud/icon_gold_psd.vtex");
+    background-image: url('file://{images}/custom_game/hud/icon_gold_psd.png'); //url("s2r://panorama/images/hud/icon_gold_psd.vtex");
     background-size: 100% 100%;
     opacity: 0;
     horizontal-align: center;
@@ -716,8 +705,7 @@
     z-index: 5;
     width: 100%;
     height: 4px;
-    background-image: url('file://{images}/custom_game/hud/topbar_playerslot_vignette_psd.png');
-    //url("s2r://panorama/images/hud/reborn/topbar_playerslot_vignette_psd.vtex");
+    background-image: url('file://{images}/custom_game/hud/topbar_playerslot_vignette_psd.png'); //url("s2r://panorama/images/hud/reborn/topbar_playerslot_vignette_psd.vtex");
     background-repeat: no-repeat;
     background-size: 92% 100%;
 }
@@ -748,8 +736,7 @@
     height: 20px;
     margin-top: 12px;
     vertical-align: top;
-    background-image: url('file://{images}/custom_game/hud/icon_disconnect_png.png');
-    //url("s2r://panorama/images/hud/reborn/icon_disconnect_png.vtex");
+    background-image: url('file://{images}/custom_game/hud/icon_disconnect_png.png'); //url("s2r://panorama/images/hud/reborn/icon_disconnect_png.vtex");
     background-repeat: no-repeat;
     background-size: 100%;
     opacity: 0;
@@ -771,8 +758,7 @@
 }
 
 #ManaBar .ProgressBarLeft {
-    background-image: url('file://{images}/custom_game/hud/topbar_mana_psd.png');
-    //url("s2r://panorama/images/hud/reborn/topbar_mana_psd.vtex");
+    background-image: url('file://{images}/custom_game/hud/topbar_mana_psd.png'); //url("s2r://panorama/images/hud/reborn/topbar_mana_psd.vtex");
     background-size: cover;
     border-radius: 0;
 }
@@ -791,7 +777,6 @@
     visibility: visible;
     horizontal-align: center;
 }
-
 
 /* #WeatherTime */
 
@@ -813,11 +798,9 @@
     align: center top;
 }
 
-
 /* #WeatherTime {
 	margin-top: 100px;
 } */
-
 
 /* .ShowTimeUntil #WeatherTime */
 
@@ -844,18 +827,15 @@ DOTAHud.IsBeforeGameplay .base {
 }
 
 .UltReady #TopBarUltIndicator {
-    background-image: url('file://{images}/custom_game/hud/ult_ready_psd.png');
-    //url("s2r://panorama/images/hud/reborn/ult_ready_psd.vtex");
+    background-image: url('file://{images}/custom_game/hud/ult_ready_psd.png'); //url("s2r://panorama/images/hud/reborn/ult_ready_psd.vtex");
 }
 
 .UltReadyNoMana #TopBarUltIndicator {
-    background-image:url('file://{images}/custom_game/hud/ult_no_mana_psd.png');
-    //url("s2r://panorama/images/hud/reborn/ult_no_mana_psd.vtex");
+    background-image:url('file://{images}/custom_game/hud/ult_no_mana_psd.png'); //url("s2r://panorama/images/hud/reborn/ult_no_mana_psd.vtex");
 }
 
 .UltOnCooldown #TopBarUltIndicator {
-    background-image:url('file://{images}/custom_game/hud/ult_cooldown_psd.png');
-    //url("s2r://panorama/images/hud/reborn/ult_cooldown_psd.vtex");
+    background-image:url('file://{images}/custom_game/hud/ult_cooldown_psd.png'); //url("s2r://panorama/images/hud/reborn/ult_cooldown_psd.vtex");
 }
 
 .NightTime #NightGlow {

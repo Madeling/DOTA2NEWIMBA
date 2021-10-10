@@ -29,6 +29,9 @@ function custom_events:OnHero_Set(k,j)
 		if HERO and HERO:IS_TrueHero_TG() then
 			local NAME=HERO:GetName()
 			if HERO.HERO_SELECT  then
+				if not HERO.Random_Skill  then
+					custom_events:OnAbility_Set(nil, { id=j.id, roll=1 })
+				end
 				return
 			end
 			if TableContainsKey(HEROSK,NAME) then
@@ -37,6 +40,8 @@ function custom_events:OnHero_Set(k,j)
 					 HERO:AddNewModifier(HERO, nil, "modifier_helide", {})
 					 CustomGameEventManager:Send_ServerToPlayer(PL,"select_skills",{T,TableLength(T)})
 				end
+			else
+					custom_events:OnAbility_Set(nil, { id=j.id, roll=1 })
 			end
 		end
 	end
@@ -74,7 +79,21 @@ function custom_events:On_Hero(k,j)
 			HERO.HERO_SELECT=true
 			HERO:SetAbilityPoints(HERO:GetLevel())
 			HERO:CalculateStatBonus(true)
-			CustomGameEventManager:Send_ServerToPlayer(PL,"skillget",{})
+			for i = 0, 9 do
+				local AB = HERO:GetAbilityByIndex(i)
+				if AB~=nil then
+					local AB_NAME = AB:GetAbilityName()
+					local AB_LV = AB:GetLevel()
+					if AB_LV == 0 then
+						local TABLE=AB.Set_InitialUpgrade()
+						if TABLE~=nil then
+							AB:SetLevel(TABLE.LV or 1)
+							AB:UseResources(TABLE.MANA or false,TABLE.GOLD or false,TABLE.CD or false)
+						end
+					end
+				end
+			end
+			custom_events:OnAbility_Set(nil, { id=j.id, roll=1 })
 			if HERO:HasModifier("modifier_helide") then
 				HERO:RemoveModifierByName("modifier_helide")
 			end

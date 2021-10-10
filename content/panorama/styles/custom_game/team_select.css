@@ -528,6 +528,7 @@ DOTAAvatarImage {
     text-shadow: 2px 2px 2px black;
     width: fill-parent-flow( 1);
     white-space: nowrap;
+    font-size: 20px;
 }
 
 #PlayerLeaveTeamButton {
@@ -557,7 +558,7 @@ DOTAAvatarImage {
 .TeamSelectEmptySlot #PlayerName {
     color: #FFFFFF30;
     letter-spacing: 1px;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 #EmptySlotIcon {

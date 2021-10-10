@@ -5,6 +5,7 @@
 	//=================================================================================================================
 	"npc_dota_hero_terrorblade"
 	{
+		"AttributeStrengthGain"		"2.2"
 		"Ability1"		"imba_terrorblade_reflection"
 		"Ability2"		"terrorblade_conjure_image"
 		"Ability3"		"imba_terrorblade_metamorphosis"

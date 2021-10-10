@@ -56,7 +56,8 @@
 		"item"		"item_broadsword"
 		"item"		"item_javelin"
 		"item"		"item_claymore"				
-		"item"		"item_mithril_hammer"	
+		"item"		"item_mithril_hammer"
+	
 	}
 			
 	"misc"
@@ -160,6 +161,8 @@
 
 		"item"		"item_imba_soul"	
 		"item"		"item_refresher"	
+		"item"		"item_imba_relic_chip"
+				
 	}
 		
 	// Level 3 - Purple Recipes	
@@ -188,6 +191,7 @@
 		"item"		"item_imba_aegis_heart"
 		"item"		"item_siege"
 		"item"		"item_veil_of_evil"
+		//"item"		"item_imba_seer_of_disk"
 	}
 			
 	"weapons"
@@ -196,8 +200,8 @@
 		"item"		"item_mage_slayer"
 		//"item"		"item_invis_sword"
 		"item"		"item_silver_edge"	
-		//"item"		"item_imba_death"
-		"item"		"item_imba_silver_hunter"
+		"item"		"item_imba_death"
+		//"item"		"item_imba_silver_hunter"
 		"item"		"item_enchanted_edge"
 		//"item"		"item_grandmasters_glaive"
 		"item"		"item_abyssal_blade_v2"

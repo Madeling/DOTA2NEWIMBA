@@ -17,6 +17,7 @@ function select_skills(data) {
         var t = create_ab("Label", hsk, "Author", "AuthorC", hsk);
         var t1 = create_ab("Label", hsk, "Author", "AuthorC", hsk);
         var aut = data[1][index]["Author"]
+        var ss = data[1][index]["HasScepterAndShard"]
         var hero_name = Players.GetPlayerSelectedHero(plid);
         t.text = $.Localize("#Skills_Select");
         t1.text = $.Localize("#Skills_Desc");
@@ -24,7 +25,7 @@ function select_skills(data) {
         t1.hittest = true;
         t.html = true;
         t.hittest = true;
-        add_select_events(t, index);
+        add_select_events(t, index, ss==1?true:false);
         if (aut != null)
         {
             var n1 = aut["name"];
@@ -66,13 +67,18 @@ function add_ab_events(panel, name) {
 
 }
 
-function add_select_events(panel, num) {
+function add_select_events(panel, num, support) {
     if (panel === null)
         return;
     panel.SetPanelEvent('onmouseactivate', function() {
         GameEvents.SendCustomGameEventToServer("Get_Hero", { id: plid, num: num });
         HERO_M_ID.style.visibility = "collapse";
         HERO_Text.style.visibility = "collapse";
+        if (support==false)
+        {
+            var aghs = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("HUDElements");
+            aghs.FindChildTraverse("AghsStatusContainer").style.visibility = "collapse";
+        }
     });
 }
 

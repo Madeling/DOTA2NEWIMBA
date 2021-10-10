@@ -26,7 +26,6 @@
 #base linken/grimstroke/kv.txt
 #base linken/spectre/kv.txt
 #base linken/weaver/kv.txt
-#base linken/beastmaster/kv.txt
 //////////////////////////////////////
 
 #base mb/brewmaster/kv.txt
@@ -46,7 +45,16 @@
 #base mb/lion/kv.txt
 #base mb/rubick/kv.txt
 #base mb/pugna/kv.txt
+#base mb/monster_killer/kv.txt
+
 //////////////////////////////////////
+
+#base ting/yinjianren/kv.txt
+#base ting/ambush/kv.txt
+//////////////////////////////////////
+
+#base tg/sniper_science/kv.txt
+
 
 "DOTAAbilities"
 {
@@ -72,6 +80,115 @@
 		}
 	}
 
+"trap_unselectable"
+  	{
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	    
+	    "BaseClass"             "ability_datadriven"
+	    
+	    "Modifiers"
+	    {
+			"modifier_unselectable"
+			{
+				"Passive" "1"
+				"States"
+				{
+					"MODIFIER_STATE_UNSELECTABLE"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_PROVIDES_VISION"		"MODIFIER_STATE_VALUE_DISABLED"
+					"MODIFIER_STATE_ROOTED"					"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_DISARMED"				"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVULNERABLE"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_LOW_ATTACK_PRIORITY"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_FLYING"					"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_BLOCK_DISABLED"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_OUT_OF_GAME"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_BLIND"					"MODIFIER_STATE_VALUE_ENABLED"
+		        }
+	      	}
+	    }
+	}
+
+	"breathe_poison"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"breathe_poison"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"				   
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"3000"
+		"AbilityCastPoint"				"0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"3"
+		
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"start_radius"			"250"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"end_radius"			"250"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"range"					"1000"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"speed"					"1200"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"poison_damage"			"0"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"7"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"strike_damage"			"100"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tick_damage"			"100"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"tick_interval"			"3.0"
+			}
+			"10"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"movement_slow"			"-80"
+			}
+		}
+	}
 
 	//=================================================================================================================
 	// 肉山
@@ -1219,7 +1336,7 @@
 			"04"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"attrg"					"100 150 200 250"
+				"attrg"					"200 250 300 350"
 			}
 			"05"
 			{
@@ -1288,7 +1405,7 @@
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"dam"					"200 300 400"
+				"dam"					"300 400 500"
 			}
 			"03"
 			{
@@ -5960,7 +6077,7 @@
 
 		// Time
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"190 180 170"
+		"AbilityCooldown"				"160 150 140"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -6200,7 +6317,7 @@
 		"AbilityCastPoint"		"0.1"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
 		"AbilityCooldown"		"30"
-		
+
 		// Cost
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"	"200"
@@ -13066,7 +13183,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"0.0"
 		"AbilityCharges"				"3 4 5"
-		"AbilityChargeRestoreTime"			"15"
+		"AbilityChargeRestoreTime"			"10"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -16705,7 +16822,7 @@
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"1500"
-		"AbilityCastPoint"				"0.65"
+		"AbilityCastPoint"				"0.6 0.4 0.2 0.1"
 
 		// Time
 		//-------------------------------------------------------------------------------------------------------------
@@ -16771,7 +16888,6 @@
 				"b_rd"					"350"
 			}
 		}
-		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
 	}
 
 
@@ -18053,7 +18169,7 @@
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"flesh_heap_range"				"500"
+				"flesh_heap_range"				"300"
 			}
 			"04"
 			{
@@ -19043,10 +19159,10 @@
 		"AbilityCastPoint"				"0.2"
 		"AbilityCastRange"				"900"
 
-		// Time		
+		// Time
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"22.0"
-		
+
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"				"50 80 110 140"
@@ -19054,8 +19170,8 @@
 		{
 			"particle"	"particles/tgp/alchemist/msg_gold.vpcf"
 			"particle"	"particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf"
-		}	
-		// Special	
+		}
+		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
@@ -19103,14 +19219,14 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitTargetFlags"			"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"775"
 		"AbilityCastPoint"				"0"
   		"AbilityCastAnimation"			"ACT_DOTA_ALCHEMIST_CONCOCTION_THROW"
 		"AbilityCooldown"				"10"
-		
+
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityModifierSupportBonus"	"120"
@@ -19197,7 +19313,7 @@
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
 	}
-	
+
 
 	"chemical_rage"
 	{
@@ -19218,7 +19334,7 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCastAnimation"			"ACT_INVALID"
 		"HasScepterUpgrade"			"1"
-		// Time		
+		// Time
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"55.0"
 
@@ -19232,7 +19348,7 @@
 			"particle"	"particles/units/heroes/hero_alchemist/alchemist_chemical_rage.vpcf"
 			"particle"	"particles/units/heroes/hero_alchemist/alchemist_lasthit_coins.vpcf"
 		}
-		// Special	
+		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
@@ -19304,7 +19420,7 @@
 		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
 	}
 
-	//化学狂暴额外获得8点护甲 
+	//化学狂暴额外获得8点护甲
 	"special_bonus_alchemist_4"
 	{
 		"BaseClass"	"special_bonus_undefined"
@@ -19340,11 +19456,404 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"value"		"0.1"	
-				"ad_linked_ability"			"chemical_rage"	
+				"value"		"0.1"
+				"ad_linked_ability"			"chemical_rage"
 			}
 		}
 	}
+
+
+
+
+
+	//冰龙
+	"arctic_burn"
+	{
+		"BaseClass"				"ability_lua"
+		"AbilityTextureName"			"winter_wyvern_arctic_burn"
+		"ScriptFile"				"heros/hero_winter_wyvern/arctic_burn.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilitySound"					"Hero_WinterWyvern.ArcticBurn.Cast"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+        	"HasScepterUpgrade"             "1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
+
+		// Time
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"42 36 28 20"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"100"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_winter_wyvern/winter_wyvern_arctic_attack.vpcf"
+			"particle"	"particles/units/heroes/hero_winter_wyvern/wyvern_arctic_burn_start.vpcf"
+			"particle"	"particles/status_fx/status_effect_wyvern_arctic_burn.vpcf"
+			"particle"	"particles/units/heroes/hero_winter_wyvern/wyvern_arctic_burn_buff.vpcf"
+			"particle"	"particles/units/heroes/hero_winter_wyvern/wyvern_arctic_burn_flying.vpcf"
+		}
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"8 9 10 11"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"attrg"				  "300 400 500 600"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"vision"				  "400 500 600 700"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"projectile"			"300"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"sp"					   "70"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"mana"					   "20"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"dmg"					   "1.5 2 2.5 3"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"projectile2"				"200"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"buffdur"				   		"3"
+			}
+			"10"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"maxsp"				   		"550"
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
+	}
+
+
+	"splinter_blast"
+	{
+		"BaseClass"				"ability_lua"
+		"AbilityTextureName"			"winter_wyvern_splinter_blast"
+		"ScriptFile"				"heros/hero_winter_wyvern/splinter_blast.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"FightRecapLevel"				"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"1200"
+		"AbilityCastPoint"				"0.3 0.2 0.1 0"
+
+		// Time
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"7"
+
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"105 120 135 150"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_winter_wyvern/wyvern_splinter_blast.vpcf"
+		}
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"rd"							"350 400 450 500"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"dmg"							"150 200 250 300"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"sp"							"10 20 30 40"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"dur"							"5"
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+	}
+
+
+	"cold_embrace"
+	{
+		"BaseClass"				"ability_lua"
+		"AbilityTextureName"			"winter_wyvern_cold_embrace"
+		"ScriptFile"				"heros/hero_winter_wyvern/cold_embrace.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ALLIES_YES"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"FightRecapLevel"				"1"
+		"AbilitySound"					"Hero_Winter_Wyvern.ColdEmbrace"
+
+        "HasShardUpgrade"             "1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"1000"
+		"AbilityCastPoint"				"0.3 0.2 0.1 0"
+
+		// Time
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"24 21 18 15"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"50 60 70 80"
+		"precache"
+		{
+			"particle"	"particles/econ/items/winter_wyvern/winter_wyvern_ti7/wyvern_cold_embrace_ti7buff.vpcf"
+			"model"	"models/creeps/ice_biome/relict/relict.vmdl"
+		}
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"			"4.0"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"heal_additive"		"100"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"heal_percentage"	"2 3 4 5"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"dur"					"6"
+			}
+			"05"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"num"					"1 1 1 2"
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+	}
+
+
+	"winters_curse"
+	{
+		"BaseClass"				"ability_lua"
+		"AbilityTextureName"			"winter_wyvern_winters_curse"
+		"ScriptFile"				"heros/hero_winter_wyvern/winters_curse.lua"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"FightRecapLevel"				"2"
+		"AbilitySound"					"Hero_WinterWyvern.WintersCurse.Target"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.3 0.3 0.3 0.3"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+
+		// Time
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"90 85 80"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"150 250 350"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_winter_wyvern/wyvern_winters_curse_start.vpcf"
+			"particle"	"particles/units/heroes/hero_winter_wyvern/wyvern_winters_curse.vpcf"
+			"particle"	"particles/units/heroes/hero_winter_wyvern/wyvern_winters_curse_ground.vpcf"
+			"particle"	"particles/units/heroes/hero_winter_wyvern/wyvern_winters_curse_overhead.vpcf"
+			"particle"	"particles/units/heroes/hero_winter_wyvern/wyvern_winters_curse_beams.vpcff"
+			"particle"	"particles/units/heroes/hero_winter_wyvern/wyvern_winters_curse_status.vpcf"
+		}
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"500 550 600"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage_reduction"		"80 70 60"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_attack_speed"	"60 80 100"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"			"4.5 5 5.5"
+			}
+		}
+	}
+
+
+	//极寒之拥每秒恢复120点魔法
+	"special_bonus_winter_wyvern_1"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+	}
+
+	//极寒之拥结束后获得2秒技能免疫
+	"special_bonus_winter_wyvern_2"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+	}
+
+	//提高10%碎裂冲击附带0.7秒眩晕
+	"special_bonus_winter_wyvern_3"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+	}
+
+	//提高碎裂冲击速度和范围
+	"special_bonus_winter_wyvern_4"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+	}
+
+	//严寒烧灼效果下普攻每5秒释放一次碎裂冲击
+	"special_bonus_winter_wyvern_5"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+	}
+
+	//严寒烧灼A杖不消耗魔法
+	"special_bonus_winter_wyvern_6"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+	}
+
+
+	//寒冬诅咒不再对敌人附加减伤
+	"special_bonus_winter_wyvern_7"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+
+	}
+
+	//寒冬诅咒可对友方建筑使用
+	"special_bonus_winter_wyvern_8"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	// =================================================================================================================
@@ -19522,7 +20031,7 @@
 			"06"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"rebuke_crit"				"350"		//暴击倍率
+				"rebuke_crit"				"350 400 450 500"		//暴击倍率
 			}
 			"07"
 			{
@@ -19552,7 +20061,7 @@
 			"12"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"rebuke_debuffdur"			"2.4"		//减速持续时间，强制面向时间为此值一半
+				"rebuke_debuffdur"				"2.4"		//减速持续时间，强制面向时间为此值一半
 			}
 		}
 	}
@@ -24596,11 +25105,11 @@
 		"FightRecapLevel"	"2"
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
 		"MaxLevel"	"3"
-		"AbilityCastPoint"	"0.1 0.1 0.1"
+		"AbilityCastPoint"	"0"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_5"
 		// Time
 		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"	"90"
+		"AbilityCooldown"	"80 70 60"
 		// Cost
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"	"300 400 500"
@@ -28249,7 +28758,7 @@
 
 		// Time
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"60"
+		"AbilityCooldown"				"60 50 40"
 		"AbilityChannelTime"			"8.0"
 
 		// Cost
@@ -28271,7 +28780,7 @@
 			"01"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"radius"					"700"
+				"radius"					"700 800 900"
 				"CalculateSpellDamageTooltip"	"0"
 			}
 			"02"

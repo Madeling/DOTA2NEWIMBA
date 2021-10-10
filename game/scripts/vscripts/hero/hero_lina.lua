@@ -16,6 +16,9 @@ function imba_lina_dragon_slave:OnSpellStart()
 	local pos = self:GetCursorPosition()
 	local direction = (pos - caster:GetAbsOrigin()):Normalized()
 	direction.z = 0.0
+	if pos==caster:GetAbsOrigin() then
+		direction=caster:GetForwardVector()
+	end
 	local super_state = self:HasFireSoulActive() and 1 or 0
 	local primary_length = self:GetCastRange(pos, caster)
 	local primary_speed = self:HasFireSoulActive() and self:GetSpecialValueFor("primary_speed_super") or self:GetSpecialValueFor("primary_speed")

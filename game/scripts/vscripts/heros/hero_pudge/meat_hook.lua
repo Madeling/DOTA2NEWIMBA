@@ -65,7 +65,7 @@ function meat_hook:OnSpellStart()
             local tpos=cpos + dir1* dis1
             local fx=ParticleManager:CreateParticle( "particles/units/heroes/hero_pudge/pudge_meathook.vpcf", PATTACH_CUSTOMORIGIN, self.caster )
             ParticleManager:SetParticleAlwaysSimulate( fx )
-            ParticleManager:SetParticleControlEnt( fx, 0, self.caster, PATTACH_POINT_FOLLOW, "attach_weapon_chain_rt", cpos, true )
+            ParticleManager:SetParticleControlEnt( fx, 0, self.caster, PATTACH_POINT_FOLLOW, "attach_weapon_chain_rt", cpos+Vector( 0, 0, 96 ), true )
             ParticleManager:SetParticleControl( fx, 1, tpos)
             ParticleManager:SetParticleControl( fx, 2, Vector( hooksp, dis1, self.wh ) )
             ParticleManager:SetParticleControl( fx, 3, Vector( ( ( dis1 / hooksp ) * 2 ), 0, 0 ) )
@@ -125,7 +125,7 @@ function meat_hook:OnProjectileHit_ExtraData( hTarget, vLocation,kv )
                               EmitSoundOn( "Hero_Pudge.AttackHookImpact", hTarget )
                               EmitSoundOn( "Hero_Pudge.AttackHookRetract", hTarget )
                               hTarget:AddNewModifier( self.caster, self, "modifier_meat_hook_move", {fx=fx} )
-                              ParticleManager:SetParticleControlEnt( fx, 1, hTarget, PATTACH_POINT_FOLLOW, "attach_hitloc", tpos , true )
+                              ParticleManager:SetParticleControlEnt( fx, 1, hTarget, PATTACH_POINT_FOLLOW, "attach_hitloc", tpos+Vector( 0, 0, 96 ) , true )
                               ParticleManager:SetParticleControl( fx, 4, Vector( 0, 0, 0 ) )
                               ParticleManager:SetParticleControl( fx, 5, Vector( 1, 0, 0 ) )
                               if  (hTarget:GetTeamNumber() ~= self.caster:GetTeamNumber() ) then
@@ -154,7 +154,7 @@ end
 function meat_hook:GetIntrinsicModifierName() return "modifier_meat_hook_stack" end
 
 function meat_hook:HookEnd(vLocation,fx,hs)
-                  ParticleManager:SetParticleControlEnt( fx, 1, self.caster, PATTACH_POINT_FOLLOW, "attach_weapon_chain_rt", self.caster:GetAbsOrigin(), true);
+                  ParticleManager:SetParticleControlEnt( fx, 1, self.caster, PATTACH_POINT_FOLLOW, "attach_weapon_chain_rt", self.caster:GetAbsOrigin()+Vector( 0, 0, 96 ), true);
                  	ParticleManager:SetParticleControl( fx, 4, Vector( 0, 0, 0 ) )
 			ParticleManager:SetParticleControl( fx, 5, Vector( 1, 0, 0 ) )
                   Timers:CreateTimer(TG_Distance(self.caster:GetAbsOrigin(),vLocation)/hs*2, function()
@@ -238,7 +238,7 @@ end
 function modifier_meat_hook_move:OnHorizontalMotionInterrupted()
 	if IsServer() then
                   if self.FX then
-			      ParticleManager:SetParticleControlEnt( self.FX, 1, self.caster, PATTACH_POINT_FOLLOW, "attach_weapon_chain_rt", self.caster:GetAbsOrigin(), true )
+			      ParticleManager:SetParticleControlEnt( self.FX, 1, self.caster, PATTACH_POINT_FOLLOW, "attach_weapon_chain_rt", self.caster:GetAbsOrigin()+Vector( 0, 0, 96 ), true )
 			end
                   self:Destroy()
 	end

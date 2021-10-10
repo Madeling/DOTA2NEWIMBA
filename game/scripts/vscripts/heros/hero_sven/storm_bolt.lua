@@ -187,7 +187,7 @@ function modifier_storm_bolt_buff:UpdateHorizontalMotion( t, g )
 	self:GetParent():StartGesture(ACT_DOTA_OVERRIDE_ABILITY_1)
 	local pos=self:GetParent():GetAbsOrigin()
 	local dir=TG_Direction(self.Target:GetAbsOrigin(),pos)
-    self:GetParent():SetAbsOrigin(pos+dir* (self.sp / (1.0 / FrameTime())))
+    	self:GetParent():SetAbsOrigin(pos+dir* (self.sp / (1.0 / FrameTime())))
 	if self:GetParent():TG_HasTalent("special_bonus_sven_1") then
 		local heros = FindUnitsInRadius(
 			self.team,

@@ -83,24 +83,24 @@ function Snippet_TopBarPlayerSlot_Update(panel) {
 function Snippet_DotaTeamBar(team) {
 
     if (TeamPanels[team] == null) {
-        var num = map?1:2;
+        var num = map ? 1 : 2;
         var isRight = team % num !== 0;
         var rootPanel = $(isRight ? '#TopBarRightPlayers' : '#TopBarLeftPlayers');
         var panel = $.CreatePanel('Panel', rootPanel, '');
         panel.BLoadLayoutSnippet('DotaTeamBar');
         panel.team = team;
         TopBarScore = panel.FindChildTraverse('TopBarScore')
-        TopBarScore.style.textShadow = '0 0 10px ' + teamColors[team];
-        if (map)
-        {
+       // TopBarScore.style.textShadow = '0 0 10px ' + teamColors[team];
+        if (map==true)
+          {
             var context = $.GetContextPanel();
             var TopBarLeftTeams = context.FindChildTraverse("TopBarLeftTeams")
-            TopBarLeftTeams.style.width = "1500px";
+            TopBarLeftTeams.style.width = "1530px";
             var TimeOfDayBG = context.FindChildTraverse("TimeOfDayBG")
-            TimeOfDayBG.style.marginLeft="1250px";
+            TimeOfDayBG.style.marginLeft = "1350px";
             var TimeOfDay = context.FindChildTraverse("TimeOfDay")
-            TimeOfDay.style.marginLeft = "1250px";
-        }
+            TimeOfDay.style.marginLeft = "1350px";
+       }
         TeamPanels[team] = panel;
         SortPanelChildren(rootPanel, dynamicSort('team'), function(child, child2) {
             return child.team < child2.team;
@@ -117,7 +117,7 @@ function Snippet_DotaTeamBar_Update(panel) {
 }
 
 function Update() {
-    $.Schedule(0.1, Update);
+    $.Schedule(0.2, Update);
     var rawTime = Game.GetDOTATime(false, true);
     var time = Math.abs(rawTime);
     var isNSNight = rawTime < darknessEndTime;
@@ -135,7 +135,6 @@ function Update() {
     $("#NightstalkerNight").visible = isNSNight;
     $.Each(Game.GetAllPlayerIDs(), function(pid) {
         Snippet_TopBarPlayerSlot_Update(Snippet_TopBarPlayerSlot(pid));
-
     })
 
     Object.values(TeamPanels).forEach(Snippet_DotaTeamBar_Update);
@@ -162,7 +161,6 @@ function TimerClick() {
     if (map) {
     Snippet_DotaTeamBar(DOTATeam_t.DOTA_TEAM_CUSTOM_1);
     }
-
     Update();
 })()
 

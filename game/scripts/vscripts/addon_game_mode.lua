@@ -266,12 +266,11 @@ function L_TG:InitGameMode()
 	if GetMapName() =="6v6v6" then
 		GameRules:SetStartingGold(1000)
 		GameRules:SetCreepSpawningEnabled(false)
-		GameRules:SetPreGameTime(0)
+		GameRules:SetPreGameTime(10)
 		GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS,6)
 		GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS,6)
 		GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_CUSTOM_1,6)
 	end
-
 
 --------------------------------------------------------------------------??
 	--官方事件
@@ -288,6 +287,7 @@ function L_TG:InitGameMode()
 	ListenToGameEvent("dota_tower_kill", Dynamic_Wrap(L_TG, 'OnTowerKill'), self)
 	ListenToGameEvent("dota_player_learned_ability", Dynamic_Wrap(L_TG, 'OnPlayerLearnedAbility'), self)
 	ListenToGameEvent( "dota_match_done", Dynamic_Wrap( L_TG, "OnGameFinished" ), self )
+	ListenToGameEvent('player_disconnect', Dynamic_Wrap(L_TG, 'OnDisconnect'), self)
 	--ListenToGameEvent( "dota_hero_entered_shop", Dynamic_Wrap( L_TG, "OnHeroEnteredShop" ), self )
 	--ListenToGameEvent( "dota_player_team_changed", Dynamic_Wrap( L_TG, "OnPlayerTeamChanged" ), self )
 	--ListenToGameEvent( "dota_player_used_ability", Dynamic_Wrap( L_TG, 'OnPlayerUsedAB' ), self )
@@ -504,21 +504,23 @@ function L_TG:DamageFilter(tg)
 	★死亡。
 	]]
 	if unit and Is_DATA_TG(CDOTA_PlayerResource.TG_HERO, unit)  and tg.damage>=unit:GetHealth() then
-		local t = GameRules:GetDOTATime(false, false)
-			local rest=0
-			if t<=600 then
-				rest=RandomInt(6,8)
-			elseif t>600 and t<=1200 then
-				rest=RandomInt(15,25)
-			elseif t>1200  then
-				local time=unit:GetLevel()+(t-1200)/100
-				rest=time>=60 and 60 or time
-			end
-			mode:SetFixedRespawnTime(rest+unit:GetRespawnTimeChangeNormal())
+		local rest=6
+		if GetMapName() ~="6v6v6" then
+			local t = GameRules:GetDOTATime(false, false)
+				if t<=600 then
+					rest=RandomInt(6,8)
+				elseif t>600 and t<=1200 then
+					rest=RandomInt(15,25)
+				elseif t>1200  then
+					local time=unit:GetLevel()+(t-1200)/100
+					rest=time>=60 and 60 or time
+				end
+		end
+			GameRules:GetGameModeEntity():SetFixedRespawnTime(rest+unit:GetRespawnTimeChangeNormal())
 			if  attacker and unit:HasModifier("modifier_dlnec_reaper_permanent") then
 				local mod=unit:FindModifierByName("modifier_dlnec_reaper_permanent")
 				if mod then
-					mode:SetFixedRespawnTime(rest+(mod:GetStackCount()*(3+attacker:TG_GetTalentValue("special_bonus_dlnec_25r"))))
+					GameRules:GetGameModeEntity():SetFixedRespawnTime(rest+(mod:GetStackCount()*(3+attacker:TG_GetTalentValue("special_bonus_dlnec_25r"))))
 				end
 			end
 	end
@@ -612,19 +614,7 @@ function L_TG:OrderFilter(keys)
 			ability.range = 0
 		end
 	end
-	------------------------------------------------------------------------------------
-	-- 原始咆哮施法距离判断
-	------------------------------------------------------------------------------------
-	if keys.order_type == DOTA_UNIT_ORDER_CAST_TARGET and EntIndexToHScript(keys.entindex_ability):GetName() == "imba_beastmaster_primal_roar" then
-		local ability = EntIndexToHScript(keys.entindex_ability)
-		local target = EntIndexToHScript(keys.entindex_target)
-		local stack = ability:GetSpecialValueFor("stack")	
-		if target:HasModifier("modifier_imba_call_of_the_wild_debuff") and target:FindModifierByName("modifier_imba_call_of_the_wild_debuff"):GetStackCount() >= stack then
-			ability.range_porcupine = 50000
-		else
-			ability.range_porcupine = 0
-		end
-	end
+
 ----------------------------------------------------------------------------------------------------
 
 	--[[

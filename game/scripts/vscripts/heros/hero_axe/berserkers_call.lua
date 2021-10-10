@@ -125,9 +125,6 @@ end
     function modifier_berserkers_call_axe_buff3:IsHidden()
         return true
     end
-    function modifier_berserkers_call_axe_buff3:IsBuff()
-        return true
-    end
     function modifier_berserkers_call_axe_buff3:IsPurgable()
         return false
     end

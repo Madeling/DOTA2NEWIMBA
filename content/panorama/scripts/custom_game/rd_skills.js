@@ -12,16 +12,23 @@ var SKILL_P = [3];
 var SKILL_NUM = [3];
 
 function skillstart() {
-    //SKILLS_BG.style.backgroundImage = "url('file://{images}/custom_game/hud2/b1.png')";
     for (var index = 1; index <= 3; index++) {
         SKILL_P[index] = panel.FindChildTraverse("SKILLS" + index.toString());
         SKILL_NUM[index] = panel.FindChildTraverse(index.toString());
     }
-    GameEvents.SendCustomGameEventToServer("OnAbility_Set", { id: Players.GetLocalPlayer(), roll: 1 });
-}
-
-function skillget(data) {
-    GameEvents.SendCustomGameEventToServer("OnAbility_Set", { id: plid });
+    /*
+    var hero = Players.GetPlayerSelectedHero(plid)
+    var result = false;
+    for (var i=0; i < HEROLIST.length; i++) {
+        if (HEROLIST[i] === hero) {
+            result = true;
+            break;
+        }
+    }
+    if (result==false) {
+        GameEvents.SendCustomGameEventToServer("OnAbility_Set", { id: Players.GetLocalPlayer(), roll: 1 });
+    }
+    */
 }
 
 function skillset(data) {
@@ -65,5 +72,11 @@ function skillshow(A, B) {
 
 
 GameEvents.Subscribe("roll", roll);
-GameEvents.Subscribe("skillget", skillget);
 GameEvents.Subscribe("skillset", skillset);
+
+
+var HEROLIST=
+[
+    "npc_dota_hero_sniper",
+    "npc_dota_hero_lina",
+]

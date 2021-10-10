@@ -202,12 +202,12 @@
 
 .skills_title_TEXT {
     color: #ffffff;
-    text-shadow: 2px 2px #000000;
+    text-shadow: 1px 1px 0px 3 #000000;
     font-size: 30px;
     horizontal-align: center;
     vertical-align: top;
-    box-shadow: #000000cc 0px 0px 10px 3px;
     text-overflow: shrink;
+    font-family: Radiance, FZKai-Z03, TH Sarabun New, YDYGO 540;
 }
 
 #T1 {

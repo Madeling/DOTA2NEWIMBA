@@ -1,5 +1,94 @@
 "DOTAAbilities"
 {
+
+	//=================================================================================================================
+	// 装备移除
+	//=================================================================================================================
+	"item_imba_silver_hunter"		"REMOVE"
+	"item_solar_crest"			"REMOVE"
+	//"item_imba_death"			"REMOVE"
+	"item_black_king_bar"		"REMOVE"
+	"item_vanguard"			"REMOVE"
+	"item_recipe_vanguard"		"REMOVE"
+	"item_radiance"			"REMOVE"
+	"item_ancient_janggo"	"REMOVE"
+	"item_skadi"			"REMOVE"
+	"item_sange_and_yasha"	"REMOVE"
+	"item_kaya_and_sange"	"REMOVE"
+	"item_yasha_and_kaya"	"REMOVE"
+	"item_butterfly"		"REMOVE"
+	"item_crown"			"REMOVE"
+	"item_rod_of_atos"		"REMOVE"
+	"item_vladmir"			"REMOVE"
+	"item_pipe"				"REMOVE"
+	"item_heavens_halberd"	"REMOVE"
+	"item_mjollnir"			"REMOVE"
+	"item_monkey_king_bar"	"REMOVE"
+	"item_desolator"		"REMOVE"
+	"item_greater_crit"		"REMOVE"
+	"item_hand_of_midas"	"REMOVE"
+	"item_manta"		"REMOVE"
+	"item_heart"		"REMOVE"
+	"item_magic_shoes"		"REMOVE"
+	"item_guardian_greaves"	"REMOVE"
+	"item_abyssal_blade"		"REMOVE"
+	"item_satan"		"REMOVE"
+	"item_sheepstick"	"REMOVE"
+	"item_nullifier"	"REMOVE"
+	"item_hand_of_midas""REMOVE"
+	"item_eternal_armor"	"REMOVE"
+	"item_bfury"		"REMOVE"
+	"item_lotus_orb"		"REMOVE"
+	"item_armlet"		"REMOVE"
+	"item_octarine_core"		"REMOVE"
+	"item_dagon_2"			"REMOVE"
+	"item_dagon_3"			"REMOVE"
+	"item_dagon_4"			"REMOVE"
+	"item_dagon_5"			"REMOVE"
+	"item_tortoise"			"REMOVE"
+	"item_imba_radiance"		"REMOVE"
+	"item_imba_splendid"		"REMOVE"
+	"item_recipe_sheepstick"		"REMOVE"
+
+	"item_imba_seer_of_disk"		"REMOVE"
+	"item_recipe_imba_seer_of_disk"		"REMOVE"
+	//=================================================================================================================
+	// =================================================================================================================
+	//=================================================================================================================
+	
+//=================================================================================================================
+	// Bag of Gold
+	//=================================================================================================================
+	"item_bag_of_gold"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityName"					"item_bag_of_gold"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"Model"							"models/props_gameplay/gold_coin001.vmdl"
+		"ItemKillable"					"0"
+		
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"99999"
+		"ItemPurchasable"				"0"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"0"
+		"ItemKillable"					"0"
+		"ItemCastOnPickup"				"1"
+	}
+
 //=================================================================================================================
 	// Bloodstone
 	//=================================================================================================================
@@ -3550,12 +3639,12 @@
 			"03"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"stun"					"1.5"
+				"stun"					"1.2"
 			}			
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"ch_m"					"27"
+				"ch_m"					"25"
 			}
 			"05"
 			{
@@ -3733,8 +3822,8 @@
 		"AbilityTextureName"				"item_bfury"
 		"ScriptFile"					"items/item_battle_fury.lua"												// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_TREE"
-		"AbilityCastRange"				"350"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_BASIC"
+		"AbilityCastRange"				"300"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"6.0"
 
@@ -4945,7 +5034,7 @@
 	}
 	
 	//王冠
-	"item_recipe_imba_crown"
+"item_recipe_imba_crown"
 	{
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_recipe_crown_png"
@@ -4972,13 +5061,13 @@
 	{
 		"BaseClass"	"item_lua"
 		"AbilityTextureName"	"crown_png"
-		"ScriptFile"	"ting/items/item_silver_hunter.lua"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"ScriptFile"	"ting/items/item_seer_of_disk.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		// Stats
 		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"	"30.0"
+		"AbilityCooldown"	"20.0"
 		"AbilityManaCost"	"50"
 		"AbilityCastRange"	"900"
 		// General
@@ -5018,12 +5107,17 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_hp"	"100"
+				"bonus_hp"	"200"
 			}
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"duration"	"5"
+				"duration"	"6"
+			}			
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"movespeed"				"-40"
 			}
 		}
 	}
@@ -6682,6 +6776,7 @@
 	}
 
 	// =================================================================================================================
+	// =================================================================================================================
 	"item_recipe_imba_death"
 	{
 		"BaseClass"	"item_datadriven"
@@ -6715,7 +6810,7 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		// Stats
 		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"	"23"
+		"AbilityCooldown"	"20"
 		"AbilityManaCost"	"100"
 		// General
 		// -------------------------------------------------------------------------------------------------------------
@@ -6757,73 +6852,52 @@
 			}
 			"04"
 			{
-				"var_type"	"FIELD_FLOAT"
-				"critical_ex"	"200"	//背后暴击倍率
+				"var_type"	"FIELD_INTEGER"
+				"critical"	"170"	//暴击倍率
 			}
 			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
 				"movespeed"	"10"	//被动移动速度加成
 			}
-			"6"
+			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"duration"	"12"	//隐身持续时间
+				"duration"	"14"	//隐身持续时间
 			}
+
 			"07"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"duration_inv"	"0.2"	//强隐时间
-			}
-			"08"
 			{
 				"var_type"	"FIELD_INTEGER"
 				"radius_s"	"2500"	//附近没人就进入不可被发现的隐身
 			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration_ex"	"4"	//破隐持续时间
+			}
+
 			"09"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"critical"	"100"	//普通破隐暴击
+				"move_speed_ex"		"130"	//主动移动速度加成
 			}
 			"10"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"broken_duration"	"4.0"		//破坏反隐持续时间
-			}			
+				"crit_chance"		"30"	//暴击概率
+			}
 			"11"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"radius_ex"		"500"	//死亡刷新该物品的cd 范围
+				"damage_ex"		"15"	//主动额外伤害
 			}
-			"12"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"move_speed_ex"		"100"	//主动移动速度加成
-			}
-			"13"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"stun_duration_ex"		"0.7"	//背后敲晕持续时间
-			}
-			"14"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"stun_duration"		"0.2"	//非背后敲晕持续时间
-			}
-			"15"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"inv_cd"		"2.5"	//强隐内置cd
-			}
-			"16"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"broken_nerf"		"40"	//破坏期间降低输出
-			}
+
+
+
 
 		}
 	}
-
 
 // =================================================================================================================
 	// Recipe: Armlet
@@ -7363,8 +7437,279 @@
 	}
 
 
+	"item_recipe_imba_seer_of_disk"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe_seer_of_disk"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"ID"	"2057"
+		"Model"	"models/props_gameplay/recipe.vmdl"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"2500"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_imba_seer_of_disk"
+		"ItemRequirements"
+		{
+			"01"	"item_imba_crown;item_aeon_disk"
+		}
+	}
+	"item_imba_seer_of_disk"
+	{
+		"BaseClass"	"item_lua"
+		"AbilityTextureName"	"seer_of_disk"
+		"ScriptFile"	"ting/items/item_seer_of_disk.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET|DOTA_ABILITY_BEHAVIOR_POINT|DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+		// Stats
+		// -------------------------------------------------------------------------------------------------------------
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"ID"	"2058"
+		"ItemQuality"	"epic"
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"AbilityCastPoint"	"0.0"
+		"AbilityCooldown"	"55"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"150"
+		// Stats
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"1200"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"300"
+		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemAlertable"	"1"
+		"ItemShopTags"	"armor;boost_armor"
+		"ItemAliases"	"titan"
+		"precache"
+		{
+			"particle"	"particles/items4_fx/meteor_hammer_spell_ground_impact.vpcf"
+			"particle"	"particles/items4_fx/meteor_hammer_aoe.vpcf"
+			"particle"	"particles/items/titan_hammer/hammer_buff.vpcf"
+			"particle"	"particles/items5_fx/helm_of_the_dominator_buff.vpcf"
+			"Model"		"models/creeps/lane_creeps/creep_radiant_melee/radiant_melee_mega_crystal.vmdl"
+			"Model"		"models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee_mega_crystal.vmdl"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp"	"500"	//血
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mp"	"500"	//蓝
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stat"	"20"	//抗性
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"600"	//主动范围
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration_1"	"3"	//主动对普通单位的持续时间
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration_2"	"6" //主动对隐身单位的持续时间
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"1"	//盘子buff的持续时间
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cd_duration"	"60"	//cd
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_l"	"1000"	//触发临界值
+			}
+			"10"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"status_resistance"			"75"	//原版盘子buff的抗性
+			}
+			"11"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"movespeed"				"-50"
+			}
+
+		}
+	}
 
 
+"item_recipe_imba_relic_chip"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_recipe_relic_chip"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"ID"	"2059"
+		"Model"	"models/props_gameplay/recipe.vmdl"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"2000"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_imba_relic_chip"
+		"ItemRequirements"
+		{
+			"01"	"item_meteor_hammer;item_helm_of_the_dominator"
+		}
+	}
+	"item_imba_relic_chip"
+	{
+		"BaseClass"	"item_lua"
+		"AbilityTextureName"	"relic_chip"
+		"ScriptFile"	"ting/items/item_relic_chip.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET|DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+		// Stats
+		// -------------------------------------------------------------------------------------------------------------
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"ID"	"2060"
+		"ItemQuality"	"epic"
+		"Model"	"models/props_gameplay/red_box.vmdl"
+		"AbilityCastPoint"	"0.0"
+		"AbilityCooldown"	"70"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"100"
+		// Stats
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"1000"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"300"
+		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemAlertable"	"1"
+		"ItemShopTags"	"armor;boost_armor"
+		"ItemAliases"	"titan"
+		"precache"
+		{
+			"particle"	"particles/items4_fx/meteor_hammer_spell_ground_impact.vpcf"
+			"particle"	"particles/items4_fx/meteor_hammer_aoe.vpcf"
+			"particle"	"particles/items/titan_hammer/hammer_buff.vpcf"
+			"particle"	"particles/items5_fx/helm_of_the_dominator_buff.vpcf"
+			"Model"		"models/creeps/lane_creeps/creep_radiant_melee/radiant_melee_mega_crystal.vmdl"
+			"Model"		"models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee_mega_crystal.vmdl"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"str"	"20"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"manare"	"15"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hpre"	"15"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_b"	"50"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration_1"	"60"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration_2"	"45"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_ex"	"50"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"att_sp"	"40"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"armor"		"10"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp"		"200"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_min"		"1000"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_max"		"4000"
+			}
+			"13"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_att"		"10"
+			}
+			"14"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"att_minute"		"6"
+			}
+			"15"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_hp"		"800"
+			}
+			"16"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"hp_minute"		"50"
+			}
+
+		}
+	}
 	// =================================================================================================================
 	// =================================================================================================================
 	// =================================================================================================================
@@ -7760,7 +8105,7 @@
 		"Model"	"models/props_gameplay/recipe.vmdl"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"4000"
+		"ItemCost"	"3000"
 		"SecretShop"	"1"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------

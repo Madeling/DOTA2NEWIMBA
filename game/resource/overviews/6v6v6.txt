@@ -1,8 +1,8 @@
 6v6v6
 {
 	material materials/overviews/6v6v6.vmat
-	pos_x -5632
-	pos_y 5632
-	scale 11.000
+	pos_x -4996
+	pos_y 5843
+	scale 9.857
 }
 

@@ -240,7 +240,7 @@ end
 function modifier_flesh_heap_hook_move:OnIntervalThink( )
                         if IsValidEntity(self.caster) and IsValidEntity(self.parent) then
                               local pos = (self.POS-self.parent:GetAbsOrigin())
-                              self.parent:SetAbsOrigin( self.parent:GetAbsOrigin() +pos:Normalized()* (self.sp / (1.0 / FrameTime())) )
+                              self.parent:SetAbsOrigin( self.parent:GetAbsOrigin() +pos:Normalized()* ((self.sp+600) / (1.0 / FrameTime())) )
                               if   pos:Length2D() < 150 then
                                           FindClearSpaceForUnit(self.parent,self.parent:GetAbsOrigin(), false )
                                           self:Destroy()

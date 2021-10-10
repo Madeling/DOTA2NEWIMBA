@@ -12,7 +12,6 @@ function Awake()
     LinkLuaModifier("modifier_rune_haste_tg", "modifier/rune/modifier_rune_haste_tg.lua", LUA_MODIFIER_MOTION_NONE)
     LinkLuaModifier("modifier_rune_invis_tg", "modifier/rune/modifier_rune_invis_tg.lua", LUA_MODIFIER_MOTION_NONE)
     LinkLuaModifier("modifier_black_dragon", "modifier/neutralunit/modifier_black_dragon.lua", LUA_MODIFIER_MOTION_NONE)
-    LinkLuaModifier("modifier_gold", "modifier/player/modifier_gold.lua", LUA_MODIFIER_MOTION_NONE)
     LinkLuaModifier("modifier_player", "modifier/player/modifier_player.lua", LUA_MODIFIER_MOTION_NONE)
     LinkLuaModifier("modifier_gnm", "modifier/player/modifier_gnm.lua", LUA_MODIFIER_MOTION_NONE)
     LinkLuaModifier("modifier_helide", "modifier/player/modifier_helide.lua", LUA_MODIFIER_MOTION_NONE)
@@ -42,4 +41,6 @@ function Awake()
 
     LinkLuaModifier("modifier_dfinv", "modifier/player/modifier_dfinv.lua", LUA_MODIFIER_MOTION_NONE )
     LinkLuaModifier("modifier_veteran_sp", "modifier/veteran/modifier_veteran_sp.lua", LUA_MODIFIER_MOTION_NONE )
+
+    LinkLuaModifier("modifier_gold", "modifier/other/modifier_gold.lua", LUA_MODIFIER_MOTION_NONE )
 end

@@ -23,8 +23,16 @@ function building:Set_AB()
 			end
 		end
 	end
-	CreateModifierThinker(CDOTAGamerules.IMBA_FOUNTAIN[DOTA_TEAM_GOODGUYS], nil, "modifier_home", {}, GOOD_POS, DOTA_TEAM_GOODGUYS, false)
-	CreateModifierThinker(CDOTAGamerules.IMBA_FOUNTAIN[DOTA_TEAM_BADGUYS], nil, "modifier_home", {}, BAD_POS, DOTA_TEAM_BADGUYS, false)
+	if GetMapName() =="6v6v6" then
+			local dummy=CreateUnitByName("npc_dota_gold_box", Vector(0,0,0), true, nil, nil, DOTA_TEAM_NEUTRALS)
+			dummy:AddNewModifier(dummy, nil, "modifier_invulnerable", {})
+			dummy:AddNewModifier(dummy, nil, "modifier_no_healthbar", {})
+			dummy:AddNewModifier(dummy, nil, "modifier_gold", {})
+	else
+			CreateModifierThinker(CDOTAGamerules.IMBA_FOUNTAIN[DOTA_TEAM_GOODGUYS], nil, "modifier_home", {}, GOOD_POS, DOTA_TEAM_GOODGUYS, false)
+			CreateModifierThinker(CDOTAGamerules.IMBA_FOUNTAIN[DOTA_TEAM_BADGUYS], nil, "modifier_home", {}, BAD_POS, DOTA_TEAM_BADGUYS, false)
+	end
+
 		--[[Timers:CreateTimer(0, function()
 			if num>#towers or towers[num]==nil then
 				return nil

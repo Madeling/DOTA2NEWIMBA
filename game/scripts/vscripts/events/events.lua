@@ -29,16 +29,15 @@ end
 
 --游戏设置期间
 function L_TG:OnCUSTOM_GAME_SETUP()
-	--EmitGlobalSound( "TG.bgm" )
+	EmitGlobalSound( "TG.bgm" )
 end
 
 --------------------------------------------------------------------------
 
 --赛前
 function L_TG:OnPRE_GAME()
-	if GameRules:IsCheatMode() then CreateUnitByNameAsync("npc_dota_hero_target_dummy", Vector(-5345,-6549,384), false, nil, nil, DOTA_TEAM_NEUTRALS,function()end)end
-	if GetMapName() ~="6v6v6" then
-	end
+	--if GameRules:IsCheatMode() then CreateUnitByNameAsync("npc_dota_hero_target_dummy", Vector(0,0,0), true, nil, nil, DOTA_TEAM_NEUTRALS,function()end)end
+
 end
 
 
@@ -58,7 +57,9 @@ end
 function L_TG:OnHERO_SELECTION()
 	--GameRules:BotPopulate()
 	if GameRules:IsCheatMode() then GameRules:SetSafeToLeave(true) end
+	if GetMapName() ~="6v6v6" then
 	unit:Init_Roshan()
+	end
 	building:Set_AB()
 end
 
@@ -81,12 +82,20 @@ end
 
 --游戏正式开始时（号角响起）
 function L_TG:GAME_IN_PROGRESS()
-	unit:Create_Roshan()
-	Notifications:BottomToAll({text ="#kill", duration = 3})
-	--Timers:CreateTimer(900, function()
-		--Notifications:BottomToAll({text ="#die", duration = 5})
-		--return nil
-	--end)
+	if GetMapName() =="6v6v6" then
+		Notifications:BottomToAll({text ="#kill1", duration = 3})
+	else
+		unit:Create_Roshan()
+		Notifications:BottomToAll({text ="#kill", duration = 3})
+		Timers:CreateTimer(0, function()
+			GetAllHero(function(hero)
+				if hero then
+					PlayerResource:ModifyGold(hero:GetPlayerOwnerID(),ExtraGold,false,DOTA_ModifyGold_Unspecified)
+				end
+			end)
+		return 1
+		end)
+	end
 end
 
 
@@ -152,25 +161,33 @@ function L_TG:OnEntityKilled(tg)
 		local UT=unit:GetTeam()
 		local GK=GetTeamHeroKills(DOTA_TEAM_GOODGUYS)
 		local BK=GetTeamHeroKills(DOTA_TEAM_BADGUYS)
+		local T1=GetTeamHeroKills(DOTA_TEAM_CUSTOM_1)
+		--local MAX=TG_Table_Value({GK,BK,T1},0)
 		local TEAM=UT==DOTA_TEAM_GOODGUYS and "bad" or "good"
 			if KILL_TIPS then
-				if GK ==250 or BK == 250 then
+				if GK ==250 or BK == 250  then
 					KILL_TIPS=false
 					EmitAnnouncerSoundForTeam("ann_custom_team_alerts_02", UT)
 					--Notifications:BottomToAll({image="file://{images}/custom_game/hud/"..TEAM..".png", duration=5.0,continue=true})
 					Notifications:BottomToAll({text = "#"..TEAM, duration = 5.0, style = {["font-size"] = "50px", color = "#ffffff",border="5px solid #ffffff"}})
 				end
 			end
-			if GK >= 304 then
+			if GK >= KILLSNUM then
 					GAME_LOSE_TEAM = DOTA_TEAM_BADGUYS
 					GAME_WIN_TEAM = DOTA_TEAM_GOODGUYS
 					GameRules:MakeTeamLose(GAME_LOSE_TEAM)
 					GameRules:SetGameWinner(GAME_WIN_TEAM)
-			elseif BK >= 304 then
+			elseif BK >= KILLSNUM then
 					GAME_LOSE_TEAM = DOTA_TEAM_GOODGUYS
 					GAME_WIN_TEAM = DOTA_TEAM_BADGUYS
 					GameRules:MakeTeamLose(GAME_LOSE_TEAM)
 					GameRules:SetGameWinner(GAME_WIN_TEAM)
+			elseif T1 and T1 >= KILLSNUM then
+					GAME_LOSE_TEAM = DOTA_TEAM_GOODGUYS
+					GAME_WIN_TEAM = DOTA_TEAM_CUSTOM_1
+					GameRules:MakeTeamLose(DOTA_TEAM_GOODGUYS)
+					GameRules:MakeTeamLose(DOTA_TEAM_BADGUYS)
+					GameRules:SetGameWinner(DOTA_TEAM_CUSTOM_1)
 			end
 	end
 end
@@ -198,7 +215,7 @@ function L_TG:OnPlayerLevelUp(tg)
 	if hero then
 		local lv=tg.level
 		if (lv==6 or lv==11 or lv==16)then
-			if hero.Random_Skill then
+			if hero.Random_Skill and IsValidEntity(hero.Random_Skill) then
 				local maxlv=hero.Random_Skill:GetMaxLevel()
 				local currlv=hero.Random_Skill:GetLevel()
 				if currlv<maxlv then
@@ -247,6 +264,14 @@ function L_TG:OnItemPickedUp(tg)
 		end
 	end
 
+	if tg.itemname == "item_bag_of_gold" then
+		local hero=EntIndexToHScript(tg.HeroEntityIndex)
+		local item=EntIndexToHScript(tg.ItemEntityIndex)
+		local gold=RandomInt(150, 500)
+		PlayerResource:ModifyGold( hero:GetPlayerID(), gold, true, 0 )
+		SendOverheadEventMessage( hero, OVERHEAD_ALERT_GOLD, hero, gold, nil )
+		UTIL_Remove( item )
+	end
 end
 
 
@@ -405,7 +430,7 @@ function L_TG:OnPlayerLearnedAbility(tg)
 	else
 		local PL=PlayerResource:GetPlayer(playerid)
 		local HERO= PL:GetAssignedHero()
-		if HERO.Random_Skill then
+		if HERO.Random_Skill and IsValidEntity(HERO.Random_Skill) then
 			if HERO.Random_Skill:GetAbilityName()==abilityname then
 				local Level=HERO.Random_Skill:GetLevel()
 				HERO.Random_Skill:SetLevel(Level>=1 and Level-1 or 0 )
@@ -471,6 +496,55 @@ function L_TG:OnPlayerBuyback( tg )
 	end
 end
 
+
+--------------------------------------------------------------------------
+
+
+--当玩家断开时
+function L_TG:OnDisconnect(tg)
+	-- 0 - no connection
+	-- 1 - bot connected
+	-- 2 - player connected
+	-- 3 - bot/player disconnected.
+
+	-- PlayerID: 2
+	-- networkid: [U:1:95496383]
+	-- reason: 2
+	-- splitscreenplayer: -1
+	-- userid: 7
+	-- name
+	-- xuid
+	local playerHero = CDOTA_PlayerResource.TG_HERO[tg.PlayerID + 1]
+	if playerHero and  PlayerResource:GetConnectionState(tg.PlayerID)==DOTA_CONNECTION_STATE_ABANDONED  then
+		local team = playerHero:GetTeamNumber()
+		if team==DOTA_TEAM_BADGUYS then
+			CDOTA_PlayerResource.ABANDONED_BAD=CDOTA_PlayerResource.ABANDONED_BAD+1
+			if CDOTA_PlayerResource.ABANDONED_BAD>=7 then
+				Notifications:BottomToAll({text ="夜魇逃跑人数>=7,天辉3秒后获胜", duration = 3})
+				Timers:CreateTimer(3, function()
+					GAME_LOSE_TEAM = DOTA_TEAM_BADGUYS
+					GAME_WIN_TEAM = DOTA_TEAM_GOODGUYS
+					GameRules:MakeTeamLose(GAME_LOSE_TEAM)
+					GameRules:SetGameWinner(GAME_WIN_TEAM)
+				return nil
+				end)
+			end
+		elseif team==DOTA_TEAM_GOODGUYS then
+			CDOTA_PlayerResource.ABANDONED_GOOD=CDOTA_PlayerResource.ABANDONED_GOOD+1
+			if CDOTA_PlayerResource.ABANDONED_GOOD>=7 then
+				Notifications:BottomToAll({text ="天辉逃跑人数>=7,夜魇3秒后获胜", duration = 3})
+				Timers:CreateTimer(3, function()
+					GAME_LOSE_TEAM = DOTA_TEAM_GOODGUYS
+					GAME_WIN_TEAM = DOTA_TEAM_BADGUYS
+					GameRules:MakeTeamLose(GAME_LOSE_TEAM)
+					GameRules:SetGameWinner(GAME_WIN_TEAM)
+				return nil
+				end)
+
+			end
+		end
+	end
+end
 
 --------------------------------------------------------------------------
 
@@ -587,29 +661,7 @@ function L_TG:OnConnectFull(tg)
 end
 	]]
 
-	--[[
---当玩家断开时
-function L_TG:OnDisconnect(tg)
-	-- 0 - no connection
-	-- 1 - bot connected
-	-- 2 - player connected
-	-- 3 - bot/player disconnected.
 
-	-- Typical keys:
-	-- PlayerID: 2
-	-- networkid: [U:1:95496383]
-	-- reason: 2
-	-- splitscreenplayer: -1
-	-- userid: 7
-	-- name
-	-- xuid
-
---	local playerName = tg.name
---	local playerHero = CDOTA_PlayerResource.TG_HERO[tg.PlayerID + 1]
---	local playerID = tg.PlayerID
-
-end
-]]
 
 
 

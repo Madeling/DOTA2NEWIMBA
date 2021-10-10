@@ -1,5 +1,10 @@
 
 ice_path=ice_path or class({})
+ice_path_ani={}
+ice_path_ani[1]=1
+ice_path_ani[2]=1.2
+ice_path_ani[3]=1.6
+ice_path_ani[4]=2
 LinkLuaModifier("modifier_ice_path_debuff", "heros/hero_jakiro/ice_path.lua", LUA_MODIFIER_MOTION_NONE)
 function ice_path:IsHiddenWhenStolen()
     return false
@@ -10,6 +15,16 @@ function ice_path:IsStealable()
 end
 
 function ice_path:IsRefreshable()
+    return true
+end
+
+function ice_path:OnAbilityPhaseStart()
+	self:GetCaster():StartGestureWithPlaybackRate(ACT_DOTA_CAST_ABILITY_1,ice_path_ani[self:GetLevel()])
+    return true
+end
+
+function ice_path:OnAbilityPhaseInterrupted()
+	self:GetCaster():RemoveGesture(ACT_DOTA_CAST_ABILITY_1)
     return true
 end
 
